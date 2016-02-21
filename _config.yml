@@ -1,1 +1,4 @@
 baseurl: /odoo-mobile
+
+markdown: kramdown
+highlighter: rouge
