@@ -1,0 +1,403 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1F23DD2E691E9E6BF06D5058 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2350D602659312A8E604C3A9 /* libPods.a */; };
+		452E11091C773635007BAC51 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 452E11081C773635007BAC51 /* main.m */; };
+		452E110C1C773635007BAC51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 452E110B1C773635007BAC51 /* AppDelegate.m */; };
+		452E110F1C773635007BAC51 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 452E110E1C773635007BAC51 /* ViewController.m */; };
+		452E11121C773635007BAC51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 452E11101C773635007BAC51 /* Main.storyboard */; };
+		452E11141C773635007BAC51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 452E11131C773635007BAC51 /* Assets.xcassets */; };
+		452E11171C773635007BAC51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 452E11151C773635007BAC51 /* LaunchScreen.storyboard */; };
+		73500C33DA70155C3C565ADB /* libPods-odooMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94FAA0957A469E2DC78D82F5 /* libPods-odooMobile.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2350D602659312A8E604C3A9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		452E11041C773635007BAC51 /* odooMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = odooMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		452E11081C773635007BAC51 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		452E110A1C773635007BAC51 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		452E110B1C773635007BAC51 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		452E110D1C773635007BAC51 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		452E110E1C773635007BAC51 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		452E11111C773635007BAC51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		452E11131C773635007BAC51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		452E11161C773635007BAC51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		452E11181C773635007BAC51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6B92E78A9AB79AEF5A32D80A /* Pods-odooMac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-odooMac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-odooMac/Pods-odooMac.debug.xcconfig"; sourceTree = "<group>"; };
+		721C1A471BE9A609557E9FC7 /* Pods-odooMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-odooMobile.debug.xcconfig"; path = "Pods/Target Support Files/Pods-odooMobile/Pods-odooMobile.debug.xcconfig"; sourceTree = "<group>"; };
+		8208258B6322A672D6831D82 /* Pods-odooMac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-odooMac.release.xcconfig"; path = "Pods/Target Support Files/Pods-odooMac/Pods-odooMac.release.xcconfig"; sourceTree = "<group>"; };
+		94FAA0957A469E2DC78D82F5 /* libPods-odooMobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-odooMobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F815C433C75A191A4A823725 /* Pods-odooMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-odooMobile.release.xcconfig"; path = "Pods/Target Support Files/Pods-odooMobile/Pods-odooMobile.release.xcconfig"; sourceTree = "<group>"; };
+		FD40791FA327CB00F377D133 /* libPods-odooMac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-odooMac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		452E11011C773635007BAC51 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F23DD2E691E9E6BF06D5058 /* libPods.a in Frameworks */,
+				73500C33DA70155C3C565ADB /* libPods-odooMobile.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		452E10FB1C773635007BAC51 = {
+			isa = PBXGroup;
+			children = (
+				452E11061C773635007BAC51 /* odooMobile */,
+				452E11051C773635007BAC51 /* Products */,
+				C09FAE386A1E7170357492D7 /* Pods */,
+				FF62729255A0C83E2FF81AC9 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		452E11051C773635007BAC51 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				452E11041C773635007BAC51 /* odooMobile.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		452E11061C773635007BAC51 /* odooMobile */ = {
+			isa = PBXGroup;
+			children = (
+				452E114B1C775EC0007BAC51 /* Model */,
+				452E110A1C773635007BAC51 /* AppDelegate.h */,
+				452E110B1C773635007BAC51 /* AppDelegate.m */,
+				452E110D1C773635007BAC51 /* ViewController.h */,
+				452E110E1C773635007BAC51 /* ViewController.m */,
+				452E11101C773635007BAC51 /* Main.storyboard */,
+				452E11131C773635007BAC51 /* Assets.xcassets */,
+				452E11151C773635007BAC51 /* LaunchScreen.storyboard */,
+				452E11181C773635007BAC51 /* Info.plist */,
+				452E11071C773635007BAC51 /* Supporting Files */,
+			);
+			path = odooMobile;
+			sourceTree = "<group>";
+		};
+		452E11071C773635007BAC51 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				452E11081C773635007BAC51 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		452E114B1C775EC0007BAC51 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C09FAE386A1E7170357492D7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6B92E78A9AB79AEF5A32D80A /* Pods-odooMac.debug.xcconfig */,
+				8208258B6322A672D6831D82 /* Pods-odooMac.release.xcconfig */,
+				721C1A471BE9A609557E9FC7 /* Pods-odooMobile.debug.xcconfig */,
+				F815C433C75A191A4A823725 /* Pods-odooMobile.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FF62729255A0C83E2FF81AC9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2350D602659312A8E604C3A9 /* libPods.a */,
+				FD40791FA327CB00F377D133 /* libPods-odooMac.a */,
+				94FAA0957A469E2DC78D82F5 /* libPods-odooMobile.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		452E11031C773635007BAC51 /* odooMobile */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 452E111B1C773635007BAC51 /* Build configuration list for PBXNativeTarget "odooMobile" */;
+			buildPhases = (
+				9B9B1BAC23DE3589CCE73733 /* Check Pods Manifest.lock */,
+				452E11001C773635007BAC51 /* Sources */,
+				452E11011C773635007BAC51 /* Frameworks */,
+				452E11021C773635007BAC51 /* Resources */,
+				1B8B491C51E64B372E847AF8 /* Embed Pods Frameworks */,
+				10A5E7A981D974DB9BCE363C /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = odooMobile;
+			productName = odooMobile;
+			productReference = 452E11041C773635007BAC51 /* odooMobile.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		452E10FC1C773635007BAC51 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = LeiQiao;
+				TargetAttributes = {
+					452E11031C773635007BAC51 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 452E10FF1C773635007BAC51 /* Build configuration list for PBXProject "odooMobile" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 452E10FB1C773635007BAC51;
+			productRefGroup = 452E11051C773635007BAC51 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				452E11031C773635007BAC51 /* odooMobile */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		452E11021C773635007BAC51 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				452E11171C773635007BAC51 /* LaunchScreen.storyboard in Resources */,
+				452E11141C773635007BAC51 /* Assets.xcassets in Resources */,
+				452E11121C773635007BAC51 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		10A5E7A981D974DB9BCE363C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1B8B491C51E64B372E847AF8 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-odooMobile/Pods-odooMobile-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9B9B1BAC23DE3589CCE73733 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		452E11001C773635007BAC51 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				452E110F1C773635007BAC51 /* ViewController.m in Sources */,
+				452E110C1C773635007BAC51 /* AppDelegate.m in Sources */,
+				452E11091C773635007BAC51 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		452E11101C773635007BAC51 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				452E11111C773635007BAC51 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		452E11151C773635007BAC51 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				452E11161C773635007BAC51 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		452E11191C773635007BAC51 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		452E111A1C773635007BAC51 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		452E111C1C773635007BAC51 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 721C1A471BE9A609557E9FC7 /* Pods-odooMobile.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = odooMobile/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.LoveC.odooMobile;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		452E111D1C773635007BAC51 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F815C433C75A191A4A823725 /* Pods-odooMobile.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = odooMobile/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.LoveC.odooMobile;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		452E10FF1C773635007BAC51 /* Build configuration list for PBXProject "odooMobile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				452E11191C773635007BAC51 /* Debug */,
+				452E111A1C773635007BAC51 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		452E111B1C773635007BAC51 /* Build configuration list for PBXNativeTarget "odooMobile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				452E111C1C773635007BAC51 /* Debug */,
+				452E111D1C773635007BAC51 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 452E10FC1C773635007BAC51 /* Project object */;
+}
