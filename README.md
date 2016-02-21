@@ -1,2 +1,4 @@
 # odoo-mobile
-odoo(OpenERP)的移动客户端版
+odoo(OpenERP)的移动客户端
+包括Android和iOS版本
+（刚刚开始，毛也没有呢。。。）
