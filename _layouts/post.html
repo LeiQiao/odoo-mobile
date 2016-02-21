@@ -18,8 +18,7 @@
       <div class="inner">
 
         <header>
-          <h1>{{ page.title }}</h1>
-          <h2>{{ page.date | date: "%Y-%m-%d" }}</h2>
+          <a href="{{ site.baseurl }}" style="text-decoration:none;"><h1>Odoo-mobile</h1></a>
         </header>
 
         <section id="downloads" class="clearfix">
@@ -31,6 +30,7 @@
         <hr>
 
         <section id="main_content">
+<p><b style="font-size:30px; font-weight:900;">{{ page.title }}</b> &nbsp; <span style="font-family: Helvetica; font-size: 16px;">({{ page.date | date: "%Y-%m-%d" }})</span></p>
 <p>{{ content }}</p>
         </section>
 

@@ -34,11 +34,8 @@ title:
 
 {% for post in site.posts %}
         <hr>
-
             <section id="main_content">
-                <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
-                <h2>{{ post.excerpt }}</h2>
-                <p></p>
+                <li>{{ post.date | date: "%Y-%m-%d" }} &raquo; <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
             </section>
 {% endfor %}
 

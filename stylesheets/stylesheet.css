@@ -283,6 +283,10 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+    text-decoration: underline;
+}
+
 p a {
   font-weight: 400;
 }
