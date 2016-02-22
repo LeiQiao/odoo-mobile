@@ -31,9 +31,9 @@ title:
           <a href="https://github.com/LeiQiao/odoo-mobile/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
           <a href="https://github.com/LeiQiao/odoo-mobile" id="view-on-github" class="button"><span>View on GitHub</span></a>
         </section>
-
-{% for post in site.posts %}
+        
         <hr>
+{% for post in site.posts %}
             <section id="main_content">
                 <li>{{ post.date | date: "%Y-%m-%d" }} &raquo; <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
             </section>
