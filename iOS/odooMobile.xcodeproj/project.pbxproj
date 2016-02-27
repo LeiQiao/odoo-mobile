@@ -13,6 +13,7 @@
 		4596FF191C8176B1002A2398 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4596FF171C8176B1002A2398 /* Main.storyboard */; };
 		4596FF1B1C8176B1002A2398 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4596FF1A1C8176B1002A2398 /* Assets.xcassets */; };
 		4596FF1E1C8176B1002A2398 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4596FF1C1C8176B1002A2398 /* LaunchScreen.storyboard */; };
+		4596FF2B1C81A05F002A2398 /* AFXMLRPCSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4596FF2A1C81A05F002A2398 /* AFXMLRPCSessionManager.m */; };
 		BC4F7E4054CC957561689A3B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6E18B01F87220923DDB1C15 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,8 @@
 		4596FF1A1C8176B1002A2398 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4596FF1D1C8176B1002A2398 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4596FF1F1C8176B1002A2398 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4596FF291C81A05F002A2398 /* AFXMLRPCSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLRPCSessionManager.h; sourceTree = "<group>"; };
+		4596FF2A1C81A05F002A2398 /* AFXMLRPCSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRPCSessionManager.m; sourceTree = "<group>"; };
 		985ABB801C0216F7C3D24998 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E6E18B01F87220923DDB1C15 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD6DDA1A9ACB9DE466C5F519 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -74,6 +77,7 @@
 		4596FF0D1C8176B1002A2398 /* odooMobile */ = {
 			isa = PBXGroup;
 			children = (
+				4596FF251C8181E9002A2398 /* Model */,
 				4596FF111C8176B1002A2398 /* AppDelegate.h */,
 				4596FF121C8176B1002A2398 /* AppDelegate.m */,
 				4596FF141C8176B1002A2398 /* ViewController.h */,
@@ -93,6 +97,15 @@
 				4596FF0F1C8176B1002A2398 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4596FF251C8181E9002A2398 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4596FF291C81A05F002A2398 /* AFXMLRPCSessionManager.h */,
+				4596FF2A1C81A05F002A2398 /* AFXMLRPCSessionManager.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		E9B5A6C60EDAE03C8C1048A6 /* Frameworks */ = {
@@ -227,6 +240,7 @@
 				4596FF161C8176B1002A2398 /* ViewController.m in Sources */,
 				4596FF131C8176B1002A2398 /* AppDelegate.m in Sources */,
 				4596FF101C8176B1002A2398 /* main.m in Sources */,
+				4596FF2B1C81A05F002A2398 /* AFXMLRPCSessionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
