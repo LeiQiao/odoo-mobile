@@ -53,6 +53,6 @@ fastlane/report.xml
 fastlane/screenshots
 
 iOS/Pods/Headers/*
+iOS/Pods/Target Support Files/*
 iOS/Pods/AFNetworking/*
 iOS/Pods/wpxmlrpc/*
-iOS/Pods/Target Support Files/*
