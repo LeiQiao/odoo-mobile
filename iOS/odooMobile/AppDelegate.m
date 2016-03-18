@@ -7,16 +7,24 @@
 //
 
 #import "AppDelegate.h"
+#import "MainAction.h"
 
 @interface AppDelegate ()
 
 @end
 
-@implementation AppDelegate
+@implementation AppDelegate {
+    CXAction* _mainAction;
+}
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    // 进入主流程
+    _mainAction = CXActionForClass([MainAction class]);
+    [_mainAction onEnter];
+    
     return YES;
 }
 

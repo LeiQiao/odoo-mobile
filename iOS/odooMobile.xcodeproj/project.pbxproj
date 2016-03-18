@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		459106F61C97FB3D00F7AA6E /* CXAction_function.m in Sources */ = {isa = PBXBuildFile; fileRef = 459106F31C97FB3D00F7AA6E /* CXAction_function.m */; };
+		459107041C99264B00F7AA6E /* CXNetworkAction_block.m in Sources */ = {isa = PBXBuildFile; fileRef = 459107031C99264B00F7AA6E /* CXNetworkAction_block.m */; };
+		4591070A1C992D6300F7AA6E /* CXAction_block.m in Sources */ = {isa = PBXBuildFile; fileRef = 459107091C992D6300F7AA6E /* CXAction_block.m */; };
+		459107111C993D2700F7AA6E /* CXServiceAction_function.m in Sources */ = {isa = PBXBuildFile; fileRef = 459107101C993D2700F7AA6E /* CXServiceAction_function.m */; };
 		4596FF101C8176B1002A2398 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4596FF0F1C8176B1002A2398 /* main.m */; };
 		4596FF131C8176B1002A2398 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4596FF121C8176B1002A2398 /* AppDelegate.m */; };
 		4596FF161C8176B1002A2398 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4596FF151C8176B1002A2398 /* ViewController.m */; };
@@ -14,10 +18,23 @@
 		4596FF1B1C8176B1002A2398 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4596FF1A1C8176B1002A2398 /* Assets.xcassets */; };
 		4596FF1E1C8176B1002A2398 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4596FF1C1C8176B1002A2398 /* LaunchScreen.storyboard */; };
 		4596FF2B1C81A05F002A2398 /* AFXMLRPCSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4596FF2A1C81A05F002A2398 /* AFXMLRPCSessionManager.m */; };
+		45B314FF1C9BAAF50005A214 /* CXUIAction_function.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B314FE1C9BAAF50005A214 /* CXUIAction_function.m */; };
+		45B315021C9BAB050005A214 /* CXNetworkAction_function.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B315011C9BAB050005A214 /* CXNetworkAction_function.m */; };
+		45B315061C9BCB170005A214 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B315051C9BCB170005A214 /* LoginViewController.m */; };
+		45B3150A1C9BCB4E0005A214 /* MainAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B315091C9BCB4E0005A214 /* MainAction.m */; };
 		BC4F7E4054CC957561689A3B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6E18B01F87220923DDB1C15 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		459106F21C97FB3D00F7AA6E /* CXAction_function.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXAction_function.h; sourceTree = "<group>"; };
+		459106F31C97FB3D00F7AA6E /* CXAction_function.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXAction_function.m; sourceTree = "<group>"; };
+		459107021C99264B00F7AA6E /* CXNetworkAction_block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXNetworkAction_block.h; sourceTree = "<group>"; };
+		459107031C99264B00F7AA6E /* CXNetworkAction_block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXNetworkAction_block.m; sourceTree = "<group>"; };
+		459107081C992D6300F7AA6E /* CXAction_block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXAction_block.h; sourceTree = "<group>"; };
+		459107091C992D6300F7AA6E /* CXAction_block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXAction_block.m; sourceTree = "<group>"; };
+		4591070E1C9939D700F7AA6E /* CXAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CXAction.h; sourceTree = "<group>"; };
+		4591070F1C993D2700F7AA6E /* CXServiceAction_function.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXServiceAction_function.h; sourceTree = "<group>"; };
+		459107101C993D2700F7AA6E /* CXServiceAction_function.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXServiceAction_function.m; sourceTree = "<group>"; };
 		4596FF0B1C8176B1002A2398 /* odooMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = odooMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4596FF0F1C8176B1002A2398 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4596FF111C8176B1002A2398 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -30,6 +47,14 @@
 		4596FF1F1C8176B1002A2398 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4596FF291C81A05F002A2398 /* AFXMLRPCSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLRPCSessionManager.h; sourceTree = "<group>"; };
 		4596FF2A1C81A05F002A2398 /* AFXMLRPCSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRPCSessionManager.m; sourceTree = "<group>"; };
+		45B314FD1C9BAAF50005A214 /* CXUIAction_function.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXUIAction_function.h; sourceTree = "<group>"; };
+		45B314FE1C9BAAF50005A214 /* CXUIAction_function.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXUIAction_function.m; sourceTree = "<group>"; };
+		45B315001C9BAB050005A214 /* CXNetworkAction_function.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXNetworkAction_function.h; sourceTree = "<group>"; };
+		45B315011C9BAB050005A214 /* CXNetworkAction_function.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXNetworkAction_function.m; sourceTree = "<group>"; };
+		45B315041C9BCB170005A214 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		45B315051C9BCB170005A214 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		45B315081C9BCB4E0005A214 /* MainAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainAction.h; sourceTree = "<group>"; };
+		45B315091C9BCB4E0005A214 /* MainAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainAction.m; sourceTree = "<group>"; };
 		985ABB801C0216F7C3D24998 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E6E18B01F87220923DDB1C15 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD6DDA1A9ACB9DE466C5F519 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -56,6 +81,34 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		459106F01C97FB3D00F7AA6E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				459106F11C97FB3D00F7AA6E /* CXWorkFlow */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		459106F11C97FB3D00F7AA6E /* CXWorkFlow */ = {
+			isa = PBXGroup;
+			children = (
+				459107081C992D6300F7AA6E /* CXAction_block.h */,
+				459107091C992D6300F7AA6E /* CXAction_block.m */,
+				459107021C99264B00F7AA6E /* CXNetworkAction_block.h */,
+				459107031C99264B00F7AA6E /* CXNetworkAction_block.m */,
+				459106F21C97FB3D00F7AA6E /* CXAction_function.h */,
+				459106F31C97FB3D00F7AA6E /* CXAction_function.m */,
+				4591070F1C993D2700F7AA6E /* CXServiceAction_function.h */,
+				459107101C993D2700F7AA6E /* CXServiceAction_function.m */,
+				45B314FD1C9BAAF50005A214 /* CXUIAction_function.h */,
+				45B314FE1C9BAAF50005A214 /* CXUIAction_function.m */,
+				45B315001C9BAB050005A214 /* CXNetworkAction_function.h */,
+				45B315011C9BAB050005A214 /* CXNetworkAction_function.m */,
+				4591070E1C9939D700F7AA6E /* CXAction.h */,
+			);
+			path = CXWorkFlow;
+			sourceTree = "<group>";
+		};
 		4596FF021C8176B1002A2398 = {
 			isa = PBXGroup;
 			children = (
@@ -77,7 +130,10 @@
 		4596FF0D1C8176B1002A2398 /* odooMobile */ = {
 			isa = PBXGroup;
 			children = (
+				459106F01C97FB3D00F7AA6E /* Frameworks */,
 				4596FF251C8181E9002A2398 /* Model */,
+				45B315031C9BCAFF0005A214 /* UI */,
+				45B315071C9BCB320005A214 /* Action */,
 				4596FF111C8176B1002A2398 /* AppDelegate.h */,
 				4596FF121C8176B1002A2398 /* AppDelegate.m */,
 				4596FF141C8176B1002A2398 /* ViewController.h */,
@@ -106,6 +162,24 @@
 				4596FF2A1C81A05F002A2398 /* AFXMLRPCSessionManager.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		45B315031C9BCAFF0005A214 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				45B315041C9BCB170005A214 /* LoginViewController.h */,
+				45B315051C9BCB170005A214 /* LoginViewController.m */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		45B315071C9BCB320005A214 /* Action */ = {
+			isa = PBXGroup;
+			children = (
+				45B315081C9BCB4E0005A214 /* MainAction.h */,
+				45B315091C9BCB4E0005A214 /* MainAction.m */,
+			);
+			path = Action;
 			sourceTree = "<group>";
 		};
 		E9B5A6C60EDAE03C8C1048A6 /* Frameworks */ = {
@@ -238,9 +312,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				4596FF161C8176B1002A2398 /* ViewController.m in Sources */,
+				459107041C99264B00F7AA6E /* CXNetworkAction_block.m in Sources */,
+				45B314FF1C9BAAF50005A214 /* CXUIAction_function.m in Sources */,
 				4596FF131C8176B1002A2398 /* AppDelegate.m in Sources */,
+				4591070A1C992D6300F7AA6E /* CXAction_block.m in Sources */,
+				459106F61C97FB3D00F7AA6E /* CXAction_function.m in Sources */,
+				45B315021C9BAB050005A214 /* CXNetworkAction_function.m in Sources */,
 				4596FF101C8176B1002A2398 /* main.m in Sources */,
 				4596FF2B1C81A05F002A2398 /* AFXMLRPCSessionManager.m in Sources */,
+				45B315061C9BCB170005A214 /* LoginViewController.m in Sources */,
+				45B3150A1C9BCB4E0005A214 /* MainAction.m in Sources */,
+				459107111C993D2700F7AA6E /* CXServiceAction_function.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
