@@ -1,4 +1,5 @@
 platform :ios, '7.0'
 
-pod 'AFNetworking',     '2.6.0'
+pod 'AFNetworking',     '3.0.4'
 pod 'wpxmlrpc',         '0.8.1'
+pod 'MBProgressHUD',    '0.9.1'
