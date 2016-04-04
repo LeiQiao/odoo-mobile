@@ -1,94 +1,76 @@
 //
 //  UserManager.m
-//  odooMobile
-//
-//  Created by lei.qiao on 16/3/31.
-//  Copyright © 2016年 Facebook. All rights reserved.
 //
 
 #import "UserManager.h"
-#import "RCTRootView.h"
 #import "AFXMLRPCSessionManager.h"
-#import "HUD.h"
+#import "AppDelegate.h"
+#import "Preferences.h"
+#import "ModuleNotification.h"
+#import "NetworkResponse.h"
 
-
-@implementation UserManager {
-    UIViewController* _loginViewController;
-}
+/**
+ *  @author LeiQiao, 16/04/04
+ *  @brief 用户管理模块，包括登录等逻辑处理，
+ *         React-Native和Native双方都可以调用，不管哪一方调用回调消息都会通知双方
+ */
+@implementation UserManager
 
 RCT_EXPORT_MODULE();
 
-RCT_EXPORT_PROPERTY(serverName);
-
--(void) onEnter
-{
-    [super onEnter];
-    
-    RCTRootView* loginView = [[RCTRootView alloc] initWithBridge:_jsBridge
-                                                      moduleName:@"Login"
-                                               initialProperties:nil];
-    _loginViewController = [UIViewController new];
-    _loginViewController.view = loginView;
-    [[self topViewController] presentViewController:_loginViewController animated:YES completion:^{}];
-}
-
--(void) onLeave
-{
-    [_loginViewController dismissViewControllerAnimated:YES completion:^{}];
-}
-
+/**
+ *  @author LeiQiao, 16/04/04
+ *  @brief 登录到远程odoo服务器
+ *  @param serverName 服务器地址，例如：http://qitaer.com:8069
+ *  @param DBName     数据库名称
+ *  @param userName   登录用户名
+ *  @param password   登录密码
+ */
 RCT_EXPORT_METHOD(login:(NSString*)serverName
                   DBName:(NSString*)dbName
                   userName:(NSString*)userName
-                  password:(NSString*)password
-                  callback:(RCTResponseSenderBlock)callback)
+                  password:(NSString*)password)
 {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        popWaiting();
-    });
-    
     NSString* urlString = [NSString stringWithFormat:@"%@/xmlrpc/2/common", serverName];
     AFXMLRPCSessionManager* manager = [[AFXMLRPCSessionManager alloc] initWithBaseURL:[NSURL URLWithString:urlString]];
     NSURLRequest* request = [manager XMLRPCRequestWithMethod:@"authenticate" parameters:@[dbName, userName, password, @{}]];
     [manager XMLRPCTaskWithRequest:request success:^(NSURLSessionDataTask *task, id responseObject) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            dismissWaiting();
-        });
+        
+        NetworkResponse* result = [[NetworkResponse alloc] initWithSuccess:NO andFailedReason:@"登录失败，用户名密码错误"];
         
         NSString* userID = SafeCopy(responseObject);
         if( [userID integerValue] > 0 )
         {
-            self.serverName = serverName;
-            self.dbName = dbName;
-            self.userID = userID;
-            self.userName = userName;
-            self.password = password;
-            callback(@[@(YES), @"登录成功"]);
+            gPreferences.serverName = serverName;
+            gPreferences.dbName = dbName;
+            gPreferences.userID = userID;
+            gPreferences.userName = userName;
+            gPreferences.password = password;
+            [result setSuccessAndMessage:@"登录成功"];
             
-            [self leaveModule];
+            [self getUserGroup];
         }
         else
         {
-            callback(@[@(NO), @"登录失败，用户名密码错误"]);
+            [self postNotificationName:kLoginNetworkNotification withResponse:result];
         }
         
+        [self postNotificationName:kLoginNetworkNotification withResponse:result];
+        
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            dismissWaiting();
-        });
+        
+        NetworkResponse* result = [[NetworkResponse alloc] initWithSuccess:NO andFailedReason:@"登录失败，请重试"];
         
         if( error.code == -1001 )
         {
-            callback(@[@(NO), @"登录失败，服务器无法连接"]);
+            [result setFailedAndReason:@"登录失败，服务器无法连接"];
         }
         else if( error.code == 1 )
         {
-            callback(@[@(NO), @"登录失败，数据库不存在"]);
+            [result setFailedAndReason:@"登录失败，数据库不存在"];
         }
-        else
-        {
-            callback(@[@(NO), @"登录失败，请重试"]);
-        }
+        
+        [self postNotificationName:kLoginNetworkNotification withResponse:result];
     }];
 }
 

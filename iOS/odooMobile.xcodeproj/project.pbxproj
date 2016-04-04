@@ -24,10 +24,16 @@
 		451782941CACFDB900E47668 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 451782931CACFDB900E47668 /* UserManager.m */; };
 		4517829B1CAD0FF200E47668 /* AFXMLRPCSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 451782971CAD0FF200E47668 /* AFXMLRPCSessionManager.m */; };
 		4517829C1CAD0FF200E47668 /* HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4517829A1CAD0FF200E47668 /* HUD.m */; };
-		451782B71CAE047700E47668 /* BaseModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 451782B61CAE047700E47668 /* BaseModule.m */; };
-		451782BA1CAE67E900E47668 /* MainManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 451782B91CAE67E900E47668 /* MainManager.m */; };
 		47B5E1AAEED353A798B939A4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 656D26B0FA2743A143142BC2 /* libPods.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		A00268161CAFF09000F9AF86 /* MainAction.m in Sources */ = {isa = PBXBuildFile; fileRef = A00268151CAFF09000F9AF86 /* MainAction.m */; };
+		A00268231CAFF14B00F9AF86 /* LoginAction.m in Sources */ = {isa = PBXBuildFile; fileRef = A00268221CAFF14B00F9AF86 /* LoginAction.m */; };
+		A01E55411CB0D3DF00045EE5 /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = A01E55401CB0D3DF00045EE5 /* Preferences.m */; };
+		A01E55451CB0DA9100045EE5 /* NetworkResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A01E55441CB0DA9100045EE5 /* NetworkResponse.m */; };
+		A01E55481CB0ED9800045EE5 /* CXBaseModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A01E55471CB0ED9800045EE5 /* CXBaseModule.m */; };
+		A01E554B1CB1350E00045EE5 /* ModuleNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = A01E554A1CB1350E00045EE5 /* ModuleNotification.m */; };
+		A01E554E1CB21D9500045EE5 /* RCTHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A01E554D1CB21D9500045EE5 /* RCTHUD.m */; };
+		A0D0EB231CAF7024006037FD /* CXBaseAction.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D0EB221CAF7024006037FD /* CXBaseAction.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,13 +143,25 @@
 		451782971CAD0FF200E47668 /* AFXMLRPCSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRPCSessionManager.m; sourceTree = "<group>"; };
 		451782991CAD0FF200E47668 /* HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUD.h; sourceTree = "<group>"; };
 		4517829A1CAD0FF200E47668 /* HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUD.m; sourceTree = "<group>"; };
-		451782B51CAE047700E47668 /* BaseModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModule.h; sourceTree = "<group>"; };
-		451782B61CAE047700E47668 /* BaseModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModule.m; sourceTree = "<group>"; };
-		451782B81CAE67E900E47668 /* MainManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainManager.h; sourceTree = "<group>"; };
-		451782B91CAE67E900E47668 /* MainManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainManager.m; sourceTree = "<group>"; };
 		656D26B0FA2743A143142BC2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		A00268141CAFF09000F9AF86 /* MainAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainAction.h; sourceTree = "<group>"; };
+		A00268151CAFF09000F9AF86 /* MainAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainAction.m; sourceTree = "<group>"; };
+		A00268211CAFF14B00F9AF86 /* LoginAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginAction.h; sourceTree = "<group>"; };
+		A00268221CAFF14B00F9AF86 /* LoginAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginAction.m; sourceTree = "<group>"; };
+		A01E553F1CB0D3DF00045EE5 /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
+		A01E55401CB0D3DF00045EE5 /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Preferences.m; sourceTree = "<group>"; };
+		A01E55431CB0DA9100045EE5 /* NetworkResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkResponse.h; sourceTree = "<group>"; };
+		A01E55441CB0DA9100045EE5 /* NetworkResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkResponse.m; sourceTree = "<group>"; };
+		A01E55461CB0ED9800045EE5 /* CXBaseModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXBaseModule.h; sourceTree = "<group>"; };
+		A01E55471CB0ED9800045EE5 /* CXBaseModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXBaseModule.m; sourceTree = "<group>"; };
+		A01E55491CB1350E00045EE5 /* ModuleNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModuleNotification.h; sourceTree = "<group>"; };
+		A01E554A1CB1350E00045EE5 /* ModuleNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModuleNotification.m; sourceTree = "<group>"; };
+		A01E554C1CB21D9500045EE5 /* RCTHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTHUD.h; sourceTree = "<group>"; };
+		A01E554D1CB21D9500045EE5 /* RCTHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTHUD.m; sourceTree = "<group>"; };
+		A0D0EB211CAF7024006037FD /* CXBaseAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXBaseAction.h; sourceTree = "<group>"; };
+		A0D0EB221CAF7024006037FD /* CXBaseAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXBaseAction.m; sourceTree = "<group>"; };
 		B0F9C06E9592CE8ED6F68FA5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -268,6 +286,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				A0D0EB201CAF701B006037FD /* Actions */,
 				451782911CACFDB900E47668 /* Modules */,
 				4517828D1CACFDB500E47668 /* Frameworks */,
 			);
@@ -295,10 +314,16 @@
 		451782911CACFDB900E47668 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				451782B51CAE047700E47668 /* BaseModule.h */,
-				451782B61CAE047700E47668 /* BaseModule.m */,
-				451782B81CAE67E900E47668 /* MainManager.h */,
-				451782B91CAE67E900E47668 /* MainManager.m */,
+				A01E553F1CB0D3DF00045EE5 /* Preferences.h */,
+				A01E55401CB0D3DF00045EE5 /* Preferences.m */,
+				A01E55431CB0DA9100045EE5 /* NetworkResponse.h */,
+				A01E55441CB0DA9100045EE5 /* NetworkResponse.m */,
+				A01E55461CB0ED9800045EE5 /* CXBaseModule.h */,
+				A01E55471CB0ED9800045EE5 /* CXBaseModule.m */,
+				A01E55491CB1350E00045EE5 /* ModuleNotification.h */,
+				A01E554A1CB1350E00045EE5 /* ModuleNotification.m */,
+				A01E554C1CB21D9500045EE5 /* RCTHUD.h */,
+				A01E554D1CB21D9500045EE5 /* RCTHUD.m */,
 				451782921CACFDB900E47668 /* UserManager.h */,
 				451782931CACFDB900E47668 /* UserManager.m */,
 			);
@@ -378,6 +403,20 @@
 				00E356EE1AD99517003FC87E /* odooMobileTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A0D0EB201CAF701B006037FD /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				A0D0EB211CAF7024006037FD /* CXBaseAction.h */,
+				A0D0EB221CAF7024006037FD /* CXBaseAction.m */,
+				A00268141CAFF09000F9AF86 /* MainAction.h */,
+				A00268151CAFF09000F9AF86 /* MainAction.m */,
+				A00268211CAFF14B00F9AF86 /* LoginAction.h */,
+				A00268221CAFF14B00F9AF86 /* LoginAction.m */,
+			);
+			name = Actions;
+			path = odooMobile/Actions;
 			sourceTree = "<group>";
 		};
 		A4B7D53E0015217D10664F73 /* Frameworks */ = {
@@ -673,13 +712,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0D0EB231CAF7024006037FD /* CXBaseAction.m in Sources */,
+				A01E55481CB0ED9800045EE5 /* CXBaseModule.m in Sources */,
 				4517829C1CAD0FF200E47668 /* HUD.m in Sources */,
+				A00268161CAFF09000F9AF86 /* MainAction.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
-				451782B71CAE047700E47668 /* BaseModule.m in Sources */,
+				A00268231CAFF14B00F9AF86 /* LoginAction.m in Sources */,
 				451782941CACFDB900E47668 /* UserManager.m in Sources */,
+				A01E554E1CB21D9500045EE5 /* RCTHUD.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
-				451782BA1CAE67E900E47668 /* MainManager.m in Sources */,
+				A01E554B1CB1350E00045EE5 /* ModuleNotification.m in Sources */,
+				A01E55451CB0DA9100045EE5 /* NetworkResponse.m in Sources */,
 				4517829B1CAD0FF200E47668 /* AFXMLRPCSessionManager.m in Sources */,
+				A01E55411CB0D3DF00045EE5 /* Preferences.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

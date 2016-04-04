@@ -125,6 +125,7 @@ const NSInteger kNoXMLPrefix = -999;
 {
     // 创建POST方式的请求并设置默认HTTP头
     NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:_baseURL];
+    request.timeoutInterval = 10;
     [request setHTTPMethod:@"POST"];
     [request setAllHTTPHeaderFields:_defaultHeaders];
     

@@ -95,11 +95,13 @@ class Login extends Component {
   componentDidMount() {
 　　DeviceEventEmitter.addListener('keyboardWillShow', (f) => this.onKeyboardWillShown(f));
 　　DeviceEventEmitter.addListener('keyboardWillHide', (f) => this.onKeyboardWillHidden());
+　　DeviceEventEmitter.addListener('kLoginNetworkNotification', (f) => this.onLoginResponse(f));
   }
 
   componentWillUnmount() {
 　　DeviceEventEmitter.removeAllListeners('keyboardWillShow');
 　　DeviceEventEmitter.removeAllListeners('keyboardWillHide');
+　　DeviceEventEmitter.removeAllListeners('kLoginNetworkNotification');
   }
   
   onKeyboardWillShown(keyboardEvent) {
@@ -131,15 +133,20 @@ class Login extends Component {
   
   onLogin() {
     dismissKeyboard();
-    
+      
+    NativeModules.HUD.popWaiting('');
+
     this.setState({ isLogining: true});
     var UserManager = NativeModules.UserManager;
-    UserManager.login(this.state.HOSTName, this.state.DBName, this.state.UserName, this.state.Password,(result, message) => {
-      if( !result )
-      {
-        AlertIOS.alert('登录', message, [{text:'确定'}]);
-      }
-    });
+    UserManager.login(this.state.HOSTName, this.state.DBName, this.state.UserName, this.state.Password);
+  }
+    
+  onLoginResponse(response) {
+    NativeModules.HUD.dismissWaiting();
+
+    if( !response.success ) {
+        NativeModules.HUD.popError(response.failedReason);
+    }
   }
 }
 

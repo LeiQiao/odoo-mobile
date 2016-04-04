@@ -8,9 +8,13 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "RCTRootView.h"
+#import "MainAction.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (nonatomic, strong) UIWindow *window;
+@property(nonatomic, strong) UIWindow *window;
+@property(nonatomic, strong) RCTRootView* rootView;
+@property(nonatomic, strong) CXBaseAction* rootAction;
 
 @end

@@ -8,18 +8,11 @@
  */
 
 #import "AppDelegate.h"
-#import "RCTRootView.h"
-#import "BaseModule.h"
 
-@implementation AppDelegate {
-    RCTRootView* _rootView;
-    BaseModule* _rootModule;
-}
+@implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
-    
     NSURL *jsCodeLocation;
     
     /**
@@ -36,7 +29,7 @@
      * on the same Wi-Fi network.
      */
     
-    jsCodeLocation = [NSURL URLWithString:@"http://192.168.22.59:8081/index.ios.bundle?platform=ios&dev=true"];
+    jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle?platform=ios&dev=true"];
     
     /**
      * OPTION 2
@@ -67,10 +60,9 @@
 
 -(void) onEnter
 {
-    [self.window.rootViewController.presentedViewController dismissViewControllerAnimated:NO completion:^{}];
+    if( _rootAction ) return;
     
-    _rootModule = [_rootView.bridge moduleForName:@"MainManager"];
-    [_rootModule launchAsRootModule:_rootView.bridge];
+    _rootAction = [CXBaseAction launchAsRootAction:[MainAction class]];
 }
 
 @end
