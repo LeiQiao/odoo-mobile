@@ -137,9 +137,15 @@ class Login extends Component {
     NativeModules.HUD.popWaiting('');
 
     this.setState({ isLogining: true});
-    NativeModules.OdooModule.authenticate(this.state.HOSTName, this.state.DBName, this.state.UserName, this.state.Password, (success, failedReason) => {
+    NativeModules.OdooModule.authenticate(this.state.HOSTName, this.state.DBName, this.state.UserName, this.state.Password, (success, failedReason, userID) => {
       NativeModules.HUD.dismissWaiting();
 
+      if( success ) {
+        NativeModules.OdooModule.execute('res.groups', 'search1', [[['users', 'in', userID]]], {}, (success, failedReason, response) => {
+           NativeModules.OdooModule.execute('ir.ui.menu', 'search_read', [[['groups_id', 'in', response]]], {}, (success, failedReason, response) => {
+           });
+        });
+      }
       if( !success ) {
         NativeModules.HUD.popError(failedReason);
       }

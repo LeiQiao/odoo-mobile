@@ -6,7 +6,19 @@
 #import "AFXMLRPCSessionManager.h"
 #import "Preferences.h"
 
-static AFXMLRPCSessionManager* OdooServer = nil; /*!< odoo服务器 */
+NSString* unicodeToUTF8(NSString* unicodeString)
+{
+    NSString *tempStr1 = [unicodeString stringByReplacingOccurrencesOfString:@"\\u" withString:@"\\U"];
+    NSString *tempStr2 = [tempStr1 stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
+    NSString *tempStr3 = [[@"\""stringByAppendingString:tempStr2] stringByAppendingString:@"\""];
+    NSData *tempData = [tempStr3 dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSString* returnStr = [NSPropertyListSerialization propertyListFromData:tempData
+                                                           mutabilityOption:NSPropertyListImmutable
+                                                                     format:NULL
+                                                           errorDescription:NULL];
+    return [returnStr stringByReplacingOccurrencesOfString:@"\\r\\n"withString:@"\n"];
+}
 
 /*!
  *  @author LeiQiao, 16/04/04
@@ -32,9 +44,9 @@ RCT_EXPORT_METHOD(authenticate:(NSString*)serverName
                   callback:(RCTResponseSenderBlock)callback)
 {
     NSString* urlString = [NSString stringWithFormat:@"%@/xmlrpc/2/common", serverName];
-    OdooServer = [[AFXMLRPCSessionManager alloc] initWithBaseURL:[NSURL URLWithString:urlString]];
+    AFXMLRPCSessionManager* odooServer = [[AFXMLRPCSessionManager alloc] initWithBaseURL:[NSURL URLWithString:urlString]];
+    NSNumber* userID = [odooServer execute:@"authenticate" parameters:@[dbName, userName, password, @{}]];
     
-    NSNumber* userID = [OdooServer execute:@"authenticate" parameters:@[dbName, userName, password, @{}]];
     if( [userID isKindOfClass:[NSError class]] )
     {
         NSError* error = (NSError*)userID;
@@ -57,13 +69,13 @@ RCT_EXPORT_METHOD(authenticate:(NSString*)serverName
     }
     else
     {
-        gPreferences.serverName = urlString;
+        gPreferences.serverName = serverName;
         gPreferences.dbName = dbName;
         gPreferences.userID = [userID stringValue];
         gPreferences.userName = userName;
         gPreferences.password = password;
         
-        callback(@[@(YES), @"登录成功"]);
+        callback(@[@(YES), @"登录成功", userID]);
     }
 }
 
@@ -82,6 +94,27 @@ RCT_EXPORT_METHOD(execute:(NSString*)model
                   conditions:(NSDictionary*)conditions
                   callback:(RCTResponseSenderBlock)callback)
 {
+    NSString* urlString = [NSString stringWithFormat:@"%@/xmlrpc/2/object", gPreferences.serverName];
+    AFXMLRPCSessionManager* odooServer = [[AFXMLRPCSessionManager alloc] initWithBaseURL:[NSURL URLWithString:urlString]];
+    id response = [odooServer execute:@"execute_kw" parameters:@[gPreferences.dbName,
+                                                                 @([gPreferences.userID integerValue]),
+                                                                 gPreferences.password,
+                                                                 model,
+                                                                 method,
+                                                                 parameters,
+                                                                 conditions]];
+    
+    if( [response isKindOfClass:[NSError class]] )
+    {
+        NSError* error = (NSError*)response;
+        NSString* failedReason = [error.userInfo objectForKey:@"NSLocalizedDescription"];
+        failedReason = unicodeToUTF8(failedReason);
+        callback(@[@(NO), failedReason]);
+    }
+    else
+    {
+        callback(@[@(YES), @"", response]);
+    }
 }
 
 @end
