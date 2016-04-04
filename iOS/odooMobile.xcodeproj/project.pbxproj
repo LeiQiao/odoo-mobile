@@ -33,6 +33,7 @@
 		A01E55481CB0ED9800045EE5 /* CXBaseModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A01E55471CB0ED9800045EE5 /* CXBaseModule.m */; };
 		A01E554B1CB1350E00045EE5 /* ModuleNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = A01E554A1CB1350E00045EE5 /* ModuleNotification.m */; };
 		A01E554E1CB21D9500045EE5 /* RCTHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A01E554D1CB21D9500045EE5 /* RCTHUD.m */; };
+		A01E55511CB27E4D00045EE5 /* OdooModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A01E55501CB27E4D00045EE5 /* OdooModule.m */; };
 		A0D0EB231CAF7024006037FD /* CXBaseAction.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D0EB221CAF7024006037FD /* CXBaseAction.m */; };
 /* End PBXBuildFile section */
 
@@ -160,6 +161,8 @@
 		A01E554A1CB1350E00045EE5 /* ModuleNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModuleNotification.m; sourceTree = "<group>"; };
 		A01E554C1CB21D9500045EE5 /* RCTHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTHUD.h; sourceTree = "<group>"; };
 		A01E554D1CB21D9500045EE5 /* RCTHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTHUD.m; sourceTree = "<group>"; };
+		A01E554F1CB27E4D00045EE5 /* OdooModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OdooModule.h; sourceTree = "<group>"; };
+		A01E55501CB27E4D00045EE5 /* OdooModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OdooModule.m; sourceTree = "<group>"; };
 		A0D0EB211CAF7024006037FD /* CXBaseAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXBaseAction.h; sourceTree = "<group>"; };
 		A0D0EB221CAF7024006037FD /* CXBaseAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXBaseAction.m; sourceTree = "<group>"; };
 		B0F9C06E9592CE8ED6F68FA5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -326,6 +329,8 @@
 				A01E554D1CB21D9500045EE5 /* RCTHUD.m */,
 				451782921CACFDB900E47668 /* UserManager.h */,
 				451782931CACFDB900E47668 /* UserManager.m */,
+				A01E554F1CB27E4D00045EE5 /* OdooModule.h */,
+				A01E55501CB27E4D00045EE5 /* OdooModule.m */,
 			);
 			name = Modules;
 			path = odooMobile/Modules;
@@ -722,6 +727,7 @@
 				A01E554E1CB21D9500045EE5 /* RCTHUD.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				A01E554B1CB1350E00045EE5 /* ModuleNotification.m in Sources */,
+				A01E55511CB27E4D00045EE5 /* OdooModule.m in Sources */,
 				A01E55451CB0DA9100045EE5 /* NetworkResponse.m in Sources */,
 				4517829B1CAD0FF200E47668 /* AFXMLRPCSessionManager.m in Sources */,
 				A01E55411CB0D3DF00045EE5 /* Preferences.m in Sources */,

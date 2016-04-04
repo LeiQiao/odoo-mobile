@@ -137,16 +137,13 @@ class Login extends Component {
     NativeModules.HUD.popWaiting('');
 
     this.setState({ isLogining: true});
-    var UserManager = NativeModules.UserManager;
-    UserManager.login(this.state.HOSTName, this.state.DBName, this.state.UserName, this.state.Password);
-  }
-    
-  onLoginResponse(response) {
-    NativeModules.HUD.dismissWaiting();
+    NativeModules.OdooModule.authenticate(this.state.HOSTName, this.state.DBName, this.state.UserName, this.state.Password, (success, failedReason) => {
+      NativeModules.HUD.dismissWaiting();
 
-    if( !response.success ) {
-        NativeModules.HUD.popError(response.failedReason);
-    }
+      if( !success ) {
+        NativeModules.HUD.popError(failedReason);
+      }
+    });
   }
 }
 
