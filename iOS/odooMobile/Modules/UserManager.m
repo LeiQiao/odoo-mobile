@@ -32,35 +32,13 @@ RCT_EXPORT_METHOD(login:(NSString*)serverName
                   password:(NSString*)password)
 {
     NSString* urlString = [NSString stringWithFormat:@"%@/xmlrpc/2/common", serverName];
+
     AFXMLRPCSessionManager* manager = [[AFXMLRPCSessionManager alloc] initWithBaseURL:[NSURL URLWithString:urlString]];
-    NSURLRequest* request = [manager XMLRPCRequestWithMethod:@"authenticate" parameters:@[dbName, userName, password, @{}]];
-    [manager XMLRPCTaskWithRequest:request success:^(NSURLSessionDataTask *task, id responseObject) {
-        
-        NetworkResponse* result = [[NetworkResponse alloc] initWithSuccess:NO andFailedReason:@"登录失败，用户名密码错误"];
-        
-        NSString* userID = SafeCopy(responseObject);
-        if( [userID integerValue] > 0 )
-        {
-            gPreferences.serverName = serverName;
-            gPreferences.dbName = dbName;
-            gPreferences.userID = userID;
-            gPreferences.userName = userName;
-            gPreferences.password = password;
-            [result setSuccessAndMessage:@"登录成功"];
-            
-            [self getUserGroup];
-        }
-        else
-        {
-            [self postNotificationName:kLoginNetworkNotification withResponse:result];
-        }
-        
-        [self postNotificationName:kLoginNetworkNotification withResponse:result];
-        
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
-        NetworkResponse* result = [[NetworkResponse alloc] initWithSuccess:NO andFailedReason:@"登录失败，请重试"];
-        
+    NSNumber* userID = [manager execute:@"authenticate" parameters:@[dbName, userName, password, @{}]];
+    NetworkResponse* result = [NetworkResponse new];
+    if( [userID isKindOfClass:[NSError class]] )
+    {
+        NSError* error = (NSError*)userID;
         if( error.code == -1001 )
         {
             [result setFailedAndReason:@"登录失败，服务器无法连接"];
@@ -69,9 +47,22 @@ RCT_EXPORT_METHOD(login:(NSString*)serverName
         {
             [result setFailedAndReason:@"登录失败，数据库不存在"];
         }
-        
-        [self postNotificationName:kLoginNetworkNotification withResponse:result];
-    }];
+    }
+    else if( [userID integerValue] == 0 )
+    {
+        [result setFailedAndReason:@"登录失败，用户名密码错误"];
+    }
+    else
+    {
+        gPreferences.serverName = serverName;
+        gPreferences.dbName = dbName;
+        gPreferences.userID = [userID stringValue];
+        gPreferences.userName = userName;
+        gPreferences.password = password;
+        [result setSuccessAndMessage:@"登录成功"];
+
+    }
+    [self postNotificationName:kLoginNetworkNotification withResponse:result];
 }
 
 @end

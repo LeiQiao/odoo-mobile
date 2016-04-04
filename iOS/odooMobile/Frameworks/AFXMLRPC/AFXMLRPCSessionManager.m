@@ -230,4 +230,39 @@ const NSInteger kNoXMLPrefix = -999;
     return task;
 }
 
+/**
+ *  @author LeiQiao, 16/04/04
+ *  @brief 执行XMLRPC请求，并返回之行结果，
+ *         !!!!!!注意!!!!! 该请求会阻塞线程，直到请求成功或者失败才会返回
+ *  @param method     请求方法
+ *  @param parameters 请求参数
+ *  @return 成功则返回NSArray或者NSDictionary，失败则返回NSError
+ */
+-(id) execute:(NSString*)method parameters:(NSArray*)parameters
+{
+    __block id result = nil;
+    NSCondition* networkFinishedSignal = [NSCondition new];
+    
+    NSURLRequest* request = [self XMLRPCRequestWithMethod:method parameters:parameters];
+    [self XMLRPCTaskWithRequest:request
+                        success:^(NSURLSessionDataTask *task, id responseObject) {
+                            result = responseObject;
+                            
+                            [networkFinishedSignal lock];
+                            [networkFinishedSignal signal];
+                            [networkFinishedSignal unlock];
+                        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                            result = error;
+                            
+                            [networkFinishedSignal lock];
+                            [networkFinishedSignal signal];
+                            [networkFinishedSignal unlock];
+                        }];
+    [networkFinishedSignal lock];
+    [networkFinishedSignal wait];
+    [networkFinishedSignal unlock];
+    
+    return result;
+}
+
 @end

@@ -81,8 +81,7 @@ extern const NSInteger kNoXMLPrefix; /*!< 没有XML前缀 */
  *  @param parameters XMLRPC参数
  *  @return 返回XMLRPC请求对象
  */
--(NSURLRequest*) XMLRPCRequestWithMethod:(NSString*)method
-                              parameters:(NSArray*)parameters;
+-(NSURLRequest*) XMLRPCRequestWithMethod:(NSString*)method parameters:(NSArray*)parameters;
 
 /*!
  *  @author LeiQiao, 16-02-27
@@ -95,5 +94,15 @@ extern const NSInteger kNoXMLPrefix; /*!< 没有XML前缀 */
 -(NSURLSessionDataTask*) XMLRPCTaskWithRequest:(NSURLRequest*)request
                                        success:(void (^)(NSURLSessionDataTask* task, id responseObject))success
                                        failure:(void (^)(NSURLSessionDataTask* task, NSError* error))failure;
+
+/**
+ *  @author LeiQiao, 16/04/04
+ *  @brief 执行XMLRPC请求，并返回之行结果，
+ *         !!!!!!注意!!!!! 该请求会阻塞线程，直到请求成功或者失败才会返回
+ *  @param method     请求方法
+ *  @param parameters 请求参数
+ *  @return 成功则返回NSArray或者NSDictionary，失败则返回NSError
+ */
+-(id) execute:(NSString*)method parameters:(NSArray*)parameters;
 
 @end
