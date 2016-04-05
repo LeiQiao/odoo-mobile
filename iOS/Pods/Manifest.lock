@@ -15,16 +15,19 @@ PODS:
   - AFNetworking/UIKit (3.0.4):
     - AFNetworking/NSURLSession
   - MBProgressHUD (0.9.1)
+  - SFHFKeychainUtils (0.0.1)
   - wpxmlrpc (0.8.1)
 
 DEPENDENCIES:
   - AFNetworking (= 3.0.4)
   - MBProgressHUD (= 0.9.1)
+  - SFHFKeychainUtils (= 0.0.1)
   - wpxmlrpc (= 0.8.1)
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  SFHFKeychainUtils: 9576b411a79a058f4d5381ace6f3242b9a62e664
   wpxmlrpc: bd391dab54e9bdceb5d1de23d161ecf1ba80f0e0
 
 COCOAPODS: 0.39.0

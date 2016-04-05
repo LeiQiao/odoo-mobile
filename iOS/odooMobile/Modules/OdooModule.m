@@ -6,6 +6,12 @@
 #import "AFXMLRPCSessionManager.h"
 #import "Preferences.h"
 
+/*!
+ *  @author LeiQiao, 16-04-05
+ *  @brief 将unicode编码转换成UTF8编码
+ *  @param unicodeString unicode编码的字符串
+ *  @return utf8编码的字符串
+ */
 NSString* unicodeToUTF8(NSString* unicodeString)
 {
     NSString *tempStr1 = [unicodeString stringByReplacingOccurrencesOfString:@"\\u" withString:@"\\U"];
@@ -69,11 +75,12 @@ RCT_EXPORT_METHOD(authenticate:(NSString*)serverName
     }
     else
     {
-        gPreferences.serverName = serverName;
-        gPreferences.dbName = dbName;
-        gPreferences.userID = [userID stringValue];
-        gPreferences.userName = userName;
-        gPreferences.password = password;
+        // 登录成功设置全局变量
+        gPreferences.ServerName = serverName;
+        gPreferences.DBName = dbName;
+        gPreferences.UserID = userID;
+        gPreferences.UserName = userName;
+        gPreferences.Password = password;
         
         callback(@[@(YES), @"登录成功", userID]);
     }
@@ -94,11 +101,11 @@ RCT_EXPORT_METHOD(execute:(NSString*)model
                   conditions:(NSDictionary*)conditions
                   callback:(RCTResponseSenderBlock)callback)
 {
-    NSString* urlString = [NSString stringWithFormat:@"%@/xmlrpc/2/object", gPreferences.serverName];
+    NSString* urlString = [NSString stringWithFormat:@"%@/xmlrpc/2/object", gPreferences.ServerName];
     AFXMLRPCSessionManager* odooServer = [[AFXMLRPCSessionManager alloc] initWithBaseURL:[NSURL URLWithString:urlString]];
-    id response = [odooServer execute:@"execute_kw" parameters:@[gPreferences.dbName,
-                                                                 @([gPreferences.userID integerValue]),
-                                                                 gPreferences.password,
+    id response = [odooServer execute:@"execute_kw" parameters:@[gPreferences.DBName,
+                                                                 @([gPreferences.UserID integerValue]),
+                                                                 gPreferences.Password,
                                                                  model,
                                                                  method,
                                                                  parameters,

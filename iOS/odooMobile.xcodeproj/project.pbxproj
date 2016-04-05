@@ -24,6 +24,8 @@
 		451782941CACFDB900E47668 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 451782931CACFDB900E47668 /* UserManager.m */; };
 		4517829B1CAD0FF200E47668 /* AFXMLRPCSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 451782971CAD0FF200E47668 /* AFXMLRPCSessionManager.m */; };
 		4517829C1CAD0FF200E47668 /* HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4517829A1CAD0FF200E47668 /* HUD.m */; };
+		45E11F581CB3671D0075F6C5 /* PreferenceModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E11F571CB3671D0075F6C5 /* PreferenceModule.m */; };
+		45E11F721CB3BF0F0075F6C5 /* JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E11F711CB3BF0F0075F6C5 /* JSON.m */; };
 		47B5E1AAEED353A798B939A4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 656D26B0FA2743A143142BC2 /* libPods.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		A00268161CAFF09000F9AF86 /* MainAction.m in Sources */ = {isa = PBXBuildFile; fileRef = A00268151CAFF09000F9AF86 /* MainAction.m */; };
@@ -144,6 +146,11 @@
 		451782971CAD0FF200E47668 /* AFXMLRPCSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRPCSessionManager.m; sourceTree = "<group>"; };
 		451782991CAD0FF200E47668 /* HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUD.h; sourceTree = "<group>"; };
 		4517829A1CAD0FF200E47668 /* HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUD.m; sourceTree = "<group>"; };
+		45E11F561CB3671D0075F6C5 /* PreferenceModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferenceModule.h; sourceTree = "<group>"; };
+		45E11F571CB3671D0075F6C5 /* PreferenceModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferenceModule.m; sourceTree = "<group>"; };
+		45E11F641CB3A81C0075F6C5 /* PreferencesDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesDefine.h; sourceTree = "<group>"; };
+		45E11F701CB3BF0F0075F6C5 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		45E11F711CB3BF0F0075F6C5 /* JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSON.m; sourceTree = "<group>"; };
 		656D26B0FA2743A143142BC2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
@@ -307,6 +314,8 @@
 		4517828D1CACFDB500E47668 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				45E11F6F1CB3BF0F0075F6C5 /* JSON */,
+				45E11F631CB3A81C0075F6C5 /* PreferencesDefine */,
 				451782951CAD0FF200E47668 /* AFXMLRPC */,
 				451782981CAD0FF200E47668 /* HUD */,
 			);
@@ -331,6 +340,8 @@
 				451782931CACFDB900E47668 /* UserManager.m */,
 				A01E554F1CB27E4D00045EE5 /* OdooModule.h */,
 				A01E55501CB27E4D00045EE5 /* OdooModule.m */,
+				45E11F561CB3671D0075F6C5 /* PreferenceModule.h */,
+				45E11F571CB3671D0075F6C5 /* PreferenceModule.m */,
 			);
 			name = Modules;
 			path = odooMobile/Modules;
@@ -352,6 +363,23 @@
 				4517829A1CAD0FF200E47668 /* HUD.m */,
 			);
 			path = HUD;
+			sourceTree = "<group>";
+		};
+		45E11F631CB3A81C0075F6C5 /* PreferencesDefine */ = {
+			isa = PBXGroup;
+			children = (
+				45E11F641CB3A81C0075F6C5 /* PreferencesDefine.h */,
+			);
+			path = PreferencesDefine;
+			sourceTree = "<group>";
+		};
+		45E11F6F1CB3BF0F0075F6C5 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				45E11F701CB3BF0F0075F6C5 /* JSON.h */,
+				45E11F711CB3BF0F0075F6C5 /* JSON.m */,
+			);
+			path = JSON;
 			sourceTree = "<group>";
 		};
 		78C398B11ACF4ADC00677621 /* Products */ = {
@@ -719,6 +747,7 @@
 			files = (
 				A0D0EB231CAF7024006037FD /* CXBaseAction.m in Sources */,
 				A01E55481CB0ED9800045EE5 /* CXBaseModule.m in Sources */,
+				45E11F581CB3671D0075F6C5 /* PreferenceModule.m in Sources */,
 				4517829C1CAD0FF200E47668 /* HUD.m in Sources */,
 				A00268161CAFF09000F9AF86 /* MainAction.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
@@ -727,6 +756,7 @@
 				A01E554E1CB21D9500045EE5 /* RCTHUD.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				A01E554B1CB1350E00045EE5 /* ModuleNotification.m in Sources */,
+				45E11F721CB3BF0F0075F6C5 /* JSON.m in Sources */,
 				A01E55511CB27E4D00045EE5 /* OdooModule.m in Sources */,
 				A01E55451CB0DA9100045EE5 /* NetworkResponse.m in Sources */,
 				4517829B1CAD0FF200E47668 /* AFXMLRPCSessionManager.m in Sources */,

@@ -4,16 +4,16 @@
 
 #import "Preferences.h"
 
-@implementation Preferences
+BEGIN_DECLARE_PREFERENCE()
 
-+(Preferences*) sharedPreference
-{
-    static Preferences* sharedPreference;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        sharedPreference = [Preferences new];
-    });
-    return sharedPreference;
-}
+USE_USERDEFAULT(NSString*, ServerName)
+USE_USERDEFAULT(NSString*, DBName)
+USE_USERDEFAULT(NSNumber*, UserID)
+USE_USERDEFAULT(NSString*, UserName)
+USE_USERDEFAULT(NSString*, Password)
 
-@end
+USE_STATIC_RETAIN(NSMutableDictionary*, ReactNativeStaticPreferences)
+USE_USERDEFAULT(NSMutableDictionary*, ReactNativeUserDefaultPreferences)
+USE_KEYCHAIN(NSString*, ReactNativeKeyChainPreferences)
+
+END_DECLARE_PREFERENCE()

@@ -54,11 +54,11 @@ RCT_EXPORT_METHOD(login:(NSString*)serverName
     }
     else
     {
-        gPreferences.serverName = serverName;
-        gPreferences.dbName = dbName;
-        gPreferences.userID = [userID stringValue];
-        gPreferences.userName = userName;
-        gPreferences.password = password;
+        gPreferences.ServerName = serverName;
+        gPreferences.DBName = dbName;
+        gPreferences.UserID = userID;
+        gPreferences.UserName = userName;
+        gPreferences.Password = password;
         [result setSuccessAndMessage:@"登录成功"];
 
     }

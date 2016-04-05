@@ -2,18 +2,18 @@
 //  Preferences.h
 //
 
-#import <Foundation/Foundation.h>
+#import "PreferencesDefine.h"
 
-#define gPreferences        [Preferences sharedPreference]
+BEGIN_DEFINE_PREFERENCE()
 
-@interface Preferences : NSObject
+DEFINE_PREFERENCE(NSString*, ServerName)
+DEFINE_PREFERENCE(NSString*, DBName)
+DEFINE_PREFERENCE(NSNumber*, UserID)
+DEFINE_PREFERENCE(NSString*, UserName)
+DEFINE_PREFERENCE(NSString*, Password)
 
-+(Preferences*) sharedPreference;
+DEFINE_PREFERENCE(NSMutableDictionary*, ReactNativeStaticPreferences)
+DEFINE_PREFERENCE(NSMutableDictionary*, ReactNativeUserDefaultPreferences)
+DEFINE_PREFERENCE(NSString*, ReactNativeKeyChainPreferences)
 
-@property(nonatomic, strong) NSString* serverName;
-@property(nonatomic, strong) NSString* dbName;
-@property(nonatomic, strong) NSString* userID;
-@property(nonatomic, strong) NSString* userName;
-@property(nonatomic, strong) NSString* password;
-
-@end
+END_DEFINE_PREFERENCE()

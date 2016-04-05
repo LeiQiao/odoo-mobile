@@ -24,12 +24,24 @@ class Login extends Component {
     super(props);
     
     this.state = {
-      HOSTName: 'http://qitaer.com:8069',
-      DBName: 'ai_run',
-      UserName: '乔磊',
-      Password: 'QiaoLei250011',
-      isLogining: false,
+      HOSTName: '',
+      DBName: '',
+      UserName: '',
+      Password: '',
     };
+    
+    NativeModules.PreferenceModule.getUserDefault('HostName', (v) => {
+      this.setState({HOSTName : v});
+    });
+    NativeModules.PreferenceModule.getUserDefault('DBName', (v) => {
+      this.setState({DBName : v});
+    });
+    NativeModules.PreferenceModule.getUserDefault('UserName', (v) => {
+      this.setState({UserName : v});
+    });
+    NativeModules.PreferenceModule.getKeyChain('Password', (v) => {
+      this.setState({Password : v});
+    });
   }
   
   render() {
@@ -51,24 +63,29 @@ class Login extends Component {
               style={styles.input}
               ref='HOSTName'
               value={this.state.HOSTName}
+              clearButtonMode={'while-editing'}
               onChange={this.onHOSTNameChanged.bind(this)}
               placeholder='请输入服务器地址'/>
             <TextInput
               style={styles.input}
               ref='DBName'
               value={this.state.DBName}
+              clearButtonMode={'while-editing'}
               onChange={this.onDBNameChanged.bind(this)}
               placeholder='请输入数据库名称'/>
             <TextInput
               style={styles.input}
               ref='UserName'
               value={this.state.UserName}
+              clearButtonMode={'while-editing'}
               onChange={this.onUserNameChanged.bind(this)}
               placeholder='请输入您的用户名'/>
             <TextInput
               style={styles.input}
               ref='Password'
               value={this.state.Password}
+              secureTextEntry={true}
+              clearButtonMode={'while-editing'}
               onChange={this.onPasswordChanged.bind(this)}
               placeholder='请输入您的密码'/>
             <TouchableHighlight
@@ -82,10 +99,6 @@ class Login extends Component {
               underlayColor='#99d9f4'>
               <Text style={styles.buttonText}>申  请</Text>
             </TouchableHighlight>
-            <Text
-              style={styles.description}>
-              {this.state.message}
-            </Text>
           </View>
         </TouchableWithoutFeedback>
       </ScrollView>
@@ -141,13 +154,42 @@ class Login extends Component {
       NativeModules.HUD.dismissWaiting();
 
       if( success ) {
-        NativeModules.OdooModule.execute('res.groups', 'search1', [[['users', 'in', userID]]], {}, (success, failedReason, response) => {
-           NativeModules.OdooModule.execute('ir.ui.menu', 'search_read', [[['groups_id', 'in', response]]], {}, (success, failedReason, response) => {
-           });
-        });
+        NativeModules.PreferenceModule.setUserDefault('HostName', this.state.HOSTName);
+        NativeModules.PreferenceModule.setUserDefault('DBName', this.state.DBName);
+        NativeModules.PreferenceModule.setUserDefault('UserName', this.state.UserName);
+        NativeModules.PreferenceModule.setKeyChain('Password', this.state.Password);
+        
+        this.onGetUserGroup(userID);
       }
-      if( !success ) {
+      else {
         NativeModules.HUD.popError(failedReason);
+      }
+    });
+  }
+  
+  onGetUserGroup(userID) {
+    NativeModules.HUD.popWaiting('');
+    
+    NativeModules.OdooModule.execute('res.groups', 'search', [[['users', 'in', userID]]], {}, (success, failedReason, groupIDs) => {
+      NativeModules.HUD.dismissWaiting();
+      
+      if( success ) {
+        this.onGetMenu(groupIDs);
+      }
+      else {
+        NativeModules.HUD.popError(failedReason);
+      }
+    });
+  }
+  
+  onGetMenu(groupIDs) {
+    NativeModules.HUD.popWaiting('');
+    
+    NativeModules.OdooModule.execute('ir.ui.menu', 'search_read', [[['groups_id', 'in', groupIDs]]], {'fields': ['id', 'parent_id', 'web_icon_data', 'action', 'name']}, (success, failedReason, menus) => {
+      NativeModules.HUD.dismissWaiting();
+      
+      if( success ) {
+        NativeModules.PreferenceModule.set('menus', menus);
       }
     });
   }
