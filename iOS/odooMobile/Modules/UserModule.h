@@ -1,5 +1,5 @@
 //
-//  UserManager.h
+//  UserModule.h
 //
 
 #import "CXBaseModule.h"
@@ -9,7 +9,7 @@
  *  @brief 用户管理模块，包括登录等逻辑处理，
  *         React-Native和Native双方都可以调用，不管哪一方调用回调消息都会通知双方
  */
-@interface UserManager : CXBaseModule
+@interface UserModule : CXBaseModule
 
 /**
  *  @author LeiQiao, 16/04/04

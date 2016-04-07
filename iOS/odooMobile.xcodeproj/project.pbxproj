@@ -21,11 +21,12 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
-		451782941CACFDB900E47668 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 451782931CACFDB900E47668 /* UserManager.m */; };
+		451782941CACFDB900E47668 /* UserModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 451782931CACFDB900E47668 /* UserModule.m */; };
 		4517829B1CAD0FF200E47668 /* AFXMLRPCSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 451782971CAD0FF200E47668 /* AFXMLRPCSessionManager.m */; };
 		4517829C1CAD0FF200E47668 /* HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4517829A1CAD0FF200E47668 /* HUD.m */; };
-		45E11F581CB3671D0075F6C5 /* PreferenceModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E11F571CB3671D0075F6C5 /* PreferenceModule.m */; };
 		45E11F721CB3BF0F0075F6C5 /* JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E11F711CB3BF0F0075F6C5 /* JSON.m */; };
+		45E120E31CB62BFA0075F6C5 /* RCTPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E120E21CB62BFA0075F6C5 /* RCTPreferences.m */; };
+		45E120EC1CB661C80075F6C5 /* SilentLoginAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E120EB1CB661C80075F6C5 /* SilentLoginAction.m */; };
 		47B5E1AAEED353A798B939A4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 656D26B0FA2743A143142BC2 /* libPods.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		A00268161CAFF09000F9AF86 /* MainAction.m in Sources */ = {isa = PBXBuildFile; fileRef = A00268151CAFF09000F9AF86 /* MainAction.m */; };
@@ -35,7 +36,6 @@
 		A01E55481CB0ED9800045EE5 /* CXBaseModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A01E55471CB0ED9800045EE5 /* CXBaseModule.m */; };
 		A01E554B1CB1350E00045EE5 /* ModuleNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = A01E554A1CB1350E00045EE5 /* ModuleNotification.m */; };
 		A01E554E1CB21D9500045EE5 /* RCTHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A01E554D1CB21D9500045EE5 /* RCTHUD.m */; };
-		A01E55511CB27E4D00045EE5 /* OdooModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A01E55501CB27E4D00045EE5 /* OdooModule.m */; };
 		A0D0EB231CAF7024006037FD /* CXBaseAction.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D0EB221CAF7024006037FD /* CXBaseAction.m */; };
 /* End PBXBuildFile section */
 
@@ -140,17 +140,19 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = odooMobile/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		34F4E14EB80E6E896152722F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		451782921CACFDB900E47668 /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
-		451782931CACFDB900E47668 /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
+		451782921CACFDB900E47668 /* UserModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModule.h; sourceTree = "<group>"; };
+		451782931CACFDB900E47668 /* UserModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModule.m; sourceTree = "<group>"; };
 		451782961CAD0FF200E47668 /* AFXMLRPCSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLRPCSessionManager.h; sourceTree = "<group>"; };
 		451782971CAD0FF200E47668 /* AFXMLRPCSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRPCSessionManager.m; sourceTree = "<group>"; };
 		451782991CAD0FF200E47668 /* HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUD.h; sourceTree = "<group>"; };
 		4517829A1CAD0FF200E47668 /* HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUD.m; sourceTree = "<group>"; };
-		45E11F561CB3671D0075F6C5 /* PreferenceModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferenceModule.h; sourceTree = "<group>"; };
-		45E11F571CB3671D0075F6C5 /* PreferenceModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferenceModule.m; sourceTree = "<group>"; };
 		45E11F641CB3A81C0075F6C5 /* PreferencesDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesDefine.h; sourceTree = "<group>"; };
 		45E11F701CB3BF0F0075F6C5 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		45E11F711CB3BF0F0075F6C5 /* JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSON.m; sourceTree = "<group>"; };
+		45E120E11CB62BFA0075F6C5 /* RCTPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTPreferences.h; sourceTree = "<group>"; };
+		45E120E21CB62BFA0075F6C5 /* RCTPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTPreferences.m; sourceTree = "<group>"; };
+		45E120EA1CB661C80075F6C5 /* SilentLoginAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SilentLoginAction.h; sourceTree = "<group>"; };
+		45E120EB1CB661C80075F6C5 /* SilentLoginAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SilentLoginAction.m; sourceTree = "<group>"; };
 		656D26B0FA2743A143142BC2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
@@ -168,8 +170,6 @@
 		A01E554A1CB1350E00045EE5 /* ModuleNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModuleNotification.m; sourceTree = "<group>"; };
 		A01E554C1CB21D9500045EE5 /* RCTHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTHUD.h; sourceTree = "<group>"; };
 		A01E554D1CB21D9500045EE5 /* RCTHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTHUD.m; sourceTree = "<group>"; };
-		A01E554F1CB27E4D00045EE5 /* OdooModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OdooModule.h; sourceTree = "<group>"; };
-		A01E55501CB27E4D00045EE5 /* OdooModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OdooModule.m; sourceTree = "<group>"; };
 		A0D0EB211CAF7024006037FD /* CXBaseAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXBaseAction.h; sourceTree = "<group>"; };
 		A0D0EB221CAF7024006037FD /* CXBaseAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXBaseAction.m; sourceTree = "<group>"; };
 		B0F9C06E9592CE8ED6F68FA5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -336,12 +336,10 @@
 				A01E554A1CB1350E00045EE5 /* ModuleNotification.m */,
 				A01E554C1CB21D9500045EE5 /* RCTHUD.h */,
 				A01E554D1CB21D9500045EE5 /* RCTHUD.m */,
-				451782921CACFDB900E47668 /* UserManager.h */,
-				451782931CACFDB900E47668 /* UserManager.m */,
-				A01E554F1CB27E4D00045EE5 /* OdooModule.h */,
-				A01E55501CB27E4D00045EE5 /* OdooModule.m */,
-				45E11F561CB3671D0075F6C5 /* PreferenceModule.h */,
-				45E11F571CB3671D0075F6C5 /* PreferenceModule.m */,
+				45E120E11CB62BFA0075F6C5 /* RCTPreferences.h */,
+				45E120E21CB62BFA0075F6C5 /* RCTPreferences.m */,
+				451782921CACFDB900E47668 /* UserModule.h */,
+				451782931CACFDB900E47668 /* UserModule.m */,
 			);
 			name = Modules;
 			path = odooMobile/Modules;
@@ -447,6 +445,8 @@
 				A00268151CAFF09000F9AF86 /* MainAction.m */,
 				A00268211CAFF14B00F9AF86 /* LoginAction.h */,
 				A00268221CAFF14B00F9AF86 /* LoginAction.m */,
+				45E120EA1CB661C80075F6C5 /* SilentLoginAction.h */,
+				45E120EB1CB661C80075F6C5 /* SilentLoginAction.m */,
 			);
 			name = Actions;
 			path = odooMobile/Actions;
@@ -747,17 +747,17 @@
 			files = (
 				A0D0EB231CAF7024006037FD /* CXBaseAction.m in Sources */,
 				A01E55481CB0ED9800045EE5 /* CXBaseModule.m in Sources */,
-				45E11F581CB3671D0075F6C5 /* PreferenceModule.m in Sources */,
+				45E120E31CB62BFA0075F6C5 /* RCTPreferences.m in Sources */,
 				4517829C1CAD0FF200E47668 /* HUD.m in Sources */,
+				45E120EC1CB661C80075F6C5 /* SilentLoginAction.m in Sources */,
 				A00268161CAFF09000F9AF86 /* MainAction.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				A00268231CAFF14B00F9AF86 /* LoginAction.m in Sources */,
-				451782941CACFDB900E47668 /* UserManager.m in Sources */,
+				451782941CACFDB900E47668 /* UserModule.m in Sources */,
 				A01E554E1CB21D9500045EE5 /* RCTHUD.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				A01E554B1CB1350E00045EE5 /* ModuleNotification.m in Sources */,
 				45E11F721CB3BF0F0075F6C5 /* JSON.m in Sources */,
-				A01E55511CB27E4D00045EE5 /* OdooModule.m in Sources */,
 				A01E55451CB0DA9100045EE5 /* NetworkResponse.m in Sources */,
 				4517829B1CAD0FF200E47668 /* AFXMLRPCSessionManager.m in Sources */,
 				A01E55411CB0D3DF00045EE5 /* Preferences.m in Sources */,

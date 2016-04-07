@@ -12,6 +12,7 @@
 
 @property(nonatomic) BOOL success;                      /*!< 是否成功 */
 @property(nonatomic, strong) NSString* failedReason;    /*!< 失败原因 */
+@property(nonatomic, strong) id responseObject;         /*!< 返回内容 */
 
 /**
  *  @author LeiQiao, 16/04/03

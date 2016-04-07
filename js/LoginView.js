@@ -14,12 +14,11 @@ import React, {
   DeviceEventEmitter,
   UIManager,
   NativeModules,
-  AlertIOS,
 } from 'react-native';
   
 const dismissKeyboard = require('dismissKeyboard')
 
-class Login extends Component {
+class LoginView extends Component {
   constructor(props) {
     super(props);
     
@@ -30,16 +29,16 @@ class Login extends Component {
       Password: '',
     };
     
-    NativeModules.PreferenceModule.getUserDefault('HostName', (v) => {
+    NativeModules.Preferences.get('ServerName', (v) => {
       this.setState({HOSTName : v});
     });
-    NativeModules.PreferenceModule.getUserDefault('DBName', (v) => {
+    NativeModules.Preferences.get('DBName', (v) => {
       this.setState({DBName : v});
     });
-    NativeModules.PreferenceModule.getUserDefault('UserName', (v) => {
+    NativeModules.Preferences.get('UserName', (v) => {
       this.setState({UserName : v});
     });
-    NativeModules.PreferenceModule.getKeyChain('Password', (v) => {
+    NativeModules.Preferences.get('Password', (v) => {
       this.setState({Password : v});
     });
   }
@@ -48,6 +47,7 @@ class Login extends Component {
     return (
       <ScrollView
         ref='Container'
+        style={styles.scrollView}
         keyboardShouldPersistTaps={true}
         keyboardDismissMode='on-drag'
         contentContainerStyle={styles.contentStyle}>
@@ -146,52 +146,16 @@ class Login extends Component {
   
   onLogin() {
     dismissKeyboard();
-      
     NativeModules.HUD.popWaiting('');
-
-    this.setState({ isLogining: true});
-    NativeModules.OdooModule.authenticate(this.state.HOSTName, this.state.DBName, this.state.UserName, this.state.Password, (success, failedReason, userID) => {
-      NativeModules.HUD.dismissWaiting();
-
-      if( success ) {
-        NativeModules.PreferenceModule.setUserDefault('HostName', this.state.HOSTName);
-        NativeModules.PreferenceModule.setUserDefault('DBName', this.state.DBName);
-        NativeModules.PreferenceModule.setUserDefault('UserName', this.state.UserName);
-        NativeModules.PreferenceModule.setKeyChain('Password', this.state.Password);
-        
-        this.onGetUserGroup(userID);
-      }
-      else {
-        NativeModules.HUD.popError(failedReason);
-      }
-    });
+    NativeModules.UserModule.login(this.state.HOSTName, this.state.DBName, this.state.UserName, this.state.Password);
   }
   
-  onGetUserGroup(userID) {
-    NativeModules.HUD.popWaiting('');
-    
-    NativeModules.OdooModule.execute('res.groups', 'search', [[['users', 'in', userID]]], {}, (success, failedReason, groupIDs) => {
-      NativeModules.HUD.dismissWaiting();
-      
-      if( success ) {
-        this.onGetMenu(groupIDs);
-      }
-      else {
-        NativeModules.HUD.popError(failedReason);
-      }
-    });
-  }
-  
-  onGetMenu(groupIDs) {
-    NativeModules.HUD.popWaiting('');
-    
-    NativeModules.OdooModule.execute('ir.ui.menu', 'search_read', [[['groups_id', 'in', groupIDs]]], {'fields': ['id', 'parent_id', 'web_icon_data', 'action', 'name']}, (success, failedReason, menus) => {
-      NativeModules.HUD.dismissWaiting();
-      
-      if( success ) {
-        NativeModules.PreferenceModule.set('menus', menus);
-      }
-    });
+  onLoginResponse(f) {
+    NativeModules.HUD.dismissWaiting();
+    if( !f.success ) {
+      NativeModules.HUD.popError(f.failedReason);
+    }
+    console.log(f);
   }
 }
 
@@ -202,12 +166,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#656565'
   },
+  scrollView:{
+    backgroundColor: '#F5FCFF',
+  },
   container: {
     padding: 30,
     justifyContent: 'center',
     alignItems: 'stretch',
     alignSelf: 'stretch',
-    backgroundColor: '#F5FCFF',
   },
   contentStyle: {
     justifyContent: 'center',
@@ -258,4 +224,4 @@ const styles = StyleSheet.create({
   }
 });
 
-AppRegistry.registerComponent('Login', () => Login);
+AppRegistry.registerComponent('LoginView', () => LoginView);

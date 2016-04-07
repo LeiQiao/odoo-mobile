@@ -62,7 +62,17 @@
  */
 -(NSDictionary*) dictionary
 {
-    return @{@"success":@(self.success), @"failedReason":self.failedReason};
+    if( self.responseObject )
+    {
+        return @{@"success":@(self.success),
+                 @"failedReason":self.failedReason,
+                 @"responseObject":self.responseObject};
+    }
+    else
+    {
+        return @{@"success":@(self.success),
+                 @"failedReason":self.failedReason};
+    }
 }
 
 @end

@@ -1,31 +1,33 @@
 //
 //  LoginAction.m
-//  odooMobile
-//
-//  Created by LeiQiao on 16/4/2.
-//  Copyright © 2016年 Facebook. All rights reserved.
 //
 
 #import "LoginAction.h"
 #import "AppDelegate.h"
 #import "ModuleNotification.h"
 #import "NetworkResponse.h"
+#import "Preferences.h"
+#import "AFXMLRPCSessionManager.h"
 
+/*!
+ *  @author LeiQiao, 16-04-07
+ *  @brief 登录动作
+ */
 @implementation LoginAction {
-    UIViewController* _loginViewController;
+    UIViewController* _loginViewController;     /*!< 登录窗 */
 }
 
--(void) dealloc
-{
-}
-
+/*!
+ *  @author LeiQiao, 16-04-07
+ *  @brief 动作已加载
+ */
 -(void) actionDidLoad
 {
     AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    
+
     // 创建登录窗
     RCTRootView* loginView = [[RCTRootView alloc] initWithBridge:appDelegate.rootView.bridge
-                                                      moduleName:@"Login"
+                                                      moduleName:@"LoginView"
                                                initialProperties:nil];
     _loginViewController = [UIViewController new];
     _loginViewController.view = loginView;
@@ -40,17 +42,30 @@
                                                object:nil];
 }
 
+/*!
+ *  @author LeiQiao, 16-04-07
+ *  @brief 动作已离开
+ */
 -(void) actionDidLeave
 {
     [_loginViewController dismissViewControllerAnimated:YES completion:^{}];
 }
 
+/*!
+ *  @author LeiQiao, 16-04-07
+ *  @brief 动作被销毁
+ */
 -(void) actionDidDestroy
 {
     _loginViewController = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+/*!
+ *  @author LeiQiao, 16-04-07
+ *  @brief 登录结果回调
+ *  @param notify 登录结果的回调消息
+ */
 -(void) loginResponse:(NSNotification*)notify
 {
     NetworkResponse* response = (NetworkResponse*)notify.object;

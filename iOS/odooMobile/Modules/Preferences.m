@@ -12,8 +12,6 @@ USE_USERDEFAULT(NSNumber*, UserID)
 USE_USERDEFAULT(NSString*, UserName)
 USE_USERDEFAULT(NSString*, Password)
 
-USE_STATIC_RETAIN(NSMutableDictionary*, ReactNativeStaticPreferences)
-USE_USERDEFAULT(NSMutableDictionary*, ReactNativeUserDefaultPreferences)
-USE_KEYCHAIN(NSString*, ReactNativeKeyChainPreferences)
+USE_STATIC_RETAIN(NSArray*, Menus)
 
 END_DECLARE_PREFERENCE()

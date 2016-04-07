@@ -31,6 +31,13 @@ extern NSString *const kCXActionDidDestroyNotifaction;      /*!< 动作被销毁
  */
 -(void) enterAction:(Class)actionClass;
 
+/*!
+ *  @author LeiQiao, 16-04-07
+ *  @brief 离开本动作切换到另外一个动作
+ *  @param actionClass 另外一个动作的类名
+ */
+-(void) switchToAction:(Class)actionClass;
+
 /**
  *  @author LeiQiao, 16/04/02
  *  @brief 离开本动作，该动作将发送kCXActionDidLeaveNotifaction和kCXActionDidDestroyNotifaction通知，
@@ -59,6 +66,13 @@ extern NSString *const kCXActionDidDestroyNotifaction;      /*!< 动作被销毁
  *  @return 获取根动作
  */
 -(CXBaseAction*) rootAction;
+
+/*!
+ *  @author LeiQiao, 16-04-07
+ *  @brief 获取父动作
+ *  @return 获取父动作
+ */
+-(CXBaseAction*) parentAction;
 
 #pragma mark - 子类需要重载
 

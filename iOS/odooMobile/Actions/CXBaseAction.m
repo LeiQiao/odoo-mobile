@@ -52,6 +52,58 @@ static NSOperationQueue* CXActionNotificationQueue; /*!< 通知队列 */
     });
 }
 
+
+
+/**
+ *  @author LeiQiao, 16/04/02
+ *  @brief 销毁子动作，子动作将发送kCXActionDidDestroyNotifaction通知，
+ *         但是不给该动作发送kCXActionDidResumeNotifaction通知
+ */
+-(void) destroyChildActionAndNotResume
+{
+    CXBaseAction* lastAction = self;
+    
+    // 倒叙查找最后一个动作
+    while( lastAction->_childAction )
+    {
+        lastAction = lastAction->_childAction;
+    }
+    
+    // 倒叙销毁子动作
+    while( lastAction != self )
+    {
+        CXBaseAction* parentAction = lastAction->_parentAction;
+        
+        // 断开与上一个动作的绑定
+        lastAction->_parentAction->_childAction = nil;
+        lastAction->_parentAction = nil;
+        
+        // 销毁最后一个动作
+        [lastAction addNotificationToQueue:kCXActionDidDestroyNotifaction];
+        
+        lastAction = parentAction;
+    }
+}
+
+/*!
+ *  @author LeiQiao, 16-04-07
+ *  @brief 创建新动作
+ *  @param actionClass 类名
+ *  @return 创建的新动作
+ */
+-(CXBaseAction*) newAction:(Class)actionClass
+{
+    // 创建新的动作
+    CXBaseAction* newAction = [actionClass new];
+    NSAssert((newAction != nil), @"action \"%@\" did NOT exist", NSStringFromClass(actionClass));
+    NSAssert([newAction isKindOfClass:[CXBaseAction class]], @"action \"%@\" is NOT kind of CXBaseAction", actionClass);
+    
+    self->_childAction = newAction;
+    newAction->_parentAction = self;
+    
+    return newAction;
+}
+
 #pragma mark
 #pragma mark member functions
 
@@ -112,17 +164,28 @@ static NSOperationQueue* CXActionNotificationQueue; /*!< 通知队列 */
  */
 -(void) enterAction:(Class)actionClass
 {
-    // 创建新的动作
-    CXBaseAction* newAction = [actionClass new];
-    NSAssert((newAction != nil), @"action \"%@\" did NOT exist", NSStringFromClass(actionClass));
-    NSAssert([newAction isKindOfClass:[CXBaseAction class]], @"action \"%@\" is NOT kind of CXBaseAction", actionClass);
-    
-    // 挂起本动作
-    self->_childAction = newAction;
-    newAction->_parentAction = self;
+    CXBaseAction* newAction = [self newAction:actionClass];
     
     // 挂起本动作并进入新动作
     [self addNotificationToQueue:kCXActionDidSuspendNotifaction];
+    [newAction addNotificationToQueue:kCXActionDidLoadNotifaction];
+}
+
+
+/*!
+ *  @author LeiQiao, 16-04-07
+ *  @brief 离开本动作切换到另外一个动作
+ *  @param actionClass 另外一个动作的类名
+ */
+-(void) switchToAction:(Class)actionClass
+{
+    CXBaseAction* parentAction = self->_parentAction;
+    
+    // 销毁父动作中的子动作
+    [parentAction destroyChildActionAndNotResume];
+    
+    // 给父动作创建新动作，这时父动作已经被挂起，所以不会再次调用挂起事件
+    CXBaseAction* newAction = [parentAction newAction:actionClass];
     [newAction addNotificationToQueue:kCXActionDidLoadNotifaction];
 }
 
@@ -134,7 +197,7 @@ static NSOperationQueue* CXActionNotificationQueue; /*!< 通知队列 */
 -(void) leaveAction
 {
     // 销毁子动作
-    [self destroyChildAction];
+    [self destroyChildActionAndNotResume];
     
     // 离开并销毁该动作
     [self addNotificationToQueue:kCXActionDidLeaveNotifaction];
@@ -159,24 +222,7 @@ static NSOperationQueue* CXActionNotificationQueue; /*!< 通知队列 */
  */
 -(void) destroyChildAction
 {
-    CXBaseAction* lastAction = self;
-    
-    // 倒叙查找最后一个动作
-    while( lastAction->_childAction )
-    {
-        lastAction = lastAction->_childAction;
-    }
-    
-    // 倒叙销毁子动作
-    while( lastAction != self )
-    {
-        // 断开与上一个动作的绑定
-        lastAction->_parentAction->_childAction = nil;
-        lastAction->_parentAction = nil;
-        
-        // 销毁最后一个动作
-        [lastAction addNotificationToQueue:kCXActionDidDestroyNotifaction];
-    }
+    [self destroyChildActionAndNotResume];
     
     // 恢复该动作
     [self addNotificationToQueue:kCXActionDidResumeNotifaction];
@@ -215,6 +261,15 @@ static NSOperationQueue* CXActionNotificationQueue; /*!< 通知队列 */
         rootAction = rootAction->_parentAction;
     }
     return rootAction;
+}
+/*!
+ *  @author LeiQiao, 16-04-07
+ *  @brief 获取父动作
+ *  @return 获取父动作
+ */
+-(CXBaseAction*) parentAction
+{
+    return _parentAction;
 }
 
 #pragma mark

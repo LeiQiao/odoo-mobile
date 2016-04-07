@@ -1,13 +1,13 @@
 //
 //  LoginAction.h
-//  odooMobile
-//
-//  Created by LeiQiao on 16/4/2.
-//  Copyright © 2016年 Facebook. All rights reserved.
 //
 
 #import "CXBaseAction.h"
 
+/*!
+ *  @author LeiQiao, 16-04-07
+ *  @brief 登录动作
+ */
 @interface LoginAction : CXBaseAction
 
 @end

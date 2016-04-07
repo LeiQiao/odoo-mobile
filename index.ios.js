@@ -11,38 +11,49 @@ import React, {
   TextInput,
   View,
   Modal,
-  NavigatorIOS
+  Navigator,
+  TouchableOpacity
 } from 'react-native';
 
-class HelloWorld extends Component {
-  render() {
-    return (
-      <View style={styles.helloworld}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
-    );
-  }
-}
+import MainView from './js/MainView';
+  
+var NavigationBarRouteMapper = {
+  LeftButton(route, navigator, index, navState) {
+  },
+  
+  RightButton(route, navigator, index, navState) {
+  },            
+  Title(route, navigator, index, navState) {
+  },
+};
 
 class OdooMobile extends Component {
+  renderScene(route, navigator){
+    return <MainView/>;
+  }
+  
   render() {
     return (
-      <NavigatorIOS
-      style={styles.container}
-      initialRoute={{
-        title: 'Hello World',
-        component: HelloWorld,
-      }}/>
-      );
+      <Navigator
+        style={styles.container}
+        navigationBar={
+          <Navigator.NavigationBar
+            routeMapper={NavigationBarRouteMapper}
+            style={styles.navBar}
+          />
+        }
+        initialRoute={{name:'首页', component:MainView, sceneConfig:Navigator.SceneConfigs.FloatFromRight}}
+        renderScene={(route, navigator) => {
+          return <route.component {...route.params} navigator={navigator} />
+        }}
+        configureScene={(route) => {
+          if( route.sceneConfig == null )
+          {
+            route.sceneConfig = Navigator.SceneConfigs.FloatFromRight;
+          }
+          return route.sceneConfig;
+        }}
+      />);
     }
 }
 
@@ -50,24 +61,27 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  helloworld: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+  navBar: {
+    backgroundColor: 'white',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  navBarText: {
+    fontSize: 16,
+    marginVertical: 10,
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  navBarTitleText: {
+    color: '#000000',
+    fontWeight: '500',
+    marginVertical: 9,
+  },
+  navBarLeftButton: {
+    paddingLeft: 10,
+  },
+  navBarRightButton: {
+    paddingRight: 10,
+  },
+  navBarButtonText: {
+    color: 'blue',
   },
 });
 
 AppRegistry.registerComponent('odooMobile', () => OdooMobile);
-
-var Login2 = require('./js/Login');

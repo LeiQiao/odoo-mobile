@@ -54,6 +54,10 @@
                                              selector:@selector(onEnter)
                                                  name:RCTJavaScriptDidLoadNotification
                                                object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onReload)
+                                                 name:RCTReloadNotification
+                                               object:nil];
     
     return YES;
 }
@@ -63,6 +67,14 @@
     if( _rootAction ) return;
     
     _rootAction = [CXBaseAction launchAsRootAction:[MainAction class]];
+}
+
+-(void) onReload
+{
+    if(!_rootAction) return;
+    
+    [_rootAction leaveAction];
+    _rootAction = nil;
 }
 
 @end
