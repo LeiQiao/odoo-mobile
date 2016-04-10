@@ -14,28 +14,37 @@ import React, {
   DeviceEventEmitter,
   UIManager,
   NativeModules,
-  AlertIOS,
 } from 'react-native';
   
 const dismissKeyboard = require('dismissKeyboard')
 
-class Login extends Component {
+class LoginView extends Component {
   constructor(props) {
     super(props);
     
     this.state = {
-      HOSTName: 'http://qitaer.com:8069',
-      DBName: 'ai_run',
-      UserName: '乔磊',
-      Password: 'QiaoLei250011',
-      isLogining: false,
+      ServerName: '',
+      DBName: '',
+      UserName: '',
+      Password: '',
     };
+    
+    NativeModules.Preferences.get('ServerName', (v) => {
+      this.setState({ServerName : v});
+    });
+    NativeModules.Preferences.get('DBName', (v) => {
+      this.setState({DBName : v});
+    });
+    NativeModules.Preferences.get('UserName', (v) => {
+      this.setState({UserName : v});
+    });
   }
   
   render() {
     return (
       <ScrollView
         ref='Container'
+        style={styles.scrollView}
         keyboardShouldPersistTaps={true}
         keyboardDismissMode='on-drag'
         contentContainerStyle={styles.contentStyle}>
@@ -49,26 +58,32 @@ class Login extends Component {
               source={require('image!logo')} />
             <TextInput
               style={styles.input}
-              ref='HOSTName'
-              value={this.state.HOSTName}
-              onChange={this.onHOSTNameChanged.bind(this)}
+              ref='ServerName'
+              value={this.state.ServerName}
+              clearButtonMode={'while-editing'}
+              keyboardType={'url'}
+              onChange={this.onServerNameChanged.bind(this)}
               placeholder='请输入服务器地址'/>
             <TextInput
               style={styles.input}
               ref='DBName'
               value={this.state.DBName}
+              clearButtonMode={'while-editing'}
               onChange={this.onDBNameChanged.bind(this)}
               placeholder='请输入数据库名称'/>
             <TextInput
               style={styles.input}
               ref='UserName'
               value={this.state.UserName}
+              clearButtonMode={'while-editing'}
               onChange={this.onUserNameChanged.bind(this)}
               placeholder='请输入您的用户名'/>
             <TextInput
               style={styles.input}
               ref='Password'
               value={this.state.Password}
+              secureTextEntry={true}
+              clearButtonMode={'while-editing'}
               onChange={this.onPasswordChanged.bind(this)}
               placeholder='请输入您的密码'/>
             <TouchableHighlight
@@ -82,10 +97,6 @@ class Login extends Component {
               underlayColor='#99d9f4'>
               <Text style={styles.buttonText}>申  请</Text>
             </TouchableHighlight>
-            <Text
-              style={styles.description}>
-              {this.state.message}
-            </Text>
           </View>
         </TouchableWithoutFeedback>
       </ScrollView>
@@ -103,7 +114,7 @@ class Login extends Component {
   }
   
   onKeyboardWillShown(keyboardEvent) {
-    this.refs.HOSTName.measure((ox, oy, width, height, px, py) => {
+    this.refs.ServerName.measure((ox, oy, width, height, px, py) => {
       this.refs.Container.scrollTo({x:0, y:oy-20, animated: true});
     });
   }
@@ -113,8 +124,8 @@ class Login extends Component {
   }
 
   
-  onHOSTNameChanged(event) {
-    this.setState({ HOSTName: event.nativeEvent.text });
+  onServerNameChanged(event) {
+    this.setState({ ServerName: event.nativeEvent.text });
   }
   
   onDBNameChanged(event) {
@@ -131,15 +142,12 @@ class Login extends Component {
   
   onLogin() {
     dismissKeyboard();
-    
-    this.setState({ isLogining: true});
-    var UserManager = NativeModules.UserManager;
-    UserManager.login(this.state.HOSTName, this.state.DBName, this.state.UserName, this.state.Password,(result, message) => {
-      if( !result )
-      {
-        AlertIOS.alert('登录', message, [{text:'确定'}]);
-      }
-    });
+    var object = {'ServerName':this.state.ServerName,
+                  'DBName':this.state.DBName,
+                  'UserName':this.state.UserName,
+                  'Password':this.state.Password};
+    NativeModules.Notification.postNotification('kWillLoginNotification', object);
+    // DeviceEventEmitter.emit('kWillLoginNotification', object);
   }
 }
 
@@ -150,12 +158,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#656565'
   },
+  scrollView:{
+    backgroundColor: '#F5FCFF',
+  },
   container: {
     padding: 30,
     justifyContent: 'center',
     alignItems: 'stretch',
     alignSelf: 'stretch',
-    backgroundColor: '#F5FCFF',
   },
   contentStyle: {
     justifyContent: 'center',
@@ -206,4 +216,4 @@ const styles = StyleSheet.create({
   }
 });
 
-AppRegistry.registerComponent('Login', () => Login);
+AppRegistry.registerComponent('LoginView', () => LoginView);

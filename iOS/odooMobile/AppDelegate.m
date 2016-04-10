@@ -8,18 +8,12 @@
  */
 
 #import "AppDelegate.h"
-#import "RCTRootView.h"
-#import "BaseModule.h"
+#import "SlideNavigationController.h"
 
-@implementation AppDelegate {
-    RCTRootView* _rootView;
-    BaseModule* _rootModule;
-}
+@implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
-    
     NSURL *jsCodeLocation;
     
     /**
@@ -36,7 +30,7 @@
      * on the same Wi-Fi network.
      */
     
-    jsCodeLocation = [NSURL URLWithString:@"http://192.168.22.59:8081/index.ios.bundle?platform=ios&dev=true"];
+    jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle?platform=ios&dev=true"];
     
     /**
      * OPTION 2
@@ -51,15 +45,25 @@
                                      initialProperties:nil
                                          launchOptions:launchOptions];
     
+    UIViewController *vcHolder = [[UIViewController alloc] init];
+    vcHolder.view = _rootView;
+    SlideNavigationController* nav = [[SlideNavigationController alloc] initWithRootViewController:vcHolder];
+    nav.avoidSwitchingToSameClassViewController = NO;
+    nav.enableSwipeGesture = YES;
+    nav.enableShadow = YES;
+    nav.portraitSlideOffset = 50;
+    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    UIViewController *rootViewController = [UIViewController new];
-    rootViewController.view = _rootView;
-    self.window.rootViewController = rootViewController;
+    self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(onEnter)
                                                  name:RCTJavaScriptDidLoadNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onReload)
+                                                 name:RCTReloadNotification
                                                object:nil];
     
     return YES;
@@ -67,10 +71,17 @@
 
 -(void) onEnter
 {
-    [self.window.rootViewController.presentedViewController dismissViewControllerAnimated:NO completion:^{}];
+    if( _rootAction ) return;
     
-    _rootModule = [_rootView.bridge moduleForName:@"MainManager"];
-    [_rootModule launchAsRootModule:_rootView.bridge];
+    _rootAction = [CXBaseAction launchAsRootAction:[MainAction class]];
+}
+
+-(void) onReload
+{
+    if(!_rootAction) return;
+    
+    [_rootAction leaveAction];
+    _rootAction = nil;
 }
 
 @end
