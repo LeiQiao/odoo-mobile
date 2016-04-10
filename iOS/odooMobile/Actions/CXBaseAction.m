@@ -86,12 +86,23 @@ static NSOperationQueue* CXActionNotificationQueue; /*!< 通知队列 */
 }
 
 /*!
+ *  @author LeiQiao, 16-04-09
+ *  @brief 设置参数
+ *  @param parameters 参数
+ */
+-(void) setParameters:(id)parameters
+{
+    _parameters = parameters;
+}
+
+/*!
  *  @author LeiQiao, 16-04-07
  *  @brief 创建新动作
  *  @param actionClass 类名
+ *  @param paramenters 参数
  *  @return 创建的新动作
  */
--(CXBaseAction*) newAction:(Class)actionClass
+-(CXBaseAction*) newAction:(Class)actionClass withParameters:(id)paramenters
 {
     // 创建新的动作
     CXBaseAction* newAction = [actionClass new];
@@ -101,7 +112,52 @@ static NSOperationQueue* CXActionNotificationQueue; /*!< 通知队列 */
     self->_childAction = newAction;
     newAction->_parentAction = self;
     
+    [newAction setParameters:paramenters];
+    
     return newAction;
+}
+
+#pragma mark
+#pragma mark override
+
+/*!
+ *  @author LeiQiao, 16-04-10
+ *  @brief 获取当前动作是否时最上层活动的动作
+ *  @return 获取当前动作是否时最上层活动的动作
+ */
+-(BOOL) isActive
+{
+    return (!_childAction);
+}
+
+/**
+ *  @author LeiQiao, 16/04/02
+ *  @brief 获取根动作
+ *  @return 获取根动作
+ */
+-(CXBaseAction*) rootAction
+{
+    CXBaseAction* rootAction = self;
+    while( rootAction->_parentAction )
+    {
+        rootAction = rootAction->_parentAction;
+    }
+    return rootAction;
+}
+
+/*!
+ *  @author LeiQiao, 16-04-09
+ *  @brief 获取当前根动作的最后一个动作
+ *  @return 获取当前根动作的最后一个动作
+ */
+-(CXBaseAction*) currentAction
+{
+    CXBaseAction* currentAction = self;
+    while( currentAction->_childAction )
+    {
+        currentAction = currentAction->_childAction;
+    }
+    return currentAction;
 }
 
 #pragma mark
@@ -164,13 +220,24 @@ static NSOperationQueue* CXActionNotificationQueue; /*!< 通知队列 */
  */
 -(void) enterAction:(Class)actionClass
 {
-    CXBaseAction* newAction = [self newAction:actionClass];
+    [self enterAction:actionClass withParameters:nil];
+}
+
+/*!
+ *  @author LeiQiao, 16-04-09
+ *  @brief 进入新动作，该动作将发送kCXActionDidSuspendNotifaction通知
+ *         新动作将会发送kCXActionDidLoadNotifaction通知
+ *  @param actionClass 新动作类名
+ *  @param parameters  参数
+ */
+-(void) enterAction:(Class)actionClass withParameters:(NSDictionary*)parameters
+{
+    CXBaseAction* newAction = [self newAction:actionClass withParameters:parameters];
     
     // 挂起本动作并进入新动作
     [self addNotificationToQueue:kCXActionDidSuspendNotifaction];
     [newAction addNotificationToQueue:kCXActionDidLoadNotifaction];
 }
-
 
 /*!
  *  @author LeiQiao, 16-04-07
@@ -179,13 +246,24 @@ static NSOperationQueue* CXActionNotificationQueue; /*!< 通知队列 */
  */
 -(void) switchToAction:(Class)actionClass
 {
+    [self switchToAction:actionClass withParameters:nil];
+}
+
+/*!
+ *  @author LeiQiao, 16-04-09
+ *  @brief 离开本动作切换到另外一个动作
+ *  @param actionClass 另外一个动作的类名
+ *  @param parameters  参数
+ */
+-(void) switchToAction:(Class)actionClass withParameters:(NSDictionary*)parameters
+{
     CXBaseAction* parentAction = self->_parentAction;
     
     // 销毁父动作中的子动作
     [parentAction destroyChildActionAndNotResume];
     
     // 给父动作创建新动作，这时父动作已经被挂起，所以不会再次调用挂起事件
-    CXBaseAction* newAction = [parentAction newAction:actionClass];
+    CXBaseAction* newAction = [parentAction newAction:actionClass withParameters:parameters];
     [newAction addNotificationToQueue:kCXActionDidLoadNotifaction];
 }
 
@@ -246,30 +324,6 @@ static NSOperationQueue* CXActionNotificationQueue; /*!< 通知队列 */
         action = action->_childAction;
     }
     return nil;
-}
-
-/**
- *  @author LeiQiao, 16/04/02
- *  @brief 获取根动作
- *  @return 获取根动作
- */
--(CXBaseAction*) rootAction
-{
-    CXBaseAction* rootAction = self;
-    while( rootAction->_parentAction )
-    {
-        rootAction = rootAction->_parentAction;
-    }
-    return rootAction;
-}
-/*!
- *  @author LeiQiao, 16-04-07
- *  @brief 获取父动作
- *  @return 获取父动作
- */
--(CXBaseAction*) parentAction
-{
-    return _parentAction;
 }
 
 #pragma mark

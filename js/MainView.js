@@ -4,16 +4,10 @@ import React, {
   Component,
   StyleSheet,
   Text,
-  TextInput,
   View,
-  Modal,
-  TouchableOpacity,
-  Navigator,
 } from 'react-native';
 
-import LoginView from './LoginView';
-
-export default class MainView extends Component {
+class MainView extends Component {
   render() {
     return (
       <View style={styles.helloworld}>
@@ -50,3 +44,5 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+
+AppRegistry.registerComponent('MainView', () => MainView);

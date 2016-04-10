@@ -4,14 +4,11 @@
 
 #import "LoginAction.h"
 #import "AppDelegate.h"
-#import "ModuleNotification.h"
-#import "NetworkResponse.h"
-#import "Preferences.h"
-#import "AFXMLRPCSessionManager.h"
+#import "UIViewController+CXBaseAction.h"
 
 /*!
  *  @author LeiQiao, 16-04-07
- *  @brief 登录动作
+ *  @brief 登录，第一次登录时或者推出后再登录时，需要弹出登录界面
  */
 @implementation LoginAction {
     UIViewController* _loginViewController;     /*!< 登录窗 */
@@ -23,6 +20,8 @@
  */
 -(void) actionDidLoad
 {
+    [super actionDidLoad];
+    
     AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
 
     // 创建登录窗
@@ -31,15 +30,10 @@
                                                initialProperties:nil];
     _loginViewController = [UIViewController new];
     _loginViewController.view = loginView;
+    _loginViewController.action = self;
     
     // 弹出登陆窗
     [appDelegate.window.rootViewController presentViewController:_loginViewController animated:YES completion:^{}];
-    
-    // 注册通知消息
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(loginResponse:)
-                                                 name:kLoginNetworkNotification
-                                               object:nil];
 }
 
 /*!
@@ -48,7 +42,10 @@
  */
 -(void) actionDidLeave
 {
+    [super actionDidLeave];
+    
     [_loginViewController dismissViewControllerAnimated:YES completion:^{}];
+    _loginViewController = nil;
 }
 
 /*!
@@ -57,24 +54,9 @@
  */
 -(void) actionDidDestroy
 {
-    _loginViewController = nil;
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-/*!
- *  @author LeiQiao, 16-04-07
- *  @brief 登录结果回调
- *  @param notify 登录结果的回调消息
- */
--(void) loginResponse:(NSNotification*)notify
-{
-    NetworkResponse* response = (NetworkResponse*)notify.object;
+    [super actionDidDestroy];
     
-    // 登录成功则退出登录界面
-    if( response.success )
-    {
-        [self leaveAction];
-    }
+    _loginViewController = nil;
 }
 
 @end

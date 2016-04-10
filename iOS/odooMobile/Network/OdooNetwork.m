@@ -1,11 +1,8 @@
 //
-//  CXBaseModule.m
+//  OdooNetwork.m
 //
 
-#import "CXBaseModule.h"
-#import "RCTEventDispatcher.h"
-#import "RCTBridgeModule.h"
-#import "AFXMLRPCSessionManager.h"
+#import "OdooNetwork.h"
 
 /*!
  *  @author LeiQiao, 16-04-05
@@ -27,15 +24,11 @@ NSString* unicodeToUTF8(NSString* unicodeString)
     return [returnStr stringByReplacingOccurrencesOfString:@"\\r\\n"withString:@"\n"];
 }
 
-/**
- *  @author LeiQiao, 16/04/03
- *  @brief 与React-Native交互的模块类，实现JS与Native的中间层通讯
- *         由JS或者Native调用，将结果通知给双方(JS方主动或监听事件)
+/*!
+ *  @author LeiQiao, 16-04-09
+ *  @brief Odoo网络操作类
  */
-@implementation CXBaseModule
-
-RCT_EXPORT_MODULE();
-@synthesize bridge = _bridge;
+@implementation OdooNetwork
 
 #pragma mark
 #pragma mark member functions
@@ -57,7 +50,7 @@ RCT_EXPORT_MODULE();
 {
     NSString* urlString = [NSString stringWithFormat:@"%@/xmlrpc/2/common", serverName];
     AFXMLRPCSessionManager* odooServer = [[AFXMLRPCSessionManager alloc] initWithBaseURL:[NSURL URLWithString:urlString]];
-    NSNumber* userID = [odooServer execute:@"authenticate" parameters:@[dbName, userName, password, @{}]];
+    NSNumber* userID = [odooServer execute:@"authenticate" timeout:10 parameters:@[dbName, userName, password, @{}]];
     
     if( [userID isKindOfClass:[NSError class]] )
     {
@@ -114,13 +107,13 @@ RCT_EXPORT_MODULE();
     
     NSString* urlString = [NSString stringWithFormat:@"%@/xmlrpc/2/object", gPreferences.ServerName];
     AFXMLRPCSessionManager* odooServer = [[AFXMLRPCSessionManager alloc] initWithBaseURL:[NSURL URLWithString:urlString]];
-    id response = [odooServer execute:@"execute_kw" parameters:@[gPreferences.DBName,
-                                                                 @([gPreferences.UserID integerValue]),
-                                                                 gPreferences.Password,
-                                                                 model,
-                                                                 method,
-                                                                 parameters,
-                                                                 conditions]];
+    id response = [odooServer execute:@"execute_kw" timeout:30 parameters:@[gPreferences.DBName,
+                                                                            @([gPreferences.UserID integerValue]),
+                                                                            gPreferences.Password,
+                                                                            model,
+                                                                            method,
+                                                                            parameters,
+                                                                            conditions]];
     
     if( [response isKindOfClass:[NSError class]] )
     {
@@ -131,27 +124,10 @@ RCT_EXPORT_MODULE();
     }
     else
     {
-        NetworkResponse* result = [[NetworkResponse alloc] initWithSuccess:YES andFailedReason:@"登录成功"];
+        NetworkResponse* result = [[NetworkResponse alloc] initWithSuccess:YES andFailedReason:@"请求成功"];
         result.responseObject = response;
         return result;
     }
-}
-
-/**
- *  @author LeiQiao, 16/04/03
- *  @brief 发送网络请求结果消息
- *  @param notificationName 消息名
- *  @param response         响应结果
- */
--(void) postNotificationName:(NSString*)notificationName withResponse:(NetworkResponse*)response
-{
-    // 向React-Native发送事件
-    [_bridge.eventDispatcher sendDeviceEventWithName:notificationName body:response.dictionary];
-    
-    // 向Native发送消息
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:response];
-    });
 }
 
 @end

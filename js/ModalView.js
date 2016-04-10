@@ -32,5 +32,3 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
   },
 });
-
-module.exports = ModalView;

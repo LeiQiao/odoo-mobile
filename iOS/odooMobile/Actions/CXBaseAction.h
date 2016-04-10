@@ -14,7 +14,14 @@ extern NSString *const kCXActionDidDestroyNotifaction;      /*!< 动作被销毁
  *  @author LeiQiao, 16/04/02
  *  @brief 动作类，定义程序的每一个环节，一个程序只有一个动作栈，一个动作栈不允许中间插入新动作
  */
-@interface CXBaseAction : NSObject
+@interface CXBaseAction : NSObject {
+    id _parameters; /*!< 进入该动作的参数 */
+}
+
+@property(nonatomic, readonly, getter=isActive) BOOL active;        /*!< 当前动作是否时最上层活动的动作 */
+@property(nonatomic, strong, readonly) CXBaseAction* rootAction;    /*!< 根动作 */
+@property(nonatomic, strong, readonly) CXBaseAction* parentAction;  /*!< 父动作 */
+@property(nonatomic, strong, readonly) CXBaseAction* currentAction; /*!< 当前动作 */
 
 /**
  *  @author LeiQiao, 16/04/02
@@ -32,11 +39,28 @@ extern NSString *const kCXActionDidDestroyNotifaction;      /*!< 动作被销毁
 -(void) enterAction:(Class)actionClass;
 
 /*!
+ *  @author LeiQiao, 16-04-09
+ *  @brief 进入新动作，该动作将发送kCXActionDidSuspendNotifaction通知
+ *         新动作将会发送kCXActionDidLoadNotifaction通知
+ *  @param actionClass 新动作类名
+ *  @param parameters  参数
+ */
+-(void) enterAction:(Class)actionClass withParameters:(id)parameters;
+
+/*!
  *  @author LeiQiao, 16-04-07
  *  @brief 离开本动作切换到另外一个动作
  *  @param actionClass 另外一个动作的类名
  */
 -(void) switchToAction:(Class)actionClass;
+
+/*!
+ *  @author LeiQiao, 16-04-09
+ *  @brief 离开本动作切换到另外一个动作
+ *  @param actionClass 另外一个动作的类名
+ *  @param parameters  参数
+ */
+-(void) switchToAction:(Class)actionClass withParameters:(id)parameters;
 
 /**
  *  @author LeiQiao, 16/04/02
@@ -59,20 +83,6 @@ extern NSString *const kCXActionDidDestroyNotifaction;      /*!< 动作被销毁
  *  @return 获取子动作
  */
 -(CXBaseAction*) childActionForClass:(Class)className;
-
-/**
- *  @author LeiQiao, 16/04/02
- *  @brief 获取根动作
- *  @return 获取根动作
- */
--(CXBaseAction*) rootAction;
-
-/*!
- *  @author LeiQiao, 16-04-07
- *  @brief 获取父动作
- *  @return 获取父动作
- */
--(CXBaseAction*) parentAction;
 
 #pragma mark - 子类需要重载
 

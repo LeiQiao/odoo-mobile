@@ -2,13 +2,13 @@
 //  RCTPreferences.h
 //
 
-#import "CXBaseModule.h"
+#import "RCTBridgeModule.h"
 
 /*!
  *  @author LeiQiao, 16-04-07
- *  @brief 提供给React-Native使用的全局变量
+ *  @brief 将Preferences的全局变量提供给React-Native使用，调用时需要跟Preferences中的参数名一致
  */
-@interface RCTPreferences : CXBaseModule
+@interface RCTPreferences : NSObject <RCTBridgeModule>
 
 /*!
  *  @author LeiQiao, 16-04-07

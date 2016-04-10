@@ -4,10 +4,13 @@
 
 #import "SilentLoginAction.h"
 #import "LoginAction.h"
-#import "AppDelegate.h"
-#import "HUD.h"
-#import "UserModule.h"
+#import "NetworkResponse.h"
+#import "Preferences.h"
 
+/*!
+ *  @author LeiQiao, 16-04-09
+ *  @brief 静默登录，用于用户上次登录后关闭程序再打开程序时自动登录
+ */
 @implementation SilentLoginAction
 
 /*!
@@ -16,36 +19,14 @@
  */
 -(void) actionDidLoad
 {
-    popWaiting();
+    [super actionDidLoad];
     
-    // 添加登录结果观察
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(loginResponse:)
-                                                 name:kLoginNetworkNotification
-                                               object:nil];
-    
-    // 创建静默登录线程
-    [NSThread detachNewThreadSelector:@selector(silentLoginThread)
-                             toTarget:self
-                           withObject:nil];
-    
-    
-}
-
-/*!
- *  @author LeiQiao, 16-04-07
- *  @brief 静默登录线程
- */
--(void) silentLoginThread
-{
-    AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    UserModule* userModule = [appDelegate.rootView.bridge moduleForClass:[UserModule class]];
-    
-    // 开始登录
-    [userModule login:gPreferences.ServerName
-               DBName:gPreferences.DBName
-             userName:gPreferences.UserName
-             password:gPreferences.Password];
+    // 动作加载时自动发送登录通知
+    NSDictionary* notifyObject = @{@"ServerName" : gPreferences.ServerName,
+                                   @"DBName" : gPreferences.DBName,
+                                   @"UserName" : gPreferences.UserName,
+                                   @"Password" : gPreferences.Password};
+    OdooPostNotification(kWillLoginNotification, notifyObject);
 }
 
 /*!
@@ -55,18 +36,12 @@
  */
 -(void) loginResponse:(NSNotification*)notify
 {
-    dismissWaiting();
+    [super loginResponse:notify];
     
     // 登录完成
     NetworkResponse* response = (NetworkResponse*)notify.object;
-    if( response.success )
+    if( !response.success )
     {
-        [self leaveAction];
-    }
-    else
-    {
-        popError(response.failedReason);
-        
         // 登录失败切换到登录界面
         [self switchToAction:[LoginAction class]];
         // 删除登录信息

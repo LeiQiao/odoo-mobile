@@ -3,7 +3,12 @@
 //
 
 #import "RCTHUD.h"
+#import "HUD.h"
 
+/**
+ *  @author LeiQiao, 16/04/04
+ *  @brief HUD提示框，提供给React-Native使用，功能与HUD.h一样
+ */
 @implementation RCTHUD
 
 RCT_EXPORT_MODULE(HUD);

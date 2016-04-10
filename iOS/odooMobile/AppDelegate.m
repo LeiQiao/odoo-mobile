@@ -8,6 +8,7 @@
  */
 
 #import "AppDelegate.h"
+#import "SlideNavigationController.h"
 
 @implementation AppDelegate
 
@@ -44,10 +45,16 @@
                                      initialProperties:nil
                                          launchOptions:launchOptions];
     
+    UIViewController *vcHolder = [[UIViewController alloc] init];
+    vcHolder.view = _rootView;
+    SlideNavigationController* nav = [[SlideNavigationController alloc] initWithRootViewController:vcHolder];
+    nav.avoidSwitchingToSameClassViewController = NO;
+    nav.enableSwipeGesture = YES;
+    nav.enableShadow = YES;
+    nav.portraitSlideOffset = 50;
+    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    UIViewController *rootViewController = [UIViewController new];
-    rootViewController.view = _rootView;
-    self.window.rootViewController = rootViewController;
+    self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
     
     [[NSNotificationCenter defaultCenter] addObserver:self

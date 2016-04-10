@@ -23,23 +23,20 @@ class LoginView extends Component {
     super(props);
     
     this.state = {
-      HOSTName: '',
+      ServerName: '',
       DBName: '',
       UserName: '',
       Password: '',
     };
     
     NativeModules.Preferences.get('ServerName', (v) => {
-      this.setState({HOSTName : v});
+      this.setState({ServerName : v});
     });
     NativeModules.Preferences.get('DBName', (v) => {
       this.setState({DBName : v});
     });
     NativeModules.Preferences.get('UserName', (v) => {
       this.setState({UserName : v});
-    });
-    NativeModules.Preferences.get('Password', (v) => {
-      this.setState({Password : v});
     });
   }
   
@@ -61,10 +58,11 @@ class LoginView extends Component {
               source={require('image!logo')} />
             <TextInput
               style={styles.input}
-              ref='HOSTName'
-              value={this.state.HOSTName}
+              ref='ServerName'
+              value={this.state.ServerName}
               clearButtonMode={'while-editing'}
-              onChange={this.onHOSTNameChanged.bind(this)}
+              keyboardType={'url'}
+              onChange={this.onServerNameChanged.bind(this)}
               placeholder='请输入服务器地址'/>
             <TextInput
               style={styles.input}
@@ -108,17 +106,15 @@ class LoginView extends Component {
   componentDidMount() {
 　　DeviceEventEmitter.addListener('keyboardWillShow', (f) => this.onKeyboardWillShown(f));
 　　DeviceEventEmitter.addListener('keyboardWillHide', (f) => this.onKeyboardWillHidden());
-　　DeviceEventEmitter.addListener('kLoginNetworkNotification', (f) => this.onLoginResponse(f));
   }
 
   componentWillUnmount() {
 　　DeviceEventEmitter.removeAllListeners('keyboardWillShow');
 　　DeviceEventEmitter.removeAllListeners('keyboardWillHide');
-　　DeviceEventEmitter.removeAllListeners('kLoginNetworkNotification');
   }
   
   onKeyboardWillShown(keyboardEvent) {
-    this.refs.HOSTName.measure((ox, oy, width, height, px, py) => {
+    this.refs.ServerName.measure((ox, oy, width, height, px, py) => {
       this.refs.Container.scrollTo({x:0, y:oy-20, animated: true});
     });
   }
@@ -128,8 +124,8 @@ class LoginView extends Component {
   }
 
   
-  onHOSTNameChanged(event) {
-    this.setState({ HOSTName: event.nativeEvent.text });
+  onServerNameChanged(event) {
+    this.setState({ ServerName: event.nativeEvent.text });
   }
   
   onDBNameChanged(event) {
@@ -146,16 +142,12 @@ class LoginView extends Component {
   
   onLogin() {
     dismissKeyboard();
-    NativeModules.HUD.popWaiting('');
-    NativeModules.UserModule.login(this.state.HOSTName, this.state.DBName, this.state.UserName, this.state.Password);
-  }
-  
-  onLoginResponse(f) {
-    NativeModules.HUD.dismissWaiting();
-    if( !f.success ) {
-      NativeModules.HUD.popError(f.failedReason);
-    }
-    console.log(f);
+    var object = {'ServerName':this.state.ServerName,
+                  'DBName':this.state.DBName,
+                  'UserName':this.state.UserName,
+                  'Password':this.state.Password};
+    NativeModules.Notification.postNotification('kWillLoginNotification', object);
+    // DeviceEventEmitter.emit('kWillLoginNotification', object);
   }
 }
 
