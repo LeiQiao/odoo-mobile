@@ -23,5 +23,6 @@ DEFINE_PREFERENCE(NSString*, CompanyLogoImage)
 
 
 DEFINE_PREFERENCE(NSArray*, Menus)
+DEFINE_PREFERENCE(NSDictionary*, Windows)
 
 END_DEFINE_PREFERENCE()

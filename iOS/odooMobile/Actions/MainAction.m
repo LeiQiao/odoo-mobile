@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "NetworkResponse.h"
 #import "AFXMLRPCSessionManager.h"
+#import "WindowAction.h"
 #import "MenuListAction.h"
 
 @interface MainViewController : UIViewController
@@ -152,8 +153,7 @@
     // 如果当前菜单项是一个动作，则运行该动作
     if( [action isKindOfClass:[NSString class]] )
     {
-        NSLog(@"%@", action);
-        return;
+        [self.currentAction enterAction:[WindowAction class] withParameters:currentMenu];
     }
     // 进入展示子菜单动作
     else

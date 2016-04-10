@@ -147,7 +147,6 @@ class LoginView extends Component {
                   'UserName':this.state.UserName,
                   'Password':this.state.Password};
     NativeModules.Notification.postNotification('kWillLoginNotification', object);
-    // DeviceEventEmitter.emit('kWillLoginNotification', object);
   }
 }
 

@@ -14,6 +14,7 @@ import MainView from './js/MainView';
 import LoginView from './js/LoginView';
 import SlideMenuView from './js/SlideMenuView';
 import MenuListView from './js/MenuListView';
+import WindowView from './js/WindowView';
 
 class OdooMobile extends Component {
   render() {

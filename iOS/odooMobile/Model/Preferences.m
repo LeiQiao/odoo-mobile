@@ -22,5 +22,6 @@ USE_USERDEFAULT(NSString*, CompanyCurrency)
 USE_USERDEFAULT(NSString*, CompanyLogoImage)
 
 USE_STATIC_RETAIN(NSArray*, Menus)
+USE_USERDEFAULT(NSDictionary*, Windows)
 
 END_DECLARE_PREFERENCE()

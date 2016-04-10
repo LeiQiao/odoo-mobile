@@ -34,6 +34,8 @@
 		4556693B1CB9F45900C93E2A /* TranslationNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 4556693A1CB9F45900C93E2A /* TranslationNetwork.m */; };
 		4556693E1CB9FA9D00C93E2A /* MenuNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 4556693D1CB9FA9D00C93E2A /* MenuNetwork.m */; };
 		455669411CBA10B500C93E2A /* UIViewController+CXBaseAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 455669401CBA10B500C93E2A /* UIViewController+CXBaseAction.m */; };
+		4556694E1CBA632300C93E2A /* WindowAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4556694D1CBA632300C93E2A /* WindowAction.m */; };
+		4556695B1CBA643100C93E2A /* WindowNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 4556695A1CBA643100C93E2A /* WindowNetwork.m */; };
 		45E11F721CB3BF0F0075F6C5 /* JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E11F711CB3BF0F0075F6C5 /* JSON.m */; };
 		45E120E31CB62BFA0075F6C5 /* RCTPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E120E21CB62BFA0075F6C5 /* RCTPreferences.m */; };
 		45E120EC1CB661C80075F6C5 /* SilentLoginAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E120EB1CB661C80075F6C5 /* SilentLoginAction.m */; };
@@ -172,6 +174,10 @@
 		4556693D1CB9FA9D00C93E2A /* MenuNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuNetwork.m; sourceTree = "<group>"; };
 		4556693F1CBA10B500C93E2A /* UIViewController+CXBaseAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CXBaseAction.h"; sourceTree = "<group>"; };
 		455669401CBA10B500C93E2A /* UIViewController+CXBaseAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CXBaseAction.m"; sourceTree = "<group>"; };
+		4556694C1CBA632300C93E2A /* WindowAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowAction.h; sourceTree = "<group>"; };
+		4556694D1CBA632300C93E2A /* WindowAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowAction.m; sourceTree = "<group>"; };
+		455669591CBA643100C93E2A /* WindowNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowNetwork.h; sourceTree = "<group>"; };
+		4556695A1CBA643100C93E2A /* WindowNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowNetwork.m; sourceTree = "<group>"; };
 		45E11F641CB3A81C0075F6C5 /* PreferencesDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesDefine.h; sourceTree = "<group>"; };
 		45E11F701CB3BF0F0075F6C5 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		45E11F711CB3BF0F0075F6C5 /* JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSON.m; sourceTree = "<group>"; };
@@ -388,6 +394,8 @@
 				4556693A1CB9F45900C93E2A /* TranslationNetwork.m */,
 				4556693C1CB9FA9D00C93E2A /* MenuNetwork.h */,
 				4556693D1CB9FA9D00C93E2A /* MenuNetwork.m */,
+				455669591CBA643100C93E2A /* WindowNetwork.h */,
+				4556695A1CBA643100C93E2A /* WindowNetwork.m */,
 			);
 			name = Network;
 			path = odooMobile/Network;
@@ -495,6 +503,8 @@
 				45E120EB1CB661C80075F6C5 /* SilentLoginAction.m */,
 				455669361CB9380A00C93E2A /* MenuListAction.h */,
 				455669371CB9380A00C93E2A /* MenuListAction.m */,
+				4556694C1CBA632300C93E2A /* WindowAction.h */,
+				4556694D1CBA632300C93E2A /* WindowAction.m */,
 			);
 			name = Actions;
 			path = odooMobile/Actions;
@@ -795,6 +805,7 @@
 			files = (
 				4556693B1CB9F45900C93E2A /* TranslationNetwork.m in Sources */,
 				A0D0EB231CAF7024006037FD /* CXBaseAction.m in Sources */,
+				4556694E1CBA632300C93E2A /* WindowAction.m in Sources */,
 				45E120E31CB62BFA0075F6C5 /* RCTPreferences.m in Sources */,
 				4517829C1CAD0FF200E47668 /* HUD.m in Sources */,
 				455669221CB90E7000C93E2A /* OdooNetwork.m in Sources */,
@@ -804,6 +815,7 @@
 				A00268161CAFF09000F9AF86 /* MainAction.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				4556691E1CB90AF700C93E2A /* BaseLoginAction.m in Sources */,
+				4556695B1CBA643100C93E2A /* WindowNetwork.m in Sources */,
 				A00268231CAFF14B00F9AF86 /* LoginAction.m in Sources */,
 				455669251CB90E9E00C93E2A /* NetworkResponse.m in Sources */,
 				455669351CB91DE500C93E2A /* RCTNotification.m in Sources */,
