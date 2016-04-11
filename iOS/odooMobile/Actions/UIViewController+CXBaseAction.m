@@ -5,7 +5,7 @@
 #import "UIViewController+CXBaseAction.h"
 #import <objc/runtime.h>
 
-const char* actionKey;
+const char* actionKey = "ActionKey";
 
 @implementation UIViewController(CXBaseAction)
 
@@ -36,7 +36,7 @@ const char* actionKey;
  */
 -(void) setAction:(CXBaseAction*)newAction
 {
-    objc_setAssociatedObject(self, &actionKey, newAction, OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, &actionKey, newAction, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     [[self class] exchangeViewWillDisappearMethod];
 }
 
@@ -47,7 +47,8 @@ const char* actionKey;
  */
 -(CXBaseAction*) action
 {
-    return objc_getAssociatedObject(self, &actionKey);
+    CXBaseAction* action = objc_getAssociatedObject(self, &actionKey);
+    return action;
 }
 
 #pragma mark

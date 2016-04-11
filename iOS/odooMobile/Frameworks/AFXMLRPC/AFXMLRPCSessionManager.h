@@ -9,24 +9,6 @@
 #import <AFNetworking/AFNetworking.h>
 
 
-/*!
- *  @author LeiQiao, 15-11-24
- *  @brief  将变量为null转换为nil，防止调用崩溃
- *  @param obj 变量
- *  @return 安全变量
- */
-NS_INLINE id SafeValue(id obj){return ([obj isKindOfClass:[NSNull class]])?nil:obj;}
-
-/*!
- *  @author LeiQiao, 15-11-24
- *  @brief  对字符串进行安全拷贝（不能是nil或者null）
- *  @param str 字符串
- *  @return 安全字符串
- */
-NS_INLINE NSString* SafeCopy(NSString* str){return SafeValue(str)?[NSString stringWithFormat:@"%@", str]:@"";}
-
-
-
 
 extern const NSInteger kNoXMLPrefix; /*!< 没有XML前缀 */
 
@@ -81,7 +63,8 @@ extern const NSInteger kNoXMLPrefix; /*!< 没有XML前缀 */
  *  @param parameters XMLRPC参数
  *  @return 返回XMLRPC请求对象
  */
--(NSURLRequest*) XMLRPCRequestWithMethod:(NSString*)method parameters:(NSArray*)parameters;
+-(NSURLRequest*) XMLRPCRequestWithMethod:(NSString*)method
+                              parameters:(NSArray*)parameters;
 
 /*!
  *  @author LeiQiao, 16-02-27
@@ -91,7 +74,9 @@ extern const NSInteger kNoXMLPrefix; /*!< 没有XML前缀 */
  *  @param parameters XMLRPC参数
  *  @return 返回XMLRPC请求对象
  */
--(NSURLRequest*) XMLRPCRequestWithMethod:(NSString*)method timeout:(NSTimeInterval)timeout parameters:(NSArray*)parameters;
+-(NSURLRequest*) XMLRPCRequestWithMethod:(NSString*)method
+                                 timeout:(NSTimeInterval)timeout
+                              parameters:(NSArray*)parameters;
 
 /*!
  *  @author LeiQiao, 16-02-27

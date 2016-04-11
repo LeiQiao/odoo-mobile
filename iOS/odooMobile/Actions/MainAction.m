@@ -121,6 +121,14 @@
         // 设置主窗体和侧边栏
         navController.leftMenu = vcMenu;
     }
+    
+    // debug
+    NSDictionary* menu = @{@"action":@"ir.actions.act_window,108",
+                           @"id":@(129),
+                           @"name":@"产品",
+                           @"name":@"产品",
+                           @"web_icon":@(0)};
+    [self.currentAction enterAction:[WindowAction class] withParameters:menu];
 }
 
 /*!

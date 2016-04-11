@@ -2,7 +2,17 @@
 //  OdooNetwork.m
 //
 
+#define USING_XMLRPC        1
+#define USING_JSONRPC       2
+#define NETWORK_PROTOCOL    USING_XMLRPC
+
 #import "OdooNetwork.h"
+
+#if (NETWORK_PROTOCOL == USING_XMLRPC)
+#import "AFXMLRPCSessionManager.h"
+#elif (NETWORK_PROTOCOL == USING_JSONRPC)
+#import "AFJSONRPCClient.h"
+#endif
 
 /*!
  *  @author LeiQiao, 16-04-05
@@ -48,8 +58,13 @@ NSString* unicodeToUTF8(NSString* unicodeString)
                         userName:(NSString*)userName
                         password:(NSString*)password
 {
+#if (NETWORK_PROTOCOL == USING_XMLRPC)
     NSString* urlString = [NSString stringWithFormat:@"%@/xmlrpc/2/common", serverName];
     AFXMLRPCSessionManager* odooServer = [[AFXMLRPCSessionManager alloc] initWithBaseURL:[NSURL URLWithString:urlString]];
+#elif (NETWORK_PROTOCOL == USING_JSONRPC)
+    NSString* urlString = [NSString stringWithFormat:@"%@/jsonrpc/2/common", serverName];
+    AFJSONRPCClient* odooServer = [[AFJSONRPCClient alloc] initWithEndpointURL:[NSURL URLWithString:urlString]];
+#endif
     NSNumber* userID = [odooServer execute:@"authenticate" timeout:10 parameters:@[dbName, userName, password, @{}]];
     
     if( [userID isKindOfClass:[NSError class]] )
@@ -105,8 +120,13 @@ NSString* unicodeToUTF8(NSString* unicodeString)
     if( !parameters ) parameters = @[];
     if( !conditions ) conditions = @{};
     
+#if (NETWORK_PROTOCOL == USING_XMLRPC)
     NSString* urlString = [NSString stringWithFormat:@"%@/xmlrpc/2/object", gPreferences.ServerName];
     AFXMLRPCSessionManager* odooServer = [[AFXMLRPCSessionManager alloc] initWithBaseURL:[NSURL URLWithString:urlString]];
+#elif (NETWORK_PROTOCOL == USING_JSONRPC)
+    NSString* urlString = [NSString stringWithFormat:@"%@/jsonrpc/2/common", gPreferences.ServerName];
+    AFJSONRPCClient* odooServer = [[AFJSONRPCClient alloc] initWithEndpointURL:[NSURL URLWithString:urlString]];
+#endif
     id response = [odooServer execute:@"execute_kw" timeout:30 parameters:@[gPreferences.DBName,
                                                                             @([gPreferences.UserID integerValue]),
                                                                             gPreferences.Password,

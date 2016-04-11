@@ -4,7 +4,24 @@
 
 #import "NetworkResponse.h"
 #import "Preferences.h"
-#import "AFXMLRPCSessionManager.h"
+
+
+/*!
+ *  @author LeiQiao, 15-11-24
+ *  @brief  将变量为null转换为nil，防止调用崩溃
+ *  @param obj 变量
+ *  @return 安全变量
+ */
+NS_INLINE id SafeValue(id obj){return ([obj isKindOfClass:[NSNull class]])?nil:obj;}
+
+/*!
+ *  @author LeiQiao, 15-11-24
+ *  @brief  对字符串进行安全拷贝（不能是nil或者null）
+ *  @param str 字符串
+ *  @return 安全字符串
+ */
+NS_INLINE NSString* SafeCopy(NSString* str){return SafeValue(str)?[NSString stringWithFormat:@"%@", str]:@"";}
+
 
 /*!
  *  @author LeiQiao, 16-04-09

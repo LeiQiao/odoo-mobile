@@ -36,6 +36,8 @@
 		455669411CBA10B500C93E2A /* UIViewController+CXBaseAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 455669401CBA10B500C93E2A /* UIViewController+CXBaseAction.m */; };
 		4556694E1CBA632300C93E2A /* WindowAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4556694D1CBA632300C93E2A /* WindowAction.m */; };
 		4556695B1CBA643100C93E2A /* WindowNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 4556695A1CBA643100C93E2A /* WindowNetwork.m */; };
+		4556695F1CBB348100C93E2A /* AFJSONRPCClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4556695E1CBB348100C93E2A /* AFJSONRPCClient.m */; };
+		455669631CBBB76E00C93E2A /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 455669621CBBB76E00C93E2A /* GDataXMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		45E11F721CB3BF0F0075F6C5 /* JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E11F711CB3BF0F0075F6C5 /* JSON.m */; };
 		45E120E31CB62BFA0075F6C5 /* RCTPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E120E21CB62BFA0075F6C5 /* RCTPreferences.m */; };
 		45E120EC1CB661C80075F6C5 /* SilentLoginAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E120EB1CB661C80075F6C5 /* SilentLoginAction.m */; };
@@ -178,6 +180,11 @@
 		4556694D1CBA632300C93E2A /* WindowAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowAction.m; sourceTree = "<group>"; };
 		455669591CBA643100C93E2A /* WindowNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowNetwork.h; sourceTree = "<group>"; };
 		4556695A1CBA643100C93E2A /* WindowNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowNetwork.m; sourceTree = "<group>"; };
+		4556695D1CBB348100C93E2A /* AFJSONRPCClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJSONRPCClient.h; sourceTree = "<group>"; };
+		4556695E1CBB348100C93E2A /* AFJSONRPCClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJSONRPCClient.m; sourceTree = "<group>"; };
+		455669611CBBB76E00C93E2A /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
+		455669621CBBB76E00C93E2A /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
+		455669641CBBB8B900C93E2A /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		45E11F641CB3A81C0075F6C5 /* PreferencesDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesDefine.h; sourceTree = "<group>"; };
 		45E11F701CB3BF0F0075F6C5 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		45E11F711CB3BF0F0075F6C5 /* JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSON.m; sourceTree = "<group>"; };
@@ -340,6 +347,8 @@
 		4517828D1CACFDB500E47668 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				455669601CBBB76E00C93E2A /* GDataXML */,
+				4556695C1CBB348100C93E2A /* AFJSONRPCClient */,
 				45E11F6F1CB3BF0F0075F6C5 /* JSON */,
 				45E11F631CB3A81C0075F6C5 /* PreferencesDefine */,
 				451782951CAD0FF200E47668 /* AFXMLRPC */,
@@ -411,6 +420,24 @@
 			);
 			name = Model;
 			path = odooMobile/Model;
+			sourceTree = "<group>";
+		};
+		4556695C1CBB348100C93E2A /* AFJSONRPCClient */ = {
+			isa = PBXGroup;
+			children = (
+				4556695D1CBB348100C93E2A /* AFJSONRPCClient.h */,
+				4556695E1CBB348100C93E2A /* AFJSONRPCClient.m */,
+			);
+			path = AFJSONRPCClient;
+			sourceTree = "<group>";
+		};
+		455669601CBBB76E00C93E2A /* GDataXML */ = {
+			isa = PBXGroup;
+			children = (
+				455669611CBBB76E00C93E2A /* GDataXMLNode.h */,
+				455669621CBBB76E00C93E2A /* GDataXMLNode.m */,
+			);
+			path = GDataXML;
 			sourceTree = "<group>";
 		};
 		45E11F631CB3A81C0075F6C5 /* PreferencesDefine */ = {
@@ -513,6 +540,7 @@
 		A4B7D53E0015217D10664F73 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				455669641CBBB8B900C93E2A /* libxml2.tbd */,
 				656D26B0FA2743A143142BC2 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -806,6 +834,7 @@
 				4556693B1CB9F45900C93E2A /* TranslationNetwork.m in Sources */,
 				A0D0EB231CAF7024006037FD /* CXBaseAction.m in Sources */,
 				4556694E1CBA632300C93E2A /* WindowAction.m in Sources */,
+				4556695F1CBB348100C93E2A /* AFJSONRPCClient.m in Sources */,
 				45E120E31CB62BFA0075F6C5 /* RCTPreferences.m in Sources */,
 				4517829C1CAD0FF200E47668 /* HUD.m in Sources */,
 				455669221CB90E7000C93E2A /* OdooNetwork.m in Sources */,
@@ -819,6 +848,7 @@
 				A00268231CAFF14B00F9AF86 /* LoginAction.m in Sources */,
 				455669251CB90E9E00C93E2A /* NetworkResponse.m in Sources */,
 				455669351CB91DE500C93E2A /* RCTNotification.m in Sources */,
+				455669631CBBB76E00C93E2A /* GDataXMLNode.m in Sources */,
 				A01E554E1CB21D9500045EE5 /* RCTHUD.m in Sources */,
 				4556693E1CB9FA9D00C93E2A /* MenuNetwork.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
@@ -898,12 +928,16 @@
 				DEAD_CODE_STRIPPING = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					/usr/include/libxml2,
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 				);
 				INFOPLIST_FILE = odooMobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-lxml2",
+				);
 				PRODUCT_NAME = odooMobile;
 			};
 			name = Debug;
@@ -915,12 +949,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					/usr/include/libxml2,
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 				);
 				INFOPLIST_FILE = odooMobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-lxml2",
+				);
 				PRODUCT_NAME = odooMobile;
 			};
 			name = Release;
