@@ -38,6 +38,7 @@
 		4556695B1CBA643100C93E2A /* WindowNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 4556695A1CBA643100C93E2A /* WindowNetwork.m */; };
 		4556695F1CBB348100C93E2A /* AFJSONRPCClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4556695E1CBB348100C93E2A /* AFJSONRPCClient.m */; };
 		455669631CBBB76E00C93E2A /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 455669621CBBB76E00C93E2A /* GDataXMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		457FFAC31CBE11AD006C8C75 /* UIViewController+CustomUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 457FFAC21CBE11AD006C8C75 /* UIViewController+CustomUI.m */; };
 		45E11F721CB3BF0F0075F6C5 /* JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E11F711CB3BF0F0075F6C5 /* JSON.m */; };
 		45E120E31CB62BFA0075F6C5 /* RCTPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E120E21CB62BFA0075F6C5 /* RCTPreferences.m */; };
 		45E120EC1CB661C80075F6C5 /* SilentLoginAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E120EB1CB661C80075F6C5 /* SilentLoginAction.m */; };
@@ -185,6 +186,8 @@
 		455669611CBBB76E00C93E2A /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
 		455669621CBBB76E00C93E2A /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
 		455669641CBBB8B900C93E2A /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		457FFAC11CBE11AD006C8C75 /* UIViewController+CustomUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CustomUI.h"; sourceTree = "<group>"; };
+		457FFAC21CBE11AD006C8C75 /* UIViewController+CustomUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CustomUI.m"; sourceTree = "<group>"; };
 		45E11F641CB3A81C0075F6C5 /* PreferencesDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesDefine.h; sourceTree = "<group>"; };
 		45E11F701CB3BF0F0075F6C5 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		45E11F711CB3BF0F0075F6C5 /* JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSON.m; sourceTree = "<group>"; };
@@ -327,6 +330,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				457FFAB61CBE11A2006C8C75 /* UI */,
 				455669291CB915DE00C93E2A /* Model */,
 				4556691F1CB90E5600C93E2A /* Network */,
 				A0D0EB201CAF701B006037FD /* Actions */,
@@ -438,6 +442,16 @@
 				455669621CBBB76E00C93E2A /* GDataXMLNode.m */,
 			);
 			path = GDataXML;
+			sourceTree = "<group>";
+		};
+		457FFAB61CBE11A2006C8C75 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				457FFAC11CBE11AD006C8C75 /* UIViewController+CustomUI.h */,
+				457FFAC21CBE11AD006C8C75 /* UIViewController+CustomUI.m */,
+			);
+			name = UI;
+			path = odooMobile/UI;
 			sourceTree = "<group>";
 		};
 		45E11F631CB3A81C0075F6C5 /* PreferencesDefine */ = {
@@ -836,6 +850,7 @@
 				4556694E1CBA632300C93E2A /* WindowAction.m in Sources */,
 				4556695F1CBB348100C93E2A /* AFJSONRPCClient.m in Sources */,
 				45E120E31CB62BFA0075F6C5 /* RCTPreferences.m in Sources */,
+				457FFAC31CBE11AD006C8C75 /* UIViewController+CustomUI.m in Sources */,
 				4517829C1CAD0FF200E47668 /* HUD.m in Sources */,
 				455669221CB90E7000C93E2A /* OdooNetwork.m in Sources */,
 				45E120EC1CB661C80075F6C5 /* SilentLoginAction.m in Sources */,
