@@ -23,6 +23,8 @@ extern NSString *const kCXActionDidDestroyNotifaction;      /*!< 动作被销毁
 @property(nonatomic, strong, readonly) CXBaseAction* parentAction;  /*!< 父动作 */
 @property(nonatomic, strong, readonly) CXBaseAction* currentAction; /*!< 当前动作 */
 
+#pragma mark - 流程控制
+
 /**
  *  @author LeiQiao, 16/04/02
  *  @brief 使用该动作作为根动作，新动作将会发送kCXActionDidLoadNotifaction通知

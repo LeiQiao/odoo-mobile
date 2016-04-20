@@ -53,6 +53,12 @@ extern NSString* const kWillLoadSubmenuNotification;
  */
 extern NSString* const kDidLoadSubmenuNotification;
 
+/*!
+ *  @author LeiQiao, 16-04-19
+ *  @brief 加载窗体结果通知
+ */
+extern NSString* const kDidLoadWindowNotificaiton;
+
 
 
 

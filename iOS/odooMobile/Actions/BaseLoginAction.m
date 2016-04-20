@@ -13,6 +13,10 @@
  */
 @implementation BaseLoginAction
 
+-(void) dealloc
+{
+}
+
 /*!
  *  @author LeiQiao, 16-04-07
  *  @brief 动作已加载
@@ -51,10 +55,18 @@
  */
 -(void) loginRequest:(NSNotification*)notify
 {
-    // 创建静默登录线程
-    [NSThread detachNewThreadSelector:@selector(loginThread:)
-                             toTarget:self
-                           withObject:notify.object];
+    NSString* serverName = [notify.object objectForKey:@"ServerName"];
+    NSString* dbName = [notify.object objectForKey:@"DBName"];
+    NSString* userName = [notify.object objectForKey:@"UserName"];
+    NSString* password = [notify.object objectForKey:@"Password"];
+    
+    
+    popWaiting();
+    UserNetwork* user = [[UserNetwork alloc] init];
+    [user login:serverName dbName:dbName userName:userName password:password response:^(NetworkResponse *response) {
+           dismissWaiting();
+           OdooPostNotification(kDidLoginNotification, response);
+       }];
 }
 
 /*!
@@ -72,30 +84,6 @@
     }
     
     [self leaveAction];
-}
-
-/*!
- *  @author LeiQiao, 16-04-07
- *  @brief 登录线程
- */
--(void) loginThread:(NSDictionary*)userInfo
-{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        popWaiting();    
-    });
-    
-    NSString* serverName = [userInfo objectForKey:@"ServerName"];
-    NSString* dbName = [userInfo objectForKey:@"DBName"];
-    NSString* userName = [userInfo objectForKey:@"UserName"];
-    NSString* password = [userInfo objectForKey:@"Password"];
-    
-    UserNetwork* user = [[UserNetwork alloc] init];
-    NetworkResponse* response = [user login:serverName dbName:dbName userName:userName password:password];
-    OdooPostNotification(kDidLoginNotification, response);
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        dismissWaiting();
-    });
 }
 
 @end

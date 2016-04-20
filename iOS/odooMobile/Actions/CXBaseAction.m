@@ -173,6 +173,7 @@ static NSOperationQueue* CXActionNotificationQueue; /*!< 通知队列 */
     // 创建新的通知队列
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
+        /*---------- 动作监听队列 ----------*/
         CXActionNotificationQueue = [NSOperationQueue new];
         
         // 同时只能通知一个消息

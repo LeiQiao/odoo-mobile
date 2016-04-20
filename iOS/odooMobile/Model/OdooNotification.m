@@ -14,6 +14,7 @@ NSString* const kShowPersonalInfoNotification  = @"kShowPersonalInfoNotification
 NSString* const kShowSubmenuNotification  = @"kShowSubmenuNotification";
 NSString* const kWillLoadSubmenuNotification = @"kWillLoadSubmenuNotification";
 NSString* const kDidLoadSubmenuNotification = @"kDidLoadSubmenuNotification";
+NSString* const kDidLoadWindowNotificaiton = @"kDidLoadWindowNotificaiton";
 
 /*!
  *  @author LeiQiao, 16/04/03

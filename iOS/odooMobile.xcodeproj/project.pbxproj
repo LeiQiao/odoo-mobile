@@ -39,6 +39,8 @@
 		4556695F1CBB348100C93E2A /* AFJSONRPCClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4556695E1CBB348100C93E2A /* AFJSONRPCClient.m */; };
 		455669631CBBB76E00C93E2A /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 455669621CBBB76E00C93E2A /* GDataXMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		457FFAC31CBE11AD006C8C75 /* UIViewController+CustomUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 457FFAC21CBE11AD006C8C75 /* UIViewController+CustomUI.m */; };
+		457FFB141CC4C436006C8C75 /* BaseWindowStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 457FFB131CC4C436006C8C75 /* BaseWindowStyle.m */; };
+		457FFB171CC5C1A6006C8C75 /* UIWindowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 457FFB161CC5C1A6006C8C75 /* UIWindowViewController.m */; };
 		45E11F721CB3BF0F0075F6C5 /* JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E11F711CB3BF0F0075F6C5 /* JSON.m */; };
 		45E120E31CB62BFA0075F6C5 /* RCTPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E120E21CB62BFA0075F6C5 /* RCTPreferences.m */; };
 		45E120EC1CB661C80075F6C5 /* SilentLoginAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E120EB1CB661C80075F6C5 /* SilentLoginAction.m */; };
@@ -188,6 +190,10 @@
 		455669641CBBB8B900C93E2A /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		457FFAC11CBE11AD006C8C75 /* UIViewController+CustomUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CustomUI.h"; sourceTree = "<group>"; };
 		457FFAC21CBE11AD006C8C75 /* UIViewController+CustomUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CustomUI.m"; sourceTree = "<group>"; };
+		457FFB121CC4C436006C8C75 /* BaseWindowStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseWindowStyle.h; sourceTree = "<group>"; };
+		457FFB131CC4C436006C8C75 /* BaseWindowStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseWindowStyle.m; sourceTree = "<group>"; };
+		457FFB151CC5C1A6006C8C75 /* UIWindowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIWindowViewController.h; sourceTree = "<group>"; };
+		457FFB161CC5C1A6006C8C75 /* UIWindowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIWindowViewController.m; sourceTree = "<group>"; };
 		45E11F641CB3A81C0075F6C5 /* PreferencesDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesDefine.h; sourceTree = "<group>"; };
 		45E11F701CB3BF0F0075F6C5 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		45E11F711CB3BF0F0075F6C5 /* JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSON.m; sourceTree = "<group>"; };
@@ -447,11 +453,23 @@
 		457FFAB61CBE11A2006C8C75 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				457FFB041CC4C27B006C8C75 /* Window */,
 				457FFAC11CBE11AD006C8C75 /* UIViewController+CustomUI.h */,
 				457FFAC21CBE11AD006C8C75 /* UIViewController+CustomUI.m */,
+				457FFB151CC5C1A6006C8C75 /* UIWindowViewController.h */,
+				457FFB161CC5C1A6006C8C75 /* UIWindowViewController.m */,
 			);
 			name = UI;
 			path = odooMobile/UI;
+			sourceTree = "<group>";
+		};
+		457FFB041CC4C27B006C8C75 /* Window */ = {
+			isa = PBXGroup;
+			children = (
+				457FFB121CC4C436006C8C75 /* BaseWindowStyle.h */,
+				457FFB131CC4C436006C8C75 /* BaseWindowStyle.m */,
+			);
+			path = Window;
 			sourceTree = "<group>";
 		};
 		45E11F631CB3A81C0075F6C5 /* PreferencesDefine */ = {
@@ -856,6 +874,7 @@
 				45E120EC1CB661C80075F6C5 /* SilentLoginAction.m in Sources */,
 				4556692E1CB915FF00C93E2A /* OdooNotification.m in Sources */,
 				4556692F1CB915FF00C93E2A /* Preferences.m in Sources */,
+				457FFB171CC5C1A6006C8C75 /* UIWindowViewController.m in Sources */,
 				A00268161CAFF09000F9AF86 /* MainAction.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				4556691E1CB90AF700C93E2A /* BaseLoginAction.m in Sources */,
@@ -869,6 +888,7 @@
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				455669381CB9380A00C93E2A /* MenuListAction.m in Sources */,
 				455669411CBA10B500C93E2A /* UIViewController+CXBaseAction.m in Sources */,
+				457FFB141CC4C436006C8C75 /* BaseWindowStyle.m in Sources */,
 				45E11F721CB3BF0F0075F6C5 /* JSON.m in Sources */,
 				455669321CB9164800C93E2A /* UserNetwork.m in Sources */,
 				4517829B1CAD0FF200E47668 /* AFXMLRPCSessionManager.m in Sources */,

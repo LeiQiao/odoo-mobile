@@ -121,14 +121,6 @@
         // 设置主窗体和侧边栏
         navController.leftMenu = vcMenu;
     }
-    
-    // debug
-    NSDictionary* menu = @{@"action":@"ir.actions.act_window,108",
-                           @"id":@(129),
-                           @"name":@"产品",
-                           @"name":@"产品",
-                           @"web_icon":@(0)};
-    [self.currentAction enterAction:[WindowAction class] withParameters:menu];
 }
 
 /*!
@@ -161,7 +153,7 @@
     // 如果当前菜单项是一个动作，则运行该动作
     if( [action isKindOfClass:[NSString class]] )
     {
-        [self.currentAction enterAction:[WindowAction class] withParameters:currentMenu];
+        [self.currentAction enterAction:[WindowAction class] withParameters:action];
     }
     // 进入展示子菜单动作
     else

@@ -12,7 +12,44 @@
 @implementation UserNetwork
 
 #pragma mark
+#pragma mark helper
+
+-(void) loginThread:(NSDictionary*)parameters
+{
+    NSString* serverName = [parameters objectForKey:@"serverName"];
+    NSString* dbName = [parameters objectForKey:@"dbName"];
+    NSString* userName = [parameters objectForKey:@"userName"];
+    NSString* password = [parameters objectForKey:@"password"];
+    LoginResponse callback = [parameters objectForKey:@"response"];
+    
+    callback([self login:serverName dbName:dbName userName:userName password:password]);
+}
+
+#pragma mark
 #pragma mark 登录
+
+/**
+ *  @author LeiQiao, 16/04/20
+ *  @brief 登录到远程odoo服务器（异步方式）
+ *  @param serverName 服务器地址，例如：http://qitaer.com:8069
+ *  @param dbName     数据库名称
+ *  @param userName   登录用户名
+ *  @param password   登录密码
+ *  @param response   登录结果回调
+ */
+-(void) login:(NSString*)serverName
+       dbName:(NSString*)dbName
+     userName:(NSString*)userName
+     password:(NSString*)password
+     response:(LoginResponse)response
+{
+    NSDictionary* parameters = @{@"serverName":serverName,
+                                 @"dbName":dbName,
+                                 @"userName":userName,
+                                 @"password":password,
+                                 @"response":response};
+    [NSThread detachNewThreadSelector:@selector(loginThread:) toTarget:self withObject:parameters];
+}
 
 /**
  *  @author LeiQiao, 16/04/04

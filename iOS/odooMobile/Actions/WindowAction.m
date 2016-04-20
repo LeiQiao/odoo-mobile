@@ -5,12 +5,11 @@
 #import "WindowAction.h"
 #import "AppDelegate.h"
 #import "SlideNavigationController.h"
-#import "UIViewController+CXBaseAction.h"
 #import "HUD.h"
 #import "WindowNetwork.h"
+#import "OdooNotification.h"
 
 @implementation WindowAction {
-    UIViewController* _windowController;
 }
 
 /*!
@@ -19,26 +18,11 @@
  */
 -(void) actionDidLoad
 {
-    NSDictionary* currentMenu = (NSDictionary*)_parameters;
-    
-    AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    SlideNavigationController* navController = [SlideNavigationController sharedInstance];
-    
-    // 窗口
-    RCTRootView* menuListView = [[RCTRootView alloc] initWithBridge:appDelegate.rootView.bridge
-                                                         moduleName:@"WindowView"
-                                                  initialProperties:nil];
-    
-    _windowController = [UIViewController new];
-    _windowController.action = self;
-    _windowController.view = menuListView;
-    _windowController.title = [currentMenu objectForKey:@"name"];
-    [navController pushViewController:_windowController animated:YES];
-    
     // 更新窗口线程
+    NSString* actionTypeID = (NSString*)_parameters;
     [NSThread detachNewThreadSelector:@selector(loadWindowThread:)
                              toTarget:self
-                           withObject:currentMenu];
+                           withObject:actionTypeID];
 }
 
 /*!
@@ -47,34 +31,30 @@
  */
 -(void) actionDidLeave
 {
-    [_windowController.navigationController popViewControllerAnimated:YES];
-    _windowController = nil;
 }
 
 /*!
- *  @author LeiQiao, 16-04-10
+ *  @author LeiQiao, 16-04-1
  *  @brief 动作被销毁
  */
 -(void) actionDidDestroy
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    
-    _windowController = nil;
 }
 
 /*!
  *  @author LeiQiao, 16-04-07
  *  @brief 更新窗口线程
  */
--(void) loadWindowThread:(NSDictionary*)currentMenu
+-(void) loadWindowThread:(NSString*)actionTypeID
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         popWaiting();
     });
     
-    NSString* action = [currentMenu objectForKey:@"action"];
-    NSString* windowType = [[action componentsSeparatedByString:@","] objectAtIndex:0];
-    NSNumber* windowID = @([[[action componentsSeparatedByString:@","] objectAtIndex:1] integerValue]);
+    NSArray* actionTypeAndID = [actionTypeID componentsSeparatedByString:@","];
+    NSString* windowType = [actionTypeAndID objectAtIndex:0];
+    NSNumber* windowID = @([[actionTypeAndID objectAtIndex:1] integerValue]);
     
     WindowNetwork* window = [[WindowNetwork alloc] init];
     NetworkResponse* response = [window getWindowByID:windowID type:windowType];
@@ -82,9 +62,10 @@
     // 如果获取成功则返回当前菜单和子菜单
     if( response.success )
     {
-        response.responseObject = @{@"Menu":currentMenu,
-                                    @"SubMenus":response.responseObject};
+        response.responseObject = @{@"action":actionTypeID,
+                                    @"window":response.responseObject};
     }
+    OdooPostNotification(kDidLoadWindowNotificaiton, response);
     
     dispatch_async(dispatch_get_main_queue(), ^{
         dismissWaiting();

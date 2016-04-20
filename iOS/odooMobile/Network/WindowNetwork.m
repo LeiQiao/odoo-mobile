@@ -3,7 +3,6 @@
 //
 
 #import "WindowNetwork.h"
-#import "GDataXMLNode.h"
 #import "JSON.h"
 
 @implementation WindowNetwork
