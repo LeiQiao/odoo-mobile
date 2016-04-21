@@ -44,6 +44,7 @@
 		45E11F721CB3BF0F0075F6C5 /* JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E11F711CB3BF0F0075F6C5 /* JSON.m */; };
 		45E120E31CB62BFA0075F6C5 /* RCTPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E120E21CB62BFA0075F6C5 /* RCTPreferences.m */; };
 		45E120EC1CB661C80075F6C5 /* SilentLoginAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E120EB1CB661C80075F6C5 /* SilentLoginAction.m */; };
+		45F7598F1CC8CA7600989B4B /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45F7598E1CC8CA7600989B4B /* Storyboard.storyboard */; };
 		47B5E1AAEED353A798B939A4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 656D26B0FA2743A143142BC2 /* libPods.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		A00268161CAFF09000F9AF86 /* MainAction.m in Sources */ = {isa = PBXBuildFile; fileRef = A00268151CAFF09000F9AF86 /* MainAction.m */; };
@@ -201,6 +202,7 @@
 		45E120E21CB62BFA0075F6C5 /* RCTPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTPreferences.m; sourceTree = "<group>"; };
 		45E120EA1CB661C80075F6C5 /* SilentLoginAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SilentLoginAction.h; sourceTree = "<group>"; };
 		45E120EB1CB661C80075F6C5 /* SilentLoginAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SilentLoginAction.m; sourceTree = "<group>"; };
+		45F7598E1CC8CA7600989B4B /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		656D26B0FA2743A143142BC2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
+				45F7598E1CC8CA7600989B4B /* Storyboard.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				457FFAB61CBE11A2006C8C75 /* UI */,
 				455669291CB915DE00C93E2A /* Model */,
@@ -783,6 +786,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				45F7598F1CC8CA7600989B4B /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
