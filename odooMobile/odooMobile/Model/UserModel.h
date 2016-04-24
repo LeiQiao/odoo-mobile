@@ -18,6 +18,14 @@
 -(void) requestDatabase:(NSString*)serverName;
 
 /*!
+ *  @author LeiQiao, 16/04/24
+ *  @brief 查找指定的服务器是否存在指定数据库
+ *  @param serverName 服务器地址
+ *  @param dbName     数据库名称
+ */
+-(void) checkDatabaseExist:(NSString*)serverName dbName:(NSString*)dbName;
+
+/*!
  *  @author LeiQiao, 16-04-22
  *  @brief 登录
  *  @param serverName 服务器地址
@@ -47,6 +55,14 @@
  *         params[@"Databases"]     数据库列表
  */
 -(void) userModel:(UserModel*)userModel requestDatabase:(ReturnParam*)params;
+
+/*!
+ *  @author LeiQiao, 16/04/24
+ *  @brief 查找指定的服务器是否存在指定数据库
+ *  @param userModel 用户模型
+ *  @param params    返回参数
+ */
+-(void) userModel:(UserModel*)userModel checkDatabaseExist:(ReturnParam*)params;
 
 /*!
  *  @author LeiQiao, 16-04-22

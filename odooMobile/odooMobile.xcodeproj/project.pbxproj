@@ -30,6 +30,8 @@
 		45F75A081CCA02CD00989B4B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F75A071CCA02CD00989B4B /* LoginViewController.m */; };
 		45F75A0B1CCA181D00989B4B /* ServerSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F75A0A1CCA181D00989B4B /* ServerSettingViewController.m */; };
 		9B059D95349B26E6D10ABF7D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B4C566102D81D14ABC3748 /* libPods.a */; };
+		A0677CC61CCA6F67002355C2 /* OdooRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CC51CCA6F67002355C2 /* OdooRequestModel.m */; };
+		A0677CD31CCC6012002355C2 /* CXPickerTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CD21CCC6012002355C2 /* CXPickerTextField.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +82,10 @@
 		45F75A0A1CCA181D00989B4B /* ServerSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerSettingViewController.m; sourceTree = "<group>"; };
 		660D2FBBDDE1103B239D0E27 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		88B4C566102D81D14ABC3748 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0677CC41CCA6F67002355C2 /* OdooRequestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OdooRequestModel.h; sourceTree = "<group>"; };
+		A0677CC51CCA6F67002355C2 /* OdooRequestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OdooRequestModel.m; sourceTree = "<group>"; };
+		A0677CD11CCC6012002355C2 /* CXPickerTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXPickerTextField.h; sourceTree = "<group>"; };
+		A0677CD21CCC6012002355C2 /* CXPickerTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXPickerTextField.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				45F759C81CC9ECAC00989B4B /* Model */,
+				A0677CC71CCC5E62002355C2 /* View */,
 				45F759D11CC9ECCF00989B4B /* ViewController */,
 				45F759B61CC9ECAC00989B4B /* Frameworks */,
 				45F759A51CC8CC1300989B4B /* Main.storyboard */,
@@ -215,6 +222,8 @@
 				45F759D61CC9EE2200989B4B /* GlobalModels.m */,
 				45F759E11CC9EF1400989B4B /* UserModel.h */,
 				45F759E21CC9EF1400989B4B /* UserModel.m */,
+				A0677CC41CCA6F67002355C2 /* OdooRequestModel.h */,
+				A0677CC51CCA6F67002355C2 /* OdooRequestModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -272,6 +281,15 @@
 				45F75A0A1CCA181D00989B4B /* ServerSettingViewController.m */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		A0677CC71CCC5E62002355C2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A0677CD11CCC6012002355C2 /* CXPickerTextField.h */,
+				A0677CD21CCC6012002355C2 /* CXPickerTextField.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		BB2EA92C8D94081A36F01E93 /* Frameworks */ = {
@@ -416,6 +434,7 @@
 				45F759EF1CC9F23500989B4B /* CXSignalKVO.m in Sources */,
 				45F759E01CC9EF0500989B4B /* BaseViewModel.m in Sources */,
 				45F759F01CC9F23500989B4B /* CXSignalTransformer.m in Sources */,
+				A0677CC61CCA6F67002355C2 /* OdooRequestModel.m in Sources */,
 				45F759DF1CC9EF0500989B4B /* ModelObserver.m in Sources */,
 				45F759EE1CC9F23500989B4B /* CXSignalFliter.m in Sources */,
 				45F759CB1CC9ECAC00989B4B /* AFJSONRPCClient.m in Sources */,
@@ -428,6 +447,7 @@
 				45F759E31CC9EF1400989B4B /* UserModel.m in Sources */,
 				45F759CD1CC9ECAC00989B4B /* GDataXMLNode.m in Sources */,
 				45F75A081CCA02CD00989B4B /* LoginViewController.m in Sources */,
+				A0677CD31CCC6012002355C2 /* CXPickerTextField.m in Sources */,
 				45F759CE1CC9ECAC00989B4B /* HUD.m in Sources */,
 				45F759D71CC9EE2200989B4B /* GlobalModels.m in Sources */,
 				45F759D01CC9ECAC00989B4B /* Preferences.m in Sources */,

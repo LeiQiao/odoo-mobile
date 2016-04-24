@@ -60,10 +60,12 @@ install_resource()
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "iOS-Slide-Menu/SlideMenu/Source/Assets/menu-button.png"
   install_resource "iOS-Slide-Menu/SlideMenu/Source/Assets/menu-button@2x.png"
+  install_resource "${BUILT_PRODUCTS_DIR}/ZQCustomPicker.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "iOS-Slide-Menu/SlideMenu/Source/Assets/menu-button.png"
   install_resource "iOS-Slide-Menu/SlideMenu/Source/Assets/menu-button@2x.png"
+  install_resource "${BUILT_PRODUCTS_DIR}/ZQCustomPicker.bundle"
 fi
 
 mkdir -p "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

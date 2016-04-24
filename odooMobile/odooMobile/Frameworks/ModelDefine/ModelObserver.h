@@ -74,6 +74,22 @@
 @property (strong, nonatomic) NSString*			   failedReason;    /*!< 失败原因 */
 @property (strong, nonatomic) NSMutableDictionary* userInfo;        /*!< 附加信息 */
 
+/*!
+ *  @author LeiQiao, 15-12-14
+ *  @brief 使用Key获取返回参数
+ *  @param aKey 返回参数的Key
+ *  @return 返回参数的Value
+ */
+-(id) objectForKeyedSubscript:(id)key;
+
+/*!
+ *  @author LeiQiao, 15-12-14
+ *  @brief 使用Key设置返回参数
+ *  @param obj 返回参数的Value
+ *  @param key 返回参数的Key
+ */
+-(void) setObject:(id)object forKeyedSubscript:(id<NSCopying>)aKey;
+
 @end
 
 /*!
@@ -152,7 +168,6 @@ typedef enum {
 
 @property(nonatomic, assign, readonly) id observeModel;                         /*!< 观察模型 */
 @property(nonatomic, assign, readonly) SEL observeCallback;                     /*!< 观察模型的回调方法 */
-@property(nonatomic, strong, readonly) RequestParam* reqParam;                  /*!< 请求参数 */
 @property(nonatomic, strong, readonly) ReturnParam* retParam;                   /*!< 返回值 */
 @property(nonatomic, assign, readonly, getter=isFinished) BOOL finished;        /*!< 请求是否已完成 */
 @property(atomic, assign, getter=isWaiting) BOOL wait;                          /*!< 请求玩成功暂停回调，解除等待后才可回调 */

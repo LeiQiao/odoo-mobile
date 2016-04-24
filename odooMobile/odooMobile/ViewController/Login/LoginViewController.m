@@ -5,6 +5,7 @@
 #import "LoginViewController.h"
 #import "Preferences.h"
 #import "HUD.h"
+#import "GlobalModels.h"
 
 /*!
  *  @author LeiQiao, 16-04-22
@@ -19,8 +20,12 @@
 {
     [super viewDidLoad];
     
-    self.userNameField.text = gPreferences.UserName;
-    self.passwordField.text = gPreferences.Password;
+    ADDOBSERVER(UserModel, (id<UserModelObserver>)self);
+}
+
+-(void) dealloc
+{
+    REMOVEOBSERVER(UserModel, (id<UserModelObserver>)self);
 }
 
 #pragma mark
@@ -39,6 +44,13 @@
         [self performSegueWithIdentifier:@"ServerSettingSegue" sender:self];
         return;
     }
+    
+    // 登录
+    popWaiting();
+    [GETMODEL(UserModel) login:gPreferences.ServerName
+                        dbName:gPreferences.DBName
+                      userName:self.userNameField.text
+                      password:self.passwordField.text];
 }
 
 #pragma mark
@@ -82,6 +94,21 @@
 {
     [self.userNameField resignFirstResponder];
     [self.passwordField resignFirstResponder];
+}
+
+#pragma mark
+#pragma mark UserModelObserver
+
+-(void) userModel:(UserModel*)userModel login:(ReturnParam*)params
+{
+    dismissWaiting();
+    if( !params.success )
+    {
+        popError(params.failedReason);
+        return;
+    }
+    
+    [self.navigationController dismissViewControllerAnimated:YES completion:^{}];
 }
 
 @end

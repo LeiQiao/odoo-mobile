@@ -170,6 +170,32 @@
  */
 @implementation ReturnParam
 
+#pragma mark
+#pragma mark helper
+
+/*!
+ *  @author LeiQiao, 16-04-23
+ *  @brief 将dictionary转换成字符串
+ *  @return 返回Dictionary转换成的字符串
+ */
+-(NSString*) description
+{
+    return [_userInfo description];
+}
+
+/*!
+ *  @author LeiQiao, 16-04-23
+ *  @brief 将dictionary转换成字符串（供调试模式）
+ *  @return 返回Dictionary转换成的字符串（供调试模式）
+ */
+-(NSString*) debugDescription
+{
+    return [_userInfo debugDescription];
+}
+
+#pragma mark
+#pragma mark init & dealloc
+
 /*!
  *  @author LeiQiao, 15-12-15
  *  @brief 初始化
@@ -201,6 +227,31 @@
     [super dealloc];
 }
 #endif
+
+#pragma mark
+#pragma mark member functions
+
+/*!
+ *  @author LeiQiao, 16-04-23
+ *  @brief 使用Key获取返回参数
+ *  @param aKey 返回参数的Key
+ *  @return 返回参数的Value
+ */
+-(id) objectForKeyedSubscript:(id)key
+{
+    return [_userInfo objectForKeyedSubscript:key];
+}
+
+/*!
+ *  @author LeiQiao, 16-04-23
+ *  @brief 使用Key设置返回参数
+ *  @param obj 返回参数的Value
+ *  @param key 返回参数的Key
+ */
+-(void) setObject:(id)object forKeyedSubscript:(id<NSCopying>)aKey
+{
+    [_userInfo setObject:object forKeyedSubscript:aKey];
+}
 
 @end
 
@@ -442,7 +493,6 @@
         _observeModel = nil;
         _observeCallback = nil;
         
-        _reqParam = [[RequestParam alloc] init];
         _retParam = [[ReturnParam alloc] init];
         
         _locker = [[NSCondition alloc] init];
@@ -686,9 +736,6 @@
 {
     // 重置标志位
     _finished = NO;
-    
-    // 更新请求参数（如token或者checkValue等需要在重发时更新）
-    [self.reqParam updateParameters];
     
     // 根据请求方式来调用相应的子类函数完成实际发送网络请求
     if( _requestMethod == BaseRequestModelMethodGet )
