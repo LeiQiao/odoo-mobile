@@ -32,6 +32,7 @@
 		9B059D95349B26E6D10ABF7D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B4C566102D81D14ABC3748 /* libPods.a */; };
 		A0677CC61CCA6F67002355C2 /* OdooRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CC51CCA6F67002355C2 /* OdooRequestModel.m */; };
 		A0677CD31CCC6012002355C2 /* CXPickerTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CD21CCC6012002355C2 /* CXPickerTextField.m */; };
+		A0677CD61CCC9982002355C2 /* RegistTrailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CD51CCC9982002355C2 /* RegistTrailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,8 @@
 		A0677CC51CCA6F67002355C2 /* OdooRequestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OdooRequestModel.m; sourceTree = "<group>"; };
 		A0677CD11CCC6012002355C2 /* CXPickerTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXPickerTextField.h; sourceTree = "<group>"; };
 		A0677CD21CCC6012002355C2 /* CXPickerTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXPickerTextField.m; sourceTree = "<group>"; };
+		A0677CD41CCC9982002355C2 /* RegistTrailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistTrailViewController.h; sourceTree = "<group>"; };
+		A0677CD51CCC9982002355C2 /* RegistTrailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistTrailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,6 +282,8 @@
 				45F75A071CCA02CD00989B4B /* LoginViewController.m */,
 				45F75A091CCA181D00989B4B /* ServerSettingViewController.h */,
 				45F75A0A1CCA181D00989B4B /* ServerSettingViewController.m */,
+				A0677CD41CCC9982002355C2 /* RegistTrailViewController.h */,
+				A0677CD51CCC9982002355C2 /* RegistTrailViewController.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -437,6 +442,7 @@
 				A0677CC61CCA6F67002355C2 /* OdooRequestModel.m in Sources */,
 				45F759DF1CC9EF0500989B4B /* ModelObserver.m in Sources */,
 				45F759EE1CC9F23500989B4B /* CXSignalFliter.m in Sources */,
+				A0677CD61CCC9982002355C2 /* RegistTrailViewController.m in Sources */,
 				45F759CB1CC9ECAC00989B4B /* AFJSONRPCClient.m in Sources */,
 				45F759CF1CC9ECAC00989B4B /* JSON.m in Sources */,
 				45F75A0B1CCA181D00989B4B /* ServerSettingViewController.m in Sources */,
@@ -563,6 +569,7 @@
 			baseConfigurationReference = 223DE4795A318B85C0D7C186 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Lei Qiao (4255A94LGP)";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/include/libxml2,
@@ -601,6 +608,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LoveC.odooMobile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "437fab83-bbb1-4f86-b443-292bfaa72b9c";
 			};
 			name = Debug;
 		};
@@ -609,6 +617,7 @@
 			baseConfigurationReference = 660D2FBBDDE1103B239D0E27 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Lei Qiao (4255A94LGP)";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/include/libxml2,
@@ -647,6 +656,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LoveC.odooMobile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "437fab83-bbb1-4f86-b443-292bfaa72b9c";
 			};
 			name = Release;
 		};

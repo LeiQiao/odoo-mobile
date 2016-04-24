@@ -424,16 +424,13 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入您的电子邮箱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c68-e5-2pE">
-                                <rect key="frame" x="20" y="183" width="335" height="30"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qgM-6b-He9">
-                                <rect key="frame" x="118" y="245" width="139" height="30"/>
+                                <rect key="frame" x="118" y="183" width="139" height="30"/>
                                 <animations/>
                                 <state key="normal" title="提交申请"/>
+                                <connections>
+                                    <action selector="emailMe:" destination="npj-WW-zhj" eventType="touchUpInside" id="Y9i-15-k8H"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>
