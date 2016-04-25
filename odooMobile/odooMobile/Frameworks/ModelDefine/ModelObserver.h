@@ -236,6 +236,24 @@ typedef enum {
 -(void) GET:(NSString*)urlString;
 
 /*!
+ *  @author LeiQiao, 16/04/25
+ *  @brief 同步发送POST请求
+ *  @param urlString    请求接口
+ *  @param errorPointer 失败结果的指针
+ *  @return 接口返回值
+ */
+-(id) asyncPOST:(NSString*)urlString error:(NSError**)errorPointer;
+
+/*!
+ *  @author LeiQiao, 16/04/25
+ *  @brief 同步发送GET请求
+ *  @param urlString    请求接口
+ *  @param errorPointer 失败结果的指针
+ *  @return 接口返回值
+ */
+-(id) asyncGET:(NSString*)urlString error:(NSError**)errorPointer;
+
+/*!
  *  @author LeiQiao, 15-12-16
  *  @brief 设置成功的回调
  *  @param successCallback 成功的回调

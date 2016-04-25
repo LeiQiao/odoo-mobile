@@ -5,6 +5,7 @@
 #import "UserModel.h"
 #import "OdooRequestModel.h"
 #import "Preferences.h"
+#import "GlobalModels.h"
 
 @implementation UserModel
 
@@ -72,13 +73,66 @@
               }
               else
               {
+                  [request setObserveModel:nil andCallback:nil];
+                  
                   gPreferences.ServerName = serverName;
                   gPreferences.DBName = dbName;
                   gPreferences.UserID = responseObject;
                   gPreferences.UserName = userName;
                   gPreferences.Password = password;
+                  
+                  [self updateUserInfo];
               }
           }];
+}
+
+-(void) updateUserInfo
+{
+    OdooRequestModel* request = [[OdooRequestModel alloc] initWithObserveModel:self andCallback:@selector(userModel:login:)];
+    request.reqParam = [OdooRequestParam execute:@"execute_kw"
+                                      parameters:@[gPreferences.DBName,
+                                                   @([gPreferences.UserID integerValue]),
+                                                   gPreferences.Password,
+                                                   @"res.users",
+                                                   @"search_read",
+                                                   @[@[@[@"id", @"=", gPreferences.UserID]]],
+                                                   @{@"fields": @[@"image",
+                                                                  @"email",
+                                                                  @"display_name",
+                                                                  @"groups_id",
+                                                                  @"company_id",
+                                                                  @"lang",
+                                                                  @"active"]}]];
+    request.reqParam.timeout = 10;
+    [request POST:[NSString stringWithFormat:@"%@/xmlrpc/2/object", gPreferences.ServerName]
+          success:^(id responseObject) {
+              responseObject = [responseObject objectAtIndex:0];
+              // 判断账号是否激活
+              if( ![[responseObject objectForKey:@"active"] boolValue] )
+              {
+                  request.retParam.success = NO;
+                  request.retParam.failedCode = @"-1";
+                  request.retParam.failedReason = @"账号未激活，请联系管理员";
+              }
+              else
+              {
+                  [request setObserveModel:nil andCallback:nil];
+                  
+                  gPreferences.UserImage = SafeCopy([responseObject objectForKey:@"image"]);
+                  gPreferences.UserEmail = SafeCopy([responseObject objectForKey:@"email"]);
+                  gPreferences.UserDisplayName = SafeCopy([responseObject objectForKey:@"display_name"]);
+                  gPreferences.Language = SafeCopy([responseObject objectForKey:@"lang"]);
+                  
+                  NSNumber* companyID = [[responseObject objectForKey:@"company_id"] objectAtIndex:0];
+                  NSArray* groupIDs = [responseObject objectForKey:@"groups_id"];
+                  
+                  [self updateCompanyInfo];
+              }
+          }];
+}
+
+-(void) updateCompanyInfo
+{
 }
 
 @end

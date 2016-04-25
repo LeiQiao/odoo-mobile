@@ -698,6 +698,100 @@
     [self GET:urlString success:nil];
 }
 
+/*!
+ *  @author LeiQiao, 16/04/25
+ *  @brief 同步发送POST请求
+ *  @param urlString    请求接口
+ *  @param errorPointer 失败结果的指针
+ *  @return 接口返回值
+ */
+-(id) asyncPOST:(NSString*)urlString error:(NSError**)errorPointer
+{
+    // 创建同步线程锁
+    NSCondition* networkFinishedSignal = [NSCondition new];
+    
+    __block NSError* error;
+    __block id result = nil;
+    
+    // 清空观察者回调方法
+    id observeModel = self.observeModel;
+    SEL observeCallback = self.observeCallback;
+    [self setObserveModel:nil andCallback:nil];
+    
+    // POST请求
+    [self POST:urlString success:^(id responseObject) {
+        result = responseObject;
+        
+        [networkFinishedSignal lock];
+        [networkFinishedSignal signal];
+        [networkFinishedSignal unlock];
+    } failure:^(NSError *err) {
+        error = err;
+        
+        [networkFinishedSignal lock];
+        [networkFinishedSignal signal];
+        [networkFinishedSignal unlock];
+    }];
+    
+    // 等待请求线程结束
+    [networkFinishedSignal lock];
+    [networkFinishedSignal wait];
+    [networkFinishedSignal unlock];
+    
+    // 恢复观察者回调方法
+    [self setObserveModel:observeModel andCallback:observeCallback];
+    
+    // 返回结果
+    return result;
+}
+
+/*!
+ *  @author LeiQiao, 16/04/25
+ *  @brief 同步发送GET请求
+ *  @param urlString    请求接口
+ *  @param errorPointer 失败结果的指针
+ *  @return 接口返回值
+ */
+-(id) asyncGET:(NSString*)urlString error:(NSError**)errorPointer
+{
+    // 创建同步线程锁
+    NSCondition* networkFinishedSignal = [NSCondition new];
+    
+    __block NSError* error;
+    __block id result = nil;
+    
+    // 清空观察者回调方法
+    id observeModel = self.observeModel;
+    SEL observeCallback = self.observeCallback;
+    [self setObserveModel:nil andCallback:nil];
+    
+    // POST请求
+    [self GET:urlString success:^(id responseObject) {
+        result = responseObject;
+        
+        [networkFinishedSignal lock];
+        [networkFinishedSignal signal];
+        [networkFinishedSignal unlock];
+    } failure:^(NSError *err) {
+        error = err;
+        
+        [networkFinishedSignal lock];
+        [networkFinishedSignal signal];
+        [networkFinishedSignal unlock];
+    }];
+    
+    // 等待请求线程结束
+    [networkFinishedSignal lock];
+    [networkFinishedSignal wait];
+    [networkFinishedSignal unlock];
+    
+    // 恢复观察者回调方法
+    [self setObserveModel:observeModel andCallback:observeCallback];
+    
+    // 返回结果
+    return result;
+}
+
 #pragma mark
 #pragma mark 设置成功失败的回调
 
