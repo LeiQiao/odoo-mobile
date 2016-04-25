@@ -7,116 +7,576 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F23DD2E691E9E6BF06D5058 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2350D602659312A8E604C3A9 /* libPods.a */; };
-		452E11091C773635007BAC51 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 452E11081C773635007BAC51 /* main.m */; };
-		452E110C1C773635007BAC51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 452E110B1C773635007BAC51 /* AppDelegate.m */; };
-		452E110F1C773635007BAC51 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 452E110E1C773635007BAC51 /* ViewController.m */; };
-		452E11121C773635007BAC51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 452E11101C773635007BAC51 /* Main.storyboard */; };
-		452E11141C773635007BAC51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 452E11131C773635007BAC51 /* Assets.xcassets */; };
-		452E11171C773635007BAC51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 452E11151C773635007BAC51 /* LaunchScreen.storyboard */; };
-		73500C33DA70155C3C565ADB /* libPods-odooMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94FAA0957A469E2DC78D82F5 /* libPods-odooMobile.a */; };
+		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
+		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
+		00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302C01ABCB91800DB3ED1 /* libRCTImage.a */; };
+		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
+		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
+		00E356F31AD99517003FC87E /* odooMobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* odooMobileTests.m */; };
+		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
+		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
+		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
+		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
+		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
+		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		4517829B1CAD0FF200E47668 /* AFXMLRPCSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 451782971CAD0FF200E47668 /* AFXMLRPCSessionManager.m */; };
+		4517829C1CAD0FF200E47668 /* HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4517829A1CAD0FF200E47668 /* HUD.m */; };
+		4556691E1CB90AF700C93E2A /* BaseLoginAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4556691D1CB90AF700C93E2A /* BaseLoginAction.m */; };
+		455669221CB90E7000C93E2A /* OdooNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 455669211CB90E7000C93E2A /* OdooNetwork.m */; };
+		455669251CB90E9E00C93E2A /* NetworkResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 455669241CB90E9E00C93E2A /* NetworkResponse.m */; };
+		4556692E1CB915FF00C93E2A /* OdooNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 4556692B1CB915FF00C93E2A /* OdooNotification.m */; };
+		4556692F1CB915FF00C93E2A /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 4556692D1CB915FF00C93E2A /* Preferences.m */; };
+		455669321CB9164800C93E2A /* UserNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 455669311CB9164800C93E2A /* UserNetwork.m */; };
+		455669351CB91DE500C93E2A /* RCTNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 455669341CB91DE500C93E2A /* RCTNotification.m */; };
+		455669381CB9380A00C93E2A /* MenuListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 455669371CB9380A00C93E2A /* MenuListAction.m */; };
+		4556693B1CB9F45900C93E2A /* TranslationNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 4556693A1CB9F45900C93E2A /* TranslationNetwork.m */; };
+		4556693E1CB9FA9D00C93E2A /* MenuNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 4556693D1CB9FA9D00C93E2A /* MenuNetwork.m */; };
+		455669411CBA10B500C93E2A /* UIViewController+CXBaseAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 455669401CBA10B500C93E2A /* UIViewController+CXBaseAction.m */; };
+		4556694E1CBA632300C93E2A /* WindowAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4556694D1CBA632300C93E2A /* WindowAction.m */; };
+		4556695B1CBA643100C93E2A /* WindowNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 4556695A1CBA643100C93E2A /* WindowNetwork.m */; };
+		4556695F1CBB348100C93E2A /* AFJSONRPCClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4556695E1CBB348100C93E2A /* AFJSONRPCClient.m */; };
+		455669631CBBB76E00C93E2A /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 455669621CBBB76E00C93E2A /* GDataXMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		457FFAC31CBE11AD006C8C75 /* UIViewController+CustomUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 457FFAC21CBE11AD006C8C75 /* UIViewController+CustomUI.m */; };
+		457FFB141CC4C436006C8C75 /* BaseWindowStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 457FFB131CC4C436006C8C75 /* BaseWindowStyle.m */; };
+		457FFB171CC5C1A6006C8C75 /* UIWindowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 457FFB161CC5C1A6006C8C75 /* UIWindowViewController.m */; };
+		45E11F721CB3BF0F0075F6C5 /* JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E11F711CB3BF0F0075F6C5 /* JSON.m */; };
+		45E120E31CB62BFA0075F6C5 /* RCTPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E120E21CB62BFA0075F6C5 /* RCTPreferences.m */; };
+		45E120EC1CB661C80075F6C5 /* SilentLoginAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E120EB1CB661C80075F6C5 /* SilentLoginAction.m */; };
+		45F7598F1CC8CA7600989B4B /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45F7598E1CC8CA7600989B4B /* Storyboard.storyboard */; };
+		47B5E1AAEED353A798B939A4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 656D26B0FA2743A143142BC2 /* libPods.a */; };
+		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		A00268161CAFF09000F9AF86 /* MainAction.m in Sources */ = {isa = PBXBuildFile; fileRef = A00268151CAFF09000F9AF86 /* MainAction.m */; };
+		A00268231CAFF14B00F9AF86 /* LoginAction.m in Sources */ = {isa = PBXBuildFile; fileRef = A00268221CAFF14B00F9AF86 /* LoginAction.m */; };
+		A01E554E1CB21D9500045EE5 /* RCTHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A01E554D1CB21D9500045EE5 /* RCTHUD.m */; };
+		A0D0EB231CAF7024006037FD /* CXBaseAction.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D0EB221CAF7024006037FD /* CXBaseAction.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		00C302AB1ABCB8CE00DB3ED1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RCTActionSheet;
+		};
+		00C302B91ABCB90400DB3ED1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RCTGeolocation;
+		};
+		00C302BF1ABCB91800DB3ED1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 58B5115D1A9E6B3D00147676;
+			remoteInfo = RCTImage;
+		};
+		00C302DB1ABCB9D200DB3ED1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 58B511DB1A9E6C8500147676;
+			remoteInfo = RCTNetwork;
+		};
+		00C302E31ABCB9EE00DB3ED1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 832C81801AAF6DEF007FA2F7;
+			remoteInfo = RCTVibration;
+		};
+		00E356F41AD99517003FC87E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
+			remoteInfo = odooMobile;
+		};
+		139105C01AF99BAD00B5F7CC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RCTSettings;
+		};
+		139FDEF31B06529B00C62182 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3C86DF461ADF2C930047B81A;
+			remoteInfo = RCTWebSocket;
+		};
+		146834031AC3E56700842450 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 83CBBA2E1A601D0E00E9B192;
+			remoteInfo = React;
+		};
+		78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RCTLinking;
+		};
+		832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
+			remoteInfo = RCTText;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		2350D602659312A8E604C3A9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		452E11041C773635007BAC51 /* odooMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = odooMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		452E11081C773635007BAC51 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		452E110A1C773635007BAC51 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		452E110B1C773635007BAC51 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		452E110D1C773635007BAC51 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		452E110E1C773635007BAC51 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		452E11111C773635007BAC51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		452E11131C773635007BAC51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		452E11161C773635007BAC51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		452E11181C773635007BAC51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6B92E78A9AB79AEF5A32D80A /* Pods-odooMac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-odooMac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-odooMac/Pods-odooMac.debug.xcconfig"; sourceTree = "<group>"; };
-		721C1A471BE9A609557E9FC7 /* Pods-odooMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-odooMobile.debug.xcconfig"; path = "Pods/Target Support Files/Pods-odooMobile/Pods-odooMobile.debug.xcconfig"; sourceTree = "<group>"; };
-		8208258B6322A672D6831D82 /* Pods-odooMac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-odooMac.release.xcconfig"; path = "Pods/Target Support Files/Pods-odooMac/Pods-odooMac.release.xcconfig"; sourceTree = "<group>"; };
-		94FAA0957A469E2DC78D82F5 /* libPods-odooMobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-odooMobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F815C433C75A191A4A823725 /* Pods-odooMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-odooMobile.release.xcconfig"; path = "Pods/Target Support Files/Pods-odooMobile/Pods-odooMobile.release.xcconfig"; sourceTree = "<group>"; };
-		FD40791FA327CB00F377D133 /* libPods-odooMac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-odooMac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
+		00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTActionSheet.xcodeproj; path = "../node_modules/react-native/Libraries/ActionSheetIOS/RCTActionSheet.xcodeproj"; sourceTree = "<group>"; };
+		00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTGeolocation.xcodeproj; path = "../node_modules/react-native/Libraries/Geolocation/RCTGeolocation.xcodeproj"; sourceTree = "<group>"; };
+		00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTImage.xcodeproj; path = "../node_modules/react-native/Libraries/Image/RCTImage.xcodeproj"; sourceTree = "<group>"; };
+		00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTNetwork.xcodeproj; path = "../node_modules/react-native/Libraries/Network/RCTNetwork.xcodeproj"; sourceTree = "<group>"; };
+		00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTVibration.xcodeproj; path = "../node_modules/react-native/Libraries/Vibration/RCTVibration.xcodeproj"; sourceTree = "<group>"; };
+		00E356EE1AD99517003FC87E /* odooMobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = odooMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* odooMobileTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = odooMobileTests.m; sourceTree = "<group>"; };
+		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
+		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* odooMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = odooMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = odooMobile/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = odooMobile/AppDelegate.m; sourceTree = "<group>"; };
+		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = odooMobile/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = odooMobile/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = odooMobile/main.m; sourceTree = "<group>"; };
+		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		34F4E14EB80E6E896152722F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		451782961CAD0FF200E47668 /* AFXMLRPCSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLRPCSessionManager.h; sourceTree = "<group>"; };
+		451782971CAD0FF200E47668 /* AFXMLRPCSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRPCSessionManager.m; sourceTree = "<group>"; };
+		451782991CAD0FF200E47668 /* HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUD.h; sourceTree = "<group>"; };
+		4517829A1CAD0FF200E47668 /* HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUD.m; sourceTree = "<group>"; };
+		4556691C1CB90AF700C93E2A /* BaseLoginAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLoginAction.h; sourceTree = "<group>"; };
+		4556691D1CB90AF700C93E2A /* BaseLoginAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseLoginAction.m; sourceTree = "<group>"; };
+		455669201CB90E7000C93E2A /* OdooNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OdooNetwork.h; sourceTree = "<group>"; };
+		455669211CB90E7000C93E2A /* OdooNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OdooNetwork.m; sourceTree = "<group>"; };
+		455669231CB90E9E00C93E2A /* NetworkResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkResponse.h; sourceTree = "<group>"; };
+		455669241CB90E9E00C93E2A /* NetworkResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkResponse.m; sourceTree = "<group>"; };
+		4556692A1CB915FF00C93E2A /* OdooNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OdooNotification.h; sourceTree = "<group>"; };
+		4556692B1CB915FF00C93E2A /* OdooNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OdooNotification.m; sourceTree = "<group>"; };
+		4556692C1CB915FF00C93E2A /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
+		4556692D1CB915FF00C93E2A /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Preferences.m; sourceTree = "<group>"; };
+		455669301CB9164800C93E2A /* UserNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserNetwork.h; sourceTree = "<group>"; };
+		455669311CB9164800C93E2A /* UserNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserNetwork.m; sourceTree = "<group>"; };
+		455669331CB91DE500C93E2A /* RCTNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTNotification.h; sourceTree = "<group>"; };
+		455669341CB91DE500C93E2A /* RCTNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTNotification.m; sourceTree = "<group>"; };
+		455669361CB9380A00C93E2A /* MenuListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuListAction.h; sourceTree = "<group>"; };
+		455669371CB9380A00C93E2A /* MenuListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuListAction.m; sourceTree = "<group>"; };
+		455669391CB9F45900C93E2A /* TranslationNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationNetwork.h; sourceTree = "<group>"; };
+		4556693A1CB9F45900C93E2A /* TranslationNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslationNetwork.m; sourceTree = "<group>"; };
+		4556693C1CB9FA9D00C93E2A /* MenuNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuNetwork.h; sourceTree = "<group>"; };
+		4556693D1CB9FA9D00C93E2A /* MenuNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuNetwork.m; sourceTree = "<group>"; };
+		4556693F1CBA10B500C93E2A /* UIViewController+CXBaseAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CXBaseAction.h"; sourceTree = "<group>"; };
+		455669401CBA10B500C93E2A /* UIViewController+CXBaseAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CXBaseAction.m"; sourceTree = "<group>"; };
+		4556694C1CBA632300C93E2A /* WindowAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowAction.h; sourceTree = "<group>"; };
+		4556694D1CBA632300C93E2A /* WindowAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowAction.m; sourceTree = "<group>"; };
+		455669591CBA643100C93E2A /* WindowNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowNetwork.h; sourceTree = "<group>"; };
+		4556695A1CBA643100C93E2A /* WindowNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowNetwork.m; sourceTree = "<group>"; };
+		4556695D1CBB348100C93E2A /* AFJSONRPCClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJSONRPCClient.h; sourceTree = "<group>"; };
+		4556695E1CBB348100C93E2A /* AFJSONRPCClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJSONRPCClient.m; sourceTree = "<group>"; };
+		455669611CBBB76E00C93E2A /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
+		455669621CBBB76E00C93E2A /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
+		455669641CBBB8B900C93E2A /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		457FFAC11CBE11AD006C8C75 /* UIViewController+CustomUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CustomUI.h"; sourceTree = "<group>"; };
+		457FFAC21CBE11AD006C8C75 /* UIViewController+CustomUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CustomUI.m"; sourceTree = "<group>"; };
+		457FFB121CC4C436006C8C75 /* BaseWindowStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseWindowStyle.h; sourceTree = "<group>"; };
+		457FFB131CC4C436006C8C75 /* BaseWindowStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseWindowStyle.m; sourceTree = "<group>"; };
+		457FFB151CC5C1A6006C8C75 /* UIWindowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIWindowViewController.h; sourceTree = "<group>"; };
+		457FFB161CC5C1A6006C8C75 /* UIWindowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIWindowViewController.m; sourceTree = "<group>"; };
+		45E11F641CB3A81C0075F6C5 /* PreferencesDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesDefine.h; sourceTree = "<group>"; };
+		45E11F701CB3BF0F0075F6C5 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		45E11F711CB3BF0F0075F6C5 /* JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSON.m; sourceTree = "<group>"; };
+		45E120E11CB62BFA0075F6C5 /* RCTPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTPreferences.h; sourceTree = "<group>"; };
+		45E120E21CB62BFA0075F6C5 /* RCTPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTPreferences.m; sourceTree = "<group>"; };
+		45E120EA1CB661C80075F6C5 /* SilentLoginAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SilentLoginAction.h; sourceTree = "<group>"; };
+		45E120EB1CB661C80075F6C5 /* SilentLoginAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SilentLoginAction.m; sourceTree = "<group>"; };
+		45F7598E1CC8CA7600989B4B /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		656D26B0FA2743A143142BC2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
+		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		A00268141CAFF09000F9AF86 /* MainAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainAction.h; sourceTree = "<group>"; };
+		A00268151CAFF09000F9AF86 /* MainAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainAction.m; sourceTree = "<group>"; };
+		A00268211CAFF14B00F9AF86 /* LoginAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginAction.h; sourceTree = "<group>"; };
+		A00268221CAFF14B00F9AF86 /* LoginAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginAction.m; sourceTree = "<group>"; };
+		A01E554C1CB21D9500045EE5 /* RCTHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTHUD.h; sourceTree = "<group>"; };
+		A01E554D1CB21D9500045EE5 /* RCTHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTHUD.m; sourceTree = "<group>"; };
+		A0D0EB211CAF7024006037FD /* CXBaseAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXBaseAction.h; sourceTree = "<group>"; };
+		A0D0EB221CAF7024006037FD /* CXBaseAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXBaseAction.m; sourceTree = "<group>"; };
+		B0F9C06E9592CE8ED6F68FA5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		452E11011C773635007BAC51 /* Frameworks */ = {
+		00E356EB1AD99517003FC87E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F23DD2E691E9E6BF06D5058 /* libPods.a in Frameworks */,
-				73500C33DA70155C3C565ADB /* libPods-odooMobile.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F8C1A680F5B00A75B9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				146834051AC3E58100842450 /* libReact.a in Frameworks */,
+				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
+				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
+				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
+				133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */,
+				00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */,
+				139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */,
+				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
+				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
+				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
+				47B5E1AAEED353A798B939A4 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		452E10FB1C773635007BAC51 = {
+		00C302A81ABCB8CE00DB3ED1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				452E11061C773635007BAC51 /* odooMobile */,
-				452E11051C773635007BAC51 /* Products */,
-				C09FAE386A1E7170357492D7 /* Pods */,
-				FF62729255A0C83E2FF81AC9 /* Frameworks */,
-			);
-			sourceTree = "<group>";
-		};
-		452E11051C773635007BAC51 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				452E11041C773635007BAC51 /* odooMobile.app */,
+				00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		452E11061C773635007BAC51 /* odooMobile */ = {
+		00C302B61ABCB90400DB3ED1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				452E114B1C775EC0007BAC51 /* Model */,
-				452E110A1C773635007BAC51 /* AppDelegate.h */,
-				452E110B1C773635007BAC51 /* AppDelegate.m */,
-				452E110D1C773635007BAC51 /* ViewController.h */,
-				452E110E1C773635007BAC51 /* ViewController.m */,
-				452E11101C773635007BAC51 /* Main.storyboard */,
-				452E11131C773635007BAC51 /* Assets.xcassets */,
-				452E11151C773635007BAC51 /* LaunchScreen.storyboard */,
-				452E11181C773635007BAC51 /* Info.plist */,
-				452E11071C773635007BAC51 /* Supporting Files */,
+				00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */,
 			);
-			path = odooMobile;
+			name = Products;
 			sourceTree = "<group>";
 		};
-		452E11071C773635007BAC51 /* Supporting Files */ = {
+		00C302BC1ABCB91800DB3ED1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				452E11081C773635007BAC51 /* main.m */,
+				00C302C01ABCB91800DB3ED1 /* libRCTImage.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		00C302D41ABCB9D200DB3ED1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		00C302E01ABCB9EE00DB3ED1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		00E356EF1AD99517003FC87E /* odooMobileTests */ = {
+			isa = PBXGroup;
+			children = (
+				00E356F21AD99517003FC87E /* odooMobileTests.m */,
+				00E356F01AD99517003FC87E /* Supporting Files */,
+			);
+			path = odooMobileTests;
+			sourceTree = "<group>";
+		};
+		00E356F01AD99517003FC87E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				00E356F11AD99517003FC87E /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		452E114B1C775EC0007BAC51 /* Model */ = {
+		07503F64A0BB6F63184D0078 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		C09FAE386A1E7170357492D7 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				6B92E78A9AB79AEF5A32D80A /* Pods-odooMac.debug.xcconfig */,
-				8208258B6322A672D6831D82 /* Pods-odooMac.release.xcconfig */,
-				721C1A471BE9A609557E9FC7 /* Pods-odooMobile.debug.xcconfig */,
-				F815C433C75A191A4A823725 /* Pods-odooMobile.release.xcconfig */,
+				B0F9C06E9592CE8ED6F68FA5 /* Pods.debug.xcconfig */,
+				34F4E14EB80E6E896152722F /* Pods.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		FF62729255A0C83E2FF81AC9 /* Frameworks */ = {
+		139105B71AF99BAD00B5F7CC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2350D602659312A8E604C3A9 /* libPods.a */,
-				FD40791FA327CB00F377D133 /* libPods-odooMac.a */,
-				94FAA0957A469E2DC78D82F5 /* libPods-odooMobile.a */,
+				139105C11AF99BAD00B5F7CC /* libRCTSettings.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		139FDEE71B06529A00C62182 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				139FDEF41B06529B00C62182 /* libRCTWebSocket.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		13B07FAE1A68108700A75B9A /* odooMobile */ = {
+			isa = PBXGroup;
+			children = (
+				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
+				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
+				13B07FB01A68108700A75B9A /* AppDelegate.m */,
+				13B07FB51A68108700A75B9A /* Images.xcassets */,
+				13B07FB61A68108700A75B9A /* Info.plist */,
+				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
+				45F7598E1CC8CA7600989B4B /* Storyboard.storyboard */,
+				13B07FB71A68108700A75B9A /* main.m */,
+				457FFAB61CBE11A2006C8C75 /* UI */,
+				455669291CB915DE00C93E2A /* Model */,
+				4556691F1CB90E5600C93E2A /* Network */,
+				A0D0EB201CAF701B006037FD /* Actions */,
+				451782911CACFDB900E47668 /* Modules */,
+				4517828D1CACFDB500E47668 /* Frameworks */,
+			);
+			name = odooMobile;
+			sourceTree = "<group>";
+		};
+		146834001AC3E56700842450 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				146834041AC3E56700842450 /* libReact.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4517828D1CACFDB500E47668 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				455669601CBBB76E00C93E2A /* GDataXML */,
+				4556695C1CBB348100C93E2A /* AFJSONRPCClient */,
+				45E11F6F1CB3BF0F0075F6C5 /* JSON */,
+				45E11F631CB3A81C0075F6C5 /* PreferencesDefine */,
+				451782951CAD0FF200E47668 /* AFXMLRPC */,
+				451782981CAD0FF200E47668 /* HUD */,
+			);
+			name = Frameworks;
+			path = odooMobile/Frameworks;
+			sourceTree = "<group>";
+		};
+		451782911CACFDB900E47668 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				A01E554C1CB21D9500045EE5 /* RCTHUD.h */,
+				A01E554D1CB21D9500045EE5 /* RCTHUD.m */,
+				45E120E11CB62BFA0075F6C5 /* RCTPreferences.h */,
+				45E120E21CB62BFA0075F6C5 /* RCTPreferences.m */,
+				455669331CB91DE500C93E2A /* RCTNotification.h */,
+				455669341CB91DE500C93E2A /* RCTNotification.m */,
+			);
+			name = Modules;
+			path = odooMobile/Modules;
+			sourceTree = "<group>";
+		};
+		451782951CAD0FF200E47668 /* AFXMLRPC */ = {
+			isa = PBXGroup;
+			children = (
+				451782961CAD0FF200E47668 /* AFXMLRPCSessionManager.h */,
+				451782971CAD0FF200E47668 /* AFXMLRPCSessionManager.m */,
+			);
+			path = AFXMLRPC;
+			sourceTree = "<group>";
+		};
+		451782981CAD0FF200E47668 /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				451782991CAD0FF200E47668 /* HUD.h */,
+				4517829A1CAD0FF200E47668 /* HUD.m */,
+			);
+			path = HUD;
+			sourceTree = "<group>";
+		};
+		4556691F1CB90E5600C93E2A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				455669201CB90E7000C93E2A /* OdooNetwork.h */,
+				455669211CB90E7000C93E2A /* OdooNetwork.m */,
+				455669231CB90E9E00C93E2A /* NetworkResponse.h */,
+				455669241CB90E9E00C93E2A /* NetworkResponse.m */,
+				455669301CB9164800C93E2A /* UserNetwork.h */,
+				455669311CB9164800C93E2A /* UserNetwork.m */,
+				455669391CB9F45900C93E2A /* TranslationNetwork.h */,
+				4556693A1CB9F45900C93E2A /* TranslationNetwork.m */,
+				4556693C1CB9FA9D00C93E2A /* MenuNetwork.h */,
+				4556693D1CB9FA9D00C93E2A /* MenuNetwork.m */,
+				455669591CBA643100C93E2A /* WindowNetwork.h */,
+				4556695A1CBA643100C93E2A /* WindowNetwork.m */,
+			);
+			name = Network;
+			path = odooMobile/Network;
+			sourceTree = "<group>";
+		};
+		455669291CB915DE00C93E2A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4556692A1CB915FF00C93E2A /* OdooNotification.h */,
+				4556692B1CB915FF00C93E2A /* OdooNotification.m */,
+				4556692C1CB915FF00C93E2A /* Preferences.h */,
+				4556692D1CB915FF00C93E2A /* Preferences.m */,
+			);
+			name = Model;
+			path = odooMobile/Model;
+			sourceTree = "<group>";
+		};
+		4556695C1CBB348100C93E2A /* AFJSONRPCClient */ = {
+			isa = PBXGroup;
+			children = (
+				4556695D1CBB348100C93E2A /* AFJSONRPCClient.h */,
+				4556695E1CBB348100C93E2A /* AFJSONRPCClient.m */,
+			);
+			path = AFJSONRPCClient;
+			sourceTree = "<group>";
+		};
+		455669601CBBB76E00C93E2A /* GDataXML */ = {
+			isa = PBXGroup;
+			children = (
+				455669611CBBB76E00C93E2A /* GDataXMLNode.h */,
+				455669621CBBB76E00C93E2A /* GDataXMLNode.m */,
+			);
+			path = GDataXML;
+			sourceTree = "<group>";
+		};
+		457FFAB61CBE11A2006C8C75 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				457FFB041CC4C27B006C8C75 /* Window */,
+				457FFAC11CBE11AD006C8C75 /* UIViewController+CustomUI.h */,
+				457FFAC21CBE11AD006C8C75 /* UIViewController+CustomUI.m */,
+				457FFB151CC5C1A6006C8C75 /* UIWindowViewController.h */,
+				457FFB161CC5C1A6006C8C75 /* UIWindowViewController.m */,
+			);
+			name = UI;
+			path = odooMobile/UI;
+			sourceTree = "<group>";
+		};
+		457FFB041CC4C27B006C8C75 /* Window */ = {
+			isa = PBXGroup;
+			children = (
+				457FFB121CC4C436006C8C75 /* BaseWindowStyle.h */,
+				457FFB131CC4C436006C8C75 /* BaseWindowStyle.m */,
+			);
+			path = Window;
+			sourceTree = "<group>";
+		};
+		45E11F631CB3A81C0075F6C5 /* PreferencesDefine */ = {
+			isa = PBXGroup;
+			children = (
+				45E11F641CB3A81C0075F6C5 /* PreferencesDefine.h */,
+			);
+			path = PreferencesDefine;
+			sourceTree = "<group>";
+		};
+		45E11F6F1CB3BF0F0075F6C5 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				45E11F701CB3BF0F0075F6C5 /* JSON.h */,
+				45E11F711CB3BF0F0075F6C5 /* JSON.m */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		78C398B11ACF4ADC00677621 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				78C398B91ACF4ADC00677621 /* libRCTLinking.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				146833FF1AC3E56700842450 /* React.xcodeproj */,
+				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
+				00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */,
+				00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */,
+				78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */,
+				00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */,
+				139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */,
+				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
+				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
+				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		832341B11AAA6A8300B99B32 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				832341B51AAA6A8300B99B32 /* libRCTText.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		83CBB9F61A601CBA00E9B192 = {
+			isa = PBXGroup;
+			children = (
+				13B07FAE1A68108700A75B9A /* odooMobile */,
+				832341AE1AAA6A7D00B99B32 /* Libraries */,
+				00E356EF1AD99517003FC87E /* odooMobileTests */,
+				83CBBA001A601CBA00E9B192 /* Products */,
+				07503F64A0BB6F63184D0078 /* Pods */,
+				A4B7D53E0015217D10664F73 /* Frameworks */,
+			);
+			indentWidth = 4;
+			sourceTree = "<group>";
+			tabWidth = 4;
+		};
+		83CBBA001A601CBA00E9B192 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				13B07F961A680F5B00A75B9A /* odooMobile.app */,
+				00E356EE1AD99517003FC87E /* odooMobileTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A0D0EB201CAF701B006037FD /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				A0D0EB211CAF7024006037FD /* CXBaseAction.h */,
+				A0D0EB221CAF7024006037FD /* CXBaseAction.m */,
+				4556693F1CBA10B500C93E2A /* UIViewController+CXBaseAction.h */,
+				455669401CBA10B500C93E2A /* UIViewController+CXBaseAction.m */,
+				A00268141CAFF09000F9AF86 /* MainAction.h */,
+				A00268151CAFF09000F9AF86 /* MainAction.m */,
+				4556691C1CB90AF700C93E2A /* BaseLoginAction.h */,
+				4556691D1CB90AF700C93E2A /* BaseLoginAction.m */,
+				A00268211CAFF14B00F9AF86 /* LoginAction.h */,
+				A00268221CAFF14B00F9AF86 /* LoginAction.m */,
+				45E120EA1CB661C80075F6C5 /* SilentLoginAction.h */,
+				45E120EB1CB661C80075F6C5 /* SilentLoginAction.m */,
+				455669361CB9380A00C93E2A /* MenuListAction.h */,
+				455669371CB9380A00C93E2A /* MenuListAction.m */,
+				4556694C1CBA632300C93E2A /* WindowAction.h */,
+				4556694D1CBA632300C93E2A /* WindowAction.m */,
+			);
+			name = Actions;
+			path = odooMobile/Actions;
+			sourceTree = "<group>";
+		};
+		A4B7D53E0015217D10664F73 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				455669641CBBB8B900C93E2A /* libxml2.tbd */,
+				656D26B0FA2743A143142BC2 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -124,41 +584,61 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		452E11031C773635007BAC51 /* odooMobile */ = {
+		00E356ED1AD99517003FC87E /* odooMobileTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 452E111B1C773635007BAC51 /* Build configuration list for PBXNativeTarget "odooMobile" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "odooMobileTests" */;
 			buildPhases = (
-				9B9B1BAC23DE3589CCE73733 /* Check Pods Manifest.lock */,
-				452E11001C773635007BAC51 /* Sources */,
-				452E11011C773635007BAC51 /* Frameworks */,
-				452E11021C773635007BAC51 /* Resources */,
-				1B8B491C51E64B372E847AF8 /* Embed Pods Frameworks */,
-				10A5E7A981D974DB9BCE363C /* Copy Pods Resources */,
+				00E356EA1AD99517003FC87E /* Sources */,
+				00E356EB1AD99517003FC87E /* Frameworks */,
+				00E356EC1AD99517003FC87E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				00E356F51AD99517003FC87E /* PBXTargetDependency */,
+			);
+			name = odooMobileTests;
+			productName = odooMobileTests;
+			productReference = 00E356EE1AD99517003FC87E /* odooMobileTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		13B07F861A680F5B00A75B9A /* odooMobile */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "odooMobile" */;
+			buildPhases = (
+				3E62C15CD17B41FEA2191BA2 /* Check Pods Manifest.lock */,
+				13B07F871A680F5B00A75B9A /* Sources */,
+				13B07F8C1A680F5B00A75B9A /* Frameworks */,
+				13B07F8E1A680F5B00A75B9A /* Resources */,
+				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				4C5F9501355E9F46A2E0DEDB /* Embed Pods Frameworks */,
+				E4788247C2CADD586DCBC81B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = odooMobile;
-			productName = odooMobile;
-			productReference = 452E11041C773635007BAC51 /* odooMobile.app */;
+			productName = "Hello World";
+			productReference = 13B07F961A680F5B00A75B9A /* odooMobile.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		452E10FC1C773635007BAC51 /* Project object */ = {
+		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0720;
-				ORGANIZATIONNAME = LeiQiao;
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
-					452E11031C773635007BAC51 = {
-						CreatedOnToolsVersion = 7.2.1;
+					00E356ED1AD99517003FC87E = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 				};
 			};
-			buildConfigurationList = 452E10FF1C773635007BAC51 /* Build configuration list for PBXProject "odooMobile" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "odooMobile" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -166,61 +646,168 @@
 				en,
 				Base,
 			);
-			mainGroup = 452E10FB1C773635007BAC51;
-			productRefGroup = 452E11051C773635007BAC51 /* Products */;
+			mainGroup = 83CBB9F61A601CBA00E9B192;
+			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
+					ProjectRef = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
+				},
+				{
+					ProductGroup = 00C302B61ABCB90400DB3ED1 /* Products */;
+					ProjectRef = 00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */;
+				},
+				{
+					ProductGroup = 00C302BC1ABCB91800DB3ED1 /* Products */;
+					ProjectRef = 00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */;
+				},
+				{
+					ProductGroup = 78C398B11ACF4ADC00677621 /* Products */;
+					ProjectRef = 78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */;
+				},
+				{
+					ProductGroup = 00C302D41ABCB9D200DB3ED1 /* Products */;
+					ProjectRef = 00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */;
+				},
+				{
+					ProductGroup = 139105B71AF99BAD00B5F7CC /* Products */;
+					ProjectRef = 139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */;
+				},
+				{
+					ProductGroup = 832341B11AAA6A8300B99B32 /* Products */;
+					ProjectRef = 832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */;
+				},
+				{
+					ProductGroup = 00C302E01ABCB9EE00DB3ED1 /* Products */;
+					ProjectRef = 00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */;
+				},
+				{
+					ProductGroup = 139FDEE71B06529A00C62182 /* Products */;
+					ProjectRef = 139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */;
+				},
+				{
+					ProductGroup = 146834001AC3E56700842450 /* Products */;
+					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
-				452E11031C773635007BAC51 /* odooMobile */,
+				13B07F861A680F5B00A75B9A /* odooMobile */,
+				00E356ED1AD99517003FC87E /* odooMobileTests */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTActionSheet.a;
+			remoteRef = 00C302AB1ABCB8CE00DB3ED1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTGeolocation.a;
+			remoteRef = 00C302B91ABCB90400DB3ED1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		00C302C01ABCB91800DB3ED1 /* libRCTImage.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTImage.a;
+			remoteRef = 00C302BF1ABCB91800DB3ED1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTNetwork.a;
+			remoteRef = 00C302DB1ABCB9D200DB3ED1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTVibration.a;
+			remoteRef = 00C302E31ABCB9EE00DB3ED1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		139105C11AF99BAD00B5F7CC /* libRCTSettings.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTSettings.a;
+			remoteRef = 139105C01AF99BAD00B5F7CC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		139FDEF41B06529B00C62182 /* libRCTWebSocket.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTWebSocket.a;
+			remoteRef = 139FDEF31B06529B00C62182 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		146834041AC3E56700842450 /* libReact.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libReact.a;
+			remoteRef = 146834031AC3E56700842450 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		78C398B91ACF4ADC00677621 /* libRCTLinking.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTLinking.a;
+			remoteRef = 78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		832341B51AAA6A8300B99B32 /* libRCTText.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTText.a;
+			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
-		452E11021C773635007BAC51 /* Resources */ = {
+		00E356EC1AD99517003FC87E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				452E11171C773635007BAC51 /* LaunchScreen.storyboard in Resources */,
-				452E11141C773635007BAC51 /* Assets.xcassets in Resources */,
-				452E11121C773635007BAC51 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F8E1A680F5B00A75B9A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				45F7598F1CC8CA7600989B4B /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		10A5E7A981D974DB9BCE363C /* Copy Pods Resources */ = {
+		00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "Bundle React Native code and images";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/packager/react-native-xcode.sh";
 		};
-		1B8B491C51E64B372E847AF8 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-odooMobile/Pods-odooMobile-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9B9B1BAC23DE3589CCE73733 /* Check Pods Manifest.lock */ = {
+		3E62C15CD17B41FEA2191BA2 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -235,42 +822,187 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		4C5F9501355E9F46A2E0DEDB /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E4788247C2CADD586DCBC81B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		452E11001C773635007BAC51 /* Sources */ = {
+		00E356EA1AD99517003FC87E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				452E110F1C773635007BAC51 /* ViewController.m in Sources */,
-				452E110C1C773635007BAC51 /* AppDelegate.m in Sources */,
-				452E11091C773635007BAC51 /* main.m in Sources */,
+				00E356F31AD99517003FC87E /* odooMobileTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F871A680F5B00A75B9A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4556693B1CB9F45900C93E2A /* TranslationNetwork.m in Sources */,
+				A0D0EB231CAF7024006037FD /* CXBaseAction.m in Sources */,
+				4556694E1CBA632300C93E2A /* WindowAction.m in Sources */,
+				4556695F1CBB348100C93E2A /* AFJSONRPCClient.m in Sources */,
+				45E120E31CB62BFA0075F6C5 /* RCTPreferences.m in Sources */,
+				457FFAC31CBE11AD006C8C75 /* UIViewController+CustomUI.m in Sources */,
+				4517829C1CAD0FF200E47668 /* HUD.m in Sources */,
+				455669221CB90E7000C93E2A /* OdooNetwork.m in Sources */,
+				45E120EC1CB661C80075F6C5 /* SilentLoginAction.m in Sources */,
+				4556692E1CB915FF00C93E2A /* OdooNotification.m in Sources */,
+				4556692F1CB915FF00C93E2A /* Preferences.m in Sources */,
+				457FFB171CC5C1A6006C8C75 /* UIWindowViewController.m in Sources */,
+				A00268161CAFF09000F9AF86 /* MainAction.m in Sources */,
+				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				4556691E1CB90AF700C93E2A /* BaseLoginAction.m in Sources */,
+				4556695B1CBA643100C93E2A /* WindowNetwork.m in Sources */,
+				A00268231CAFF14B00F9AF86 /* LoginAction.m in Sources */,
+				455669251CB90E9E00C93E2A /* NetworkResponse.m in Sources */,
+				455669351CB91DE500C93E2A /* RCTNotification.m in Sources */,
+				455669631CBBB76E00C93E2A /* GDataXMLNode.m in Sources */,
+				A01E554E1CB21D9500045EE5 /* RCTHUD.m in Sources */,
+				4556693E1CB9FA9D00C93E2A /* MenuNetwork.m in Sources */,
+				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				455669381CB9380A00C93E2A /* MenuListAction.m in Sources */,
+				455669411CBA10B500C93E2A /* UIViewController+CXBaseAction.m in Sources */,
+				457FFB141CC4C436006C8C75 /* BaseWindowStyle.m in Sources */,
+				45E11F721CB3BF0F0075F6C5 /* JSON.m in Sources */,
+				455669321CB9164800C93E2A /* UserNetwork.m in Sources */,
+				4517829B1CAD0FF200E47668 /* AFXMLRPCSessionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		452E11101C773635007BAC51 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				452E11111C773635007BAC51 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
+/* Begin PBXTargetDependency section */
+		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 13B07F861A680F5B00A75B9A /* odooMobile */;
+			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
-		452E11151C773635007BAC51 /* LaunchScreen.storyboard */ = {
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		13B07FB11A68108700A75B9A /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				452E11161C773635007BAC51 /* Base */,
+				13B07FB21A68108700A75B9A /* Base */,
 			);
-			name = LaunchScreen.storyboard;
+			name = LaunchScreen.xib;
+			path = odooMobile;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		452E11191C773635007BAC51 /* Debug */ = {
+		00E356F61AD99517003FC87E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = odooMobileTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/odooMobile.app/odooMobile";
+			};
+			name = Debug;
+		};
+		00E356F71AD99517003FC87E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = odooMobileTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/odooMobile.app/odooMobile";
+			};
+			name = Release;
+		};
+		13B07F941A680F5B00A75B9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0F9C06E9592CE8ED6F68FA5 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEAD_CODE_STRIPPING = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/include/libxml2,
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../node_modules/react-native/React/**",
+				);
+				INFOPLIST_FILE = odooMobile/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-lxml2",
+				);
+				PRODUCT_NAME = odooMobile;
+			};
+			name = Debug;
+		};
+		13B07F951A680F5B00A75B9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34F4E14EB80E6E896152722F /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/include/libxml2,
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../node_modules/react-native/React/**",
+				);
+				INFOPLIST_FILE = odooMobile/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-lxml2",
+				);
+				PRODUCT_NAME = odooMobile;
+			};
+			name = Release;
+		};
+		83CBBA201A601CBA00E9B192 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -289,32 +1021,34 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../node_modules/react-native/React/**",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		452E111A1C773635007BAC51 /* Release */ = {
+		83CBBA211A601CBA00E9B192 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -332,72 +1066,59 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../node_modules/react-native/React/**",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		452E111C1C773635007BAC51 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 721C1A471BE9A609557E9FC7 /* Pods-odooMobile.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = odooMobile/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.LoveC.odooMobile;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		452E111D1C773635007BAC51 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F815C433C75A191A4A823725 /* Pods-odooMobile.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = odooMobile/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.LoveC.odooMobile;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		452E10FF1C773635007BAC51 /* Build configuration list for PBXProject "odooMobile" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "odooMobileTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				452E11191C773635007BAC51 /* Debug */,
-				452E111A1C773635007BAC51 /* Release */,
+				00E356F61AD99517003FC87E /* Debug */,
+				00E356F71AD99517003FC87E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		452E111B1C773635007BAC51 /* Build configuration list for PBXNativeTarget "odooMobile" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "odooMobile" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				452E111C1C773635007BAC51 /* Debug */,
-				452E111D1C773635007BAC51 /* Release */,
+				13B07F941A680F5B00A75B9A /* Debug */,
+				13B07F951A680F5B00A75B9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "odooMobile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83CBBA201A601CBA00E9B192 /* Debug */,
+				83CBBA211A601CBA00E9B192 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 452E10FC1C773635007BAC51 /* Project object */;
+	rootObject = 83CBB9F71A601CBA00E9B192 /* Project object */;
 }

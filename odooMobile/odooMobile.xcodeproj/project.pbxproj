@@ -1,0 +1,687 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		45F7599E1CC8CC1300989B4B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F7599D1CC8CC1300989B4B /* main.m */; };
+		45F759A11CC8CC1300989B4B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F759A01CC8CC1300989B4B /* AppDelegate.m */; };
+		45F759A71CC8CC1300989B4B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45F759A51CC8CC1300989B4B /* Main.storyboard */; };
+		45F759A91CC8CC1300989B4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45F759A81CC8CC1300989B4B /* Assets.xcassets */; };
+		45F759AC1CC8CC1300989B4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45F759AA1CC8CC1300989B4B /* LaunchScreen.storyboard */; };
+		45F759CB1CC9ECAC00989B4B /* AFJSONRPCClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F759B91CC9ECAC00989B4B /* AFJSONRPCClient.m */; };
+		45F759CC1CC9ECAC00989B4B /* AFXMLRPCSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F759BC1CC9ECAC00989B4B /* AFXMLRPCSessionManager.m */; };
+		45F759CD1CC9ECAC00989B4B /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F759BF1CC9ECAC00989B4B /* GDataXMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		45F759CE1CC9ECAC00989B4B /* HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F759C21CC9ECAC00989B4B /* HUD.m */; };
+		45F759CF1CC9ECAC00989B4B /* JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F759C51CC9ECAC00989B4B /* JSON.m */; };
+		45F759D01CC9ECAC00989B4B /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F759CA1CC9ECAC00989B4B /* Preferences.m */; };
+		45F759D41CC9ECCF00989B4B /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F759D31CC9ECCF00989B4B /* MainViewController.m */; };
+		45F759D71CC9EE2200989B4B /* GlobalModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F759D61CC9EE2200989B4B /* GlobalModels.m */; };
+		45F759DF1CC9EF0500989B4B /* ModelObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F759DB1CC9EF0500989B4B /* ModelObserver.m */; };
+		45F759E01CC9EF0500989B4B /* BaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F759DE1CC9EF0500989B4B /* BaseViewModel.m */; };
+		45F759E31CC9EF1400989B4B /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F759E21CC9EF1400989B4B /* UserModel.m */; };
+		45F759ED1CC9F23500989B4B /* CXSignal.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F759E61CC9F23500989B4B /* CXSignal.m */; };
+		45F759EE1CC9F23500989B4B /* CXSignalFliter.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F759E81CC9F23500989B4B /* CXSignalFliter.m */; };
+		45F759EF1CC9F23500989B4B /* CXSignalKVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F759EA1CC9F23500989B4B /* CXSignalKVO.m */; };
+		45F759F01CC9F23500989B4B /* CXSignalTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F759EC1CC9F23500989B4B /* CXSignalTransformer.m */; };
+		45F75A081CCA02CD00989B4B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F75A071CCA02CD00989B4B /* LoginViewController.m */; };
+		45F75A0B1CCA181D00989B4B /* ServerSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F75A0A1CCA181D00989B4B /* ServerSettingViewController.m */; };
+		9B059D95349B26E6D10ABF7D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B4C566102D81D14ABC3748 /* libPods.a */; };
+		A0677CC61CCA6F67002355C2 /* OdooRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CC51CCA6F67002355C2 /* OdooRequestModel.m */; };
+		A0677CD31CCC6012002355C2 /* CXPickerTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CD21CCC6012002355C2 /* CXPickerTextField.m */; };
+		A0677CD61CCC9982002355C2 /* RegistTrailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CD51CCC9982002355C2 /* RegistTrailViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		223DE4795A318B85C0D7C186 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		45F759991CC8CC1300989B4B /* odooMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = odooMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		45F7599D1CC8CC1300989B4B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		45F7599F1CC8CC1300989B4B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		45F759A01CC8CC1300989B4B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		45F759A61CC8CC1300989B4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		45F759A81CC8CC1300989B4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		45F759AB1CC8CC1300989B4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		45F759AD1CC8CC1300989B4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45F759B81CC9ECAC00989B4B /* AFJSONRPCClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJSONRPCClient.h; sourceTree = "<group>"; };
+		45F759B91CC9ECAC00989B4B /* AFJSONRPCClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJSONRPCClient.m; sourceTree = "<group>"; };
+		45F759BB1CC9ECAC00989B4B /* AFXMLRPCSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLRPCSessionManager.h; sourceTree = "<group>"; };
+		45F759BC1CC9ECAC00989B4B /* AFXMLRPCSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRPCSessionManager.m; sourceTree = "<group>"; };
+		45F759BE1CC9ECAC00989B4B /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
+		45F759BF1CC9ECAC00989B4B /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
+		45F759C11CC9ECAC00989B4B /* HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUD.h; sourceTree = "<group>"; };
+		45F759C21CC9ECAC00989B4B /* HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUD.m; sourceTree = "<group>"; };
+		45F759C41CC9ECAC00989B4B /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		45F759C51CC9ECAC00989B4B /* JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSON.m; sourceTree = "<group>"; };
+		45F759C71CC9ECAC00989B4B /* PreferencesDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesDefine.h; sourceTree = "<group>"; };
+		45F759C91CC9ECAC00989B4B /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
+		45F759CA1CC9ECAC00989B4B /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Preferences.m; sourceTree = "<group>"; };
+		45F759D21CC9ECCF00989B4B /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		45F759D31CC9ECCF00989B4B /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		45F759D51CC9EE2200989B4B /* GlobalModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalModels.h; sourceTree = "<group>"; };
+		45F759D61CC9EE2200989B4B /* GlobalModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalModels.m; sourceTree = "<group>"; };
+		45F759D91CC9EF0500989B4B /* GlobalModelsDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalModelsDefine.h; sourceTree = "<group>"; };
+		45F759DA1CC9EF0500989B4B /* ModelObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelObserver.h; sourceTree = "<group>"; };
+		45F759DB1CC9EF0500989B4B /* ModelObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelObserver.m; sourceTree = "<group>"; };
+		45F759DD1CC9EF0500989B4B /* BaseViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewModel.h; sourceTree = "<group>"; };
+		45F759DE1CC9EF0500989B4B /* BaseViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewModel.m; sourceTree = "<group>"; };
+		45F759E11CC9EF1400989B4B /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		45F759E21CC9EF1400989B4B /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		45F759E51CC9F23500989B4B /* CXSignal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXSignal.h; sourceTree = "<group>"; };
+		45F759E61CC9F23500989B4B /* CXSignal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXSignal.m; sourceTree = "<group>"; };
+		45F759E71CC9F23500989B4B /* CXSignalFliter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXSignalFliter.h; sourceTree = "<group>"; };
+		45F759E81CC9F23500989B4B /* CXSignalFliter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXSignalFliter.m; sourceTree = "<group>"; };
+		45F759E91CC9F23500989B4B /* CXSignalKVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXSignalKVO.h; sourceTree = "<group>"; };
+		45F759EA1CC9F23500989B4B /* CXSignalKVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXSignalKVO.m; sourceTree = "<group>"; };
+		45F759EB1CC9F23500989B4B /* CXSignalTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXSignalTransformer.h; sourceTree = "<group>"; };
+		45F759EC1CC9F23500989B4B /* CXSignalTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXSignalTransformer.m; sourceTree = "<group>"; };
+		45F75A061CCA02CD00989B4B /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		45F75A071CCA02CD00989B4B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		45F75A091CCA181D00989B4B /* ServerSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerSettingViewController.h; sourceTree = "<group>"; };
+		45F75A0A1CCA181D00989B4B /* ServerSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerSettingViewController.m; sourceTree = "<group>"; };
+		660D2FBBDDE1103B239D0E27 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		88B4C566102D81D14ABC3748 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0677CC41CCA6F67002355C2 /* OdooRequestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OdooRequestModel.h; sourceTree = "<group>"; };
+		A0677CC51CCA6F67002355C2 /* OdooRequestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OdooRequestModel.m; sourceTree = "<group>"; };
+		A0677CD11CCC6012002355C2 /* CXPickerTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXPickerTextField.h; sourceTree = "<group>"; };
+		A0677CD21CCC6012002355C2 /* CXPickerTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXPickerTextField.m; sourceTree = "<group>"; };
+		A0677CD41CCC9982002355C2 /* RegistTrailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistTrailViewController.h; sourceTree = "<group>"; };
+		A0677CD51CCC9982002355C2 /* RegistTrailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistTrailViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		45F759961CC8CC1300989B4B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B059D95349B26E6D10ABF7D /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		45F759901CC8CC1300989B4B = {
+			isa = PBXGroup;
+			children = (
+				45F7599B1CC8CC1300989B4B /* odooMobile */,
+				45F7599A1CC8CC1300989B4B /* Products */,
+				FF2535E693B62607B8971E1F /* Pods */,
+				BB2EA92C8D94081A36F01E93 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		45F7599A1CC8CC1300989B4B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				45F759991CC8CC1300989B4B /* odooMobile.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		45F7599B1CC8CC1300989B4B /* odooMobile */ = {
+			isa = PBXGroup;
+			children = (
+				45F759C81CC9ECAC00989B4B /* Model */,
+				A0677CC71CCC5E62002355C2 /* View */,
+				45F759D11CC9ECCF00989B4B /* ViewController */,
+				45F759B61CC9ECAC00989B4B /* Frameworks */,
+				45F759A51CC8CC1300989B4B /* Main.storyboard */,
+				45F759A81CC8CC1300989B4B /* Assets.xcassets */,
+				45F759AA1CC8CC1300989B4B /* LaunchScreen.storyboard */,
+				45F759AD1CC8CC1300989B4B /* Info.plist */,
+				45F7599C1CC8CC1300989B4B /* Supporting Files */,
+			);
+			path = odooMobile;
+			sourceTree = "<group>";
+		};
+		45F7599C1CC8CC1300989B4B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				45F7599F1CC8CC1300989B4B /* AppDelegate.h */,
+				45F759A01CC8CC1300989B4B /* AppDelegate.m */,
+				45F7599D1CC8CC1300989B4B /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		45F759B61CC9ECAC00989B4B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				45F759D81CC9EF0500989B4B /* ModelDefine */,
+				45F759DC1CC9EF0500989B4B /* ViewModelDefine */,
+				45F759E41CC9F23500989B4B /* CXSignal */,
+				45F759B71CC9ECAC00989B4B /* AFJSONRPCClient */,
+				45F759BA1CC9ECAC00989B4B /* AFXMLRPC */,
+				45F759BD1CC9ECAC00989B4B /* GDataXML */,
+				45F759C01CC9ECAC00989B4B /* HUD */,
+				45F759C31CC9ECAC00989B4B /* JSON */,
+				45F759C61CC9ECAC00989B4B /* PreferencesDefine */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		45F759B71CC9ECAC00989B4B /* AFJSONRPCClient */ = {
+			isa = PBXGroup;
+			children = (
+				45F759B81CC9ECAC00989B4B /* AFJSONRPCClient.h */,
+				45F759B91CC9ECAC00989B4B /* AFJSONRPCClient.m */,
+			);
+			path = AFJSONRPCClient;
+			sourceTree = "<group>";
+		};
+		45F759BA1CC9ECAC00989B4B /* AFXMLRPC */ = {
+			isa = PBXGroup;
+			children = (
+				45F759BB1CC9ECAC00989B4B /* AFXMLRPCSessionManager.h */,
+				45F759BC1CC9ECAC00989B4B /* AFXMLRPCSessionManager.m */,
+			);
+			path = AFXMLRPC;
+			sourceTree = "<group>";
+		};
+		45F759BD1CC9ECAC00989B4B /* GDataXML */ = {
+			isa = PBXGroup;
+			children = (
+				45F759BE1CC9ECAC00989B4B /* GDataXMLNode.h */,
+				45F759BF1CC9ECAC00989B4B /* GDataXMLNode.m */,
+			);
+			path = GDataXML;
+			sourceTree = "<group>";
+		};
+		45F759C01CC9ECAC00989B4B /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				45F759C11CC9ECAC00989B4B /* HUD.h */,
+				45F759C21CC9ECAC00989B4B /* HUD.m */,
+			);
+			path = HUD;
+			sourceTree = "<group>";
+		};
+		45F759C31CC9ECAC00989B4B /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				45F759C41CC9ECAC00989B4B /* JSON.h */,
+				45F759C51CC9ECAC00989B4B /* JSON.m */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		45F759C61CC9ECAC00989B4B /* PreferencesDefine */ = {
+			isa = PBXGroup;
+			children = (
+				45F759C71CC9ECAC00989B4B /* PreferencesDefine.h */,
+			);
+			path = PreferencesDefine;
+			sourceTree = "<group>";
+		};
+		45F759C81CC9ECAC00989B4B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				45F759C91CC9ECAC00989B4B /* Preferences.h */,
+				45F759CA1CC9ECAC00989B4B /* Preferences.m */,
+				45F759D51CC9EE2200989B4B /* GlobalModels.h */,
+				45F759D61CC9EE2200989B4B /* GlobalModels.m */,
+				45F759E11CC9EF1400989B4B /* UserModel.h */,
+				45F759E21CC9EF1400989B4B /* UserModel.m */,
+				A0677CC41CCA6F67002355C2 /* OdooRequestModel.h */,
+				A0677CC51CCA6F67002355C2 /* OdooRequestModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		45F759D11CC9ECCF00989B4B /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				45F75A051CCA02B500989B4B /* Login */,
+				45F759D21CC9ECCF00989B4B /* MainViewController.h */,
+				45F759D31CC9ECCF00989B4B /* MainViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		45F759D81CC9EF0500989B4B /* ModelDefine */ = {
+			isa = PBXGroup;
+			children = (
+				45F759D91CC9EF0500989B4B /* GlobalModelsDefine.h */,
+				45F759DA1CC9EF0500989B4B /* ModelObserver.h */,
+				45F759DB1CC9EF0500989B4B /* ModelObserver.m */,
+			);
+			path = ModelDefine;
+			sourceTree = "<group>";
+		};
+		45F759DC1CC9EF0500989B4B /* ViewModelDefine */ = {
+			isa = PBXGroup;
+			children = (
+				45F759DD1CC9EF0500989B4B /* BaseViewModel.h */,
+				45F759DE1CC9EF0500989B4B /* BaseViewModel.m */,
+			);
+			path = ViewModelDefine;
+			sourceTree = "<group>";
+		};
+		45F759E41CC9F23500989B4B /* CXSignal */ = {
+			isa = PBXGroup;
+			children = (
+				45F759E51CC9F23500989B4B /* CXSignal.h */,
+				45F759E61CC9F23500989B4B /* CXSignal.m */,
+				45F759E71CC9F23500989B4B /* CXSignalFliter.h */,
+				45F759E81CC9F23500989B4B /* CXSignalFliter.m */,
+				45F759E91CC9F23500989B4B /* CXSignalKVO.h */,
+				45F759EA1CC9F23500989B4B /* CXSignalKVO.m */,
+				45F759EB1CC9F23500989B4B /* CXSignalTransformer.h */,
+				45F759EC1CC9F23500989B4B /* CXSignalTransformer.m */,
+			);
+			path = CXSignal;
+			sourceTree = "<group>";
+		};
+		45F75A051CCA02B500989B4B /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				45F75A061CCA02CD00989B4B /* LoginViewController.h */,
+				45F75A071CCA02CD00989B4B /* LoginViewController.m */,
+				45F75A091CCA181D00989B4B /* ServerSettingViewController.h */,
+				45F75A0A1CCA181D00989B4B /* ServerSettingViewController.m */,
+				A0677CD41CCC9982002355C2 /* RegistTrailViewController.h */,
+				A0677CD51CCC9982002355C2 /* RegistTrailViewController.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		A0677CC71CCC5E62002355C2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A0677CD11CCC6012002355C2 /* CXPickerTextField.h */,
+				A0677CD21CCC6012002355C2 /* CXPickerTextField.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BB2EA92C8D94081A36F01E93 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				88B4C566102D81D14ABC3748 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FF2535E693B62607B8971E1F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				223DE4795A318B85C0D7C186 /* Pods.debug.xcconfig */,
+				660D2FBBDDE1103B239D0E27 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		45F759981CC8CC1300989B4B /* odooMobile */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 45F759B01CC8CC1300989B4B /* Build configuration list for PBXNativeTarget "odooMobile" */;
+			buildPhases = (
+				391D602F98EE4BB57B748324 /* Check Pods Manifest.lock */,
+				45F759951CC8CC1300989B4B /* Sources */,
+				45F759961CC8CC1300989B4B /* Frameworks */,
+				45F759971CC8CC1300989B4B /* Resources */,
+				047189B2830DAE274C9A73FB /* Embed Pods Frameworks */,
+				46BB2D00D9479C902A30561F /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = odooMobile;
+			productName = odooMobile;
+			productReference = 45F759991CC8CC1300989B4B /* odooMobile.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		45F759911CC8CC1300989B4B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = LeiQiao;
+				TargetAttributes = {
+					45F759981CC8CC1300989B4B = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 45F759941CC8CC1300989B4B /* Build configuration list for PBXProject "odooMobile" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 45F759901CC8CC1300989B4B;
+			productRefGroup = 45F7599A1CC8CC1300989B4B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				45F759981CC8CC1300989B4B /* odooMobile */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		45F759971CC8CC1300989B4B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45F759AC1CC8CC1300989B4B /* LaunchScreen.storyboard in Resources */,
+				45F759A91CC8CC1300989B4B /* Assets.xcassets in Resources */,
+				45F759A71CC8CC1300989B4B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		047189B2830DAE274C9A73FB /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		391D602F98EE4BB57B748324 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		46BB2D00D9479C902A30561F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		45F759951CC8CC1300989B4B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45F759A11CC8CC1300989B4B /* AppDelegate.m in Sources */,
+				45F759EF1CC9F23500989B4B /* CXSignalKVO.m in Sources */,
+				45F759E01CC9EF0500989B4B /* BaseViewModel.m in Sources */,
+				45F759F01CC9F23500989B4B /* CXSignalTransformer.m in Sources */,
+				A0677CC61CCA6F67002355C2 /* OdooRequestModel.m in Sources */,
+				45F759DF1CC9EF0500989B4B /* ModelObserver.m in Sources */,
+				45F759EE1CC9F23500989B4B /* CXSignalFliter.m in Sources */,
+				A0677CD61CCC9982002355C2 /* RegistTrailViewController.m in Sources */,
+				45F759CB1CC9ECAC00989B4B /* AFJSONRPCClient.m in Sources */,
+				45F759CF1CC9ECAC00989B4B /* JSON.m in Sources */,
+				45F75A0B1CCA181D00989B4B /* ServerSettingViewController.m in Sources */,
+				45F7599E1CC8CC1300989B4B /* main.m in Sources */,
+				45F759D41CC9ECCF00989B4B /* MainViewController.m in Sources */,
+				45F759CC1CC9ECAC00989B4B /* AFXMLRPCSessionManager.m in Sources */,
+				45F759ED1CC9F23500989B4B /* CXSignal.m in Sources */,
+				45F759E31CC9EF1400989B4B /* UserModel.m in Sources */,
+				45F759CD1CC9ECAC00989B4B /* GDataXMLNode.m in Sources */,
+				45F75A081CCA02CD00989B4B /* LoginViewController.m in Sources */,
+				A0677CD31CCC6012002355C2 /* CXPickerTextField.m in Sources */,
+				45F759CE1CC9ECAC00989B4B /* HUD.m in Sources */,
+				45F759D71CC9EE2200989B4B /* GlobalModels.m in Sources */,
+				45F759D01CC9ECAC00989B4B /* Preferences.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		45F759A51CC8CC1300989B4B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				45F759A61CC8CC1300989B4B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		45F759AA1CC8CC1300989B4B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				45F759AB1CC8CC1300989B4B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		45F759AE1CC8CC1300989B4B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		45F759AF1CC8CC1300989B4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		45F759B11CC8CC1300989B4B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 223DE4795A318B85C0D7C186 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Lei Qiao (4255A94LGP)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/include/libxml2,
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/SFHFKeychainUtils\"",
+					"\"${PODS_ROOT}/Headers/Public/iOS-Slide-Menu\"",
+					"\"${PODS_ROOT}/Headers/Public/wpxmlrpc\"",
+				);
+				INFOPLIST_FILE = odooMobile/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-lxml2",
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"MBProgressHUD\"",
+					"-l\"SFHFKeychainUtils\"",
+					"-l\"iOS-Slide-Menu\"",
+					"-l\"iconv\"",
+					"-l\"wpxmlrpc\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.LoveC.odooMobile;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "437fab83-bbb1-4f86-b443-292bfaa72b9c";
+			};
+			name = Debug;
+		};
+		45F759B21CC8CC1300989B4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 660D2FBBDDE1103B239D0E27 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Lei Qiao (4255A94LGP)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/include/libxml2,
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/SFHFKeychainUtils\"",
+					"\"${PODS_ROOT}/Headers/Public/iOS-Slide-Menu\"",
+					"\"${PODS_ROOT}/Headers/Public/wpxmlrpc\"",
+				);
+				INFOPLIST_FILE = odooMobile/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-lxml2",
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"MBProgressHUD\"",
+					"-l\"SFHFKeychainUtils\"",
+					"-l\"iOS-Slide-Menu\"",
+					"-l\"iconv\"",
+					"-l\"wpxmlrpc\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.LoveC.odooMobile;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "437fab83-bbb1-4f86-b443-292bfaa72b9c";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		45F759941CC8CC1300989B4B /* Build configuration list for PBXProject "odooMobile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45F759AE1CC8CC1300989B4B /* Debug */,
+				45F759AF1CC8CC1300989B4B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		45F759B01CC8CC1300989B4B /* Build configuration list for PBXNativeTarget "odooMobile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45F759B11CC8CC1300989B4B /* Debug */,
+				45F759B21CC8CC1300989B4B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 45F759911CC8CC1300989B4B /* Project object */;
+}
