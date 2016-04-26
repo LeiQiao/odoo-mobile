@@ -154,6 +154,7 @@
         }
         
         // 请求数据库列表
+        [self.serverNameField resignFirstResponder];
         if( !_databases )
         {
             [self.dbNameField resignFirstResponder];

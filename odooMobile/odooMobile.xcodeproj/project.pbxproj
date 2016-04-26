@@ -569,7 +569,7 @@
 			baseConfigurationReference = 223DE4795A318B85C0D7C186 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Lei Qiao (4255A94LGP)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: yi jun (UP2W7HXJFN)";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/include/libxml2,
@@ -608,7 +608,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LoveC.odooMobile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "437fab83-bbb1-4f86-b443-292bfaa72b9c";
+				PROVISIONING_PROFILE = "6708be1e-b440-41c9-be9d-a3eb6522757d";
 			};
 			name = Debug;
 		};
@@ -617,7 +617,7 @@
 			baseConfigurationReference = 660D2FBBDDE1103B239D0E27 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Lei Qiao (4255A94LGP)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: yi jun (UP2W7HXJFN)";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/include/libxml2,
@@ -656,7 +656,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LoveC.odooMobile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "437fab83-bbb1-4f86-b443-292bfaa72b9c";
+				PROVISIONING_PROFILE = "6708be1e-b440-41c9-be9d-a3eb6522757d";
 			};
 			name = Release;
 		};
