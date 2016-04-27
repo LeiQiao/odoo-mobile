@@ -153,6 +153,15 @@ static NSString * AFJSONRPCLocalizedErrorMessageForCode(NSInteger code) {
 - (void)invokeMethod:(NSString *)method
       withParameters:(id)parameters
              timeout:(NSTimeInterval)timeout
+             success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
+             failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure
+{
+    [self invokeMethod:method withParameters:parameters timeout:timeout requestId:@(1) success:success failure:failure];
+}
+
+- (void)invokeMethod:(NSString *)method
+      withParameters:(id)parameters
+             timeout:(NSTimeInterval)timeout
            requestId:(id)requestId
              success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
              failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure

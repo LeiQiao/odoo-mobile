@@ -7,13 +7,15 @@
 #import "HUD.h"
 #import "GlobalModels.h"
 #import "SlideNavigationController.h"
-//#import "MenuViewController.h"
+#import "MenuViewController.h"
 
 /*!
  *  @author LeiQiao, 16-04-22
  *  @brief 主界面视图
  */
-@implementation MainViewController
+@implementation MainViewController {
+    MenuViewController* _leftMenuVC;    /*!< 左侧菜单视图 */
+}
 
 #pragma mark
 #pragma mark init & dealloc
@@ -30,7 +32,10 @@
         nav.enableSwipeGesture = YES;
         nav.enableShadow = YES;
         nav.portraitSlideOffset = 50;
-//        nav.leftMenu = [[MenuViewController alloc] init];
+        
+        _leftMenuVC = [[MenuViewController alloc] init];
+        UINavigationController* leftNav = [[UINavigationController alloc] initWithRootViewController:_leftMenuVC];
+        nav.leftMenu = leftNav;
     }
 }
 

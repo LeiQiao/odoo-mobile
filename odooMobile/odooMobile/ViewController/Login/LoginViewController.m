@@ -20,6 +20,15 @@
 {
     [super viewDidLoad];
     
+    // 显示用户名密码
+    self.userNameField.text = gPreferences.UserName;
+    // 因为密码存储在keychain中，如果重新安装应用后密码不会删除
+    if( self.userNameField.text.length > 0 )
+    {
+        self.passwordField.text = gPreferences.Password;
+    }
+    [self textFieldDidChanged:nil];
+    
     ADDOBSERVER(UserModel, (id<UserModelObserver>)self);
 }
 

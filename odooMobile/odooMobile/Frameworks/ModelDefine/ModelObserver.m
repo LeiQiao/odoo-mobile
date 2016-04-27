@@ -700,7 +700,7 @@
 
 /*!
  *  @author LeiQiao, 16/04/25
- *  @brief 同步发送POST请求
+ *  @brief 同步发送POST请求，不会通知观察者，由调用方主动通知
  *  @param urlString    请求接口
  *  @param errorPointer 失败结果的指针
  *  @return 接口返回值
@@ -742,12 +742,22 @@
     [self setObserveModel:observeModel andCallback:observeCallback];
     
     // 返回结果
-    return result;
+    if( error )
+    {
+        *errorPointer = error;
+        return nil;
+    }
+    else
+    {
+        *errorPointer = nil;
+        return result;
+    }
+    
 }
 
 /*!
  *  @author LeiQiao, 16/04/25
- *  @brief 同步发送GET请求
+ *  @brief 同步发送GET请求，由调用方主动通知
  *  @param urlString    请求接口
  *  @param errorPointer 失败结果的指针
  *  @return 接口返回值

@@ -60,79 +60,117 @@
      userName:(NSString*)userName
      password:(NSString*)password
 {
+    NSDictionary* parameters = @{@"serverName":serverName,
+                                 @"dbName":dbName,
+                                 @"userName":userName,
+                                 @"password":password};
+    [NSThread detachNewThreadSelector:@selector(loginThread:) toTarget:self withObject:parameters];
+}
+
+/*!
+ *  @author LeiQiao, 16-04-26
+ *  @brief 登录线程
+ *  @param parameters 参数，从login函数传来登录所需的信息
+ */
+-(void) loginThread:(NSDictionary*)parameters
+{
+    NSString* serverName = [parameters objectForKey:@"serverName"];
+    NSString* dbName = [parameters objectForKey:@"dbName"];
+    NSString* userName = [parameters objectForKey:@"userName"];
+    NSString* password = [parameters objectForKey:@"password"];
+    
     OdooRequestModel* request = [[OdooRequestModel alloc] initWithObserveModel:self andCallback:@selector(userModel:login:)];
+    
+    /*---------- 授权登录 ----------*/
     request.reqParam = [OdooRequestParam execute:@"authenticate" parameters:@[dbName, userName, password, @{}]];
     request.reqParam.timeout = 10;
-    [request POST:[NSString stringWithFormat:@"%@/xmlrpc/2/common", serverName]
-          success:^(id responseObject) {
-              if( [responseObject integerValue] == 0 )
-              {
-                  request.retParam.success = NO;
-                  request.retParam.failedCode = @"-1";
-                  request.retParam.failedReason = @"登录失败，用户名密码错误";
-              }
-              else
-              {
-                  [request setObserveModel:nil andCallback:nil];
-                  
-                  gPreferences.ServerName = serverName;
-                  gPreferences.DBName = dbName;
-                  gPreferences.UserID = responseObject;
-                  gPreferences.UserName = userName;
-                  gPreferences.Password = password;
-                  
-                  [self updateUserInfo];
-              }
-          }];
-}
-
--(void) updateUserInfo
-{
-    OdooRequestModel* request = [[OdooRequestModel alloc] initWithObserveModel:self andCallback:@selector(userModel:login:)];
-    request.reqParam = [OdooRequestParam execute:@"execute_kw"
-                                      parameters:@[gPreferences.DBName,
-                                                   @([gPreferences.UserID integerValue]),
-                                                   gPreferences.Password,
-                                                   @"res.users",
-                                                   @"search_read",
-                                                   @[@[@[@"id", @"=", gPreferences.UserID]]],
-                                                   @{@"fields": @[@"image",
-                                                                  @"email",
-                                                                  @"display_name",
-                                                                  @"groups_id",
-                                                                  @"company_id",
-                                                                  @"lang",
-                                                                  @"active"]}]];
-    request.reqParam.timeout = 10;
-    [request POST:[NSString stringWithFormat:@"%@/xmlrpc/2/object", gPreferences.ServerName]
-          success:^(id responseObject) {
-              responseObject = [responseObject objectAtIndex:0];
-              // 判断账号是否激活
-              if( ![[responseObject objectForKey:@"active"] boolValue] )
-              {
-                  request.retParam.success = NO;
-                  request.retParam.failedCode = @"-1";
-                  request.retParam.failedReason = @"账号未激活，请联系管理员";
-              }
-              else
-              {
-                  [request setObserveModel:nil andCallback:nil];
-                  
-                  gPreferences.UserImage = SafeCopy([responseObject objectForKey:@"image"]);
-                  gPreferences.UserEmail = SafeCopy([responseObject objectForKey:@"email"]);
-                  gPreferences.UserDisplayName = SafeCopy([responseObject objectForKey:@"display_name"]);
-                  gPreferences.Language = SafeCopy([responseObject objectForKey:@"lang"]);
-                  
-                  NSNumber* companyID = [[responseObject objectForKey:@"company_id"] objectAtIndex:0];
-                  NSArray* groupIDs = [responseObject objectForKey:@"groups_id"];
-                  
-                  [self updateCompanyInfo];
-              }
-          }];
-}
-
--(void) updateCompanyInfo
-{
+    NSError* error = nil;
+    id responseObject = [request asyncPOST:[NSString stringWithFormat:@"%@/xmlrpc/2/common", serverName] error:&error];
+    if( error )
+    {
+        [request callObserver];
+        return;
+    }
+    // 判断是否登录成功
+    if( [responseObject integerValue] == 0 )
+    {
+        request.retParam.success = NO;
+        request.retParam.failedCode = @"-1";
+        request.retParam.failedReason = @"登录失败，用户名密码错误";
+        [request callObserver];
+        return;
+    }
+    
+    gPreferences.ServerName = serverName;
+    gPreferences.DBName = dbName;
+    gPreferences.UserID = responseObject;
+    gPreferences.UserName = userName;
+    gPreferences.Password = password;
+    
+    /*---------- 获取用户信息 ----------*/
+    error = nil;
+    responseObject = [request asyncExecute:@"res.users"
+                                    method:@"search_read"
+                                parameters:@[@[@[@"id", @"=", gPreferences.UserID]]]
+                                conditions:@{@"fields": @[@"image",
+                                                          @"email",
+                                                          @"display_name",
+                                                          @"groups_id",
+                                                          @"company_id",
+                                                          @"lang",
+                                                          @"active"]} error:&error];
+    if( error )
+    {
+        [request callObserver];
+        return;
+    }
+    // 判断账号是否激活
+    responseObject = [responseObject objectAtIndex:0];
+    if( ![[responseObject objectForKey:@"active"] boolValue] )
+    {
+        request.retParam.success = NO;
+        request.retParam.failedCode = @"-1";
+        request.retParam.failedReason = @"账号未激活，请联系管理员";
+        [request callObserver];
+        return;
+    }
+    
+    gPreferences.UserImage = SafeCopy([responseObject objectForKey:@"image"]);
+    gPreferences.UserEmail = SafeCopy([responseObject objectForKey:@"email"]);
+    gPreferences.UserDisplayName = SafeCopy([responseObject objectForKey:@"display_name"]);
+    gPreferences.Language = SafeCopy([responseObject objectForKey:@"lang"]);
+    
+    NSNumber* companyID = [[responseObject objectForKey:@"company_id"] objectAtIndex:0];
+    NSArray* groupIDs = [responseObject objectForKey:@"groups_id"];
+    
+    /*---------- 获取公司信息 ----------*/
+    responseObject = [request asyncExecute:@"res.company"
+                                    method:@"search_read"
+                                parameters:@[@[@[@"id", @"=", companyID]]]
+                                conditions:@{@"fields": @[@"logo",
+                                                          @"currency_id",
+                                                          @"display_name"]} error:&error];
+    if( error )
+    {
+        [request callObserver];
+        return;
+    }
+    responseObject = [responseObject objectAtIndex:0];
+    gPreferences.CompanyDisplayName = SafeCopy([responseObject objectForKey:@"display_name"]);
+    gPreferences.CompanyCurrency = SafeCopy([responseObject objectForKey:@"currency_id"]);
+    gPreferences.CompanyLogoImage = SafeCopy([responseObject objectForKey:@"logo"]);
+    
+    /*---------- 获取用户所在的组的可用菜单 ----------*/
+    NSArray* menus = asyncRequestMenu(request, groupIDs, &error);
+    addMenusToPreferences(menus);
+    if( error )
+    {
+        [request callObserver];
+        return;
+    }
+    
+    /*---------- 登录成功，通知观察者 ----------*/
+    [request callObserver];
 }
 
 @end

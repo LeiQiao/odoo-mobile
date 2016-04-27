@@ -33,4 +33,20 @@
 
 @property(nonatomic, strong) OdooRequestParam* reqParam;  /*!< 请求参数 */
 
+/*!
+ *  @author LeiQiao, 16-04-26
+ *  @brief 同步执行一条XMLRPC命令
+ *  @param model      模块名称
+ *  @param method     方法名称
+ *  @param parameters 参数列表
+ *  @param conditions 条件字典
+ *  @param error      错误对象指针
+ *  @return 执行结果
+ */
+-(id) asyncExecute:(NSString*)model
+            method:(NSString*)method
+        parameters:(NSArray*)parameters
+        conditions:(NSDictionary*)conditions
+             error:(NSError**)error;
+
 @end

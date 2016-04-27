@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		45B1BFD31CCF0D09008A9A39 /* MenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B1BFD21CCF0D09008A9A39 /* MenuModel.m */; };
+		45B1BFD61CCF372F008A9A39 /* TranslateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B1BFD51CCF372F008A9A39 /* TranslateModel.m */; };
+		45B1BFD91CCF3CA2008A9A39 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B1BFD81CCF3CA2008A9A39 /* MenuViewController.m */; };
+		45B1BFE61CCF6594008A9A39 /* WindowModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B1BFE51CCF6594008A9A39 /* WindowModel.m */; };
 		45F7599E1CC8CC1300989B4B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F7599D1CC8CC1300989B4B /* main.m */; };
 		45F759A11CC8CC1300989B4B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F759A01CC8CC1300989B4B /* AppDelegate.m */; };
 		45F759A71CC8CC1300989B4B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45F759A51CC8CC1300989B4B /* Main.storyboard */; };
@@ -37,6 +41,14 @@
 
 /* Begin PBXFileReference section */
 		223DE4795A318B85C0D7C186 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		45B1BFD11CCF0D09008A9A39 /* MenuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuModel.h; sourceTree = "<group>"; };
+		45B1BFD21CCF0D09008A9A39 /* MenuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuModel.m; sourceTree = "<group>"; };
+		45B1BFD41CCF372F008A9A39 /* TranslateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslateModel.h; sourceTree = "<group>"; };
+		45B1BFD51CCF372F008A9A39 /* TranslateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslateModel.m; sourceTree = "<group>"; };
+		45B1BFD71CCF3CA2008A9A39 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		45B1BFD81CCF3CA2008A9A39 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		45B1BFE41CCF6594008A9A39 /* WindowModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowModel.h; sourceTree = "<group>"; };
+		45B1BFE51CCF6594008A9A39 /* WindowModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowModel.m; sourceTree = "<group>"; };
 		45F759991CC8CC1300989B4B /* odooMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = odooMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45F7599D1CC8CC1300989B4B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		45F7599F1CC8CC1300989B4B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -225,6 +237,12 @@
 				45F759D61CC9EE2200989B4B /* GlobalModels.m */,
 				45F759E11CC9EF1400989B4B /* UserModel.h */,
 				45F759E21CC9EF1400989B4B /* UserModel.m */,
+				45B1BFD11CCF0D09008A9A39 /* MenuModel.h */,
+				45B1BFD21CCF0D09008A9A39 /* MenuModel.m */,
+				45B1BFD41CCF372F008A9A39 /* TranslateModel.h */,
+				45B1BFD51CCF372F008A9A39 /* TranslateModel.m */,
+				45B1BFE41CCF6594008A9A39 /* WindowModel.h */,
+				45B1BFE51CCF6594008A9A39 /* WindowModel.m */,
 				A0677CC41CCA6F67002355C2 /* OdooRequestModel.h */,
 				A0677CC51CCA6F67002355C2 /* OdooRequestModel.m */,
 			);
@@ -237,6 +255,8 @@
 				45F75A051CCA02B500989B4B /* Login */,
 				45F759D21CC9ECCF00989B4B /* MainViewController.h */,
 				45F759D31CC9ECCF00989B4B /* MainViewController.m */,
+				45B1BFD71CCF3CA2008A9A39 /* MenuViewController.h */,
+				45B1BFD81CCF3CA2008A9A39 /* MenuViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -437,16 +457,20 @@
 			files = (
 				45F759A11CC8CC1300989B4B /* AppDelegate.m in Sources */,
 				45F759EF1CC9F23500989B4B /* CXSignalKVO.m in Sources */,
+				45B1BFD61CCF372F008A9A39 /* TranslateModel.m in Sources */,
+				45B1BFE61CCF6594008A9A39 /* WindowModel.m in Sources */,
 				45F759E01CC9EF0500989B4B /* BaseViewModel.m in Sources */,
 				45F759F01CC9F23500989B4B /* CXSignalTransformer.m in Sources */,
 				A0677CC61CCA6F67002355C2 /* OdooRequestModel.m in Sources */,
 				45F759DF1CC9EF0500989B4B /* ModelObserver.m in Sources */,
 				45F759EE1CC9F23500989B4B /* CXSignalFliter.m in Sources */,
 				A0677CD61CCC9982002355C2 /* RegistTrailViewController.m in Sources */,
+				45B1BFD91CCF3CA2008A9A39 /* MenuViewController.m in Sources */,
 				45F759CB1CC9ECAC00989B4B /* AFJSONRPCClient.m in Sources */,
 				45F759CF1CC9ECAC00989B4B /* JSON.m in Sources */,
 				45F75A0B1CCA181D00989B4B /* ServerSettingViewController.m in Sources */,
 				45F7599E1CC8CC1300989B4B /* main.m in Sources */,
+				45B1BFD31CCF0D09008A9A39 /* MenuModel.m in Sources */,
 				45F759D41CC9ECCF00989B4B /* MainViewController.m in Sources */,
 				45F759CC1CC9ECAC00989B4B /* AFXMLRPCSessionManager.m in Sources */,
 				45F759ED1CC9F23500989B4B /* CXSignal.m in Sources */,

@@ -138,7 +138,9 @@ NSString* unicodeToUTF8(NSString* unicodeString)
  */
 -(void) callObserver
 {
-    [self.observeModel callObserver:self.observeCallback withObject:self.observeModel withObject:self.retParam];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.observeModel callObserver:self.observeCallback withObject:self.observeModel withObject:self.retParam];
+    });
 }
 
 /*!
@@ -157,6 +159,38 @@ NSString* unicodeToUTF8(NSString* unicodeString)
 -(void) doGET
 {
     [self sendRequest];
+}
+
+#pragma mark
+#pragma mark member functions
+
+/*!
+ *  @author LeiQiao, 16-04-26
+ *  @brief 同步执行一条XMLRPC命令
+ *  @param model      模块名称
+ *  @param method     方法名称
+ *  @param parameters 参数列表
+ *  @param conditions 条件字典
+ *  @param error      错误对象指针
+ *  @return 执行结果
+ */
+-(id) asyncExecute:(NSString*)model
+            method:(NSString*)method
+        parameters:(NSArray*)parameters
+        conditions:(NSDictionary*)conditions
+             error:(NSError**)error
+{
+    // 构建XMLRPC请求
+    self.reqParam = [OdooRequestParam execute:@"execute_kw"
+                                   parameters:@[gPreferences.DBName,
+                                                @([gPreferences.UserID integerValue]),
+                                                gPreferences.Password,
+                                                model,
+                                                method,
+                                                parameters?parameters:@[],
+                                                conditions?conditions:@{}]];
+    self.reqParam.timeout = 30;
+    return [self asyncPOST:[NSString stringWithFormat:@"%@/xmlrpc/2/object", gPreferences.ServerName] error:error];
 }
 
 @end
