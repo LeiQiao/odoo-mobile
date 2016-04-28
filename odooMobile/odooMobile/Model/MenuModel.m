@@ -185,7 +185,7 @@ NSArray* asyncRequestMenu(OdooRequestModel* request, NSArray* groupIDs, NSError*
     request.retParam.success = YES;
     request.retParam.failedCode = @"0";
     request.retParam.failedReason = @"菜单获取成功";
-    request.retParam[@"SubMenus"] = subMenus;
+    request.retParam[@"SubMenus"] = reorderMenuWithIDs(subMenus, [menu objectForKey:@"child_id"]);
     [request callObserver];
 }
 

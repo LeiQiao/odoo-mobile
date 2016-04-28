@@ -70,6 +70,57 @@ id asyncTranslateFields(OdooRequestModel* request, NSArray* srcItems, NSString* 
 
 /*!
  *  @author LeiQiao, 16-04-26
+ *  @brief 翻译Model中的名称
+ *  @param request   请求对象
+ *  @param srcItems  要翻译的内容采用['src1', 'src2', ...]结构
+ *  @param fieldName 要翻译的字段名
+ *  @param modelName 要翻译的模块
+ *  @param error     错误对象指针
+ *  @return 翻译结果
+ */
+id asyncTranslateNames(OdooRequestModel* request, NSArray* srcItems, NSString* fieldName, NSString* modelName, NSError** error)
+{
+    if( !request )
+    {
+        request = [[OdooRequestModel alloc] initWithObserveModel:nil andCallback:nil];
+    }
+    
+    /*---------- 翻译指定模块的字段 ----------*/
+    id responseObject = [request asyncExecute:@"ir.translation"
+                                       method:@"search_read"
+                                   parameters:@[@[@[@"name", @"=", [NSString stringWithFormat:@"%@,%@",
+                                                                    modelName,
+                                                                    fieldName]],
+                                                  @[@"src", @"!=", @"value"],
+                                                  @[@"lang", @"=", gPreferences.Language],
+                                                  @[@"state", @"=", @"translated"]]]
+                                   conditions:@{@"fields": @[@"src", @"res_id", @"value"]}
+                                        error:error];
+    if( *error ) return nil;
+    
+    /*---------- 设置菜单翻译对照表 ----------*/
+    NSMutableDictionary* translateMap = [NSMutableDictionary new];
+    for( NSDictionary* translate in responseObject )
+    {
+        NSString* src = [[translate objectForKey:@"src"] lowercaseString];
+        NSString* translatedString = SafeCopy([translate objectForKey:@"value"]);
+        
+        [translateMap setObject:translatedString forKey:src];
+    }
+    
+    /*---------- 开始翻译字段 ----------*/
+    NSMutableDictionary* translatedItems = [NSMutableDictionary new];
+    for( NSString* item in srcItems )
+    {
+        NSString* translatedString = [translateMap objectForKey:item];
+        if( translatedString.length == 0 ) translatedString = item;
+        [translatedItems setObject:translatedString forKey:item];
+    }
+    return translatedItems;
+}
+
+/*!
+ *  @author LeiQiao, 16-04-26
  *  @brief 翻译模型
  */
 @implementation TranslateModel

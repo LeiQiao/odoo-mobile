@@ -33,9 +33,7 @@
         nav.enableShadow = YES;
         nav.portraitSlideOffset = 50;
         
-        _leftMenuVC = [[MenuViewController alloc] init];
-        UINavigationController* leftNav = [[UINavigationController alloc] initWithRootViewController:_leftMenuVC];
-        nav.leftMenu = leftNav;
+        nav.leftMenu = [self.storyboard instantiateViewControllerWithIdentifier:@"MainMenu"];
     }
 }
 

@@ -32,6 +32,7 @@
 {
     NSError* error = nil;
     OdooRequestModel* request = [[OdooRequestModel alloc] initWithObserveModel:self andCallback:@selector(windowModel:updateWindowByID:)];
+    request.retParam[@"WindowID"] = windowID;
     
     /*---------- 查找窗口 ----------*/
     id responseObject = [request asyncExecute:@"ir.actions.act_window"
@@ -61,7 +62,7 @@
         request.retParam.success = YES;
         request.retParam.failedCode = @"0";
         request.retParam.failedReason = @"获取成功";
-        request.retParam[@"Window"] = [gPreferences.Windows objectForKey:model];
+        request.retParam[@"WindowModes"] = [gPreferences.Windows objectForKey:model];
         [request callObserver];
         return;
     }
@@ -77,10 +78,20 @@
     }
     [viewModes addObject:@"search"];
     
-    /*---------- 将视图模型根据视图模式分组 ----------*/
-    NSMutableDictionary* windowModes = [NSMutableDictionary new];
-    for( NSString* viewMode in viewModes )
+    /*---------- 翻译试图模式名称 ----------*/
+    NSDictionary* translatedNames = asyncTranslateNames(request, viewModes, @"view_mode", @"ir.actions.act_window.view", &error);
+    if( error )
     {
+        [request callObserver];
+        return;
+    }
+    
+    /*---------- 将视图模型根据视图模式分组 ----------*/
+    NSMutableArray* windowModes = [NSMutableArray new];
+    for( NSUInteger i=0; i<viewModes.count; i++ )
+    {
+        NSString* viewMode = [viewModes objectAtIndex:i];
+        
         responseObject = [request asyncExecute:model
                                         method:@"fields_view_get"
                                     parameters:nil
@@ -93,7 +104,7 @@
             return;
         }
         
-        [windowModes setObject:responseObject forKey:viewMode];
+        [windowModes addObject:@[[translatedNames objectForKey:viewMode], responseObject]];
     }
     
     /*---------- 将视图模型保存到全局变量 ----------*/

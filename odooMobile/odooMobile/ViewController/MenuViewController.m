@@ -7,48 +7,39 @@
 #import "SlideNavigationController.h"
 #import "GlobalModels.h"
 #import "HUD.h"
+#import "WindowViewController.h"
 
+/*!
+ *  @author LeiQiao, 16-04-22
+ *  @brief 菜单界面视图
+ */
 @implementation MenuViewController {
-    NSDictionary* _parentMenu;      /*!< 父菜单 */
     NSArray* _subMenus;             /*!< 子菜单 */
 }
 
 #pragma mark
 #pragma mark init & dealloc
 
-/*!
- *  @author LeiQiao, 16-04-26
- *  @brief 使用父菜单初始化
- *  @param parentMenu 父菜单
- *  @return 本类的实例化对象
- */
--(instancetype) initWithParentMenu:(NSDictionary*)parentMenu
-{
-    if( self = [super init] )
-    {
-        _parentMenu = parentMenu;
-    }
-    return self;
-}
-
 -(void)viewDidLoad
 {
     [super viewDidLoad];
     
-    if( _parentMenu )
+    // 设置菜单标题
+    if( self.parentMenu )
     {
-        self.title = [_parentMenu objectForKey:@"name"];
+        self.title = [self.parentMenu objectForKey:@"name"];
     }
     else
     {
         self.title = @"菜单";
     }
     
-    if( _parentMenu )
+    // 如果是二级及以下菜单则子菜单需要从网络获取
+    if( self.parentMenu )
     {
         popWaiting();
         ADDOBSERVER(MenuModel, (id<MenuModelObserver>)self);
-        [GETMODEL(MenuModel) updateSubMenuByMenu:_parentMenu];
+        [GETMODEL(MenuModel) updateSubMenuByMenu:self.parentMenu];
     }
 }
 
@@ -61,8 +52,8 @@
 {
     [super viewDidAppear:animated];
     
-    // 如果是顶级菜单并且尚未初始化
-    if( (!_parentMenu) && (_subMenus == nil) )
+    // 如果是顶级菜单并且尚未初始化，需要从缓存的菜单列表中筛选
+    if( (!self.parentMenu) && (_subMenus == nil) )
     {
         NSMutableArray* subMenus = [NSMutableArray new];
         for( NSDictionary* menu in gPreferences.Menus )
@@ -77,6 +68,7 @@
         _subMenus = subMenus;
         [self.tableView reloadData];
         
+        // 如果该页面是侧滑页面需要调整TableView的宽度
         SlideNavigationController* nav = [SlideNavigationController sharedInstance];
         if( self.navigationController == nav.leftMenu )
         {
@@ -105,7 +97,10 @@
     UITableViewCell* cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
+    // 获取子菜单项
     NSDictionary* menu = [_subMenus objectAtIndex:indexPath.row];
+    
+    // 显示子菜单项
     cell.textLabel.text = [menu objectForKey:@"name"];
     
     return cell;
@@ -124,7 +119,14 @@
         NSArray* act = [action componentsSeparatedByString:@","];
         if( [[act objectAtIndex:0] isEqualToString:@"ir.actions.act_window"] )
         {
-            [GETMODEL(WindowModel) updateWindowByID:@([[act objectAtIndex:1] integerValue])];
+            
+            UIBarButtonItem* backItem = [[UIBarButtonItem alloc] initWithTitle:@""
+                                                                         style:UIBarButtonItemStyleDone
+                                                                        target:nil action:nil];
+            self.navigationItem.backBarButtonItem = backItem;
+            WindowViewController* window = [self.storyboard instantiateViewControllerWithIdentifier:@"WindowViewController"];
+            window.windowID = @([[act objectAtIndex:1] integerValue]);
+            [[SlideNavigationController sharedInstance] pushViewController:window animated:YES];
         }
         else
         {
@@ -139,7 +141,8 @@
     // 进入展示子菜单动作
     else
     {
-        MenuViewController* menu = [[MenuViewController alloc] initWithParentMenu:currentMenu];
+        MenuViewController* menu = [self.storyboard instantiateViewControllerWithIdentifier:@"MenuViewController"];
+        menu.parentMenu = currentMenu;
         [[SlideNavigationController sharedInstance] pushViewController:menu animated:YES];
     }
 }
@@ -149,9 +152,11 @@
 
 -(void) menuModel:(MenuModel*)menuModel updateSubMenuByMenu:(ReturnParam*)params
 {
+    // 是否为当前Menu
     NSDictionary* parentMenu = params[@"ParentMenu"];
-    if( parentMenu != _parentMenu ) return;
+    if( parentMenu != self.parentMenu ) return;
     
+    // 请求失败
     dismissWaiting();
     if( !params.success )
     {
@@ -159,6 +164,7 @@
         return;
     }
     
+    // 刷新子菜单
     NSArray* subMenus = params[@"SubMenus"];
     _subMenus = subMenus;
     [self.tableView reloadData];

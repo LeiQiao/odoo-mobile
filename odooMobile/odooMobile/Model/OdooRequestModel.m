@@ -187,8 +187,8 @@ NSString* unicodeToUTF8(NSString* unicodeString)
                                                 gPreferences.Password,
                                                 model,
                                                 method,
-                                                parameters?parameters:@[],
-                                                conditions?conditions:@{}]];
+                                                (parameters?parameters:@[]),
+                                                (conditions?conditions:@{})]];
     self.reqParam.timeout = 30;
     return [self asyncPOST:[NSString stringWithFormat:@"%@/xmlrpc/2/object", gPreferences.ServerName] error:error];
 }

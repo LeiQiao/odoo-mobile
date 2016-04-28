@@ -11,6 +11,8 @@
 		45B1BFD61CCF372F008A9A39 /* TranslateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B1BFD51CCF372F008A9A39 /* TranslateModel.m */; };
 		45B1BFD91CCF3CA2008A9A39 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B1BFD81CCF3CA2008A9A39 /* MenuViewController.m */; };
 		45B1BFE61CCF6594008A9A39 /* WindowModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B1BFE51CCF6594008A9A39 /* WindowModel.m */; };
+		45B1BFEA1CD05762008A9A39 /* WindowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B1BFE91CD05762008A9A39 /* WindowViewController.m */; };
+		45B1BFEE1CD093F7008A9A39 /* UIViewController+CustomUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B1BFED1CD093F7008A9A39 /* UIViewController+CustomUI.m */; };
 		45F7599E1CC8CC1300989B4B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F7599D1CC8CC1300989B4B /* main.m */; };
 		45F759A11CC8CC1300989B4B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F759A01CC8CC1300989B4B /* AppDelegate.m */; };
 		45F759A71CC8CC1300989B4B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45F759A51CC8CC1300989B4B /* Main.storyboard */; };
@@ -49,6 +51,10 @@
 		45B1BFD81CCF3CA2008A9A39 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		45B1BFE41CCF6594008A9A39 /* WindowModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowModel.h; sourceTree = "<group>"; };
 		45B1BFE51CCF6594008A9A39 /* WindowModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowModel.m; sourceTree = "<group>"; };
+		45B1BFE81CD05762008A9A39 /* WindowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowViewController.h; sourceTree = "<group>"; };
+		45B1BFE91CD05762008A9A39 /* WindowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowViewController.m; sourceTree = "<group>"; };
+		45B1BFEC1CD093F7008A9A39 /* UIViewController+CustomUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CustomUI.h"; sourceTree = "<group>"; };
+		45B1BFED1CD093F7008A9A39 /* UIViewController+CustomUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CustomUI.m"; sourceTree = "<group>"; };
 		45F759991CC8CC1300989B4B /* odooMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = odooMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45F7599D1CC8CC1300989B4B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		45F7599F1CC8CC1300989B4B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -115,6 +121,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		45B1BFE71CD0574A008A9A39 /* Window */ = {
+			isa = PBXGroup;
+			children = (
+				45B1BFE81CD05762008A9A39 /* WindowViewController.h */,
+				45B1BFE91CD05762008A9A39 /* WindowViewController.m */,
+			);
+			path = Window;
+			sourceTree = "<group>";
+		};
+		45B1BFEB1CD093F7008A9A39 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				45B1BFEC1CD093F7008A9A39 /* UIViewController+CustomUI.h */,
+				45B1BFED1CD093F7008A9A39 /* UIViewController+CustomUI.m */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
 		45F759901CC8CC1300989B4B = {
 			isa = PBXGroup;
 			children = (
@@ -252,6 +276,8 @@
 		45F759D11CC9ECCF00989B4B /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				45B1BFEB1CD093F7008A9A39 /* Custom */,
+				45B1BFE71CD0574A008A9A39 /* Window */,
 				45F75A051CCA02B500989B4B /* Login */,
 				45F759D21CC9ECCF00989B4B /* MainViewController.h */,
 				45F759D31CC9ECCF00989B4B /* MainViewController.m */,
@@ -463,6 +489,7 @@
 				45F759F01CC9F23500989B4B /* CXSignalTransformer.m in Sources */,
 				A0677CC61CCA6F67002355C2 /* OdooRequestModel.m in Sources */,
 				45F759DF1CC9EF0500989B4B /* ModelObserver.m in Sources */,
+				45B1BFEA1CD05762008A9A39 /* WindowViewController.m in Sources */,
 				45F759EE1CC9F23500989B4B /* CXSignalFliter.m in Sources */,
 				A0677CD61CCC9982002355C2 /* RegistTrailViewController.m in Sources */,
 				45B1BFD91CCF3CA2008A9A39 /* MenuViewController.m in Sources */,
@@ -477,6 +504,7 @@
 				45F759E31CC9EF1400989B4B /* UserModel.m in Sources */,
 				45F759CD1CC9ECAC00989B4B /* GDataXMLNode.m in Sources */,
 				45F75A081CCA02CD00989B4B /* LoginViewController.m in Sources */,
+				45B1BFEE1CD093F7008A9A39 /* UIViewController+CustomUI.m in Sources */,
 				A0677CD31CCC6012002355C2 /* CXPickerTextField.m in Sources */,
 				45F759CE1CC9ECAC00989B4B /* HUD.m in Sources */,
 				45F759D71CC9EE2200989B4B /* GlobalModels.m in Sources */,
