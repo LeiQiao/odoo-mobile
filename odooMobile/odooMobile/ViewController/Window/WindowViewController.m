@@ -6,13 +6,16 @@
 #import "GlobalModels.h"
 #import "HUD.h"
 #import "UIViewController+CustomUI.h"
+#import "KanbanDataSource.h"
+#import "Preferences.h"
 
 /*!
  *  @author LeiQiao, 16-04-27
  *  @brief 窗口菜单视图
  */
 @implementation WindowViewController {
-    NSArray* _viewModes;    /*!< 所有可用的视图模式 */
+    WindowData* _window;                /*!< 窗口数据 */
+    ViewModeDataSource* _recordSource;  /*!< UITableView的数据源 */
 }
 
 #pragma mark
@@ -22,7 +25,13 @@
 {
     [super viewDidLoad];
     
+    // 隐藏导航栏的Segment和按钮
+    self.viewModeSegment.hidden = YES;
+    self.navigationItem.rightBarButtonItem = nil;
+    
     ADDOBSERVER(WindowModel, (id<WindowModelObserver>)self);
+    
+    // 获取窗口信息
     popWaiting();
     [GETMODEL(WindowModel) updateWindowByID:_windowID];
 }
@@ -37,9 +46,71 @@
 
 -(IBAction) viewModeChanged:(id)sender
 {
-    NSUInteger index = self.viewModeSegment.selectedSegmentIndex;
-    NSDictionary* viewMode = [[_viewModes objectAtIndex:index] objectAtIndex:1];
-    NSLog(@"%@", viewMode);
+    ViewModeData* viewMode = [_window.viewModes objectAtIndex:self.viewModeSegment.selectedSegmentIndex];
+    
+    if( [viewMode.name isEqualToString:@"kanban"] ||
+       [viewMode.name isEqualToString:@"list"] )
+    {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"＋"
+                                                                                  style:UIBarButtonItemStyleDone
+                                                                                 target:self
+                                                                                 action:@selector(addButtonClicked:)];
+        
+        if( [viewMode.name isEqualToString:@"kanban"] )
+        {
+            _recordSource = [[KanbanDataSource alloc] initWithWindow:_window];
+        }
+        if( viewMode.records.count == 0 )
+        {
+        }
+        else
+        {
+            [self.tableView reloadData];
+        }
+    }
+}
+
+-(void) addButtonClicked:(id)sender
+{
+}
+
+#pragma mark
+#pragma mark UITableViewDelegate & UITableViewDataSource
+
+-(NSInteger) tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
+{
+    ViewModeData* viewMode = [_window.viewModes objectAtIndex:self.viewModeSegment.selectedSegmentIndex];
+    return viewMode.records.count;
+}
+
+-(CGFloat) tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
+{
+    if( indexPath.row >= _kanbanCellHeights.count ) return 0;
+    else
+    {
+        NSLog(@"row: %d, height:%.02f", (int)indexPath.row, [_kanbanCellHeights[indexPath.row] floatValue]);
+        return [_kanbanCellHeights[indexPath.row] floatValue];
+    }
+}
+
+-(UITableViewCell*) tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
+{
+    UITableViewCell* cell = nil;
+    
+    ViewModeData* viewMode = [_window.viewModes objectAtIndex:self.viewModeSegment.selectedSegmentIndex];
+    if( [viewMode.name isEqualToString:@"kanban"] )
+    {
+        cell = [tableView dequeueReusableCellWithIdentifier:kKanbanCellIdentifier];
+        if( !cell )
+        {
+            cell = [[KanbanCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                     reuseIdentifier:kKanbanCellIdentifier];
+        }
+        [((KanbanCell*)cell) setRecord:viewMode.records[indexPath.row] viewMode:viewMode];
+        NSLog(@"cell height: %.02f", cell.frame.size.height);
+    }
+    
+    return cell;
 }
 
 #pragma mark
@@ -57,21 +128,19 @@
         return;
     }
     
-    _viewModes = params[@"WindowModes"];
+    _window = params[@"Window"];
     
     [self.viewModeSegment removeAllSegments];
-    for( NSUInteger i=0; i<_viewModes.count; i++ )
+    
+    for( NSUInteger i=0; i<_window.viewModes.count; i++ )
     {
-        NSArray* viewMode = [_viewModes objectAtIndex:i];
-        NSString* viewModeName = [viewMode objectAtIndex:0];
-        
+        ViewModeData* viewMode = [_window.viewModes objectAtIndex:i];
         
         // search和form不单独显示视图模式，这两种显示模式集成在其他页面
-        NSString* viewModeType = [[viewMode objectAtIndex:1] objectForKey:@"type"];
-        if( (![viewModeType isEqualToString:@"search"]) &&
-           (![viewModeType isEqualToString:@"form"]) )
+        if( (![viewMode.name isEqualToString:@"search"]) &&
+           (![viewMode.name isEqualToString:@"form"]) )
         {
-            [self.viewModeSegment insertSegmentWithTitle:viewModeName atIndex:i animated:NO];
+            [self.viewModeSegment insertSegmentWithTitle:viewMode.displayName atIndex:i animated:NO];
         }
     }
     self.viewModeSegment.hidden = NO;
@@ -79,6 +148,24 @@
     // 默认选中第一个,直接调用按钮事件，下面一句不会触发事件
     self.viewModeSegment.selectedSegmentIndex = 0;
     [self viewModeChanged:self.viewModeSegment];
+}
+
+#pragma mark
+#pragma mark RecordModelObserver
+
+-(void) recordModel:(RecordModel*)recordModel requestMoreRecord:(ReturnParam*)params
+{
+    WindowData* window = params[@"Window"];
+    if( window != _window ) return;
+    
+    dismissWaiting();
+    if( !params.success )
+    {
+        popError(params.failedReason);
+        return;
+    }
+    
+    [self reloadData];
 }
 
 @end

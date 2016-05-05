@@ -3,6 +3,7 @@
 //
 
 #import "PreferencesDefine.h"
+#import "OdooData.h"
 
 BEGIN_DEFINE_PREFERENCE()
 

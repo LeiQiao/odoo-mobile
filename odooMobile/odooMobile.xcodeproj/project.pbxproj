@@ -39,6 +39,13 @@
 		A0677CC61CCA6F67002355C2 /* OdooRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CC51CCA6F67002355C2 /* OdooRequestModel.m */; };
 		A0677CD31CCC6012002355C2 /* CXPickerTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CD21CCC6012002355C2 /* CXPickerTextField.m */; };
 		A0677CD61CCC9982002355C2 /* RegistTrailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CD51CCC9982002355C2 /* RegistTrailViewController.m */; };
+		A0677CD91CD43BE6002355C2 /* KanbanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CD81CD43BE6002355C2 /* KanbanCell.m */; };
+		A0677CDF1CD47E54002355C2 /* ArchView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CDE1CD47E54002355C2 /* ArchView.m */; };
+		A0677CE41CD6F1A4002355C2 /* kanban.css in Resources */ = {isa = PBXBuildFile; fileRef = A0677CE31CD6F1A4002355C2 /* kanban.css */; };
+		A0677CE71CD771CD002355C2 /* RecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CE61CD771CD002355C2 /* RecordModel.m */; };
+		A0677CEA1CD83630002355C2 /* OdooData.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CE91CD83630002355C2 /* OdooData.m */; };
+		A0677CED1CDB8ADC002355C2 /* KanbanDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CEC1CDB8ADC002355C2 /* KanbanDataSource.m */; };
+		A0677CF01CDB8CB7002355C2 /* ViewModeDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CEF1CDB8CB7002355C2 /* ViewModeDataSource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,6 +114,19 @@
 		A0677CD21CCC6012002355C2 /* CXPickerTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXPickerTextField.m; sourceTree = "<group>"; };
 		A0677CD41CCC9982002355C2 /* RegistTrailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistTrailViewController.h; sourceTree = "<group>"; };
 		A0677CD51CCC9982002355C2 /* RegistTrailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistTrailViewController.m; sourceTree = "<group>"; };
+		A0677CD71CD43BE6002355C2 /* KanbanCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KanbanCell.h; sourceTree = "<group>"; };
+		A0677CD81CD43BE6002355C2 /* KanbanCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KanbanCell.m; sourceTree = "<group>"; };
+		A0677CDD1CD47E54002355C2 /* ArchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchView.h; sourceTree = "<group>"; };
+		A0677CDE1CD47E54002355C2 /* ArchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchView.m; sourceTree = "<group>"; };
+		A0677CE31CD6F1A4002355C2 /* kanban.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = kanban.css; sourceTree = "<group>"; };
+		A0677CE51CD771CD002355C2 /* RecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordModel.h; sourceTree = "<group>"; };
+		A0677CE61CD771CD002355C2 /* RecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordModel.m; sourceTree = "<group>"; };
+		A0677CE81CD83630002355C2 /* OdooData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OdooData.h; sourceTree = "<group>"; };
+		A0677CE91CD83630002355C2 /* OdooData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OdooData.m; sourceTree = "<group>"; };
+		A0677CEB1CDB8ADC002355C2 /* KanbanDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KanbanDataSource.h; sourceTree = "<group>"; };
+		A0677CEC1CDB8ADC002355C2 /* KanbanDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KanbanDataSource.m; sourceTree = "<group>"; };
+		A0677CEE1CDB8CB7002355C2 /* ViewModeDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewModeDataSource.h; sourceTree = "<group>"; };
+		A0677CEF1CDB8CB7002355C2 /* ViewModeDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewModeDataSource.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +196,7 @@
 		45F7599C1CC8CC1300989B4B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A0677CE31CD6F1A4002355C2 /* kanban.css */,
 				45F7599F1CC8CC1300989B4B /* AppDelegate.h */,
 				45F759A01CC8CC1300989B4B /* AppDelegate.m */,
 				45F7599D1CC8CC1300989B4B /* main.m */,
@@ -257,6 +278,8 @@
 			children = (
 				45F759C91CC9ECAC00989B4B /* Preferences.h */,
 				45F759CA1CC9ECAC00989B4B /* Preferences.m */,
+				A0677CE81CD83630002355C2 /* OdooData.h */,
+				A0677CE91CD83630002355C2 /* OdooData.m */,
 				45F759D51CC9EE2200989B4B /* GlobalModels.h */,
 				45F759D61CC9EE2200989B4B /* GlobalModels.m */,
 				45F759E11CC9EF1400989B4B /* UserModel.h */,
@@ -269,6 +292,8 @@
 				45B1BFE51CCF6594008A9A39 /* WindowModel.m */,
 				A0677CC41CCA6F67002355C2 /* OdooRequestModel.h */,
 				A0677CC51CCA6F67002355C2 /* OdooRequestModel.m */,
+				A0677CE51CD771CD002355C2 /* RecordModel.h */,
+				A0677CE61CD771CD002355C2 /* RecordModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -339,6 +364,14 @@
 			children = (
 				A0677CD11CCC6012002355C2 /* CXPickerTextField.h */,
 				A0677CD21CCC6012002355C2 /* CXPickerTextField.m */,
+				A0677CDD1CD47E54002355C2 /* ArchView.h */,
+				A0677CDE1CD47E54002355C2 /* ArchView.m */,
+				A0677CD71CD43BE6002355C2 /* KanbanCell.h */,
+				A0677CD81CD43BE6002355C2 /* KanbanCell.m */,
+				A0677CEE1CDB8CB7002355C2 /* ViewModeDataSource.h */,
+				A0677CEF1CDB8CB7002355C2 /* ViewModeDataSource.m */,
+				A0677CEB1CDB8ADC002355C2 /* KanbanDataSource.h */,
+				A0677CEC1CDB8ADC002355C2 /* KanbanDataSource.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -420,6 +453,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0677CE41CD6F1A4002355C2 /* kanban.css in Resources */,
 				45F759AC1CC8CC1300989B4B /* LaunchScreen.storyboard in Resources */,
 				45F759A91CC8CC1300989B4B /* Assets.xcassets in Resources */,
 				45F759A71CC8CC1300989B4B /* Main.storyboard in Resources */,
@@ -481,10 +515,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0677CE71CD771CD002355C2 /* RecordModel.m in Sources */,
+				A0677CDF1CD47E54002355C2 /* ArchView.m in Sources */,
 				45F759A11CC8CC1300989B4B /* AppDelegate.m in Sources */,
 				45F759EF1CC9F23500989B4B /* CXSignalKVO.m in Sources */,
 				45B1BFD61CCF372F008A9A39 /* TranslateModel.m in Sources */,
 				45B1BFE61CCF6594008A9A39 /* WindowModel.m in Sources */,
+				A0677CF01CDB8CB7002355C2 /* ViewModeDataSource.m in Sources */,
 				45F759E01CC9EF0500989B4B /* BaseViewModel.m in Sources */,
 				45F759F01CC9F23500989B4B /* CXSignalTransformer.m in Sources */,
 				A0677CC61CCA6F67002355C2 /* OdooRequestModel.m in Sources */,
@@ -495,14 +532,17 @@
 				45B1BFD91CCF3CA2008A9A39 /* MenuViewController.m in Sources */,
 				45F759CB1CC9ECAC00989B4B /* AFJSONRPCClient.m in Sources */,
 				45F759CF1CC9ECAC00989B4B /* JSON.m in Sources */,
+				A0677CEA1CD83630002355C2 /* OdooData.m in Sources */,
 				45F75A0B1CCA181D00989B4B /* ServerSettingViewController.m in Sources */,
 				45F7599E1CC8CC1300989B4B /* main.m in Sources */,
+				A0677CD91CD43BE6002355C2 /* KanbanCell.m in Sources */,
 				45B1BFD31CCF0D09008A9A39 /* MenuModel.m in Sources */,
 				45F759D41CC9ECCF00989B4B /* MainViewController.m in Sources */,
 				45F759CC1CC9ECAC00989B4B /* AFXMLRPCSessionManager.m in Sources */,
 				45F759ED1CC9F23500989B4B /* CXSignal.m in Sources */,
 				45F759E31CC9EF1400989B4B /* UserModel.m in Sources */,
 				45F759CD1CC9ECAC00989B4B /* GDataXMLNode.m in Sources */,
+				A0677CED1CDB8ADC002355C2 /* KanbanDataSource.m in Sources */,
 				45F75A081CCA02CD00989B4B /* LoginViewController.m in Sources */,
 				45B1BFEE1CD093F7008A9A39 /* UIViewController+CustomUI.m in Sources */,
 				A0677CD31CCC6012002355C2 /* CXPickerTextField.m in Sources */,

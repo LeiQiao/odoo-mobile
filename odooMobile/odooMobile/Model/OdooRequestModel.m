@@ -106,7 +106,14 @@ NSString* unicodeToUTF8(NSString* unicodeString)
                               }
                               if( error.code == -1001 )
                               {
-                                  self.retParam.failedReason = @"登录失败，服务器无法连接";
+                                  if( [gPreferences.UserID integerValue] > 0 )
+                                  {
+                                      self.retParam.failedReason = @"连接失败，请重试";
+                                  }
+                                  else
+                                  {
+                                      self.retParam.failedReason = @"登录失败，服务器无法连接";
+                                  }
                               }
                               else
                               {

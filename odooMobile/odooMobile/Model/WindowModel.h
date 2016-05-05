@@ -31,7 +31,7 @@
  *  @param windowModel 窗口模型
  *  @param params      返回参数
  *         params[@"WindowID"]     窗口ID
- *         params[@"WindowModes"]  窗口布局
+ *         params[@"Window"]       窗口
  */
 -(void) windowModel:(WindowModel*)windowModel updateWindowByID:(ReturnParam*)params;
 
