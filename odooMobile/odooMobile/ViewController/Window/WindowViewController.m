@@ -59,13 +59,12 @@
         if( [viewMode.name isEqualToString:@"kanban"] )
         {
             _recordSource = [[KanbanDataSource alloc] initWithWindow:_window];
+            [_recordSource updateHeightWithWidth:self.tableView.frame.size.width
+                                   updatedTarget:self andAction:@selector(cellHeightDidUpdated:)];
         }
         if( viewMode.records.count == 0 )
         {
-        }
-        else
-        {
-            [self.tableView reloadData];
+            [_recordSource requestMoreRecords];
         }
     }
 }
@@ -74,43 +73,36 @@
 {
 }
 
+-(void) cellHeightDidUpdated:(NSNumber*)index
+{
+    if( index )
+    {
+        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[index integerValue]
+                                                                    inSection:0]]
+                              withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+    else
+    {
+        [self.tableView reloadData];
+    }
+}
+
 #pragma mark
 #pragma mark UITableViewDelegate & UITableViewDataSource
 
 -(NSInteger) tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
-    ViewModeData* viewMode = [_window.viewModes objectAtIndex:self.viewModeSegment.selectedSegmentIndex];
-    return viewMode.records.count;
+    return [_recordSource numberOfRecords];
 }
 
 -(CGFloat) tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    if( indexPath.row >= _kanbanCellHeights.count ) return 0;
-    else
-    {
-        NSLog(@"row: %d, height:%.02f", (int)indexPath.row, [_kanbanCellHeights[indexPath.row] floatValue]);
-        return [_kanbanCellHeights[indexPath.row] floatValue];
-    }
+    return [_recordSource heightOfRecord:indexPath.row];
 }
 
 -(UITableViewCell*) tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    UITableViewCell* cell = nil;
-    
-    ViewModeData* viewMode = [_window.viewModes objectAtIndex:self.viewModeSegment.selectedSegmentIndex];
-    if( [viewMode.name isEqualToString:@"kanban"] )
-    {
-        cell = [tableView dequeueReusableCellWithIdentifier:kKanbanCellIdentifier];
-        if( !cell )
-        {
-            cell = [[KanbanCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                     reuseIdentifier:kKanbanCellIdentifier];
-        }
-        [((KanbanCell*)cell) setRecord:viewMode.records[indexPath.row] viewMode:viewMode];
-        NSLog(@"cell height: %.02f", cell.frame.size.height);
-    }
-    
-    return cell;
+    return [_recordSource cellOfRecord:indexPath.row inTableView:tableView];
 }
 
 #pragma mark
@@ -148,24 +140,6 @@
     // 默认选中第一个,直接调用按钮事件，下面一句不会触发事件
     self.viewModeSegment.selectedSegmentIndex = 0;
     [self viewModeChanged:self.viewModeSegment];
-}
-
-#pragma mark
-#pragma mark RecordModelObserver
-
--(void) recordModel:(RecordModel*)recordModel requestMoreRecord:(ReturnParam*)params
-{
-    WindowData* window = params[@"Window"];
-    if( window != _window ) return;
-    
-    dismissWaiting();
-    if( !params.success )
-    {
-        popError(params.failedReason);
-        return;
-    }
-    
-    [self reloadData];
 }
 
 @end

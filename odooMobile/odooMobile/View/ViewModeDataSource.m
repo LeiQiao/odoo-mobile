@@ -10,11 +10,10 @@
 
 -(instancetype) initWithWindow:(WindowData*)window
 {
-    if( self = [super init] )
+    if( self = [self init] )
     {
         _window = window;
         _viewMode = nil;
-        _recordHeights = [NSMutableArray new];
         
         ADDOBSERVER(RecordModel, (id<RecordModelObserver>)self);
     }
@@ -26,9 +25,15 @@
     REMOVEOBSERVER(RecordModel, (id<RecordModelObserver>)self);
 }
 
--(void) requestMoreRecords:(void(^)(BOOL success))callback
+-(void) updateHeightWithWidth:(CGFloat)width updatedTarget:(id)target andAction:(SEL)action
 {
-    _callback = callback;
+    _updateWidth = width;
+    _updatedTarget = target;
+    _updatedAtion = action;
+}
+
+-(void) requestMoreRecords
+{
     popWaiting();
     [GETMODEL(RecordModel) requestMoreRecord:_window viewMode:_viewMode];
 }
@@ -36,7 +41,6 @@
 -(void) cleanRecord
 {
     [_viewMode.records removeAllObjects];
-    [_recordHeights removeAllObjects];
 }
 
 -(NSInteger) numberOfRecords
@@ -46,13 +50,22 @@
 
 -(CGFloat) heightOfRecord:(NSInteger)index
 {
-    return [_recordHeights[index] floatValue];
+    NSAssert(NO, @"subclass must override \"heightOfRecord\".");
+    return 0;
 }
 
--(UITableViewCell*) cellOfRecord:(NSInteger)index
+-(UITableViewCell*) cellOfRecord:(NSInteger)index inTableView:(UITableView*)tableView
 {
-    NSAssert(NO, @"subclass must override \"cellOfRecord\".");
+    NSAssert(NO, @"subclass must override \"cellOfRecordInTableView\".");
     return nil;
+}
+
+-(void) callUpdate:(NSNumber*)index
+{
+    if( _updatedTarget && [_updatedTarget respondsToSelector:_updatedAtion] )
+    {
+        [_updatedTarget performSelector:_updatedAtion withObject:index];
+    }
 }
 
 -(void) recordModel:(RecordModel*)recordModel requestMoreRecord:(ReturnParam*)params
@@ -66,11 +79,7 @@
         popError(params.failedReason);
     }
     
-    if( _callback )
-    {
-        _callback(params.success);
-        _callback = nil;
-    }
+    [self callUpdate:nil];
 }
 
 @end

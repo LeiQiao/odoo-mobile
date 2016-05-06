@@ -5,24 +5,26 @@
 #import <UIKit/UIKit.h>
 #import "OdooData.h"
 
-typedef void(^ViewModeRequestCallback)(BOOL success);
-
 @interface ViewModeDataSource : NSObject {
     WindowData* _window;
     ViewModeData* _viewMode;
     
-    NSMutableArray* _recordHeights;
+    CGFloat _updateWidth;
+    __weak id _updatedTarget;
+    SEL _updatedAtion;
 }
 
-@property(nonatomic) ViewModeRequestCallback callback;
-
 -(instancetype) initWithWindow:(WindowData*)window;
+
+-(void) updateHeightWithWidth:(CGFloat)width updatedTarget:(id)target andAction:(SEL)action;
 
 -(void) requestMoreRecords;
 
 -(void) cleanRecord;
 -(NSInteger) numberOfRecords;
 -(CGFloat) heightOfRecord:(NSInteger)index;
--(UITableViewCell*) cellOfRecord:(NSInteger)index;
+-(UITableViewCell*) cellOfRecord:(NSInteger)index inTableView:(UITableView*)tableView;
+
+-(void) callUpdate:(NSNumber*)index;
 
 @end

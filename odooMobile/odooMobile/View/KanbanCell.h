@@ -5,7 +5,6 @@
 #import <UIKit/UIKit.h>
 #import "OdooData.h"
 
-extern NSString* const kKanbanCellIdentifier;   /*!< 看板项重用标示 */
 
 @protocol KanbanCellDelegate;
 

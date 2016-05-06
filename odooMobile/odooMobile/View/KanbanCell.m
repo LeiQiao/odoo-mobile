@@ -4,7 +4,6 @@
 
 #import "KanbanCell.h"
 
-NSString* const kKanbanCellIdentifier = @"kKanBanIdentifier";
 
 @implementation KanbanCell {
     UIWebView* _webView;
@@ -33,21 +32,9 @@ NSString* const kKanbanCellIdentifier = @"kKanBanIdentifier";
 {
     if( !_webView )
     {
-        NSLog(@"init size:(%.02f, %.02f)", self.contentView.bounds.size.width, self.contentView.bounds.size.height);
-        _webView = [[UIWebView alloc] initWithFrame:self.contentView.bounds];
-        _webView.scrollView.scrollEnabled = NO;
-        _webView.delegate = (id<UIWebViewDelegate>)self;
         [self.contentView addSubview:_webView];
     }
     
-    NSString* cssContent = [[NSBundle mainBundle] pathForResource:@"kanban" ofType:@"css"];
-    cssContent = [NSString stringWithContentsOfFile:cssContent encoding:NSUTF8StringEncoding error:nil];
-    
-    NSString* htmlString = viewMode.htmlContext;
-    // TODO: need replace html with field data
-    
-    htmlString = [NSString stringWithFormat:@"<html><head><style>%@</style></head><body>%@</body></html>", cssContent, htmlString];
-    [_webView loadHTMLString:htmlString baseURL:nil];
 }
 
 #pragma mark
