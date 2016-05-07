@@ -22,9 +22,9 @@ NSString* const kKanbanCellIdentifier = @"kKanbanCellIdentifier";   /*!< 看板�
     [webView loadHTMLString:htmlString baseURL:nil];
 }
 
--(instancetype) init
+-(instancetype) initWithWindow:(WindowData*)window
 {
-    if( self = [super init] )
+    if( self = [super initWithWindow:window] )
     {
         for( ViewModeData* viewMode in _window.viewModes )
         {
@@ -111,6 +111,7 @@ NSString* const kKanbanCellIdentifier = @"kKanbanCellIdentifier";   /*!< 看板�
     
     // 通知更新某Cell
     NSInteger index = [_recordWebViews indexOfObject:webView];
+    NSLog(@"webview %02d height: %.02f", index, height);
     [super callUpdate:@(index)];
     
     // 通知更新全局

@@ -92,17 +92,22 @@
 
 -(NSInteger) tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_recordSource numberOfRecords];
+    NSInteger count = [_recordSource numberOfRecords];
+    NSLog(@"cell count %02d height: %.02f", count);
+    return count;
 }
 
 -(CGFloat) tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    return [_recordSource heightOfRecord:indexPath.row];
+    CGFloat height = [_recordSource heightOfRecord:indexPath.row];
+    NSLog(@"cell %02d height: %.02f", indexPath.row, height);
+    return height;
 }
 
 -(UITableViewCell*) tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    return [_recordSource cellOfRecord:indexPath.row inTableView:tableView];
+    UITableViewCell* cell = [_recordSource cellOfRecord:indexPath.row inTableView:tableView];
+    return cell;
 }
 
 #pragma mark
