@@ -19,6 +19,7 @@
 
 @end
 
+@class FieldData;
 /*!
  *  @author LeiQiao, 16/05/03
  *  @brief 窗口显示模式数据
@@ -31,6 +32,14 @@
 @property(nonatomic, strong) NSString* htmlContext;     /*!< 窗口显示模式HTML布局样式 */
 @property(nonatomic, strong) NSArray* fields;           /*!< 窗口显示模式字段集 */
 @property(nonatomic, strong) NSMutableArray* records;   /*!< 窗口显示模式记录集 */
+
+/*!
+ *  @author LeiQiao, 16/05/08
+ *  @brief 根据字段名获取字段属性
+ *  @param fieldName 字段名
+ *  @return 字段属性
+ */
+-(FieldData*) fieldForName:(NSString*)fieldName;
 
 @end
 

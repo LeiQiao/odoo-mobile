@@ -7,6 +7,26 @@
 #import "Preferences.h"
 #import "GlobalModels.h"
 
+/*!
+ *  @author LeiQiao, 16/05/08
+ *  @brief 使用货币表示法返回金额
+ *  @param amount 金额
+ *  @return 金额的货币表示法
+ */
+NSString* getMonetary(NSNumber* amount)
+{
+    NSString* currency = [gPreferences.CompanyCurrency uppercaseString];
+    if( [currency isEqualToString:@"USD"] )
+    {
+        return [NSString stringWithFormat:@"$ %.02f", [amount floatValue]];
+    }
+    if( [currency isEqualToString:@"CNY"] )
+    {
+        return [NSString stringWithFormat:@"%.02f ¥", [amount floatValue]];
+    }
+    return [NSString stringWithFormat:@"%.02f", [amount floatValue]];
+}
+
 @implementation UserModel
 
 /*!
@@ -157,7 +177,7 @@
     }
     responseObject = [responseObject objectAtIndex:0];
     gPreferences.CompanyDisplayName = SafeCopy([responseObject objectForKey:@"display_name"]);
-    gPreferences.CompanyCurrency = SafeCopy([responseObject objectForKey:@"currency_id"]);
+    gPreferences.CompanyCurrency = SafeCopy([[responseObject objectForKey:@"currency_id"] objectAtIndex:1]);
     gPreferences.CompanyLogoImage = SafeCopy([responseObject objectForKey:@"logo"]);
     
     /*---------- 获取用户所在的组的可用菜单 ----------*/

@@ -1,17 +1,25 @@
+kanban{
+    font-size:14px;
+    font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+}
+
 ul{
     list-style-type:none;
     padding:0;
+    margin-top:0;
     margin-bottom:0;
+    padding-bottom:10;
 }
 
 .o_kanban_image{
     float:left;
     width:64px;
 }
-.o_kanban_image>img{
+.o_kanban_image img{
     box-shadow:none;
     text-align:center;
     max-width:100%;
+    width:64px;
 }
 .o_kanban_image+div{
     padding-left:72px;
@@ -20,10 +28,10 @@ ul{
     padding-left:80px;
 }
 
-.oe_kanban_details>ul{
+.oe_kanban_details ul{
     margin-bottom:0;
 }
-.oe_kanban_details>div{
+.oe_kanban_details div{
     max-height:9px;
 }
 

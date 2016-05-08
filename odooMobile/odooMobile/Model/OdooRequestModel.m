@@ -188,6 +188,13 @@ NSString* unicodeToUTF8(NSString* unicodeString)
              error:(NSError**)error
 {
     // 构建XMLRPC请求
+//    NSLog(@"object[0] = %@;", gPreferences.DBName);
+//    NSLog(@"object[1] = %@;", [gPreferences.UserID stringValue]);
+//    NSLog(@"object[2] = %@;", gPreferences.Password);
+//    NSLog(@"object[3] = %@;", model);
+//    NSLog(@"object[4] = %@;", method);
+//    NSLog(@"object[5] = %@;", parameters);
+//    NSLog(@"object[6] = %@;", conditions);
     self.reqParam = [OdooRequestParam execute:@"execute_kw"
                                    parameters:@[gPreferences.DBName,
                                                 @([gPreferences.UserID integerValue]),

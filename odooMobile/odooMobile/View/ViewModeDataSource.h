@@ -4,6 +4,7 @@
 
 #import <UIKit/UIKit.h>
 #import "OdooData.h"
+#import "GlobalModels.h"
 
 @interface ViewModeDataSource : NSObject {
     WindowData* _window;

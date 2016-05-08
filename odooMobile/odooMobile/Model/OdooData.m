@@ -56,6 +56,24 @@
     return self;
 }
 
+/*!
+ *  @author LeiQiao, 16/05/08
+ *  @brief 根据字段名获取字段属性
+ *  @param fieldName 字段名
+ *  @return 字段属性
+ */
+-(FieldData*) fieldForName:(NSString*)fieldName
+{
+    for( FieldData* field in self.fields )
+    {
+        if( [field.name isEqualToString:fieldName] )
+        {
+            return  field;
+        }
+    }
+    return nil;
+}
+
 @end
 
 /*!

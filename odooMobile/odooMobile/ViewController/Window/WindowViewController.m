@@ -77,9 +77,9 @@
 {
     if( index )
     {
-        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[index integerValue]
-                                                                    inSection:0]]
-                              withRowAnimation:UITableViewRowAnimationAutomatic];
+//        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[index integerValue]
+//                                                                    inSection:0]]
+//                              withRowAnimation:UITableViewRowAnimationAutomatic];
     }
     else
     {
@@ -93,14 +93,12 @@
 -(NSInteger) tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSInteger count = [_recordSource numberOfRecords];
-    NSLog(@"cell count %02d height: %.02f", count);
     return count;
 }
 
 -(CGFloat) tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     CGFloat height = [_recordSource heightOfRecord:indexPath.row];
-    NSLog(@"cell %02d height: %.02f", indexPath.row, height);
     return height;
 }
 

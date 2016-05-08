@@ -4,6 +4,16 @@
 
 #import "ModelObserver.h"
 
+
+
+/*!
+ *  @author LeiQiao, 16/05/08
+ *  @brief 使用货币表示法返回金额
+ *  @param amount 金额
+ *  @return 金额的货币表示法
+ */
+extern NSString* getMonetary(NSNumber* amount);
+
 /*!
  *  @author LeiQiao, 16-04-22
  *  @brief 用户模型

@@ -36,6 +36,8 @@
 		45F75A081CCA02CD00989B4B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F75A071CCA02CD00989B4B /* LoginViewController.m */; };
 		45F75A0B1CCA181D00989B4B /* ServerSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F75A0A1CCA181D00989B4B /* ServerSettingViewController.m */; };
 		9B059D95349B26E6D10ABF7D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B4C566102D81D14ABC3748 /* libPods.a */; };
+		A00841511CDE3AC800CF9BC7 /* kanban.js in Resources */ = {isa = PBXBuildFile; fileRef = A00841501CDE3AC800CF9BC7 /* kanban.js */; };
+		A00841551CDED38000CF9BC7 /* UIWebView+TS_JavaScriptContext.m in Sources */ = {isa = PBXBuildFile; fileRef = A00841541CDED38000CF9BC7 /* UIWebView+TS_JavaScriptContext.m */; };
 		A0677CC61CCA6F67002355C2 /* OdooRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CC51CCA6F67002355C2 /* OdooRequestModel.m */; };
 		A0677CD31CCC6012002355C2 /* CXPickerTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CD21CCC6012002355C2 /* CXPickerTextField.m */; };
 		A0677CD61CCC9982002355C2 /* RegistTrailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CD51CCC9982002355C2 /* RegistTrailViewController.m */; };
@@ -108,6 +110,9 @@
 		45F75A0A1CCA181D00989B4B /* ServerSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerSettingViewController.m; sourceTree = "<group>"; };
 		660D2FBBDDE1103B239D0E27 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		88B4C566102D81D14ABC3748 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A00841501CDE3AC800CF9BC7 /* kanban.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = kanban.js; sourceTree = "<group>"; };
+		A00841531CDED38000CF9BC7 /* UIWebView+TS_JavaScriptContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+TS_JavaScriptContext.h"; sourceTree = "<group>"; };
+		A00841541CDED38000CF9BC7 /* UIWebView+TS_JavaScriptContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+TS_JavaScriptContext.m"; sourceTree = "<group>"; };
 		A0677CC41CCA6F67002355C2 /* OdooRequestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OdooRequestModel.h; sourceTree = "<group>"; };
 		A0677CC51CCA6F67002355C2 /* OdooRequestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OdooRequestModel.m; sourceTree = "<group>"; };
 		A0677CD11CCC6012002355C2 /* CXPickerTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXPickerTextField.h; sourceTree = "<group>"; };
@@ -196,6 +201,7 @@
 		45F7599C1CC8CC1300989B4B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A00841501CDE3AC800CF9BC7 /* kanban.js */,
 				A0677CE31CD6F1A4002355C2 /* kanban.css */,
 				45F7599F1CC8CC1300989B4B /* AppDelegate.h */,
 				45F759A01CC8CC1300989B4B /* AppDelegate.m */,
@@ -207,6 +213,7 @@
 		45F759B61CC9ECAC00989B4B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A00841521CDED38000CF9BC7 /* UIWebView+TS_JavaScriptContext */,
 				45F759D81CC9EF0500989B4B /* ModelDefine */,
 				45F759DC1CC9EF0500989B4B /* ViewModelDefine */,
 				45F759E41CC9F23500989B4B /* CXSignal */,
@@ -359,6 +366,15 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		A00841521CDED38000CF9BC7 /* UIWebView+TS_JavaScriptContext */ = {
+			isa = PBXGroup;
+			children = (
+				A00841531CDED38000CF9BC7 /* UIWebView+TS_JavaScriptContext.h */,
+				A00841541CDED38000CF9BC7 /* UIWebView+TS_JavaScriptContext.m */,
+			);
+			path = "UIWebView+TS_JavaScriptContext";
+			sourceTree = "<group>";
+		};
 		A0677CC71CCC5E62002355C2 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -455,6 +471,7 @@
 			files = (
 				A0677CE41CD6F1A4002355C2 /* kanban.css in Resources */,
 				45F759AC1CC8CC1300989B4B /* LaunchScreen.storyboard in Resources */,
+				A00841511CDE3AC800CF9BC7 /* kanban.js in Resources */,
 				45F759A91CC8CC1300989B4B /* Assets.xcassets in Resources */,
 				45F759A71CC8CC1300989B4B /* Main.storyboard in Resources */,
 			);
@@ -536,6 +553,7 @@
 				45F75A0B1CCA181D00989B4B /* ServerSettingViewController.m in Sources */,
 				45F7599E1CC8CC1300989B4B /* main.m in Sources */,
 				A0677CD91CD43BE6002355C2 /* KanbanCell.m in Sources */,
+				A00841551CDED38000CF9BC7 /* UIWebView+TS_JavaScriptContext.m in Sources */,
 				45B1BFD31CCF0D09008A9A39 /* MenuModel.m in Sources */,
 				45F759D41CC9ECCF00989B4B /* MainViewController.m in Sources */,
 				45F759CC1CC9ECAC00989B4B /* AFXMLRPCSessionManager.m in Sources */,
@@ -661,7 +679,7 @@
 			baseConfigurationReference = 223DE4795A318B85C0D7C186 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: yi jun (UP2W7HXJFN)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Lei Qiao (4255A94LGP)";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/include/libxml2,
@@ -700,7 +718,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LoveC.odooMobile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6708be1e-b440-41c9-be9d-a3eb6522757d";
+				PROVISIONING_PROFILE = "437fab83-bbb1-4f86-b443-292bfaa72b9c";
 			};
 			name = Debug;
 		};
@@ -709,7 +727,7 @@
 			baseConfigurationReference = 660D2FBBDDE1103B239D0E27 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: yi jun (UP2W7HXJFN)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Lei Qiao (4255A94LGP)";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/include/libxml2,
@@ -748,7 +766,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LoveC.odooMobile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6708be1e-b440-41c9-be9d-a3eb6522757d";
+				PROVISIONING_PROFILE = "437fab83-bbb1-4f86-b443-292bfaa72b9c";
 			};
 			name = Release;
 		};

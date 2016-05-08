@@ -3,7 +3,6 @@
 //
 
 #import "ViewModeDataSource.h"
-#import "GlobalModels.h"
 #import "HUD.h"
 
 @implementation ViewModeDataSource
