@@ -6,8 +6,8 @@
 #import "GlobalModels.h"
 #import "HUD.h"
 #import "UIViewController+CustomUI.h"
-#import "KanbanDataSource.h"
 #import "Preferences.h"
+#import "KanbanViewController.h"
 
 /*!
  *  @author LeiQiao, 16-04-27
@@ -15,7 +15,6 @@
  */
 @implementation WindowViewController {
     WindowData* _window;                /*!< 窗口数据 */
-    ViewModeDataSource* _recordSource;  /*!< UITableView的数据源 */
 }
 
 #pragma mark
@@ -25,9 +24,16 @@
 {
     [super viewDidLoad];
     
-    // 隐藏导航栏的Segment和按钮
-    self.viewModeSegment.hidden = YES;
-    self.navigationItem.rightBarButtonItem = nil;
+    // 使用空白的VC代替正在加载时的页面
+    UIViewController* blankVC = [[UIViewController alloc] init];
+    blankVC.view.backgroundColor = [UIColor whiteColor];
+    self.viewControllers = @[blankVC];
+    
+    UIBarButtonItem* addButton = [[UIBarButtonItem alloc] initWithTitle:@"＋"
+                                                                  style:UIBarButtonItemStylePlain
+                                                                 target:self
+                                                                 action:@selector(addButtonDidClicked:)];
+    self.navigationItem.rightBarButtonItem = addButton;
     
     ADDOBSERVER(WindowModel, (id<WindowModelObserver>)self);
     
@@ -46,66 +52,45 @@
 
 -(IBAction) viewModeChanged:(id)sender
 {
-    ViewModeData* viewMode = [_window.viewModes objectAtIndex:self.viewModeSegment.selectedSegmentIndex];
-    
-    if( [viewMode.name isEqualToString:@"kanban"] ||
-       [viewMode.name isEqualToString:@"list"] )
-    {
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"＋"
-                                                                                  style:UIBarButtonItemStyleDone
-                                                                                 target:self
-                                                                                 action:@selector(addButtonClicked:)];
-        
-        if( [viewMode.name isEqualToString:@"kanban"] )
-        {
-            _recordSource = [[KanbanDataSource alloc] initWithWindow:_window];
-            [_recordSource updateHeightWithWidth:self.tableView.frame.size.width
-                                   updatedTarget:self andAction:@selector(cellHeightDidUpdated:)];
-        }
-        if( viewMode.records.count == 0 )
-        {
-            [_recordSource requestMoreRecords];
-        }
-    }
+//    ViewModeData* viewMode = [_window.viewModes objectAtIndex:self.viewModeSegment.selectedSegmentIndex];
+//    
+//    if( [viewMode.name isEqualToString:@"kanban"] ||
+//       [viewMode.name isEqualToString:@"list"] )
+//    {
+//        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"＋"
+//                                                                                  style:UIBarButtonItemStyleDone
+//                                                                                 target:self
+//                                                                                 action:@selector(addButtonClicked:)];
+//        
+//        if( [viewMode.name isEqualToString:@"kanban"] )
+//        {
+//            _recordSource = [[KanbanDataSource alloc] initWithWindow:_window];
+//            [_recordSource updateHeightWithWidth:self.tableView.frame.size.width
+//                                   updatedTarget:self andAction:@selector(cellHeightDidUpdated:)];
+//        }
+//        if( viewMode.records.count == 0 )
+//        {
+//            [_recordSource requestMoreRecords];
+//        }
+//    }
 }
 
--(void) addButtonClicked:(id)sender
-{
-}
+//-(void) cellHeightDidUpdated:(NSNumber*)index
+//{
+//    if( index )
+//    {
+////        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[index integerValue]
+////                                                                    inSection:0]]
+////                              withRowAnimation:UITableViewRowAnimationAutomatic];
+//    }
+//    else
+//    {
+//        [self.tableView reloadData];
+//    }
+//}
 
--(void) cellHeightDidUpdated:(NSNumber*)index
+-(void) tabBarController:(UITabBarController*)tabBarController didSelectViewController:(UIViewController*)viewController
 {
-    if( index )
-    {
-//        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[index integerValue]
-//                                                                    inSection:0]]
-//                              withRowAnimation:UITableViewRowAnimationAutomatic];
-    }
-    else
-    {
-        [self.tableView reloadData];
-    }
-}
-
-#pragma mark
-#pragma mark UITableViewDelegate & UITableViewDataSource
-
--(NSInteger) tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
-{
-    NSInteger count = [_recordSource numberOfRecords];
-    return count;
-}
-
--(CGFloat) tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
-{
-    CGFloat height = [_recordSource heightOfRecord:indexPath.row];
-    return height;
-}
-
--(UITableViewCell*) tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
-{
-    UITableViewCell* cell = [_recordSource cellOfRecord:indexPath.row inTableView:tableView];
-    return cell;
 }
 
 #pragma mark
@@ -125,24 +110,28 @@
     
     _window = params[@"Window"];
     
-    [self.viewModeSegment removeAllSegments];
+    self.title = _window.displayName;
     
-    for( NSUInteger i=0; i<_window.viewModes.count; i++ )
+    NSMutableArray* viewControllers = [NSMutableArray new];
+    
+    ViewModeData* kanbanViewMode = [_window viewModeForName:kKanbanViewModeName];
+    ViewModeData* listViewMode = [_window viewModeForName:kListViewModeName];
+    if( kanbanViewMode )
     {
-        ViewModeData* viewMode = [_window.viewModes objectAtIndex:i];
-        
-        // search和form不单独显示视图模式，这两种显示模式集成在其他页面
-        if( (![viewMode.name isEqualToString:@"search"]) &&
-           (![viewMode.name isEqualToString:@"form"]) )
-        {
-            [self.viewModeSegment insertSegmentWithTitle:viewMode.displayName atIndex:i animated:NO];
-        }
+        KanbanViewController* viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"KanbanViewController"];
+        viewController.window = _window;
+        [viewControllers addObject:viewController];
     }
-    self.viewModeSegment.hidden = NO;
     
-    // 默认选中第一个,直接调用按钮事件，下面一句不会触发事件
-    self.viewModeSegment.selectedSegmentIndex = 0;
-    [self viewModeChanged:self.viewModeSegment];
+    // prevent TableView position massed up
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [self setViewControllers:viewControllers animated:YES];
+    });
+    
+    if( viewControllers.count == 1 )
+    {
+        self.tabBar.hidden = YES;
+    }
 }
 
 @end

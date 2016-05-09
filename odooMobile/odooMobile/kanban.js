@@ -15,6 +15,13 @@ function getElementsByXPath(xpath)
     return nodes;
 }
 
+function replaceConditionKeyword(conditions)
+{
+    conditions = conditions.replace(/ and /i, " && ");
+    conditions = conditions.replace(/ or /i, " || ");
+    return conditions;
+}
+
 function kanban_image(model, field, id)
 {
     if( eval("record."+field) == null )
@@ -32,7 +39,7 @@ function kanban_image(model, field, id)
         return "";
     }
     
-    var imageData = eval("record."+field+".value");
+    var imageData = eval("record."+field+".raw_value");
     if( imageData.length == 0 )
     {
         return "";
@@ -67,7 +74,9 @@ function set_record_value()
     for( i in nodes )
     {
         var node = nodes[i];
-        node.src = eval(node.attributes["t-att-src"].value);
+        try {
+            node.src = eval(node.attributes["t-att-src"].value);
+        } catch(e) {}
     }
     nodes = getElementsByXPath("//*[@t-esc]");
     for( i in nodes )
@@ -81,10 +90,12 @@ function set_record_value()
     for( i in nodes )
     {
         var node = nodes[i];
-        var visible = eval(node.attributes["t-if"].value);
-        if( !visible )
-        {
-            node.parentNode.removeChild(node);
-        }
+        try {
+            var visible = eval(replaceConditionKeyword(node.attributes["t-if"].value));
+            if( !visible )
+            {
+                node.parentNode.removeChild(node);
+            }
+        } catch(e) {nslog("Error" + e);}
     }
 }

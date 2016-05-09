@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		457A04791CE0590B00FF5365 /* KanbanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 457A04781CE0590B00FF5365 /* KanbanViewController.m */; };
 		45B1BFD31CCF0D09008A9A39 /* MenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B1BFD21CCF0D09008A9A39 /* MenuModel.m */; };
 		45B1BFD61CCF372F008A9A39 /* TranslateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B1BFD51CCF372F008A9A39 /* TranslateModel.m */; };
 		45B1BFD91CCF3CA2008A9A39 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B1BFD81CCF3CA2008A9A39 /* MenuViewController.m */; };
@@ -46,12 +47,13 @@
 		A0677CE41CD6F1A4002355C2 /* kanban.css in Resources */ = {isa = PBXBuildFile; fileRef = A0677CE31CD6F1A4002355C2 /* kanban.css */; };
 		A0677CE71CD771CD002355C2 /* RecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CE61CD771CD002355C2 /* RecordModel.m */; };
 		A0677CEA1CD83630002355C2 /* OdooData.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CE91CD83630002355C2 /* OdooData.m */; };
-		A0677CED1CDB8ADC002355C2 /* KanbanDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CEC1CDB8ADC002355C2 /* KanbanDataSource.m */; };
 		A0677CF01CDB8CB7002355C2 /* ViewModeDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CEF1CDB8CB7002355C2 /* ViewModeDataSource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		223DE4795A318B85C0D7C186 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		457A04771CE0590B00FF5365 /* KanbanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KanbanViewController.h; sourceTree = "<group>"; };
+		457A04781CE0590B00FF5365 /* KanbanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KanbanViewController.m; sourceTree = "<group>"; };
 		45B1BFD11CCF0D09008A9A39 /* MenuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuModel.h; sourceTree = "<group>"; };
 		45B1BFD21CCF0D09008A9A39 /* MenuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuModel.m; sourceTree = "<group>"; };
 		45B1BFD41CCF372F008A9A39 /* TranslateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslateModel.h; sourceTree = "<group>"; };
@@ -128,8 +130,6 @@
 		A0677CE61CD771CD002355C2 /* RecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordModel.m; sourceTree = "<group>"; };
 		A0677CE81CD83630002355C2 /* OdooData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OdooData.h; sourceTree = "<group>"; };
 		A0677CE91CD83630002355C2 /* OdooData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OdooData.m; sourceTree = "<group>"; };
-		A0677CEB1CDB8ADC002355C2 /* KanbanDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KanbanDataSource.h; sourceTree = "<group>"; };
-		A0677CEC1CDB8ADC002355C2 /* KanbanDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KanbanDataSource.m; sourceTree = "<group>"; };
 		A0677CEE1CDB8CB7002355C2 /* ViewModeDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewModeDataSource.h; sourceTree = "<group>"; };
 		A0677CEF1CDB8CB7002355C2 /* ViewModeDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewModeDataSource.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -151,6 +151,8 @@
 			children = (
 				45B1BFE81CD05762008A9A39 /* WindowViewController.h */,
 				45B1BFE91CD05762008A9A39 /* WindowViewController.m */,
+				457A04771CE0590B00FF5365 /* KanbanViewController.h */,
+				457A04781CE0590B00FF5365 /* KanbanViewController.m */,
 			);
 			path = Window;
 			sourceTree = "<group>";
@@ -386,8 +388,6 @@
 				A0677CD81CD43BE6002355C2 /* KanbanCell.m */,
 				A0677CEE1CDB8CB7002355C2 /* ViewModeDataSource.h */,
 				A0677CEF1CDB8CB7002355C2 /* ViewModeDataSource.m */,
-				A0677CEB1CDB8ADC002355C2 /* KanbanDataSource.h */,
-				A0677CEC1CDB8ADC002355C2 /* KanbanDataSource.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -539,6 +539,7 @@
 				45B1BFD61CCF372F008A9A39 /* TranslateModel.m in Sources */,
 				45B1BFE61CCF6594008A9A39 /* WindowModel.m in Sources */,
 				A0677CF01CDB8CB7002355C2 /* ViewModeDataSource.m in Sources */,
+				457A04791CE0590B00FF5365 /* KanbanViewController.m in Sources */,
 				45F759E01CC9EF0500989B4B /* BaseViewModel.m in Sources */,
 				45F759F01CC9F23500989B4B /* CXSignalTransformer.m in Sources */,
 				A0677CC61CCA6F67002355C2 /* OdooRequestModel.m in Sources */,
@@ -560,7 +561,6 @@
 				45F759ED1CC9F23500989B4B /* CXSignal.m in Sources */,
 				45F759E31CC9EF1400989B4B /* UserModel.m in Sources */,
 				45F759CD1CC9ECAC00989B4B /* GDataXMLNode.m in Sources */,
-				A0677CED1CDB8ADC002355C2 /* KanbanDataSource.m in Sources */,
 				45F75A081CCA02CD00989B4B /* LoginViewController.m in Sources */,
 				45B1BFEE1CD093F7008A9A39 /* UIViewController+CustomUI.m in Sources */,
 				A0677CD31CCC6012002355C2 /* CXPickerTextField.m in Sources */,
@@ -679,7 +679,7 @@
 			baseConfigurationReference = 223DE4795A318B85C0D7C186 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Lei Qiao (4255A94LGP)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: yi jun (UP2W7HXJFN)";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/include/libxml2,
@@ -718,7 +718,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LoveC.odooMobile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "437fab83-bbb1-4f86-b443-292bfaa72b9c";
+				PROVISIONING_PROFILE = "6708be1e-b440-41c9-be9d-a3eb6522757d";
 			};
 			name = Debug;
 		};
@@ -727,7 +727,7 @@
 			baseConfigurationReference = 660D2FBBDDE1103B239D0E27 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Lei Qiao (4255A94LGP)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: yi jun (UP2W7HXJFN)";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/include/libxml2,
@@ -766,7 +766,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LoveC.odooMobile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "437fab83-bbb1-4f86-b443-292bfaa72b9c";
+				PROVISIONING_PROFILE = "6708be1e-b440-41c9-be9d-a3eb6522757d";
 			};
 			name = Release;
 		};

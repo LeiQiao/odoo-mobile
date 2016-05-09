@@ -14,14 +14,12 @@
         _window = window;
         _viewMode = nil;
         
-        ADDOBSERVER(RecordModel, (id<RecordModelObserver>)self);
     }
     return self;
 }
 
 -(void) dealloc
 {
-    REMOVEOBSERVER(RecordModel, (id<RecordModelObserver>)self);
 }
 
 -(void) updateHeightWithWidth:(CGFloat)width updatedTarget:(id)target andAction:(SEL)action
@@ -65,20 +63,6 @@
     {
         [_updatedTarget performSelector:_updatedAtion withObject:index];
     }
-}
-
--(void) recordModel:(RecordModel*)recordModel requestMoreRecord:(ReturnParam*)params
-{
-    if( (params[@"Window"] != _window) ||
-       (params[@"ViewMode"] != _viewMode) ) return;
-    
-    dismissWaiting();
-    if( !params.success )
-    {
-        popError(params.failedReason);
-    }
-    
-    [self callUpdate:nil];
 }
 
 @end

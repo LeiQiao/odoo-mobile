@@ -4,6 +4,12 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString* const kKanbanViewModeName;     /*!< 看板显示模式名称 */
+extern NSString* const kListViewModeName;       /*!< 列表显示模式名称 */
+extern NSString* const kFormViewModeName;       /*!< 表单显示模式名称 */
+extern NSString* const kSearchViewModeName;     /*!< 搜索显示模式名称 */
+
+@class ViewModeData;
 /*!
  *  @author LeiQiao, 16/05/03
  *  @brief 窗口数据
@@ -16,6 +22,14 @@
 @property(nonatomic, strong) NSString* modelName;       /*!< 模型名称 */
 @property(nonatomic, strong) NSArray* viewModes;        /*!< 窗口显示模式 */
 @property(nonatomic, strong) NSDictionary* context;     /*!< 窗口配置 */
+
+/*!
+ *  @author LeiQiao, 16-05-09
+ *  @brief 根据名称获取显示模式
+ *  @param viewModeName 显示模式名称
+ *  @return 显示模式
+ */
+-(ViewModeData*) viewModeForName:(NSString*)viewModeName;
 
 @end
 

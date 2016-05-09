@@ -4,6 +4,11 @@
 
 #import "OdooData.h"
 
+NSString* const kKanbanViewModeName = @"kanban";     /*!< 看板显示模式名称 */
+NSString* const kListViewModeName = @"list";         /*!< 列表显示模式名称 */
+NSString* const kFormViewModeName = @"form";         /*!< 表单显示模式名称 */
+NSString* const kSearchViewModeName = @"search";     /*!< 搜索显示模式名称 */
+
 /*!
  *  @author LeiQiao, 16/05/03
  *  @brief 窗口数据
@@ -27,6 +32,24 @@
         self.context = @{};
     }
     return self;
+}
+
+/*!
+ *  @author LeiQiao, 16-05-09
+ *  @brief 根据名称获取显示模式
+ *  @param viewModeName 显示模式名称
+ *  @return 显示模式
+ */
+-(ViewModeData*) viewModeForName:(NSString*)viewModeName
+{
+    for( ViewModeData* viewMode in self.viewModes )
+    {
+        if( [viewMode.name isEqualToString:viewModeName] )
+        {
+            return viewMode;
+        }
+    }
+    return nil;
 }
 
 @end
