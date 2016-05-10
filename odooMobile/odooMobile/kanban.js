@@ -22,6 +22,149 @@ function replaceConditionKeyword(conditions)
     return conditions;
 }
 
+function calcDocumentHeight()
+{
+    var bodyBottomMargin = parseInt((window.getComputedStyle ? getComputedStyle(document.body, null) : document.body.currentStyle)['marginBottom']);
+    
+    var imageMaxHeight = 0;
+    var nodes = getElementsByXPath("//*[@class='o_kanban_image']");
+    for( i in nodes )
+    {
+        var imageNode = nodes[i];
+        if( imageMaxHeight < (imageNode.offsetTop + imageNode.scrollHeight + bodyBottomMargin) )
+        {
+            imageMaxHeight = (imageNode.offsetTop + imageNode.scrollHeight + bodyBottomMargin);
+        }
+    }
+    
+    var detailMaxHeight = 0;
+    nodes = getElementsByXPath("//*[@class='oe_kanban_details']");
+    for( i in nodes )
+    {
+        var detailNode = nodes[i];
+        if( detailMaxHeight < (detailNode.offsetTop + detailNode.scrollHeight) )
+        {
+            detailMaxHeight = (detailNode.offsetTop + detailNode.scrollHeight);
+        }
+    }
+    
+    var documentHeight = document.height;
+    if( imageMaxHeight > documentHeight )
+    {
+        documentHeight = imageMaxHeight;
+    }
+    if( detailMaxHeight > documentHeight )
+    {
+        documentHeight = detailMaxHeight;
+    }
+    if( (imageMaxHeight == 0) && (detailMaxHeight == 0) )
+    {
+        documentHeight += bodyBottomMargin;
+    }
+    
+//    nslog("documentHeight"+documentHeight+
+//          " imageMaxHeight: "+imageMaxHeight+
+//          " detailMaxHeight: "+detailMaxHeight+
+//          " bodyBottomMargin:"+bodyBottomMargin+"");
+    
+    onUpdateHeight(documentHeight);
+}
+
+function formatCurrency(num)
+{
+    num = num.toString().replace(/\$|\,/g,'');
+    if(isNaN(num))
+        num = "0";
+    sign = (num == (num = Math.abs(num)));
+    num = Math.floor(num*100+0.50000000001);
+    cents = num % 100;
+    num = Math.floor(num/100).toString();
+    if( cents < 10 )
+    {
+        cents = "0" + cents;
+    }
+    for (var i = 0; i < Math.floor((num.length-(1+i))/3); i++)
+    {
+        num = num.substring(0,num.length-(4*i+3))+','+num.substring(num.length-(4*i+3));
+    }
+    return (((sign)?'':'-') + num + '.' + cents);
+}
+
+function setRecordValue()
+{
+    var nodes = getElementsByXPath("//*[@t-if]");
+    for( i in nodes )
+    {
+        var node = nodes[i];
+        try {
+            var visible = eval(replaceConditionKeyword(node.attributes["t-if"].value));
+            if( !visible )
+            {
+                node.parentNode.removeChild(node);
+            }
+        } catch(e) {nslog("Error" + e);}
+    }
+    nodes = getElementsByXPath("//templates//field");
+    for( i in nodes )
+    {
+        var node = nodes[i];
+        var fieldName = node.attributes["name"].value;
+        var fieldValue = eval("record."+fieldName+".value");
+        if( (node.attributes["widget"] != null) &&
+           (node.attributes["widget"].value == "monetary") )
+        {
+            fieldValue = formatCurrency(fieldValue);
+            if( record.currency_id.value == "USD" )
+            {
+                fieldValue = "$ " + fieldValue;
+            }
+            if( record.currency_id.value == "CNY" )
+            {
+                fieldValue = fieldValue + " ¥";
+            }
+        }
+        var element = document.createTextNode(fieldValue);
+        node.insertBefore(element, node.childNodes[0]);
+    }
+    nodes = getElementsByXPath("//img[@t-att-src]");
+    for( i in nodes )
+    {
+        var node = nodes[i];
+        try {
+            node.src = eval(node.attributes["t-att-src"].value);
+            node.onload = function(){calcDocumentHeight();}
+        } catch(e) {nslog("Error" + e);}
+    }
+    nodes = getElementsByXPath("//*[@t-esc]");
+    for( i in nodes )
+    {
+        var node = nodes[i];
+        var fieldValue = eval(replaceConditionKeyword(node.attributes["t-esc"].value));
+        var element = document.createTextNode(fieldValue);
+        node.insertBefore(element, node.childNodes[0]);
+    }
+    nodes = getElementsByXPath("//*[@t-attf-class]");
+    for( i in nodes )
+    {
+        var node = nodes[i];
+        var classNames = node.attributes["t-attf-class"].value;
+        var exps = classNames.match(/#{[^}]*(?=})/);
+        evaledClassNames = classNames.replace(/#{[^}]*}/, "");
+        if( (exps != null) && (exps.length > 0) )
+        {
+            for( var i=0; i<exps.length; i++ )
+            {
+                var exp = exps[i].substr(2);
+                evaledClassNames += " " + eval(exp);
+            }
+        }
+        node.className += " " + evaledClassNames;
+        nslog("all classes: "+node.className);
+    }
+    
+    calcDocumentHeight();
+}
+
 function kanban_image(model, field, id)
 {
     if( eval("record."+field) == null )
@@ -47,55 +190,11 @@ function kanban_image(model, field, id)
     return "data:image/png;base64,"+imageData;
 }
 
-function set_record_value()
-{
-    var nodes = getElementsByXPath("//templates//field");
-    for( i in nodes )
-    {
-        var node = nodes[i];
-        var fieldName = node.attributes["name"].value;
-        var fieldValue = eval("record."+fieldName+".value");
-        if( (node.attributes["widget"] != null) &&
-           (node.attributes["widget"].value == "monetary") )
-        {
-            if( record.currency_id.value == "USD" )
-            {
-                fieldValue = "$ " + fieldValue;
-            }
-            if( record.currency_id.value == "CNY" )
-            {
-                fieldValue = fieldValue + " ¥";
-            }
-        }
-        var element = document.createTextNode(fieldValue);
-        node.insertBefore(element, node.childNodes[0]);
-    }
-    nodes = getElementsByXPath("//img[@t-att-src]");
-    for( i in nodes )
-    {
-        var node = nodes[i];
-        try {
-            node.src = eval(node.attributes["t-att-src"].value);
-        } catch(e) {}
-    }
-    nodes = getElementsByXPath("//*[@t-esc]");
-    for( i in nodes )
-    {
-        var node = nodes[i];
-        var fieldValue = eval(node.attributes["t-esc"].value);
-        var element = document.createTextNode(fieldValue);
-        node.insertBefore(element, node.childNodes[0]);
-    }
-    nodes = getElementsByXPath("//*[@t-if]");
-    for( i in nodes )
-    {
-        var node = nodes[i];
-        try {
-            var visible = eval(replaceConditionKeyword(node.attributes["t-if"].value));
-            if( !visible )
-            {
-                node.parentNode.removeChild(node);
-            }
-        } catch(e) {nslog("Error" + e);}
-    }
-}
+
+
+
+
+
+
+
+

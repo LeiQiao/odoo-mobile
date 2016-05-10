@@ -6,6 +6,7 @@
 #import "UIWebView+TS_JavaScriptContext.h"
 #import "HUD.h"
 #import "GlobalModels.h"
+#import "Preferences.h"
 
 @implementation KanbanViewController {
     NSMutableArray* _recordWebViews;
@@ -16,6 +17,8 @@
 
 -(void) warpRecord:(NSDictionary*)record toJSContext:(JSContext*)context
 {
+    context[@"_s"] = gPreferences.ServerName;
+    
     [context evaluateScript:@"var record = new Object();"];
     JSValue* jsRecord = context[@"record"];
     ViewModeData* viewMode = [_window viewModeForName:kKanbanViewModeName];
@@ -145,6 +148,26 @@
     [self.tableView reloadData];
 }
 
+-(void) updateWebView:(JSContext*)context withHeight:(CGFloat)height
+{
+    for( NSInteger i=0; i<_recordWebViews.count; i++ )
+    {
+        UIWebView* webView = _recordWebViews[i];
+        if( webView.ts_javaScriptContext == context )
+        {
+            CGRect newFrame = webView.frame;
+            if( height != newFrame.size.height )
+            {
+                newFrame.size.height = height;
+                webView.frame = newFrame;
+                [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:i
+                                                                            inSection:0]]
+                                      withRowAnimation:UITableViewRowAnimationAutomatic];
+            }
+        }
+    }
+}
+
 #pragma mark
 #pragma mark init & dealloc
 
@@ -181,8 +204,16 @@
         NSLog(@"%@", exception);
         context.exception = exception;
     };
+    
     context[@"nslog"] = ^(NSString* logMessage) {
         NSLog(@"***** JSLog: %@", logMessage);
+    };
+    
+    context[@"onUpdateHeight"] = ^(JSValue* height) {
+        JSContext* context = [JSContext currentContext];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self updateWebView:context withHeight:[height toDouble]];
+        });
     };
     
     // 设置记录的值
@@ -194,31 +225,7 @@
 -(void) webViewDidFinishLoad:(UIWebView*)webView
 {
     // 调用内置的JS方法显示记录的值
-    [webView stringByEvaluatingJavaScriptFromString:@"set_record_value();"];
-    
-    // 获取HTML窗体的高度
-    CGFloat height = [[webView stringByEvaluatingJavaScriptFromString:@"document.height;"] floatValue];
-    
-    // 设置webView的高度
-    if( webView.frame.size.height <= 5 )
-    {
-        CGRect newFrame = webView.frame;
-        newFrame.size.height = height;
-        webView.frame = newFrame;
-    }
-    
-    // 通知更新某Cell
-    NSInteger index = [_recordWebViews indexOfObject:webView];
-    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index
-                                                                inSection:0]]
-                          withRowAnimation:UITableViewRowAnimationAutomatic];
-    
-    // 通知更新全局
-    for( UIWebView* webView in _recordWebViews )
-    {
-        if( webView.frame.size.height < 5 ) return;
-    }
-    [self.tableView reloadData];
+    [webView stringByEvaluatingJavaScriptFromString:@"setRecordValue();"];
 }
 
 #pragma mark
