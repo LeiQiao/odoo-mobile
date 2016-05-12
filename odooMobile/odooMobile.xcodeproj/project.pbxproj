@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		45067FEA1CE2DA7D00BCFFF2 /* KanbanRender.m in Sources */ = {isa = PBXBuildFile; fileRef = 45067FE91CE2DA7D00BCFFF2 /* KanbanRender.m */; };
+		45067FEC1CE340D500BCFFF2 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45067FEB1CE340D500BCFFF2 /* WebKit.framework */; };
 		457A04791CE0590B00FF5365 /* KanbanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 457A04781CE0590B00FF5365 /* KanbanViewController.m */; };
 		45B1BFD31CCF0D09008A9A39 /* MenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B1BFD21CCF0D09008A9A39 /* MenuModel.m */; };
 		45B1BFD61CCF372F008A9A39 /* TranslateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B1BFD51CCF372F008A9A39 /* TranslateModel.m */; };
@@ -36,22 +38,23 @@
 		45F759F01CC9F23500989B4B /* CXSignalTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F759EC1CC9F23500989B4B /* CXSignalTransformer.m */; };
 		45F75A081CCA02CD00989B4B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F75A071CCA02CD00989B4B /* LoginViewController.m */; };
 		45F75A0B1CCA181D00989B4B /* ServerSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F75A0A1CCA181D00989B4B /* ServerSettingViewController.m */; };
-		9B059D95349B26E6D10ABF7D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B4C566102D81D14ABC3748 /* libPods.a */; };
 		A00841511CDE3AC800CF9BC7 /* kanban.js in Resources */ = {isa = PBXBuildFile; fileRef = A00841501CDE3AC800CF9BC7 /* kanban.js */; };
 		A00841551CDED38000CF9BC7 /* UIWebView+TS_JavaScriptContext.m in Sources */ = {isa = PBXBuildFile; fileRef = A00841541CDED38000CF9BC7 /* UIWebView+TS_JavaScriptContext.m */; };
 		A0677CC61CCA6F67002355C2 /* OdooRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CC51CCA6F67002355C2 /* OdooRequestModel.m */; };
 		A0677CD31CCC6012002355C2 /* CXPickerTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CD21CCC6012002355C2 /* CXPickerTextField.m */; };
 		A0677CD61CCC9982002355C2 /* RegistTrailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CD51CCC9982002355C2 /* RegistTrailViewController.m */; };
-		A0677CD91CD43BE6002355C2 /* KanbanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CD81CD43BE6002355C2 /* KanbanCell.m */; };
 		A0677CDF1CD47E54002355C2 /* ArchView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CDE1CD47E54002355C2 /* ArchView.m */; };
 		A0677CE41CD6F1A4002355C2 /* kanban.css in Resources */ = {isa = PBXBuildFile; fileRef = A0677CE31CD6F1A4002355C2 /* kanban.css */; };
 		A0677CE71CD771CD002355C2 /* RecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CE61CD771CD002355C2 /* RecordModel.m */; };
 		A0677CEA1CD83630002355C2 /* OdooData.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CE91CD83630002355C2 /* OdooData.m */; };
 		A0677CF01CDB8CB7002355C2 /* ViewModeDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CEF1CDB8CB7002355C2 /* ViewModeDataSource.m */; };
+		A2D4EA2C046B51029EE3100B /* libPods-odooMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 753C397525BED1E4057BE7CA /* libPods-odooMobile.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		223DE4795A318B85C0D7C186 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		45067FE81CE2DA7D00BCFFF2 /* KanbanRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KanbanRender.h; sourceTree = "<group>"; };
+		45067FE91CE2DA7D00BCFFF2 /* KanbanRender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KanbanRender.m; sourceTree = "<group>"; };
+		45067FEB1CE340D500BCFFF2 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		457A04771CE0590B00FF5365 /* KanbanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KanbanViewController.h; sourceTree = "<group>"; };
 		457A04781CE0590B00FF5365 /* KanbanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KanbanViewController.m; sourceTree = "<group>"; };
 		45B1BFD11CCF0D09008A9A39 /* MenuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuModel.h; sourceTree = "<group>"; };
@@ -110,8 +113,7 @@
 		45F75A071CCA02CD00989B4B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		45F75A091CCA181D00989B4B /* ServerSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerSettingViewController.h; sourceTree = "<group>"; };
 		45F75A0A1CCA181D00989B4B /* ServerSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerSettingViewController.m; sourceTree = "<group>"; };
-		660D2FBBDDE1103B239D0E27 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		88B4C566102D81D14ABC3748 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		753C397525BED1E4057BE7CA /* libPods-odooMobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-odooMobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A00841501CDE3AC800CF9BC7 /* kanban.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = kanban.js; sourceTree = "<group>"; };
 		A00841531CDED38000CF9BC7 /* UIWebView+TS_JavaScriptContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+TS_JavaScriptContext.h"; sourceTree = "<group>"; };
 		A00841541CDED38000CF9BC7 /* UIWebView+TS_JavaScriptContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+TS_JavaScriptContext.m"; sourceTree = "<group>"; };
@@ -121,8 +123,6 @@
 		A0677CD21CCC6012002355C2 /* CXPickerTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXPickerTextField.m; sourceTree = "<group>"; };
 		A0677CD41CCC9982002355C2 /* RegistTrailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistTrailViewController.h; sourceTree = "<group>"; };
 		A0677CD51CCC9982002355C2 /* RegistTrailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistTrailViewController.m; sourceTree = "<group>"; };
-		A0677CD71CD43BE6002355C2 /* KanbanCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KanbanCell.h; sourceTree = "<group>"; };
-		A0677CD81CD43BE6002355C2 /* KanbanCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KanbanCell.m; sourceTree = "<group>"; };
 		A0677CDD1CD47E54002355C2 /* ArchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchView.h; sourceTree = "<group>"; };
 		A0677CDE1CD47E54002355C2 /* ArchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchView.m; sourceTree = "<group>"; };
 		A0677CE31CD6F1A4002355C2 /* kanban.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = kanban.css; sourceTree = "<group>"; };
@@ -132,6 +132,8 @@
 		A0677CE91CD83630002355C2 /* OdooData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OdooData.m; sourceTree = "<group>"; };
 		A0677CEE1CDB8CB7002355C2 /* ViewModeDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewModeDataSource.h; sourceTree = "<group>"; };
 		A0677CEF1CDB8CB7002355C2 /* ViewModeDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewModeDataSource.m; sourceTree = "<group>"; };
+		A537E91DF61D8CFC235A2863 /* Pods-odooMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-odooMobile.release.xcconfig"; path = "Pods/Target Support Files/Pods-odooMobile/Pods-odooMobile.release.xcconfig"; sourceTree = "<group>"; };
+		DE9EB0B289334A1351EE7DC7 /* Pods-odooMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-odooMobile.debug.xcconfig"; path = "Pods/Target Support Files/Pods-odooMobile/Pods-odooMobile.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,13 +141,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B059D95349B26E6D10ABF7D /* libPods.a in Frameworks */,
+				45067FEC1CE340D500BCFFF2 /* WebKit.framework in Frameworks */,
+				A2D4EA2C046B51029EE3100B /* libPods-odooMobile.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4384F94BDFA2E834F1197701 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DE9EB0B289334A1351EE7DC7 /* Pods-odooMobile.debug.xcconfig */,
+				A537E91DF61D8CFC235A2863 /* Pods-odooMobile.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		45B1BFE71CD0574A008A9A39 /* Window */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,8 +183,8 @@
 			children = (
 				45F7599B1CC8CC1300989B4B /* odooMobile */,
 				45F7599A1CC8CC1300989B4B /* Products */,
-				FF2535E693B62607B8971E1F /* Pods */,
 				BB2EA92C8D94081A36F01E93 /* Frameworks */,
+				4384F94BDFA2E834F1197701 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -384,8 +396,8 @@
 				A0677CD21CCC6012002355C2 /* CXPickerTextField.m */,
 				A0677CDD1CD47E54002355C2 /* ArchView.h */,
 				A0677CDE1CD47E54002355C2 /* ArchView.m */,
-				A0677CD71CD43BE6002355C2 /* KanbanCell.h */,
-				A0677CD81CD43BE6002355C2 /* KanbanCell.m */,
+				45067FE81CE2DA7D00BCFFF2 /* KanbanRender.h */,
+				45067FE91CE2DA7D00BCFFF2 /* KanbanRender.m */,
 				A0677CEE1CDB8CB7002355C2 /* ViewModeDataSource.h */,
 				A0677CEF1CDB8CB7002355C2 /* ViewModeDataSource.m */,
 			);
@@ -395,18 +407,10 @@
 		BB2EA92C8D94081A36F01E93 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				88B4C566102D81D14ABC3748 /* libPods.a */,
+				45067FEB1CE340D500BCFFF2 /* WebKit.framework */,
+				753C397525BED1E4057BE7CA /* libPods-odooMobile.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		FF2535E693B62607B8971E1F /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				223DE4795A318B85C0D7C186 /* Pods.debug.xcconfig */,
-				660D2FBBDDE1103B239D0E27 /* Pods.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -416,12 +420,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 45F759B01CC8CC1300989B4B /* Build configuration list for PBXNativeTarget "odooMobile" */;
 			buildPhases = (
-				391D602F98EE4BB57B748324 /* Check Pods Manifest.lock */,
+				4BE28DD369AD80E5907D78F6 /* 📦 Check Pods Manifest.lock */,
 				45F759951CC8CC1300989B4B /* Sources */,
 				45F759961CC8CC1300989B4B /* Frameworks */,
 				45F759971CC8CC1300989B4B /* Resources */,
-				047189B2830DAE274C9A73FB /* Embed Pods Frameworks */,
-				46BB2D00D9479C902A30561F /* Copy Pods Resources */,
+				E3315FF2C9A6A74BA516BE7E /* 📦 Embed Pods Frameworks */,
+				2C5A7790B5B3BE2CBA10DAD5 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -438,6 +442,7 @@
 		45F759911CC8CC1300989B4B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = LeiQiao;
 				TargetAttributes = {
@@ -480,29 +485,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		047189B2830DAE274C9A73FB /* Embed Pods Frameworks */ = {
+		2C5A7790B5B3BE2CBA10DAD5 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-odooMobile/Pods-odooMobile-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		391D602F98EE4BB57B748324 /* Check Pods Manifest.lock */ = {
+		4BE28DD369AD80E5907D78F6 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -510,19 +515,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		46BB2D00D9479C902A30561F /* Copy Pods Resources */ = {
+		E3315FF2C9A6A74BA516BE7E /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-odooMobile/Pods-odooMobile-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -532,6 +537,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45067FEA1CE2DA7D00BCFFF2 /* KanbanRender.m in Sources */,
 				A0677CE71CD771CD002355C2 /* RecordModel.m in Sources */,
 				A0677CDF1CD47E54002355C2 /* ArchView.m in Sources */,
 				45F759A11CC8CC1300989B4B /* AppDelegate.m in Sources */,
@@ -553,7 +559,6 @@
 				A0677CEA1CD83630002355C2 /* OdooData.m in Sources */,
 				45F75A0B1CCA181D00989B4B /* ServerSettingViewController.m in Sources */,
 				45F7599E1CC8CC1300989B4B /* main.m in Sources */,
-				A0677CD91CD43BE6002355C2 /* KanbanCell.m in Sources */,
 				A00841551CDED38000CF9BC7 /* UIWebView+TS_JavaScriptContext.m in Sources */,
 				45B1BFD31CCF0D09008A9A39 /* MenuModel.m in Sources */,
 				45F759D41CC9ECCF00989B4B /* MainViewController.m in Sources */,
@@ -676,97 +681,58 @@
 		};
 		45F759B11CC8CC1300989B4B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 223DE4795A318B85C0D7C186 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = DE9EB0B289334A1351EE7DC7 /* Pods-odooMobile.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: yi jun (UP2W7HXJFN)";
+				DEFINES_MODULE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/include/libxml2,
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
-					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
-					"\"${PODS_ROOT}/Headers/Public/SFHFKeychainUtils\"",
-					"\"${PODS_ROOT}/Headers/Public/iOS-Slide-Menu\"",
-					"\"${PODS_ROOT}/Headers/Public/wpxmlrpc\"",
 				);
 				INFOPLIST_FILE = odooMobile/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-lxml2",
 					"-ObjC",
-					"-l\"AFNetworking\"",
-					"-l\"MBProgressHUD\"",
-					"-l\"SFHFKeychainUtils\"",
-					"-l\"iOS-Slide-Menu\"",
-					"-l\"iconv\"",
-					"-l\"wpxmlrpc\"",
-					"-framework",
-					"\"CoreGraphics\"",
-					"-framework",
-					"\"Foundation\"",
-					"-framework",
-					"\"MobileCoreServices\"",
-					"-framework",
-					"\"Security\"",
-					"-framework",
-					"\"SystemConfiguration\"",
-					"-framework",
-					"\"UIKit\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LoveC.odooMobile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "6708be1e-b440-41c9-be9d-a3eb6522757d";
+				SWIFT_OBJC_BRIDGING_HEADER = "odooMobile/View/odooMobile-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		45F759B21CC8CC1300989B4B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 660D2FBBDDE1103B239D0E27 /* Pods.release.xcconfig */;
+			baseConfigurationReference = A537E91DF61D8CFC235A2863 /* Pods-odooMobile.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: yi jun (UP2W7HXJFN)";
+				DEFINES_MODULE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/include/libxml2,
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
-					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
-					"\"${PODS_ROOT}/Headers/Public/SFHFKeychainUtils\"",
-					"\"${PODS_ROOT}/Headers/Public/iOS-Slide-Menu\"",
-					"\"${PODS_ROOT}/Headers/Public/wpxmlrpc\"",
 				);
 				INFOPLIST_FILE = odooMobile/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-lxml2",
 					"-ObjC",
-					"-l\"AFNetworking\"",
-					"-l\"MBProgressHUD\"",
-					"-l\"SFHFKeychainUtils\"",
-					"-l\"iOS-Slide-Menu\"",
-					"-l\"iconv\"",
-					"-l\"wpxmlrpc\"",
-					"-framework",
-					"\"CoreGraphics\"",
-					"-framework",
-					"\"Foundation\"",
-					"-framework",
-					"\"MobileCoreServices\"",
-					"-framework",
-					"\"Security\"",
-					"-framework",
-					"\"SystemConfiguration\"",
-					"-framework",
-					"\"UIKit\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LoveC.odooMobile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "6708be1e-b440-41c9-be9d-a3eb6522757d";
+				SWIFT_OBJC_BRIDGING_HEADER = "odooMobile/View/odooMobile-Bridging-Header.h";
 			};
 			name = Release;
 		};

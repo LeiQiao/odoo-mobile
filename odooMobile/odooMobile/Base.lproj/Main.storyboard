@@ -19,8 +19,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="首页" id="U6j-N3-rTK">
-                        <barButtonItem key="leftBarButtonItem" title="菜单" style="plain" id="ris-Rn-fFd"/>
-                        <barButtonItem key="rightBarButtonItem" title="我的" style="plain" id="1Dp-mk-ILy"/>
+                        <barButtonItem key="leftBarButtonItem" title="菜单" id="ris-Rn-fFd"/>
+                        <barButtonItem key="rightBarButtonItem" title="我的" style="done" id="1Dp-mk-ILy"/>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -34,7 +34,6 @@
         <!--Item 2-->
         <scene sceneID="49i-aF-BIf">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="T94-0w-XZB" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="Bm8-OC-F1l" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xH8-lU-mgE"/>
@@ -47,6 +46,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="UMe-3o-3aa"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T94-0w-XZB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1255.5" y="520.5"/>
         </scene>
@@ -182,9 +182,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="登录" id="NXL-eu-7CC">
-                        <barButtonItem key="rightBarButtonItem" title="设置" style="plain" id="5hl-Mr-MXn">
+                        <barButtonItem key="rightBarButtonItem" title="设置" style="done" id="5hl-Mr-MXn">
                             <connections>
-                                <segue destination="ho3-Db-4RD" kind="push" identifier="ServerSettingSegue" id="GdM-B5-Vlg"/>
+                                <segue destination="ho3-Db-4RD" kind="show" identifier="ServerSettingSegue" id="GdM-B5-Vlg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -296,13 +296,13 @@
                                                     <rect key="frame" x="54" y="10" width="267" height="30"/>
                                                     <state key="normal" title="还没有自己的服务器？点击这里申请"/>
                                                     <connections>
-                                                        <segue destination="aig-Qz-MON" kind="push" id="Y7P-aq-6K6"/>
+                                                        <segue destination="aig-Qz-MON" kind="show" id="Y7P-aq-6K6"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="aig-Qz-MON" kind="push" id="yaO-rN-73W"/>
+                                            <segue destination="aig-Qz-MON" kind="show" id="yaO-rN-73W"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -369,13 +369,13 @@
                                                     <rect key="frame" x="119" y="61" width="72" height="30"/>
                                                     <state key="normal" title="点击申请"/>
                                                     <connections>
-                                                        <segue destination="npj-WW-zhj" kind="push" id="Idb-j6-GzL"/>
+                                                        <segue destination="npj-WW-zhj" kind="show" id="Idb-j6-GzL"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="npj-WW-zhj" kind="push" id="rUf-vY-55n"/>
+                                            <segue destination="npj-WW-zhj" kind="show" id="rUf-vY-55n"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -571,7 +571,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="Idb-j6-GzL"/>
         <segue reference="yaO-rN-73W"/>
-        <segue reference="rUf-vY-55n"/>
     </inferredMetricsTieBreakers>
 </document>

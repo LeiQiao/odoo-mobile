@@ -27,12 +27,16 @@
     if( [self.navigationController isKindOfClass:[SlideNavigationController class]] )
     {
         SlideNavigationController* nav = (SlideNavigationController*)self.navigationController;
+        
         // 设置侧滑效果及侧滑弹窗
         nav.avoidSwitchingToSameClassViewController = NO;
         nav.enableSwipeGesture = YES;
         nav.enableShadow = YES;
         nav.portraitSlideOffset = 50;
         
+        nav.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"菜单"
+                                                                 style:UIBarButtonItemStyleDone
+                                                                target:nil action:nil];
         nav.leftMenu = [self.storyboard instantiateViewControllerWithIdentifier:@"MainMenu"];
     }
 }

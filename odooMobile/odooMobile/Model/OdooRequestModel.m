@@ -19,10 +19,10 @@ NSString* unicodeToUTF8(NSString* unicodeString)
     NSString *tempStr3 = [[@"\""stringByAppendingString:tempStr2] stringByAppendingString:@"\""];
     NSData *tempData = [tempStr3 dataUsingEncoding:NSUTF8StringEncoding];
     
-    NSString* returnStr = [NSPropertyListSerialization propertyListFromData:tempData
-                                                           mutabilityOption:NSPropertyListImmutable
+    NSString* returnStr = [NSPropertyListSerialization propertyListWithData:tempData
+                                                                    options:NSPropertyListImmutable
                                                                      format:NULL
-                                                           errorDescription:NULL];
+                                                                      error:NULL];
     return [returnStr stringByReplacingOccurrencesOfString:@"\\r\\n"withString:@"\n"];
 }
 

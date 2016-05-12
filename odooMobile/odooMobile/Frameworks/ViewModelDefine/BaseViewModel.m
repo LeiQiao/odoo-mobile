@@ -124,7 +124,7 @@ NSMutableArray* gExistViewModels = nil;
 
 -(void) cleanSignals
 {
-    for( int i=_KVOSignals.count-1; i>= 0; i-- )
+    for( int i=((int)_KVOSignals.count)-1; i>= 0; i-- )
     {
         CXSignal* signal = [_KVOSignals objectAtIndex:i];
         [signal removeSignal];

@@ -6,7 +6,6 @@
 #import "Preferences.h"
 #import "GlobalModels.h"
 #import "HUD.h"
-#import "ZQCustomDataPicker.h"
 
 /*!
  *  @author LeiQiao, 16-04-22

@@ -25,9 +25,9 @@
     [super viewDidLoad];
     
     // 使用空白的VC代替正在加载时的页面
-    UIViewController* blankVC = [[UIViewController alloc] init];
-    blankVC.view.backgroundColor = [UIColor whiteColor];
-    self.viewControllers = @[blankVC];
+//    UIViewController* blankVC = [[UIViewController alloc] init];
+//    blankVC.view.backgroundColor = [UIColor whiteColor];
+//    self.viewControllers = @[blankVC];
     
     UIBarButtonItem* addButton = [[UIBarButtonItem alloc] initWithTitle:@"＋"
                                                                   style:UIBarButtonItemStylePlain
@@ -113,20 +113,22 @@
     self.title = _window.displayName;
     
     NSMutableArray* viewControllers = [NSMutableArray new];
-    
-    ViewModeData* kanbanViewMode = [_window viewModeForName:kKanbanViewModeName];
-    ViewModeData* listViewMode = [_window viewModeForName:kListViewModeName];
-    if( kanbanViewMode )
+    for( UIViewController* viewController in self.viewControllers )
     {
-        KanbanViewController* viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"KanbanViewController"];
-        viewController.window = _window;
-        [viewControllers addObject:viewController];
+        // 查找窗体是否有看板样式
+        if( [viewController isKindOfClass:[KanbanViewController class]] &&
+           [_window viewModeForName:kKanbanViewModeName] )
+        {
+            KanbanViewController* viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"KanbanViewController"];
+            viewController.window = _window;
+            [viewControllers addObject:viewController];
+        }
     }
     
     // prevent TableView position massed up
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         [self setViewControllers:viewControllers animated:YES];
-    });
+//    });
     
     if( viewControllers.count == 1 )
     {
