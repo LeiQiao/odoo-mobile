@@ -23,11 +23,14 @@
     ViewModeData* viewMode = [_window viewModeForName:kKanbanViewModeName];
     for( NSUInteger i=0; i<viewMode.records.count; i++ )
     {
-        UIImage* image = [_kanbanRender renderRecord:i withWidth:self.tableView.frame.size.width-20];
-        [_recordImages addObject:image];
+        [_recordImages addObject:[NSNull null]];
+        [KanbanRender renderViewMode:viewMode forRecordIndex:i withWidth:self.tableView.frame.size.width-20 callback:^(UIImage* image) {
+            _recordImages[i] = image;
+            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:i inSection:0]]
+                                  withRowAnimation:UITableViewRowAnimationAutomatic];
+        }];
         break;
     }
-    [self.tableView reloadData];
 }
 
 #pragma mark
@@ -39,16 +42,17 @@
     
     _recordImages = [NSMutableArray new];
     
-    ViewModeData* viewMode = [_window viewModeForName:kKanbanViewModeName];
-    _kanbanRender = [[KanbanRender alloc] initWithViewMode:viewMode readyCallback:^{
-        [self reloadData];
-    }];
-    
     ADDOBSERVER(RecordModel, (id<RecordModelObserver>)self);
+    
+    ViewModeData* viewMode = [_window viewModeForName:kKanbanViewModeName];
     if( viewMode.records.count == 0 )
     {
         popWaiting();
         [GETMODEL(RecordModel) requestMoreRecord:_window viewMode:viewMode];
+    }
+    else
+    {
+        [self reloadData];
     }
 }
 
@@ -90,6 +94,8 @@
 -(CGFloat) tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     UIImage* recordImage = _recordImages[indexPath.row];
+    if( [recordImage isKindOfClass:[NSNull class]] ) return self.tableView.rowHeight;
+    
     CGSize imageSize = recordImage.size;
     return imageSize.height/2;
 }
@@ -117,6 +123,8 @@
     }
     
     UIImage* image = _recordImages[indexPath.row];
+    if( [image isKindOfClass:[NSNull class]] ) return cell;
+    
     UIImageView* imageView = [[UIImageView alloc] initWithImage:image];
     imageView.frame = CGRectMake(0, 0, image.size.width/2, image.size.height/2);
     imageView.tag = TAG_CELL_IMAGEVIEW;

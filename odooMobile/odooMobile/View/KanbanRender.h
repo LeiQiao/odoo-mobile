@@ -7,7 +7,9 @@
 
 @interface KanbanRender : NSObject
 
--(instancetype) initWithViewMode:(ViewModeData*)viewMode readyCallback:(void(^)())readyCallback;
--(UIImage*) renderRecord:(NSUInteger)index withWidth:(CGFloat)width;
++(void) renderViewMode:(ViewModeData*)viewMode
+        forRecordIndex:(NSUInteger)recordIndex
+             withWidth:(CGFloat)width
+              callback:(void(^)(UIImage*))callback;
 
 @end

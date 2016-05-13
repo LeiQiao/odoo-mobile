@@ -9,27 +9,28 @@
 #import <WebKit/WebKit.h>
 #import "JSON.h"
 
-#define RESOURCE_PATH       (@"/Users/lei.qiao/Desktop/LeiQiao/odoo-mobile/odooMobile")
+//#define RESOURCE_PATH       (@"/Users/lei.qiao/Desktop/LeiQiao/odoo-mobile/odooMobile")
+#define RESOURCE_PATH       (@"/Users/LeiQiao/Desktop/odoo-mobile/odooMobile")
 
-typedef void (^ReadyCallback)();
+typedef void (^KanbanRenderCallback)();
+static NSMutableArray* sKanbanRenderHolder;
 
 @implementation KanbanRender {
-    ViewModeData* _viewMode;
     WKWebView* _renderWebView;
-    JSContext* _jsContext;
+    NSString* _recordJSONString;
     
-    ReadyCallback _readyCallback;
+    KanbanRenderCallback _kanbanRenderCallback;
 }
 
 #pragma mark
 #pragma mark helper
 
--(NSDictionary*) warpRecordToJSContext:(NSDictionary*)record
+-(NSString*) warpRecordToJSString:(NSDictionary*)record viewMode:(ViewModeData*)viewMode
 {
     NSMutableDictionary* jsRecord = [NSMutableDictionary new];
     for( NSString* fieldName in record.allKeys )
     {
-        FieldData* field = [_viewMode fieldForName:fieldName];
+        FieldData* field = [viewMode fieldForName:fieldName];
         id fieldValue = [record objectForKey:fieldName];
         switch( field.type )
         {
@@ -109,12 +110,16 @@ typedef void (^ReadyCallback)();
         jsRecord[fieldName] = @{@"value":fieldValue,@"raw_value":fieldValue};
     }
     
-    return jsRecord;
+    NSString* javaScriptString = [@[[jsRecord JSONString]] JSONString];
+    NSRange rangeJSContext = [javaScriptString rangeOfString:@"\\{[\\w|\\W]*\\}" options:NSRegularExpressionSearch];
+    javaScriptString = [javaScriptString substringWithRange:rangeJSContext];
+    
+    return javaScriptString;
 }
 
--(NSString*) getHTMLContext
+-(NSString*) getHTMLContext:(ViewModeData*)viewMode
 {
-    GDataXMLDocument* xmlDoc = [[GDataXMLDocument alloc] initWithXMLString:_viewMode.htmlContext
+    GDataXMLDocument* xmlDoc = [[GDataXMLDocument alloc] initWithXMLString:viewMode.htmlContext
                                                                    options:0
                                                                      error:nil];
     if( !xmlDoc ) return @"";
@@ -152,9 +157,9 @@ typedef void (^ReadyCallback)();
     return thumbImage;
 }
 
--(void) debug:(NSUInteger)index
+-(void) debug:(ViewModeData*)viewMode index:(NSUInteger)index
 {
-    NSString* filePath = [NSString stringWithFormat:@"%@/debug/%@.%03u.html", RESOURCE_PATH, _viewMode.ID, (unsigned)index];
+    NSString* filePath = [NSString stringWithFormat:@"%@/debug/%@.%03u.html", RESOURCE_PATH, viewMode.ID, (unsigned)index];
     
     [_renderWebView evaluateJavaScript:@"document.documentElement.outerHTML;"
                      completionHandler:^(NSString* fileContent, NSError* error) {
@@ -166,28 +171,46 @@ typedef void (^ReadyCallback)();
 #pragma mark
 #pragma mark init & dealloc
 
--(instancetype) initWithViewMode:(ViewModeData*)viewMode readyCallback:(void(^)())readyCallback
++(void) renderViewMode:(ViewModeData*)viewMode
+        forRecordIndex:(NSUInteger)recordIndex
+             withWidth:(CGFloat)width
+              callback:(void(^)(UIImage*))callback
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sKanbanRenderHolder = [NSMutableArray new];
+    });
+    
+    KanbanRender* render = [[KanbanRender alloc] initWithViewMode:viewMode
+                                                   forRecordIndex:recordIndex
+                                                        withWidth:width
+                                                         callback:callback];
+    [sKanbanRenderHolder addObject:render];
+}
+
+-(instancetype) initWithViewMode:(ViewModeData*)viewMode
+                  forRecordIndex:(NSUInteger)recordIndex
+                       withWidth:(CGFloat)width
+                        callback:(void(^)(UIImage*))callback
 {
     if( self = [super init] )
     {
-        _readyCallback = readyCallback;
+        _kanbanRenderCallback = callback;
         
-        _viewMode = viewMode;
-        
-        // 清楚cookie及缓存
-        NSHTTPCookieStorage* storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-        for (NSHTTPCookie* cookie in [storage cookies]){[storage deleteCookie:cookie];}
-        [[NSURLCache sharedURLCache] removeAllCachedResponses];
-        
-        _renderWebView = [[WKWebView alloc] init];
+        _renderWebView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, width, 1)];
         _renderWebView.navigationDelegate = (id<WKNavigationDelegate>)self;
         _renderWebView.backgroundColor = [UIColor clearColor];
+        
+        _recordJSONString = [self warpRecordToJSString:[viewMode.records objectAtIndex:recordIndex] viewMode:viewMode];
         
         // 添加该视图的css样式及js代码
         NSString* cssFilePath = [NSString stringWithFormat:@"%@/odooMobile/kanban.css", RESOURCE_PATH];
         NSString* jsFilePath = [NSString stringWithFormat:@"%@/odooMobile/kanban.js", RESOURCE_PATH];
         
-        NSString* htmlString = [self getHTMLContext];
+//        cssFilePath = [[NSBundle mainBundle] pathForResource:@"kanban" ofType:@"css"];
+//        jsFilePath = [[NSBundle mainBundle] pathForResource:@"kanban" ofType:@"js"];
+        
+        NSString* htmlString = [self getHTMLContext:viewMode];
         
         htmlString = [NSString stringWithFormat:
                       @"<html>\n"
@@ -200,52 +223,23 @@ typedef void (^ReadyCallback)();
                       @"    </body>\n"
                       @"</html>", cssFilePath, jsFilePath, htmlString];
         
-        [_renderWebView loadHTMLString:htmlString baseURL:nil];
+        [_renderWebView loadHTMLString:htmlString baseURL:[[NSBundle mainBundle] bundleURL]];
     }
     return self;
-}
-
--(UIImage*) renderRecord:(NSUInteger)index withWidth:(CGFloat)width
-{
-    _renderWebView.frame = CGRectMake(0, 0, width, 1);
-    
-    NSDictionary* record = [_viewMode.records objectAtIndex:index];
-    record = [self warpRecordToJSContext:record];
-    NSString* javaScriptString = [@[[record JSONString]] JSONString];
-    javaScriptString = [javaScriptString substringWithRange:[javaScriptString rangeOfString:@"\\{[\\w|\\W]*\\}" options:NSRegularExpressionSearch]];
-    javaScriptString = [NSString stringWithFormat:@"abc();"];
-    [_renderWebView evaluateJavaScript:javaScriptString completionHandler:^(NSNumber* height, NSError* error) {
-        _renderWebView.frame = CGRectMake(0, 0, width, [height floatValue]);
-        [self debug:index];
-        [self renderToImage];
-    }];
-    return [self renderToImage];
 }
 
 #pragma mark
 #pragma mark UIWebViewDelegate
 
--(void) webView:(UIWebView*)webView didCreateJavaScriptContext:(JSContext*)context
-{
-    context.exceptionHandler = ^(JSContext* context, JSValue* exception) {
-        NSLog(@"%@", exception);
-        context.exception = exception;
-    };
-    
-    context[@"nslog"] = ^(NSString* logMessage) {
-        NSLog(@"***** JSLog: %@", logMessage);
-    };
-    
-    context[@"_s"] = gPreferences.ServerName;
-    context[@"record"] = [JSValue valueWithObject:nil inContext:context];
-}
-
 -(void) webView:(WKWebView*)webView didFinishNavigation:(WKNavigation*)navigation
 {
-    if( _readyCallback )
-    {
-        _readyCallback();
-    }
+    NSString* javaScriptString = [NSString stringWithFormat:@"setRecordValue(\"%@\");", _recordJSONString];
+    [_renderWebView evaluateJavaScript:javaScriptString completionHandler:^(NSNumber* height, NSError* error) {
+        _renderWebView.frame = CGRectMake(0, 0, _renderWebView.frame.size.width, [height floatValue]);
+        [self debug:nil index:0];
+        [self renderToImage];
+        [sKanbanRenderHolder removeObject:self];
+    }];
 }
 
 @end
