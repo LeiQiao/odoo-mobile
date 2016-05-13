@@ -7,30 +7,8 @@
 #import "GlobalModels.h"
 #import "HUD.h"
 
-#define TAG_CELL_IMAGEVIEW      (0x1)
-
 @implementation KanbanViewController {
     KanbanRender* _kanbanRender;
-    NSMutableArray* _recordImages;
-}
-
-#pragma mark
-#pragma mark helper
-
--(void) reloadData
-{
-    [_recordImages removeAllObjects];
-    ViewModeData* viewMode = [_window viewModeForName:kKanbanViewModeName];
-    for( NSUInteger i=0; i<viewMode.records.count; i++ )
-    {
-        [_recordImages addObject:[NSNull null]];
-        [KanbanRender renderViewMode:viewMode forRecordIndex:i withWidth:self.tableView.frame.size.width-20 callback:^(UIImage* image) {
-            _recordImages[i] = image;
-            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:i inSection:0]]
-                                  withRowAnimation:UITableViewRowAnimationAutomatic];
-        }];
-        break;
-    }
 }
 
 #pragma mark
@@ -40,11 +18,14 @@
 {
     [super viewDidLoad];
     
-    _recordImages = [NSMutableArray new];
+    ViewModeData* viewMode = [_window viewModeForName:kKanbanViewModeName];
+    _kanbanRender = [[KanbanRender alloc] initWithViewMode:viewMode updateCallback:^(WKWebView* webView, NSInteger index) {
+        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]]
+                              withRowAnimation:UITableViewRowAnimationAutomatic];
+    }];
     
     ADDOBSERVER(RecordModel, (id<RecordModelObserver>)self);
     
-    ViewModeData* viewMode = [_window viewModeForName:kKanbanViewModeName];
     if( viewMode.records.count == 0 )
     {
         popWaiting();
@@ -52,7 +33,8 @@
     }
     else
     {
-        [self reloadData];
+        [_kanbanRender updateWithWidth:self.tableView.frame.size.width-35];
+        [self.tableView reloadData];
     }
 }
 
@@ -75,7 +57,8 @@
         popError(params.failedReason);
     }
     
-    [self reloadData];
+    [_kanbanRender updateWithWidth:self.tableView.frame.size.width-35];
+    [self.tableView reloadData];
 }
 
 #pragma mark
@@ -88,16 +71,12 @@
 
 -(NSInteger) tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _recordImages.count;
+    return [_kanbanRender recordCount];
 }
 
 -(CGFloat) tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    UIImage* recordImage = _recordImages[indexPath.row];
-    if( [recordImage isKindOfClass:[NSNull class]] ) return self.tableView.rowHeight;
-    
-    CGSize imageSize = recordImage.size;
-    return imageSize.height/2;
+    return [_kanbanRender recordHeight:indexPath.row];
 }
 
 -(UITableViewCell*) tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
@@ -110,25 +89,28 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:cellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     else
     {
         for( UIView* view in cell.contentView.subviews )
         {
-            if( view.tag == TAG_CELL_IMAGEVIEW )
+            if( [view isKindOfClass:[WKWebView class]] )
             {
                 [view removeFromSuperview];
             }
         }
     }
     
-    UIImage* image = _recordImages[indexPath.row];
-    if( [image isKindOfClass:[NSNull class]] ) return cell;
+    WKWebView* webView = [_kanbanRender recordWebView:indexPath.row];
+    if( [webView isKindOfClass:[NSNull class]] ) return cell;
     
-    UIImageView* imageView = [[UIImageView alloc] initWithImage:image];
-    imageView.frame = CGRectMake(0, 0, image.size.width/2, image.size.height/2);
-    imageView.tag = TAG_CELL_IMAGEVIEW;
-    [cell.contentView addSubview:imageView];
+    CGRect newFrame = webView.frame;
+    newFrame.origin = CGPointZero;
+    newFrame.size.height = webView.scrollView.contentSize.height;
+    webView.frame = newFrame;
+    [cell.contentView addSubview:webView];
+    
     return cell;
 }
 

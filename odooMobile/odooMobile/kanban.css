@@ -1,4 +1,4 @@
-kanban{
+body{
     font-size: 14px;
     font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
 }
@@ -13,6 +13,11 @@ ul{
 .o_kanban_image{
     float:left;
     width:64px;
+    margin-bottom:5;
+}
+
+.o_kanban_image:after{
+    clear: both;
 }
 
 .o_kanban_image img{
