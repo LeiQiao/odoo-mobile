@@ -6,6 +6,26 @@
 #import "Preferences.h"
 #import "GlobalModels.h"
 
+NSArray* getKanbanImageFieldNames(NSString* htmlContext)
+{
+    NSMutableArray* imageFieldNames = [NSMutableArray new];
+    while( YES )
+    {
+        NSRange range = [htmlContext rangeOfString:@"(?<=kanban_image\\()[^\\)]*(?=\\))" options:NSRegularExpressionSearch];
+        if( range.length == 0 ) break;
+        
+        NSString* imageStr = [htmlContext substringWithRange:range];
+        NSRange rangeImage = [imageStr rangeOfString:@"(?<=\')image[\\w]*" options:NSRegularExpressionSearch];
+        if( rangeImage.length == 0 ) continue;
+        
+        imageStr = [imageStr substringWithRange:rangeImage];
+        [imageFieldNames addObject:imageStr];
+        
+        htmlContext = [htmlContext substringFromIndex:range.location+range.length];
+    }
+    return imageFieldNames;
+}
+
 /*!
  *  @author LeiQiao, 16/05/02
  *  @brief 记录模型
@@ -36,6 +56,11 @@
     for( FieldData* field in viewMode.fields )
     {
         [fieldNames addObject:field.name];
+    }
+    
+    if( [viewMode.name isEqualToString:@"kanban"] )
+    {
+        [fieldNames addObjectsFromArray:getKanbanImageFieldNames(viewMode.htmlContext)];
     }
     
     /*---------- 获取记录 ----------*/

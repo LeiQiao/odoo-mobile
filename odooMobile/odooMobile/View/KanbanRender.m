@@ -8,8 +8,8 @@
 #import "Preferences.h"
 #import "JSON.h"
 
-#define RESOURCE_PATH       (@"/Users/lei.qiao/Desktop/LeiQiao/odoo-mobile/odooMobile")
-//#define RESOURCE_PATH       (@"/Users/LeiQiao/Desktop/odoo-mobile/odooMobile")
+//#define RESOURCE_PATH       (@"/Users/lei.qiao/Desktop/LeiQiao/odoo-mobile/odooMobile")
+#define RESOURCE_PATH       (@"/Users/LeiQiao/Desktop/odoo-mobile/odooMobile")
 
 typedef void (^UpdateCallback)(WKWebView* webView, NSInteger index);
 
@@ -63,15 +63,27 @@ typedef void (^UpdateCallback)(WKWebView* webView, NSInteger index);
             }
             case FieldTypeDouble:
             {
-                fieldValue = [NSString stringWithFormat:@"%.02f", [fieldValue floatValue]];
+                fieldValue = fieldValue;
                 break;
             }
             case FieldTypeInteger:
             {
-                fieldValue = [fieldValue stringValue];
+                fieldValue = fieldValue;
                 break;
             }
             case FieldTypeRelatedToField:
+            {
+                if( (![fieldValue isKindOfClass:[NSArray class]]) ||
+                   (((NSArray*)fieldValue).count == 0) )
+                {
+                    fieldValue = @"";
+                }
+                else if( ((NSArray*)fieldValue).count == 1 )
+                {
+                    fieldValue = [[fieldValue objectAtIndex:0] stringValue];
+                }
+                break;
+            }
             case FieldTypeRelatedToModel:
             {
                 if( (![fieldValue isKindOfClass:[NSArray class]]) ||
@@ -115,6 +127,21 @@ typedef void (^UpdateCallback)(WKWebView* webView, NSInteger index);
     return javaScriptString;
 }
 
+-(void) setNoEmptyElement:(GDataXMLElement*)element
+{
+    if( element.kind != GDataXMLElementKind ) return;
+    
+    if( element.childCount == 0 )
+    {
+        element.stringValue = @" ";
+    }
+    
+    for( id subElement in element.children )
+    {
+        [self setNoEmptyElement:subElement];
+    }
+}
+
 -(NSString*) getHTMLContext:(ViewModeData*)viewMode
 {
     GDataXMLDocument* xmlDoc = [[GDataXMLDocument alloc] initWithXMLString:viewMode.htmlContext
@@ -133,15 +160,9 @@ typedef void (^UpdateCallback)(WKWebView* webView, NSInteger index);
         [kanbanElement addChild:child];
     }
     
+    [self setNoEmptyElement:kanbanElement];
+    
     return [kanbanElement XMLString];
-}
-
--(void) debug
-{
-//    [_renderWebView evaluateJavaScript:@"document.documentElement.outerHTML;"
-//                     completionHandler:^(NSString* fileContent, NSError* error) {
-//                         [fileContent writeToFile:_recordName atomically:YES encoding:NSUTF8StringEncoding error:nil];
-//                     }];
 }
 
 #pragma mark
@@ -165,7 +186,7 @@ typedef void (^UpdateCallback)(WKWebView* webView, NSInteger index);
     for( NSInteger i=0; i<_recordWebviews.count; i++ )
     {
         WKWebView* webView = [_recordWebviews objectAtIndex:i];
-        [webView removeObserver:self forKeyPath:@"loading" context:nil];
+        [webView removeObserver:self forKeyPath:@"estimatedProgress" context:nil];
         [_recordWebviews removeObjectAtIndex:i];
     }
 }
@@ -192,14 +213,16 @@ typedef void (^UpdateCallback)(WKWebView* webView, NSInteger index);
             webView.backgroundColor = [UIColor clearColor];
             
             // 添加加载完成的监听
-            [webView addObserver:self forKeyPath:@"loading" options:NSKeyValueObservingOptionNew context:nil];
+            [webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
             
             // 添加该视图的css样式及js代码
             NSString* cssFilePath = [NSString stringWithFormat:@"%@/odooMobile/kanban.css", RESOURCE_PATH];
             NSString* jsFilePath = [NSString stringWithFormat:@"%@/odooMobile/kanban.js", RESOURCE_PATH];
+            NSString* faFilePath = [NSString stringWithFormat:@"%@/odooMobile/font-awesome.css", RESOURCE_PATH];
             
-            //            cssFilePath = [[NSBundle mainBundle] pathForResource:@"kanban" ofType:@"css"];
-            //            jsFilePath = [[NSBundle mainBundle] pathForResource:@"kanban" ofType:@"js"];
+//            cssFilePath = [[NSBundle mainBundle] pathForResource:@"kanban" ofType:@"css"];
+//            jsFilePath = [[NSBundle mainBundle] pathForResource:@"kanban" ofType:@"js"];
+//            faFilePath = [[NSBundle mainBundle] pathForResource:@"font-awesome" ofType:@"css"];
             
             NSString* htmlString = [self getHTMLContext:_viewMode];
             
@@ -212,6 +235,7 @@ typedef void (^UpdateCallback)(WKWebView* webView, NSInteger index);
                           @"<html>\n"
                           @"    <head>\n"
                           @"        <link href=\"file://%@\" rel=\"stylesheet\"></link>"
+                          @"        <link href=\"file://%@\" rel=\"stylesheet\"></link>"
                           @"        <script src=\"file://%@\" type=\"text/javascript\"></script>"
                           @"        <meta name=\"viewport\" content=\"initial-scale=1.0\" />"
                           @"    </head>\n"
@@ -219,7 +243,7 @@ typedef void (^UpdateCallback)(WKWebView* webView, NSInteger index);
                           @"        %@\n"
                           @"    </body>\n"
                           @"    <script>%@</script>"
-                          @"</html>", cssFilePath, jsFilePath, htmlString, recordScript];
+                          @"</html>", cssFilePath, faFilePath, jsFilePath, htmlString, recordScript];
             
             [webView loadHTMLString:htmlString baseURL:[[NSBundle mainBundle] bundleURL]];
             [_recordWebviews addObject:webView];
@@ -229,7 +253,7 @@ typedef void (^UpdateCallback)(WKWebView* webView, NSInteger index);
     for( NSInteger i=_recordWebviews.count-1; i >= _viewMode.records.count; i-- )
     {
         WKWebView* webView = [_recordWebviews objectAtIndex:i];
-        [webView removeObserver:self forKeyPath:@"loading" context:nil];
+        [webView removeObserver:self forKeyPath:@"estimatedProgress" context:nil];
         [_recordWebviews removeObjectAtIndex:i];
     }
 }
@@ -256,17 +280,6 @@ typedef void (^UpdateCallback)(WKWebView* webView, NSInteger index);
 
 -(void) webView:(WKWebView*)webView didFinishNavigation:(WKNavigation*)navigation
 {
-    NSUInteger index = [_recordWebviews indexOfObject:webView];
-    if( index >= _recordWebviews.count ) return;
-    
-    [webView evaluateJavaScript:@"document.height;" completionHandler:^(NSNumber* height, NSError* error) {
-        webView.frame = CGRectMake(0, 0, webView.frame.size.width, [height floatValue]);
-        if( _updateCallback )
-        {
-            _updateCallback(webView, index);
-        }
-        [self debug];
-    }];
 }
 
 -(void) observeValueForKeyPath:(NSString*)keyPath
@@ -274,19 +287,26 @@ typedef void (^UpdateCallback)(WKWebView* webView, NSInteger index);
                         change:(NSDictionary*)change
                        context:(void*)context
 {
-    if( ![keyPath isEqualToString:@"loading"] ) return;
+    if( ![keyPath isEqualToString:@"estimatedProgress"] ) return;
     
     WKWebView* webView = (WKWebView*)object;
     NSInteger index = [_recordWebviews indexOfObject:webView];
     if( index >= _recordWebviews.count ) return;
     
-    NSLog(@"loading changed");
+    NSLog(@"estimatedProgress changed");
     [webView evaluateJavaScript:@"document.height;" completionHandler:^(NSNumber* height, NSError* error) {
         CGRect newFrame = webView.frame;
         if( newFrame.size.height == [height floatValue] ) return;
         
         newFrame.size.height = [height floatValue];
         webView.frame = newFrame;
+        
+        [webView evaluateJavaScript:@"document.documentElement.outerHTML;"
+                  completionHandler:^(NSString* fileContent, NSError* error) {
+                      NSString* fileName = [NSString stringWithFormat:@"%@/debug/%@.%03d.html", RESOURCE_PATH, _viewMode.ID, (int)index];
+                      [fileContent writeToFile:fileName atomically:YES encoding:NSUTF8StringEncoding error:nil];
+                  }];
+
         
         if( _updateCallback )
         {

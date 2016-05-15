@@ -40,6 +40,8 @@
 		45F75A0B1CCA181D00989B4B /* ServerSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F75A0A1CCA181D00989B4B /* ServerSettingViewController.m */; };
 		A00841511CDE3AC800CF9BC7 /* kanban.js in Resources */ = {isa = PBXBuildFile; fileRef = A00841501CDE3AC800CF9BC7 /* kanban.js */; };
 		A00841551CDED38000CF9BC7 /* UIWebView+TS_JavaScriptContext.m in Sources */ = {isa = PBXBuildFile; fileRef = A00841541CDED38000CF9BC7 /* UIWebView+TS_JavaScriptContext.m */; };
+		A008415E1CE6FD3300CF9BC7 /* font-awesome.css in Resources */ = {isa = PBXBuildFile; fileRef = A008415D1CE6FD3300CF9BC7 /* font-awesome.css */; };
+		A00841601CE707A000CF9BC7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = A008415F1CE707A000CF9BC7 /* fonts */; };
 		A0677CC61CCA6F67002355C2 /* OdooRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CC51CCA6F67002355C2 /* OdooRequestModel.m */; };
 		A0677CD31CCC6012002355C2 /* CXPickerTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CD21CCC6012002355C2 /* CXPickerTextField.m */; };
 		A0677CD61CCC9982002355C2 /* RegistTrailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0677CD51CCC9982002355C2 /* RegistTrailViewController.m */; };
@@ -117,6 +119,8 @@
 		A00841501CDE3AC800CF9BC7 /* kanban.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = kanban.js; sourceTree = "<group>"; };
 		A00841531CDED38000CF9BC7 /* UIWebView+TS_JavaScriptContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+TS_JavaScriptContext.h"; sourceTree = "<group>"; };
 		A00841541CDED38000CF9BC7 /* UIWebView+TS_JavaScriptContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+TS_JavaScriptContext.m"; sourceTree = "<group>"; };
+		A008415D1CE6FD3300CF9BC7 /* font-awesome.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "font-awesome.css"; sourceTree = "<group>"; };
+		A008415F1CE707A000CF9BC7 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		A0677CC41CCA6F67002355C2 /* OdooRequestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OdooRequestModel.h; sourceTree = "<group>"; };
 		A0677CC51CCA6F67002355C2 /* OdooRequestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OdooRequestModel.m; sourceTree = "<group>"; };
 		A0677CD11CCC6012002355C2 /* CXPickerTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXPickerTextField.h; sourceTree = "<group>"; };
@@ -215,6 +219,8 @@
 		45F7599C1CC8CC1300989B4B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A008415F1CE707A000CF9BC7 /* fonts */,
+				A008415D1CE6FD3300CF9BC7 /* font-awesome.css */,
 				A00841501CDE3AC800CF9BC7 /* kanban.js */,
 				A0677CE31CD6F1A4002355C2 /* kanban.css */,
 				45F7599F1CC8CC1300989B4B /* AppDelegate.h */,
@@ -474,8 +480,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A008415E1CE6FD3300CF9BC7 /* font-awesome.css in Resources */,
 				A0677CE41CD6F1A4002355C2 /* kanban.css in Resources */,
 				45F759AC1CC8CC1300989B4B /* LaunchScreen.storyboard in Resources */,
+				A00841601CE707A000CF9BC7 /* fonts in Resources */,
 				A00841511CDE3AC800CF9BC7 /* kanban.js in Resources */,
 				45F759A91CC8CC1300989B4B /* Assets.xcassets in Resources */,
 				45F759A71CC8CC1300989B4B /* Main.storyboard in Resources */,
@@ -685,7 +693,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: yi jun (UP2W7HXJFN)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Lei Qiao (4255A94LGP)";
 				DEFINES_MODULE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -702,7 +710,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LoveC.odooMobile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6708be1e-b440-41c9-be9d-a3eb6522757d";
+				PROVISIONING_PROFILE = "437fab83-bbb1-4f86-b443-292bfaa72b9c";
 				SWIFT_OBJC_BRIDGING_HEADER = "odooMobile/View/odooMobile-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -714,7 +722,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: yi jun (UP2W7HXJFN)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Lei Qiao (4255A94LGP)";
 				DEFINES_MODULE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -731,7 +739,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LoveC.odooMobile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6708be1e-b440-41c9-be9d-a3eb6522757d";
+				PROVISIONING_PROFILE = "437fab83-bbb1-4f86-b443-292bfaa72b9c";
 				SWIFT_OBJC_BRIDGING_HEADER = "odooMobile/View/odooMobile-Bridging-Header.h";
 			};
 			name = Release;

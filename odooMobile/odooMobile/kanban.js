@@ -117,6 +117,9 @@ function removeValueNode(node)
 }catch(e){nslog(e);}
 }
 
+var widget = new Object();
+widget.editable = false;
+
 var record;
 
 function setRecordValue(recordJson)
@@ -203,16 +206,6 @@ function kanban_image(model, field, id)
 {
     if( eval("record."+field) == null )
     {
-        // 如果小图没有换大图
-        if( field == "image_small" )
-        {
-            return kanban_image(model, "image", id);
-        }
-        // 如果大图没有换小图
-        if( field == "image" )
-        {
-            return kanban_image(model, "image_small", id);
-        }
         return "";
     }
     
@@ -223,6 +216,7 @@ function kanban_image(model, field, id)
     }
     return "data:image/png;base64,"+imageData;
 }
+
 
 
 
