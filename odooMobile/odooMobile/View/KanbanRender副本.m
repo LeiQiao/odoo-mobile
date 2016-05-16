@@ -15,8 +15,9 @@ typedef void (^UpdateCallback)(WKWebView* webView, NSInteger index);
 
 @implementation KanbanRender {
     ViewModeData* _viewMode;
-    NSMutableArray* _recordWebviews;
+    NSMutableArray* _recordImages;
     
+    WKWebView* _renderWebView;
     UpdateCallback _updateCallback;
 }
 
@@ -165,35 +166,43 @@ typedef void (^UpdateCallback)(WKWebView* webView, NSInteger index);
     return [kanbanElement XMLString];
 }
 
+-(void) renderNext:(NSInteger)index
+{
+}
+
 #pragma mark
 #pragma mark init & dealloc
 
--(instancetype) initWithViewMode:(ViewModeData*)viewMode updateCallback:(void(^)(WKWebView*, NSInteger))callback
+-(instancetype) initWithViewMode:(ViewModeData*)viewMode
 {
     if( self = [super init] )
     {
         _viewMode = viewMode;
-        _updateCallback = callback;
         
-        _recordWebviews = [NSMutableArray new];
-//        [self updateWithWidth:width];
+        _renderWebView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
+        _renderWebView.backgroundColor = [UIColor clearColor];
+        _renderWebView.navigationDelegate = (id<WKNavigationDelegate>)self;
+        _renderWebView.backgroundColor = [UIColor clearColor];
+        
+        // 添加加载完成的监听
+        [_renderWebView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
+        
+        _recordImages = [NSMutableArray new];
     }
     return self;
 }
 
 -(void) dealloc
 {
-    for( NSInteger i=0; i<_recordWebviews.count; i++ )
-    {
-        WKWebView* webView = [_recordWebviews objectAtIndex:i];
-        [webView removeObserver:self forKeyPath:@"estimatedProgress" context:nil];
-        [_recordWebviews removeObjectAtIndex:i];
-    }
+    [_renderWebView removeObserver:self forKeyPath:@"estimatedProgress" context:nil];
 }
 
--(void) updateWithWidth:(CGFloat)width
+-(void) updateWithWidth:(CGFloat)width callback:(void(^)(WKWebView*, NSInteger))callback
 {
-    _recordWebviews = [NSMutableArray new];
+    _updateCallback = callback;
+    
+    [_recordImages removeAllObjects];
+    [self startRenderNext:0];
     
     for( NSInteger i=0; i<_viewMode.records.count; i++ )
     {
@@ -205,15 +214,6 @@ typedef void (^UpdateCallback)(WKWebView* webView, NSInteger index);
         }
         else
         {
-            WKWebView* webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, width, 1)];
-            webView.scrollView.scrollEnabled = NO;
-            webView.scrollView.userInteractionEnabled = NO;
-            webView.backgroundColor = [UIColor clearColor];
-            webView.navigationDelegate = (id<WKNavigationDelegate>)self;
-            webView.backgroundColor = [UIColor clearColor];
-            
-            // 添加加载完成的监听
-            [webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
             
             // 添加该视图的css样式及js代码
             NSString* cssFilePath = [NSString stringWithFormat:@"%@/odooMobile/kanban.css", RESOURCE_PATH];
@@ -303,14 +303,6 @@ typedef void (^UpdateCallback)(WKWebView* webView, NSInteger index);
         
         [webView evaluateJavaScript:@"document.documentElement.outerHTML;"
                   completionHandler:^(NSString* fileContent, NSError* error) {
-                      UIGraphicsBeginImageContextWithOptions(newFrame.size, YES, 0);
-                      [webView drawViewHierarchyInRect:newFrame afterScreenUpdates:YES];
-                      UIImage* uiImage = UIGraphicsGetImageFromCurrentImageContext();
-                      UIGraphicsEndImageContext();
-                      NSData* imageData = UIImagePNGRepresentation(uiImage);
-                      [imageData writeToFile:[NSString stringWithFormat:@"%@/debug/%@.%03d.png", RESOURCE_PATH, _viewMode.ID, (int)index]
-                                  atomically:YES];
-                      
                       NSString* fileName = [NSString stringWithFormat:@"%@/debug/%@.%03d.html", RESOURCE_PATH, _viewMode.ID, (int)index];
                       [fileContent writeToFile:fileName atomically:YES encoding:NSUTF8StringEncoding error:nil];
                   }];
