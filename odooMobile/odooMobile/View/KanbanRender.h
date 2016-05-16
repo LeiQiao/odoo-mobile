@@ -12,16 +12,10 @@
 
 -(instancetype) initWithViewMode:(ViewModeData*)viewMode;
 
--(void) updateWithWidth:(CGFloat)width;
+-(void) updateWithWidth:(CGFloat)width callback:(void(^)())callback;
 
 -(NSUInteger) recordCount;
 -(CGFloat) recordHeight:(NSUInteger)index;
 -(WKWebView*) recordWebView:(NSUInteger)index;
-
-@end
-
-@protocol KanbanRenderDelegate <NSObject>
-
-
 
 @end

@@ -8,10 +8,14 @@
 #import "Preferences.h"
 #import "JSON.h"
 
-//#define RESOURCE_PATH       (@"/Users/lei.qiao/Desktop/LeiQiao/odoo-mobile/odooMobile")
-#define RESOURCE_PATH       (@"/Users/LeiQiao/Desktop/odoo-mobile/odooMobile")
+#define RESOURCE_PATH       (@"/Users/lei.qiao/Desktop/LeiQiao/odoo-mobile/odooMobile")
+//#define RESOURCE_PATH       (@"/Users/LeiQiao/Desktop/odoo-mobile/odooMobile")
 
-typedef void (^UpdateCallback)(WKWebView* webView, NSInteger index);
+const NSString* const sKanbanRenderWebViewKey = @"WebView";
+const NSString* const sKanbanRenderFinishedLoadKey = @"FinishedLoad";
+const NSString* const sKanbanRenderUpdatedKey = @"Updated";
+
+typedef void (^UpdateCallback)();
 
 @implementation KanbanRender {
     ViewModeData* _viewMode;
@@ -165,55 +169,126 @@ typedef void (^UpdateCallback)(WKWebView* webView, NSInteger index);
     return [kanbanElement XMLString];
 }
 
+-(void) finishedLoad:(WKWebView*)webView
+{
+    for( NSMutableDictionary* item in _recordWebviews )
+    {
+        if( [item objectForKey:sKanbanRenderWebViewKey] == webView )
+        {
+            item[sKanbanRenderFinishedLoadKey] = @(YES);
+            break;
+        }
+    }
+    
+    for( NSDictionary* item in _recordWebviews )
+    {
+        if( ![[item objectForKey:sKanbanRenderFinishedLoadKey] boolValue] )
+        {
+            return;
+        }
+    }
+    
+    [self updateNext:0];
+}
+
+-(void) updateNext:(NSNumber*)indexNumber
+{
+    NSUInteger index = [indexNumber unsignedIntegerValue];
+    if( index >= _recordWebviews.count )
+    {
+        if( (index == _recordWebviews.count) && _updateCallback )
+        {
+            _updateCallback();
+        }
+        return;
+    }
+    
+    NSMutableDictionary* item = [_recordWebviews objectAtIndex:index];
+    WKWebView* webView = item[sKanbanRenderWebViewKey];
+    [webView evaluateJavaScript:@"document.height;" completionHandler:^(NSNumber* height, NSError* error) {
+        
+        CGRect newFrame = webView.frame;
+        if( newFrame.size.height != [height floatValue] )
+        {
+            newFrame.size.height = [height floatValue];
+            webView.frame = newFrame;
+            
+            item[sKanbanRenderUpdatedKey] = @(YES);
+            
+            [self debug:index];
+        }
+        
+        [self performSelector:@selector(updateNext:) withObject:@(index+1) afterDelay:0.0];
+    }];
+}
+
+-(void) debug:(NSUInteger)index
+{
+    NSMutableDictionary* item = [_recordWebviews objectAtIndex:index];
+    WKWebView* webView = item[sKanbanRenderWebViewKey];
+    
+    [webView evaluateJavaScript:@"document.documentElement.outerHTML;"
+              completionHandler:^(NSString* fileContent, NSError* error) {
+                  /*---------- HTML内容 ----------*/
+                  NSString* fileName = [NSString stringWithFormat:@"%@/debug/%@.%03d.html", RESOURCE_PATH, _viewMode.ID, (int)index];
+                  [fileContent writeToFile:fileName atomically:YES encoding:NSUTF8StringEncoding error:nil];
+                  
+                  /*---------- 截屏 ----------*/
+                  UIGraphicsBeginImageContextWithOptions(webView.frame.size, YES, 0);
+                  [webView drawViewHierarchyInRect:webView.frame afterScreenUpdates:YES];
+                  UIImage* uiImage = UIGraphicsGetImageFromCurrentImageContext();
+                  UIGraphicsEndImageContext();
+                  NSData* imageData = UIImagePNGRepresentation(uiImage);
+                  [imageData writeToFile:[NSString stringWithFormat:@"%@/debug/%@.%03d.png", RESOURCE_PATH, _viewMode.ID, (int)index]
+                              atomically:YES];
+              }];
+}
+
 #pragma mark
 #pragma mark init & dealloc
 
--(instancetype) initWithViewMode:(ViewModeData*)viewMode updateCallback:(void(^)(WKWebView*, NSInteger))callback
+-(instancetype) initWithViewMode:(ViewModeData*)viewMode
 {
     if( self = [super init] )
     {
         _viewMode = viewMode;
-        _updateCallback = callback;
         
         _recordWebviews = [NSMutableArray new];
-//        [self updateWithWidth:width];
     }
     return self;
 }
 
--(void) dealloc
+-(void) updateWithWidth:(CGFloat)width callback:(void(^)())callback
 {
-    for( NSInteger i=0; i<_recordWebviews.count; i++ )
-    {
-        WKWebView* webView = [_recordWebviews objectAtIndex:i];
-        [webView removeObserver:self forKeyPath:@"estimatedProgress" context:nil];
-        [_recordWebviews removeObjectAtIndex:i];
-    }
-}
-
--(void) updateWithWidth:(CGFloat)width
-{
-    _recordWebviews = [NSMutableArray new];
+    _updateCallback = callback;
     
     for( NSInteger i=0; i<_viewMode.records.count; i++ )
     {
         if( i < _recordWebviews.count )
         {
-            WKWebView* webView = [_recordWebviews objectAtIndex:i];
+            NSMutableDictionary* item = _recordWebviews[i];
+            item[sKanbanRenderFinishedLoadKey] = @(NO);
+            item[sKanbanRenderUpdatedKey] = @(NO);
+            
+            WKWebView* webView = item[sKanbanRenderWebViewKey];
             webView.frame = CGRectMake(0, 0, width, 1);
             [webView reload];
         }
         else
         {
             WKWebView* webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, width, 1)];
+            
+            NSMutableDictionary* item = [NSMutableDictionary new];
+            item[sKanbanRenderWebViewKey] = webView;
+            item[sKanbanRenderFinishedLoadKey] = @(NO);
+            item[sKanbanRenderUpdatedKey] = @(NO);
+            [_recordWebviews addObject:item];
+            
             webView.scrollView.scrollEnabled = NO;
             webView.scrollView.userInteractionEnabled = NO;
             webView.backgroundColor = [UIColor clearColor];
             webView.navigationDelegate = (id<WKNavigationDelegate>)self;
             webView.backgroundColor = [UIColor clearColor];
-            
-            // 添加加载完成的监听
-            [webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
             
             // 添加该视图的css样式及js代码
             NSString* cssFilePath = [NSString stringWithFormat:@"%@/odooMobile/kanban.css", RESOURCE_PATH];
@@ -246,7 +321,6 @@ typedef void (^UpdateCallback)(WKWebView* webView, NSInteger index);
                           @"</html>", cssFilePath, faFilePath, jsFilePath, htmlString, recordScript];
             
             [webView loadHTMLString:htmlString baseURL:[[NSBundle mainBundle] bundleURL]];
-            [_recordWebviews addObject:webView];
         }
     }
     
@@ -265,13 +339,15 @@ typedef void (^UpdateCallback)(WKWebView* webView, NSInteger index);
 
 -(CGFloat) recordHeight:(NSUInteger)index
 {
-    WKWebView* webView = [_recordWebviews objectAtIndex:index];
+    NSMutableDictionary* item = [_recordWebviews objectAtIndex:index];
+    WKWebView* webView = item[sKanbanRenderWebViewKey];
     return webView.bounds.size.height;
 }
 
 -(WKWebView*) recordWebView:(NSUInteger)index
 {
-    WKWebView* webView = [_recordWebviews objectAtIndex:index];
+    NSMutableDictionary* item = [_recordWebviews objectAtIndex:index];
+    WKWebView* webView = item[sKanbanRenderWebViewKey];
     return webView;
 }
 
@@ -280,59 +356,7 @@ typedef void (^UpdateCallback)(WKWebView* webView, NSInteger index);
 
 -(void) webView:(WKWebView*)webView didFinishNavigation:(WKNavigation*)navigation
 {
-}
-
--(void) observeValueForKeyPath:(NSString*)keyPath
-                      ofObject:(id)object
-                        change:(NSDictionary*)change
-                       context:(void*)context
-{
-    if( ![keyPath isEqualToString:@"estimatedProgress"] ) return;
-    
-    WKWebView* webView = (WKWebView*)object;
-    NSInteger index = [_recordWebviews indexOfObject:webView];
-    if( index >= _recordWebviews.count ) return;
-    
-    NSLog(@"estimatedProgress changed");
-    [webView evaluateJavaScript:@"document.height;" completionHandler:^(NSNumber* height, NSError* error) {
-        CGRect newFrame = webView.frame;
-        if( newFrame.size.height == [height floatValue] ) return;
-        
-        newFrame.size.height = [height floatValue];
-        webView.frame = newFrame;
-        
-        [webView evaluateJavaScript:@"document.documentElement.outerHTML;"
-                  completionHandler:^(NSString* fileContent, NSError* error) {
-                      UIGraphicsBeginImageContextWithOptions(newFrame.size, YES, 0);
-                      [webView drawViewHierarchyInRect:newFrame afterScreenUpdates:YES];
-                      UIImage* uiImage = UIGraphicsGetImageFromCurrentImageContext();
-                      UIGraphicsEndImageContext();
-                      NSData* imageData = UIImagePNGRepresentation(uiImage);
-                      [imageData writeToFile:[NSString stringWithFormat:@"%@/debug/%@.%03d.png", RESOURCE_PATH, _viewMode.ID, (int)index]
-                                  atomically:YES];
-                      
-                      NSString* fileName = [NSString stringWithFormat:@"%@/debug/%@.%03d.html", RESOURCE_PATH, _viewMode.ID, (int)index];
-                      [fileContent writeToFile:fileName atomically:YES encoding:NSUTF8StringEncoding error:nil];
-                  }];
-
-        
-        if( _updateCallback )
-        {
-            _updateCallback(webView, index);
-        }
-    }];
-//        CGFloat newHeight = webView.scrollView.contentSize.height;
-//        CGRect newFrame = webView.frame;
-//        
-//        if( newFrame.size.height == newHeight ) return;
-//        
-//        newFrame.size.height = webView.scrollView.contentSize.height;
-//        webView.frame = newFrame;
-//        
-//        if( _updateCallback )
-//        {
-//            _updateCallback(webView, i);
-//        }
+    [self finishedLoad:webView];
 }
 
 @end

@@ -12,6 +12,18 @@
 }
 
 #pragma mark
+#pragma mark helper
+
+-(void) reloadData
+{
+    popWaiting();
+    [_kanbanRender updateWithWidth:self.tableView.frame.size.width-35 callback:^() {
+        dismissWaiting();
+        [self.tableView reloadData];
+    }];
+}
+
+#pragma mark
 #pragma mark init & dealloc
 
 -(void) viewDidLoad
@@ -19,10 +31,7 @@
     [super viewDidLoad];
     
     ViewModeData* viewMode = [_window viewModeForName:kKanbanViewModeName];
-    _kanbanRender = [[KanbanRender alloc] initWithViewMode:viewMode updateCallback:^(WKWebView* webView, NSInteger index) {
-        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]]
-                              withRowAnimation:UITableViewRowAnimationAutomatic];
-    }];
+    _kanbanRender = [[KanbanRender alloc] initWithViewMode:viewMode];
     
     ADDOBSERVER(RecordModel, (id<RecordModelObserver>)self);
     
@@ -33,8 +42,7 @@
     }
     else
     {
-        [_kanbanRender updateWithWidth:self.tableView.frame.size.width-35];
-        [self.tableView reloadData];
+        [self reloadData];
     }
 }
 
@@ -57,8 +65,7 @@
         popError(params.failedReason);
     }
     
-    [_kanbanRender updateWithWidth:self.tableView.frame.size.width-35];
-    [self.tableView reloadData];
+    [self reloadData];
 }
 
 #pragma mark

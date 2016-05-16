@@ -12,11 +12,11 @@
 // 错误，没有XML前缀
 const NSInteger kNoXMLPrefix = -999;
 
-#ifdef DEBUG
-#define AFXMLRPCLog NSLog
-#else
+//#ifdef DEBUG
+//#define AFXMLRPCLog NSLog
+//#else
 #define AFXMLRPCLog
-#endif
+//#endif
 
 /*!
  *  @author LeiQiao, 16-02-27

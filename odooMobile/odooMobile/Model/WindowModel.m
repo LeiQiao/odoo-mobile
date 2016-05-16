@@ -155,6 +155,10 @@
             {
                 field.type = FieldTypeDouble;
             }
+            else if( [[fieldData objectForKey:@"type"] isEqualToString:@"monetary"] )
+            {
+                field.type = FieldTypeDouble;
+            }
             else if( [[fieldData objectForKey:@"type"] isEqualToString:@"binary"] )
             {
                 field.type = FieldTypeBinary;
